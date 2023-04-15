@@ -32,7 +32,7 @@ const UpdateNode = () => {
     return (parseInt(lastNode.id) + 1).toString();
   }
 
-  const makeNodeOnMouseClick = useCallback((event) => {
+  const makeNodeOnMouseClick = (event) => {
           const targetIsPane = event.target.classList.contains('react-flow__pane');
 
           if (targetIsPane && placeNode) {
@@ -48,7 +48,7 @@ const UpdateNode = () => {
             addNode(newNode);
             setPlaceNode(false);
           }
-  });
+  };
 
   return (
       <div className="fullscreen" ref={reactFlowWrapper}>
