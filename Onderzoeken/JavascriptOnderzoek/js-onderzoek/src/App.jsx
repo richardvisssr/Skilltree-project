@@ -15,7 +15,7 @@ const initialNodes = [
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
-const UpdateNode = () => {
+function App() {
   const {project} = useReactFlow();
   const reactFlowWrapper = useRef(null)
   const [placeNode, setPlaceNode] = useState(false);
@@ -72,6 +72,6 @@ const UpdateNode = () => {
 
 export default () => (
     <ReactFlowProvider>
-      <UpdateNode />
+      <App />
     </ReactFlowProvider>
 );
