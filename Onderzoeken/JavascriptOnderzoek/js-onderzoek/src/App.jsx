@@ -42,7 +42,7 @@ const UpdateNode = () => {
             const newNode = {
               id,
               // we are removing the half of the node width (75) to center the new node
-              position: project({x: event.clientX - left - 110, y: event.clientY - top - 110}),
+              position: project({x: event.clientX - left - 75, y: event.clientY - top - 75}),
               data: {label: `Node ${id}`},
             };
             addNode(newNode);
