@@ -52,7 +52,6 @@ const UpdateNode = () => {
 
   return (
       <div className="fullscreen" ref={reactFlowWrapper}>
-        <h1>Update Node</h1>
         <button onClick={() => setPlaceNode(!placeNode)}>Place Node</button>
         <ReactFlow
             onPaneClick={makeNodeOnMouseClick}
