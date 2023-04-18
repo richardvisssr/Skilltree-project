@@ -26,7 +26,7 @@ BEGIN TRY
     (
         ID       INT UNIQUE				NOT NULL IDENTITY (1,1),
         Description VARCHAR(2000)		 NOT NULL,
-        Name      VARCHAR(255)                  NOT NULL,
+        Title      VARCHAR(255)                  NOT NULL,
 
         UserID   INT                   NOT NULL,
 
