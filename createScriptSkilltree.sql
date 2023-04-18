@@ -4,7 +4,7 @@ BEGIN TRY
     CREATE TABLE Roles
     (
         ID        INT UNIQUE                    NOT NULL IDENTITY (1,1),
-        Name      VARCHAR(255)                  NOT NULL,
+        Role      VARCHAR(255)                  NOT NULL,
 
         CONSTRAINT PK_Roles PRIMARY KEY (ID),
     );
@@ -17,8 +17,6 @@ BEGIN TRY
         Email     VARCHAR(255)                      NOT NULL,
         Password  VARCHAR(255)                      NOT NULL,
         RoleID    INT                               NOT NULL,
-        Token     VARCHAR(255) DEFAULT NULL,
-        CreatedOn DATETIME     DEFAULT GETUTCDATE() NOT NULL,
 
         CONSTRAINT PK_Users PRIMARY KEY (ID),
         CONSTRAINT FK_Users_RoleID_ID FOREIGN KEY (RoleID) REFERENCES Roles (ID) ON UPDATE CASCADE,
@@ -29,7 +27,7 @@ BEGIN TRY
         ID       INT UNIQUE				NOT NULL IDENTITY (1,1),
         Description VARCHAR(2000)		 NOT NULL,
         Name      VARCHAR(255)                  NOT NULL,
-        -- Relations
+
         UserID   INT                   NOT NULL,
 
 		CONSTRAINT FK_Skilltree_User_ID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE CASCADE,
@@ -44,9 +42,7 @@ BEGIN TRY
         Description        VARCHAR(2000)                  NOT NULL,
         PositionX          INT      DEFAULT 0            NOT NULL,
         PositionY          INT      DEFAULT 0            NOT NULL,
-		
 
-        -- Relations
         SkillTreeID        INT                           NOT NULL,
 
         CONSTRAINT PK_Nodes PRIMARY KEY (ID, SkillTreeID),
@@ -59,7 +55,6 @@ BEGIN TRY
 		Description VARCHAR(255)                  NOT NULL, 
 		character CHAR(1) NOT NULL CHECK (character IN ('O', 'V', 'G')),
 
-		-- Relations
 		NodeID  INT NOT NULL,     
 
         CONSTRAINT PK_AssessmentsCriteria PRIMARY KEY (ID),
@@ -71,7 +66,6 @@ BEGIN TRY
 		ID          INT UNIQUE                    NOT NULL IDENTITY (1,1),
 		Description VARCHAR(255)                  NOT NULL, 
 
-		-- Relations
 		NodeID  INT NOT NULL,
 
 		CONSTRAINT FK_LearningOutcome_Nodes_ID FOREIGN KEY (NodeID) REFERENCES Nodes (ID) ON DELETE CASCADE
@@ -82,7 +76,6 @@ BEGIN TRY
     (
         ID          INT UNIQUE NOT NULL IDENTITY (1,1),
 
-        -- Relations
         SourceID    INT        NULL,
         TargetID    INT        NULL,
         SkillTreeID INT        NOT NULL,
