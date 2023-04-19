@@ -18,8 +18,8 @@ export default function SidebarComponent() {
     
     const skilltreeList = () => {
         const buttons = skilltrees.map((skilltree, index) =>
-            <button className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-                <span className="ml-4" key={index}>{skilltree.title}</span>
+            <button key={index} className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                <span className="ml-4">{skilltree.title}</span>
             </button>)
         return (<li>
             {buttons}
