@@ -1,27 +1,104 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {updateSkillTree} from '../actions/skilltree';
+//import { Fragment } from 'react'
+import { Disclosure} from '@headlessui/react' // Menu, Transition
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 
 
-function TopBar() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+const forms = [
+    { name: 'name', id: 'name', placeholder: 'Titel'},
+    { name: 'description', id: 'description', placeholder: 'Beschrijving'},
+]
 
-    const dispatch = useDispatch();
-    const handleSave = () => {
-        dispatch(updateSkillTree(title, description));
-    };
+const buttons = [
+    { text: 'Node Aanmaken' },
+    { text: 'Koppelen' }
+]
 
-    const stateName = useSelector(state => state.skilltree.title);
-
-  return (
-      <div>
-        <input type="text" placeholder="Naam" onChange={e => setTitle(e.target.value)}/>
-        <input type="text" placeholder="Beschrijving" onChange={e => setDescription(e.target.value)}/>
-        <button onClick={handleSave}>Opslaan</button>
-          <h1>Title: {stateName}</h1>
-      </div>
-  );
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default TopBar;
+export default function Topbar() {
+  return (
+    <Disclosure as="nav" className="bg-gray-800">
+      {({ open }) => (
+        <>
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Open menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex flex-1 items-center justify-center">
+                <div className="flex w-3/5">
+                  <div className="flex items-center">
+                    <img
+                      className="block h-8 lg:hidden"
+                      src="https://www.stipbike.nl/wp-content/uploads/2020/02/HAN-logo.png"
+                      alt="HAN"
+                    />
+                    <img
+                      className="hidden h-8 lg:block"
+                      src="https://www.stipbike.nl/wp-content/uploads/2020/02/HAN-logo.png"
+                      alt="HAN"
+                    />
+                  </div>
+              
+                  <div className="hidden md:ml-6 md:block w-fit">
+                    <div className="flex space-x-4 w-fit">
+                      <div className="relative rounded-md shadow-sm">
+                          {forms.map((item) => (
+                          <input
+                              type="text"
+                              name={item.name}
+                              id={item.id}
+                              className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                              placeholder={item.placeholder}
+                          />
+                          ))}
+                      </div>
+                          
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden md:ml-6 md:block">
+                  <div className="flex items-center justify-center">
+                    {buttons.map((item) => (
+                          <button class="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <button class="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium">Opslaan</button>
+              </div>
+            </div>
+          </div>
+          {/* Mobile dropdown menu */}
+          <Disclosure.Panel className="md:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {forms.map((item) => (
+              <input
+                  type="text"
+                  name={item.name}
+                  id={item.id}
+                  className='flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                  placeholder={item.placeholder}
+              />
+              ))}
+              {buttons.map((item) => (
+                    <button class="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  )
+}
