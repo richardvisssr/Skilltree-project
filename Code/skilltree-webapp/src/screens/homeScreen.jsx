@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SidebarComponent from '../components/sidebarComponent';
-import TopbarComponent from '../components/topbarComponent';
+import SidebarComponent from '../components/SidebarComponent';
+import TopbarComponent from '../components/TopbarComponent';
 import ReactFlow from 'reactflow';
 
 const skilltreeSelected = true;

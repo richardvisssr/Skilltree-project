@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import testReducer from './testReducer';
-import '../styles/styles.css'
 
+import testReducer from './testReducer';
+import skilltreeReducer from './skilltreeReducer';
 
 const reducers = combineReducers({
-  test: testReducer
+  test: testReducer,
+  skilltree: skilltreeReducer
 });
 
 export default reducers;
