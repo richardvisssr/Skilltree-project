@@ -11,7 +11,6 @@ import java.util.List;
 public class SkilltreeDatamapper implements Datamapper{
     @Override
     public SkilltreesDTO map(ResultSet resultSet) throws SQLException {
-       var skilltreesDTO = new SkilltreesDTO();
         List<SkilltreeDTO> skilltrees = new ArrayList<>();
 
         while(resultSet.next()) {
@@ -24,7 +23,6 @@ public class SkilltreeDatamapper implements Datamapper{
             );
         }
 
-        skilltreesDTO.setSkilltrees(skilltrees);
-        return skilltreesDTO;
+        return new SkilltreesDTO(skilltrees);
     }
 }
