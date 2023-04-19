@@ -22,7 +22,7 @@ public class SkilltreeResource {
             @PathParam("docentId") int docentId
     ) {
         try {
-            return Response.status(200).entity(skilltreeService.getAllSkilltrees(docentId)).build();
+            return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(docentId)).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
