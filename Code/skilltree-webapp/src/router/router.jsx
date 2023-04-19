@@ -2,7 +2,6 @@ import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import TestScreen from "../screens/testScreen";
-import CreateNodeScreen from "../screens/CreateNodeScreen";
 
 const routes = [
     {
@@ -12,10 +11,6 @@ const routes = [
     {
         path: "/test",
         element: <TestScreen />,
-    },
-    {
-        path: "/createNode",
-        element: <CreateNodeScreen />,
     },
 ];
 
