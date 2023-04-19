@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TestComponent from '../components/testComponent';
+import TestComponent from '../components/Topbar';
 
 export default function testScreen() {
   return (

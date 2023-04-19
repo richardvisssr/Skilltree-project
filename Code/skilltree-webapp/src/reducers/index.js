@@ -3,7 +3,7 @@ import skillTreeReducer from './skillTreeReducer';
 import React from 'react';
 
 const reducers = combineReducers({
-  skillTree: skillTreeReducer,
+  skilltree: skillTreeReducer,
 });
 
 export default reducers;

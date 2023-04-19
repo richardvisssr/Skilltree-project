@@ -1,11 +1,17 @@
 const initialState = {
-  name: '',
+  title: '',
   description: ''
 };
 
 function skillTreeReducer(state = initialState, action) {
   switch (action.type) {
-      // implementeer eventuele reducer cases hier
+    case 'UPDATE_SKILL_TREE':
+      console.log(action.payload.title);
+      return {
+        ...state,
+        title: action.payload.title,
+        description: action.payload.description
+      }
     default:
       return state;
   }

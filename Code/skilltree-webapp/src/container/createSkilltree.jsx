@@ -1,11 +1,13 @@
-import { connect } from 'react-redux';
-import TopBar from './TopBar';
-import { updateSkillTree } from './actions';
-import React,{Component} from 'react';
+import {connect, useSelector} from 'react-redux';
+import TopBar from 'Code/skilltree-webapp/src/components/Topbar.jsx';
+import { useDispatch } from 'react-redux';
+import {updateSkillTree} from "../actions/skilltree";
 
-function SkillTreeEditor ({ name, description, updateSkillTree }){
+function SkillTreeEditor ({ title, description, updateSkillTree }){
+
+    const dispatch = useDispatch();
     const handleSave = () => {
-        updateSkillTree(name, description);
+        dispatch(updateSkillTree(title, description));
     };
 
     return (
@@ -16,15 +18,4 @@ function SkillTreeEditor ({ name, description, updateSkillTree }){
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        name: state.skillTree.name,
-        description: state.skillTree.description
-    };
-};
-
-const mapDispatchToProps = {
-    updateSkillTree
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SkillTreeEditor);
+export default SkillTreeEditor;
