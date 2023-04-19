@@ -10,6 +10,16 @@ public class SkilltreeDTO {
     private List<NodeDTO> nodes = new ArrayList<>();
     private List<EdgeDTO> edges = new ArrayList<>();
 
+    public SkilltreeDTO(){}
+
+    public SkilltreeDTO(double id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.nodes = nodes;
+        this.edges = edges;
+    }
+
     public void setId(double id) {
         this.id = id;
     }

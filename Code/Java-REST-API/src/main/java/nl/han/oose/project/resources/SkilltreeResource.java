@@ -9,6 +9,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.SkilltreeService;
 
+import java.sql.SQLException;
+
 @Path("/skilltrees")
 public class SkilltreeResource {
     private SkilltreeService skilltreeService;
@@ -19,7 +21,11 @@ public class SkilltreeResource {
     public Response getAllSkilltrees(
             @PathParam("docentId") int docentId
     ) {
-        return Response.status(200).entity(skilltreeService.getAllSkilltrees(docentId)).build();
+        try {
+            return Response.status(200).entity(skilltreeService.getAllSkilltrees(docentId)).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Inject
