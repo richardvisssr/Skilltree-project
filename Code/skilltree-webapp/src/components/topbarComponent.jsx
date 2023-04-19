@@ -49,13 +49,14 @@ export default function topbarComponent() {
                   <div className="hidden lg:ml-6 lg:block w-fit">
                     <div className="flex space-x-4 w-fit">
                       <div className="relative rounded-md shadow-sm">
-                          {forms.map((item) => (
+                          {forms.map((item, index) => (
                           <input
                               type="text"
                               name={item.name}
                               id={item.id}
                               className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
                               placeholder={item.placeholder}
+                              key={index}
                           />
                           ))}
                       </div>
@@ -65,31 +66,32 @@ export default function topbarComponent() {
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex items-center justify-center">
-                    {buttons.map((item) => (
-                          <button class="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+                    {buttons.map((item, index) => (
+                          <button key={index} className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button class="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium">Opslaan</button>
+                <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium">Opslaan</button>
               </div>
             </div>
           </div>
           {/* Mobile dropdown menu */}
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {forms.map((item) => (
+              {forms.map((item, index) => (
               <input
                   type="text"
                   name={item.name}
                   id={item.id}
                   className='flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
                   placeholder={item.placeholder}
+                  key={index}
               />
               ))}
-              {buttons.map((item) => (
-                    <button class="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+              {buttons.map((item, index) => (
+                    <button key={index} className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
               ))}
             </div>
           </Disclosure.Panel>
