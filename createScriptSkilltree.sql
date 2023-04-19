@@ -1,5 +1,6 @@
 use skilltree
 BEGIN TRY
+	BEGIN TRAN
 
     CREATE TABLE Roles
     (

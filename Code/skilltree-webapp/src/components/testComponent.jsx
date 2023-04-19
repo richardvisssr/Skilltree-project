@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function testComponent() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <p>Dit is een test component.</p>
   )
 }
