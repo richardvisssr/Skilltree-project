@@ -41,12 +41,12 @@ export default function Topbar() {
                     <img
                       className="block h-8 lg:hidden"
                       src="https://www.stipbike.nl/wp-content/uploads/2020/02/HAN-logo.png"
-                      alt="Your Company"
+                      alt="HAN"
                     />
                     <img
                       className="hidden h-8 lg:block"
                       src="https://www.stipbike.nl/wp-content/uploads/2020/02/HAN-logo.png"
-                      alt="Your Company"
+                      alt="HAN"
                     />
                   </div>
               
