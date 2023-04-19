@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default function testComponent() {
+function TopBar({ onSave }) {
   return (
-    <p>Dit is een test component</p>
-  )
+      <div>
+        <input type="text" placeholder="Naam" />
+        <input type="text" placeholder="Beschrijving" />
+        <button onClick={onSave}>Opslaan</button>
+      </div>
+  );
 }
+
+export default TopBar;

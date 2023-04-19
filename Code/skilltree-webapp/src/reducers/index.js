@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import reducesSkiltree from './reduces-skiltree';
-
+import skillTreeReducer from './skillTreeReducer';
+import React from 'react';
 
 const reducers = combineReducers({
-  create: reducesSkiltree
+  skillTree: skillTreeReducer,
 });
 
 export default reducers;
+

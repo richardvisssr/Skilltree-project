@@ -1,7 +1,10 @@
-export function setTestAction(test = {}) {
+export const updateSkillTree = (name, description) => {
+  console.log("Name is:", name);
+  console.log("Description is:", description);
+
   return {
-    type: 'skiltree/createTitleAndDescription',
-    payload: skilltree
+    type: 'UPDATE_SKILL_TREE',
+    payload: { name, description }
   };
-  return test
-}
+};
+
