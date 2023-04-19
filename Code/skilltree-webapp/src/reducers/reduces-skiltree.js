@@ -2,7 +2,7 @@ const initialState = {
   test: null
 };
 
-function testReducer(state = initialState, action) {
+function reducesSkiltree(state = initialState, action) {
   switch(action.type) {
     // test voor de '/' is dat het voor de test reducer is, goed voor clean code 
     case 'test/testAction':
@@ -15,4 +15,4 @@ function testReducer(state = initialState, action) {
   }
 }
 
-export default testReducer;
+export default reducesSkiltree;
