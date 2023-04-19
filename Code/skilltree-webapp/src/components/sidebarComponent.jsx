@@ -38,7 +38,7 @@ export default function testComponent() {
                     <ul class="space-y-2 font-medium">
                         <li>
                             <a href="/home" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <span class="ml-12">Add Skilltree</span>
+                                <span class="ml-12">Voeg Skilltree toe</span>
                                 <span class="mb-1 ml-12 text-3xl">+</span>
                             </a>
                         </li>
