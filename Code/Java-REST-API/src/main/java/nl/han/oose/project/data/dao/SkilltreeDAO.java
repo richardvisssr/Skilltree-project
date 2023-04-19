@@ -16,22 +16,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkilltreeDAO {
-    private SkilltreeDatamapper datamapper = new SkilltreeDatamapper();
+    private SkilltreeDatamapper datamapper;
     private DatabaseProperties databaseProperties;
+    private Connection connection;
 
     public SkilltreesDTO getAllSkilltrees(int docentId) throws SQLException {
-        //TODO echte data ophalen uit database
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = datamapper.map(getAllSkilltreesQuery(docentId));
+        connection.close();
         return result;
     }
 
     private ResultSet getAllSkilltreesQuery(int docentId) throws SQLException {
-        Connection connection = DriverManager.getConnection(databaseProperties.connectionString());
-
         var query = "SELECT * FROM Skilltrees WHERE UserID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, docentId);
-        return stmt.executeQuery();
+        var result = stmt.executeQuery();
+        return result;
     }
 
     @Inject
@@ -40,7 +41,7 @@ public class SkilltreeDAO {
     }
 
     @Inject
-    public void setTestDatamapper(SkilltreeDatamapper datamapper) {
+    public void setDatamapper(SkilltreeDatamapper datamapper) {
         this.datamapper = datamapper;
     }
 }
