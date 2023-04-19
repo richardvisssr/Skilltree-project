@@ -7,7 +7,7 @@ function SkillTreeEditor ({ title, description, updateSkillTree }){
 
     const dispatch = useDispatch();
     const handleSave = () => {
-        dispatch(updateSkillTree(title, description));
+        dispatch(createSkillTree(title, description));
     };
 
     return (

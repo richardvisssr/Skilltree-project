@@ -1,17 +1,19 @@
 const initialState = {
-  skilltrees: []
+  title: '',
+  description: ''
 };
 
-function skilltreeReducer(state = initialState, action) {
-  switch(action.type) {
-    case 'skilltree/setSkilltrees':
+function skillTreeReducer(state = initialState, action) {
+  switch (action.type) {
+    case 'CREATE_SKILL_TREE':
+      console.log(action.payload.title);
       return {
         ...state,
-        skilltrees: action.payload
-      };
+        title: action.payload.title,
+        description: action.payload.description
+      }
     default:
       return state;
   }
 }
-
-export default skilltreeReducer;
+export default skillTreeReducer;
