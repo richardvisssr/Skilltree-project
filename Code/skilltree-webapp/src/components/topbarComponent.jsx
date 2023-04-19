@@ -13,18 +13,14 @@ const buttons = [
     { text: 'Koppelen' }
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function topbarComponent() {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="ml-60 mr-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+              <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open menu</span>
@@ -50,7 +46,7 @@ export default function topbarComponent() {
                     />
                   </div>
               
-                  <div className="hidden md:ml-6 md:block w-fit">
+                  <div className="hidden lg:ml-6 lg:block w-fit">
                     <div className="flex space-x-4 w-fit">
                       <div className="relative rounded-md shadow-sm">
                           {forms.map((item, index) => (
@@ -68,7 +64,7 @@ export default function topbarComponent() {
                     </div>
                   </div>
                 </div>
-                <div className="hidden md:ml-6 md:block">
+                <div className="hidden lg:ml-6 lg:block">
                   <div className="flex items-center justify-center">
                     {buttons.map((item, index) => (
                           <button key={index} className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>

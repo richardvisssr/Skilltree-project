@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SidebarComponent from '../components/SidebarComponent';
-import TopbarComponent from '../components/TopbarComponent';
-import ReactFlow from 'reactflow';
+import SidebarComponent from '../components/sidebarComponent';
+import TopbarComponent from '../components/topbarComponent';
+// import ReactFlow from 'reactflow';
 
 const skilltreeSelected = true;
 
@@ -11,7 +11,6 @@ const selectedSkilltree = () => {
         return (
             <div>
             <TopbarComponent />
-            <ReactFlow />
             </div>
         )
     }
@@ -20,7 +19,9 @@ const selectedSkilltree = () => {
 export default function homeScreen() {
     return (
         <div>
-            <SidebarComponent />
+            <div>
+                <SidebarComponent />
+            </div>
             {selectedSkilltree()}
         </div>
     )
