@@ -1,4 +1,4 @@
-package nl.han.oose.project.resources.dto;
+package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
