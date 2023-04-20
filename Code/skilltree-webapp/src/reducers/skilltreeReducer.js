@@ -1,5 +1,6 @@
 const initialState = {
-  skilltrees: []
+  skilltrees: [],
+  skilltreeSelected: false
 };
 
 function skilltreeReducer(state = initialState, action) {
@@ -8,6 +9,11 @@ function skilltreeReducer(state = initialState, action) {
       return {
         ...state,
         skilltrees: action.payload
+      };
+    case 'skilltree/setSkilltreeSlice':
+      return {
+        ...state,
+        skilltreeSelected: action.payload
       };
     default:
       return state;
