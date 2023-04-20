@@ -33,12 +33,11 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
     const options = {
       method: 'POST',
       body: JSON.stringify({ title, description }),
-      mode: 'cors'
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       }
     };
-  return {
     fetch(`${API_PATH}/skilltrees/create/`, options)
   .then(response => response.json())
         .then(function(result) {
