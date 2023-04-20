@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Java-REST-API:war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -48,6 +53,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/PLZBBT-6-als-docent-wil-i…n-kan&quot;,
     &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
@@ -171,6 +177,8 @@
       <workItem from="1681914712473" duration="153000" />
       <workItem from="1681914881477" duration="109000" />
       <workItem from="1681915006059" duration="3190000" />
+      <workItem from="1681915481885" duration="903000" />
+      <workItem from="1681975101896" duration="57000" />
     </task>
     <servers />
   </component>
