@@ -21,17 +21,28 @@ export function fetchAllSkilltreesActionAsync(userId) {
   }
 }
 
-export const createSkillTree = (title, description) => {
+export function setCreateSkillTreeAction(title, descritpion) {
+  return {
+    type: "skilltree/createSkilltree",
+    payload: {title: title, descritpion: descritpion}
+  };
+}
+
+export const fetchCreateSkillTreeActionAsync = (title, description) => {
   return async (dispatch) => {
     const options = {
       method: 'POST',
+      body: JSON.stringify({ title, description }),
       mode: 'cors'
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
   return {
     fetch(`${API_PATH}/skilltrees/create/`, options)
   .then(response => response.json())
         .then(function(result) {
-          dispatch(setSkilltreesAction(result.skilltrees))
+          dispatch(setCreateSkillTreeAction(title, description))
         })
   }
 }

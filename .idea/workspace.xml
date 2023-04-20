@@ -7,9 +7,8 @@
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/skilltree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/container/createSkilltree.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/container/createSkilltree.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skilltreeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skilltreeReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/topbarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/topbarComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skillTreeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skillTreeReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +170,7 @@
       <workItem from="1681914530364" duration="76000" />
       <workItem from="1681914712473" duration="153000" />
       <workItem from="1681914881477" duration="109000" />
-      <workItem from="1681915006059" duration="442000" />
+      <workItem from="1681915006059" duration="3190000" />
     </task>
     <servers />
   </component>

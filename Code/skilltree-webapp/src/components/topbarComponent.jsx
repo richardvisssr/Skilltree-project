@@ -1,6 +1,10 @@
 //import { Fragment } from 'react'
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
+import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+
 
 
 const forms = [
@@ -14,6 +18,15 @@ const buttons = [
 ]
 
 export default function topbarComponent() {
+
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
+    const dispatch = useDispatch();
+    const handleSave = () => {
+        dispatch(fetchCreateSkillTreeActionAsync(title, description));
+    };
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -52,11 +65,13 @@ export default function topbarComponent() {
                           {forms.map((item, index) => (
                           <input
                               type="text"
+                              value={title}
                               name={item.name}
                               id={item.id}
                               className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
                               placeholder={item.placeholder}
                               key={index}
+                              onChange={(e) => setTitle(e.target.value)}
                           />
                           ))}
                       </div>
@@ -88,10 +103,11 @@ export default function topbarComponent() {
                   className='flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
                   placeholder={item.placeholder}
                   key={index}
+                  onChange={(e) => setDescription(e.target.value)}
               />
               ))}
               {buttons.map((item, index) => (
-                    <button key={index} className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+                    <button key={index} className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave} >{item.text}</button>
               ))}
             </div>
           </Disclosure.Panel>

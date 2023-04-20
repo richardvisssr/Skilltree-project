@@ -5,7 +5,7 @@ const initialState = {
 
 function skillTreeReducer(state = initialState, action) {
   switch (action.type) {
-    case 'CREATE_SKILL_TREE':
+    case 'skilltree/createSkilltree':
       console.log(action.payload.title);
       return {
         ...state,
