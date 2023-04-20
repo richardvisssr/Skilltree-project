@@ -25,8 +25,9 @@ public class NodeDAO {
 //    }
 //
 //    private ResultSet getNodesQuery(int skilltreeId) {
-//        var query = "GET"
 
+    //Deze query werkt?? denk ik.
+    //Kon het niet afmaken door de character voor o,v,g
 
     //SELECT
     //	n.ID, n.Skill, n.Description as NodeDescription, n.PositionX, n.PositionY,
