@@ -1,13 +1,11 @@
 package nl.han.oose.project.resources;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.SkilltreeService;
+import nl.han.oose.project.resources.dto.SkilltreeDTO;
 
 import java.sql.SQLException;
 
@@ -30,14 +28,14 @@ public class SkilltreeResource {
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{skilltreeId}")
     public Response updateSkilltree(
             @PathParam("skilltreeId") int skilltreeId,
-            @FormParam("title") String title,
-            @FormParam("description") String description
+            SkilltreeDTO skilltreeDTO
     ) {
         try {
-            skilltreeService.updateSkilltree(skilltreeId, title, description);
+            skilltreeService.updateSkilltree(skilltreeId,skilltreeDTO);
             return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
