@@ -20,3 +20,11 @@ export function fetchAllSkilltreesActionAsync(userId) {
       })
   }
 }
+
+
+export function skilltreeSlice(value) {
+  return {
+    type: "skilltree/setSkilltreeSlice",
+    payload: value
+  };
+}

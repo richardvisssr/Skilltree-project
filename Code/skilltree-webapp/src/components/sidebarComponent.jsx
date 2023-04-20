@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
 import '../styles/styles.css';
-import { fetchAllSkilltreesActionAsync } from '../actions/SkilltreeAction'; 
+import { fetchAllSkilltreesActionAsync, skilltreeSlice } from '../actions/SkilltreeAction'; 
+
 
 export default function SidebarComponent() {
+
+    
     const dispatch = useDispatch();
+
+    function handleButtonClick() {
+        dispatch(skilltreeSlice(true));
+      }
 
     const skilltrees = useSelector((state) => state.skilltree.skilltrees)
 
@@ -32,10 +39,10 @@ export default function SidebarComponent() {
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <a href="/home" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <span className="ml-12">Voeg Skilltree toe</span>
+                        <button className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" onClick={handleButtonClick} >
+                                <span className="ml-12">Skilltrees</span>
                                 <span className="mb-1 ml-12 text-3xl">+</span>
-                            </a>
+                            </button>
                         </li>
                     </ul>
                     <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
