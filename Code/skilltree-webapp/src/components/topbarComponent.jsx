@@ -15,7 +15,7 @@ const buttons = [
 
 export default function topbarComponent() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
       {({ open }) => (
         <>
           <div className="ml-60 mr-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function topbarComponent() {
                               type="text"
                               name={item.name}
                               id={item.id}
-                              className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                              className='w-2/5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
                               placeholder={item.placeholder}
                               key={index}
                           />
@@ -67,13 +67,13 @@ export default function topbarComponent() {
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex items-center justify-center">
                     {buttons.map((item, index) => (
-                          <button key={index} className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
+                          <button key={index} className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">{item.text}</button>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium">Opslaan</button>
+                <button className="border-solid border-green-600 border-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium">Opslaan</button>
               </div>
             </div>
           </div>
