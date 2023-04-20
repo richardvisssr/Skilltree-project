@@ -13,6 +13,10 @@ public class SkilltreeService {
         return skilltreeDAO.getAllSkilltrees(docentId);
     }
 
+    public void updateSkilltree(double id, String title, String description) throws SQLException {
+        skilltreeDAO.updateSkilltree(id, title, description);
+    }
+
     @Inject
     public void setSkilltreeDAO(SkilltreeDAO skilltreeDAO) {
         this.skilltreeDAO = skilltreeDAO;

@@ -35,6 +35,18 @@ public class SkilltreeDAO {
         return result;
     }
 
+    public void updateSkilltreeQuery(double id, String title, String description) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var query = "UPDATE Skilltrees SET Title = ?, Description = ? WHERE ID = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setString(1, title);
+        stmt.setString(2, description);
+        stmt.setDouble(3, id);
+        stmt.executeUpdate();
+        connection.close();
+    }
+
+
     @Inject
     public void setDatabaseProperties(DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;

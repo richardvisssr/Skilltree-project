@@ -28,6 +28,22 @@ public class SkilltreeResource {
         }
     }
 
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{skilltreeId}")
+    public Response updateSkilltree(
+            @PathParam("skilltreeId") int skilltreeId,
+            @FormParam("title") String title,
+            @FormParam("description") String description
+    ) {
+        try {
+            skilltreeService.updateSkilltree(skilltreeId, title, description);
+            return Response.status(Response.Status.OK).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Inject
     public void setSkilltreeService(SkilltreeService skilltreeService) {
         this.skilltreeService = skilltreeService;
