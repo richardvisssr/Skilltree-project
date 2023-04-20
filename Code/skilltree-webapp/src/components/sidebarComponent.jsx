@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
 import '../styles/styles.css';
-import { fetchAllSkilltreesActionAsync, skilltreeSlice } from '../actions/SkilltreeAction'; 
+import { fetchAllSkilltreesActionAsync, addSkiltreeTopbar } from '../actions/SkilltreeAction'; 
 
 
 export default function SidebarComponent() {
@@ -11,7 +11,7 @@ export default function SidebarComponent() {
     const dispatch = useDispatch();
 
     function handleButtonClick() {
-        dispatch(skilltreeSlice(true));
+        dispatch(addSkiltreeTopbar(true));
       }
 
     const skilltrees = useSelector((state) => state.skilltree.skilltrees)
