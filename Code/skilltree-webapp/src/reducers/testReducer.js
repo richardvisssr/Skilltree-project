@@ -1,19 +1,24 @@
 const initialState = {
-    test: null,
+    skill: "",
+    description: "",
+    assessmentCriteria: "",
+    learningOutcome: "",
 };
 
 // eslint-disable-next-line default-param-last
-function testReducer(state = initialState, action) {
+const createNodeReducer = (state = initialState, action) => {
     switch (action.type) {
-    // test voor de '/' is dat het voor de test reducer is, goed voor clean code
-    case "test/testAction":
+    case "node/createNode":
         return {
             ...state,
-            test: action.payload,
+            skill: action.payload.skill,
+            description: action.payload.description,
+            assessmentCriteria: action.payload.assessmentCriteria,
+            learningOutcome: action.payload.learningOutcome,
         };
     default:
         return state;
     }
-}
+};
 
-export default testReducer;
+export default createNodeReducer;
