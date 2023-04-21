@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Cors implements ContainerResponseFilter {
     @Override
     public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
-        response.getHeaders().add("Access-Control-Allow-Origin", "*");
+        response.getHeaders().add("Access-Control-Allow-Origin", "http://localhost:3000");
 
         response.getHeaders().add("Access-Control-Allow-Headers",
                 "CSRF-Token, X-Requested-By, Authorization, Content-Type");
@@ -20,5 +20,7 @@ public class Cors implements ContainerResponseFilter {
 
         response.getHeaders().add("Access-Control-Allow-Methods",
                 "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+
+        response.getHeaders().add("Access-Control-Max-Age", "3600");
     }
 }

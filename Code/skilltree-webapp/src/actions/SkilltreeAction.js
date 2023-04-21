@@ -21,10 +21,10 @@ export function fetchAllSkilltreesActionAsync(userId) {
   }
 }
 
-export function setCreateSkillTreeAction(title, descritpion) {
+export function setCreateSkillTreeAction(title, description) {
   return {
     type: "skilltree/createSkilltree",
-    payload: {title: title, descritpion: descritpion}
+    payload: {title: title, description: description}
   };
 }
 
@@ -34,6 +34,7 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
       method: 'POST',
       body: JSON.stringify({ title, description }),
       mode: 'cors',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       }

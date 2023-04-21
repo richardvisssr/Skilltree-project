@@ -51,7 +51,6 @@ public class NodeDTO {
         this.positionY = positionY;
     }
     public int getSkillTreeID() {
-        return skillTreeID;
+        return skillTreeId;
     }
-}
 }

@@ -35,13 +35,12 @@ public class SkilltreeDAO {
         return result;
     }
 
-    public void updateSkilltreeQuery(double id, SkilltreeDTO skilltreeDTO) throws SQLException {
+    public void updateSkilltreeQuery(SkilltreeDTO skilltreeDTO) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var query = "UPDATE Skilltrees SET Title = ?, Description = ? WHERE ID = ?";
+        var query = "INSERT INTO Skilltrees(title, description) VALUES (?, ?)";
         var stmt = connection.prepareStatement(query);
         stmt.setString(1, skilltreeDTO.getTitle());
         stmt.setString(2, skilltreeDTO.getDescription());
-        stmt.setDouble(3, id);
         stmt.executeUpdate();
         connection.close();
     }

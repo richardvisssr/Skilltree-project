@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Java-REST-API:war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.jpb/persistence-units.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/SkilltreeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/SkilltreeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/utils/Cors.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/utils/Cors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/SkilltreeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/SkilltreeResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/topbarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/topbarComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/NodeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/NodeDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,30 +59,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/PLZBBT-6-als-docent-wil-i…n-kan",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/richa/OneDrive/Documenten/GitHub/erlang-project/Code/Java-REST-API/target/Java-REST-API.war",
+    "last_opened_file_path": "C:/Users/Kim/Documents/OOSE/erlang-project/Code/Java-REST-API/target/Java-REST-API.war",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\documenten\\OOSE\\erlang-project\\Code\\skilltree-webapp\\node_modules\\eslint",
-    "node.js.selected.package.standard": "",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -89,7 +76,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
+    <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <file path="$PROJECT_DIR$/Code/Java-REST-API/target/Java-REST-API.war">
@@ -188,10 +175,7 @@
       <workItem from="1681915481885" duration="903000" />
       <workItem from="1681975101896" duration="57000" />
       <workItem from="1681998341644" duration="708000" />
-      <workItem from="1681914530364" duration="76000" />
-      <workItem from="1681914712473" duration="153000" />
-      <workItem from="1681914881477" duration="109000" />
-      <workItem from="1681915006059" duration="9691000" />
+      <workItem from="1682065601947" duration="6096000" />
     </task>
     <servers />
   </component>
@@ -208,7 +192,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

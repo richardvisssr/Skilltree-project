@@ -12,6 +12,7 @@ export default function TopbarComponent() {
     const [description, setDescription] = useState('');
     
     const dispatch = useDispatch();
+    
     const handleSave = () => {
         dispatch(fetchCreateSkillTreeActionAsync(title, description));
     };

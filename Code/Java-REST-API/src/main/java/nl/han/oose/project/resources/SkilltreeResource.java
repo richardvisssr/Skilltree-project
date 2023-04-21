@@ -26,16 +26,15 @@ public class SkilltreeResource {
         }
     }
 
-    @PUT
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{skilltreeId}")
-    public Response updateSkilltree(
-            @PathParam("skilltreeId") int skilltreeId,
+    @Path("/create")
+    public Response updateSkilltreeQuery(
             SkilltreeDTO skilltreeDTO
     ) {
         try {
-            skilltreeService.updateSkilltree(skilltreeId,skilltreeDTO);
+            skilltreeService.updateSkilltree(skilltreeDTO);
             return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
