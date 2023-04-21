@@ -37,7 +37,7 @@ public class SkilltreeDAO {
 
     public void updateSkilltreeQuery(SkilltreeDTO skilltreeDTO) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var query = "INSERT INTO Skilltrees(title, description) VALUES (?, ?)";
+        var query = "INSERT INTO Skilltrees(title, description, UserID) VALUES (?, ?, 1)";
         var stmt = connection.prepareStatement(query);
         stmt.setString(1, skilltreeDTO.getTitle());
         stmt.setString(2, skilltreeDTO.getDescription());

@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 const API_PATH = process.env.REACT_APP_API_URL;
 
 export function setSkilltreesAction(skilltrees) {
@@ -21,6 +23,30 @@ export function fetchAllSkilltreesActionAsync(userId) {
   }
 }
 
+// export function fetchCreateSkillTreeActionAsync(title, description) {
+//   return async (dispatch) => {
+//     const options = {
+//       method: 'POST',
+//       // credentials: 'include',
+//       mode: 'cors',
+//       body: JSON.stringify({
+//         id: 1,
+//         title: title,
+//         description: description,
+//       }),
+//     };
+//     fetch(`${API_PATH}/skilltrees/create`, options)
+//       .then(response => response.json())
+//       .then(function(result) {
+//         dispatch(setCreateSkillTreeAction(title, description))
+//       })
+//   }
+// }
+
+
+
+
+
 export function setCreateSkillTreeAction(title, description) {
   return {
     type: "skilltree/createSkilltree",
@@ -30,20 +56,19 @@ export function setCreateSkillTreeAction(title, description) {
 
 export const fetchCreateSkillTreeActionAsync = (title, description) => {
   return async (dispatch) => {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ title, description }),
-      mode: 'cors',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    let body = {
+      id: 1,
+      title: title,
+      description: description
     };
-    fetch(`${API_PATH}/skilltrees/create/`, options)
-  .then(response => response.json())
-        .then(function(result) {
-          dispatch(setCreateSkillTreeAction(title, description))
-        })
+    const options = {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+      mode: 'cors'
+    };
+    const result = await fetch(`${API_PATH}/skilltrees/create`, options)
+    return result;
   }
 }
 
