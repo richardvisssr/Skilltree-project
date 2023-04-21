@@ -1,0 +1,7 @@
+nl\han\oose\project\data\dao\TestDAO.class
+nl\han\oose\project\data\datamapper\TestDatamapper.class
+nl\han\oose\project\resources\dto\TestApplication.class
+nl\han\oose\project\business\services\TestService.class
+nl\han\oose\project\data\utils\Cors.class
+nl\han\oose\project\data\utils\DatabaseProperties.class
+nl\han\oose\project\resources\dto\TestResource.class

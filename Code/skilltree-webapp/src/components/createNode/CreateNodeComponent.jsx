@@ -9,7 +9,7 @@ import "../../styles/styles.css";
 function CreateNodeComponent() {
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
-    const [assessmentCriteria, setAssessmentCriteria] = useState("");
+    const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
     const allowedValues = ["o", "v", "g"];
 
@@ -24,9 +24,11 @@ function CreateNodeComponent() {
     const handleAssessmentCriteriaChange = (event) => {
         const { value } = event.target;
         if (allowedValues.includes(value)) {
-            setAssessmentCriteria(value);
+            if (!assessmentCriteria.includes(value)) {
+                setAssessmentCriteria([...assessmentCriteria, value]);
+            }
         } else {
-            setAssessmentCriteria("");
+            setAssessmentCriteria(assessmentCriteria.filter((val) => val !== value));
         }
     };
 
@@ -47,7 +49,7 @@ function CreateNodeComponent() {
                     <FormFieldComponent titel="Vaardigheid" type="text" value={skill} onChange={handleSkillChange} />
                     <FormFieldComponent titel="Beschrijving" type="text" value={description} onChange={handleDescriptionChange} />
                     <FormFieldComponent titel="Leeruitkomst" type="text" value={learningOutcome} onChange={handleLearningOutcomeChange} />
-                    <FormFieldComponent titel="BeoordelingsCriteria" type="text" value={assessmentCriteria} onChange={handleAssessmentCriteriaChange} />
+                    <FormFieldComponent titel="BeoordelingsCriteria" type="select" value={assessmentCriteria} onChange={handleAssessmentCriteriaChange} allowedValues={["o", "v", "g"]} />
                     <div className="mt-6 flex items-center justify-center gap-x-6">
                         <button type="button" className="text-m font-semibold leading-6 text-gray-900">Cancel</button>
                         <button
