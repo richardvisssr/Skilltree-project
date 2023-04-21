@@ -18,28 +18,25 @@ public class NodeDAO {
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-//    public NodesDTO getNodes(int skilltreeId) {
-//        connection = DriverManager.getConnection(databaseProperties.connectionString());
-//        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId));
-//        return nodes;
-//    }
-//
-//    private ResultSet getNodesQuery(int skilltreeId) {
+    public NodesDTO getNodes(int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId));
+        return nodes;
+    }
 
-    //Deze query werkt?? denk ik.
-    //Kon het niet afmaken door de character voor o,v,g
-
-    //SELECT
-    //	n.ID, n.Skill, n.Description as NodeDescription, n.PositionX, n.PositionY,
-    //	ac.character,
-    //	lo.Description as LearningOutcomeDescription
-    //FROM Nodes n
-    //INNER JOIN AssesmentCriteria ac
-    //ON n.ID = ac.NodeID
-    //INNER JOIN LearningOutcome lo
-    //ON n.ID = lo.NodeID
-    //WHERE n.SkillTreeID = 2
-//    }
+    private ResultSet getNodesQuery(int skilltreeId) throws SQLException {
+        var query = "SELECT \n" +
+                "\tn.ID, n.Skill, n.Description as NodeDescription, n.PositionX, n.PositionY, n.SkillTreeID,\n" +
+                "\tlo.Description as LearningOutcomeDescription \n" +
+                "FROM Nodes n\n" +
+                "INNER JOIN LearningOutcome lo\n" +
+                "ON n.ID = lo.NodeID\n" +
+                "WHERE n.SkillTreeID = ?\n";
+        var stmt = connection.prepareStatement(query);
+        stmt.setInt(1, skilltreeId);
+        var result = stmt.executeQuery();
+        return result;
+    }
 
     public NodesDTO createNode(NodeDTO nodeDTO, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
@@ -48,8 +45,7 @@ public class NodeDAO {
         addLearningOutcomeQuery(nodeDTO.getLearningOutcome(), createdNodeId);
         connection.close();
         //TODO haal de nodes weer op, maar eerst wachten op mailtje van Frank: moet de charachter (o,v,g) in nodes of assesmentCriteria?
-//        return getNodes(skilltreeId);
-        return null;
+        return getNodes(skilltreeId);
     }
 
     private int createNodeQuery(NodeDTO nodeDTO, int skilltreeId) throws SQLException {
@@ -65,10 +61,6 @@ public class NodeDAO {
         stmt.setDouble(4, nodeDTO.getPositionY());
         stmt.setInt(5, skilltreeId);
         var resultSet = stmt.executeQuery();
-
-//        var getIdQuery = "SELECT SCOPE_IDENTITY() as id";
-//        var stmt2 = connection.prepareStatement(getIdQuery);
-//        var resultSet = stmt2.executeQuery();
 
         int nodeId = 0;
         if(resultSet.next()){

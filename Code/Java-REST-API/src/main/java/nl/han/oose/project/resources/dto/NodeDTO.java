@@ -11,6 +11,17 @@ public class NodeDTO {
     private String learningOutcome;
     private List<String> assesmentCriteria;
 
+    public NodeDTO() {}
+
+    public NodeDTO(String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
+        this.skill = skill;
+        this.description = description;
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.skilltreeId = skilltreeId;
+        this.learningOutcome = learningOutcome;
+    }
+
     public String getSkill() {
         return skill;
     }
