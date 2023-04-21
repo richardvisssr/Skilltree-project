@@ -5,7 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
-import nl.han.oose.project.resources.dto.NodeDTO;
+import nl.han.oose.project.resources.dto.NodeRequestDTO;
 
 import java.sql.SQLException;
 
@@ -18,7 +18,7 @@ public class NodeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
     public Response createNode(
-        NodeDTO nodeDTO,
+        NodeRequestDTO nodeDTO,
         @PathParam("skilltreeId") int skilltreeId
     ) {
         try {

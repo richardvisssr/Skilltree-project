@@ -1,9 +1,8 @@
 package nl.han.oose.project.resources.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class NodeDTO {
+public class NodeRequestDTO {
     private int ID;
     private String skill;
     private String description;
@@ -11,11 +10,11 @@ public class NodeDTO {
     private double positionY;
     private int skilltreeId;
     private String learningOutcome;
-    private List<AssesmentCriteriaDTO> assesmentCriteria = new ArrayList<>();
+    private List<String> assesmentCriteria;
 
-    public NodeDTO() {}
+    public NodeRequestDTO() {}
 
-    public NodeDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
+    public NodeRequestDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
         this.ID = ID;
         this.skill = skill;
         this.description = description;
@@ -23,14 +22,6 @@ public class NodeDTO {
         this.positionY = positionY;
         this.skilltreeId = skilltreeId;
         this.learningOutcome = learningOutcome;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getSkill() {
@@ -81,11 +72,11 @@ public class NodeDTO {
         this.learningOutcome = learningOutcome;
     }
 
-    public List<AssesmentCriteriaDTO> getAssesmentCriteria() {
+    public List<String> getAssesmentCriteria() {
         return assesmentCriteria;
     }
 
-    public void setAssesmentCriteria(List<AssesmentCriteriaDTO> assesmentCriteria) {
+    public void setAssesmentCriteria(List<String> assesmentCriteria) {
         this.assesmentCriteria = assesmentCriteria;
     }
 }
