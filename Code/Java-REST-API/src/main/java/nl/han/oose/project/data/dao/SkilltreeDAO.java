@@ -1,19 +1,14 @@
 package nl.han.oose.project.data.dao;
 
 import jakarta.inject.Inject;
-import nl.han.oose.project.data.datamapper.Datamapper;
 import nl.han.oose.project.data.datamapper.SkilltreeDatamapper;
-import nl.han.oose.project.data.datamapper.TestDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.SkilltreeDTO;
 import nl.han.oose.project.resources.dto.SkilltreesDTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SkilltreeDAO {
     private SkilltreeDatamapper datamapper;

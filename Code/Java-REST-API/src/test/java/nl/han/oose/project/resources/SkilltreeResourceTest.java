@@ -44,4 +44,21 @@ public class SkilltreeResourceTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void getAllSkilltreesTestWithException() {
+        try {
+            //Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(skilltreeService.getAllSkilltrees(DOCENT_ID)).thenThrow(new SQLException());
+
+            //Act
+            var result = sut.getAllSkilltrees(DOCENT_ID);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -24,7 +24,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(docentId)).build();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
