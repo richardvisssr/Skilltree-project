@@ -30,7 +30,7 @@ public class SkilltreeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/docenten/{docentId}")
-    public Response createSkilltreeQuery(
+    public Response createSkilltree(
             SkilltreeDTO skilltreeDTO,
             @PathParam("docentId") int docentId
     ) {
