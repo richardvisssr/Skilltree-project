@@ -44,4 +44,21 @@ public class SkilltreeResourceTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void createSkilltreeQuery() {
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(skilltreeService.getAllSkilltrees(DOCENT_ID)).thenReturn(skilltreesDTO);
+
+            //Act
+            var result = sut.getAllSkilltrees(DOCENT_ID);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

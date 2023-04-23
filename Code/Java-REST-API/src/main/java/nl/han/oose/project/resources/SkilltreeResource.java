@@ -22,22 +22,22 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(docentId)).build();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/create")
-    public Response updateSkilltreeQuery(
-            SkilltreeDTO skilltreeDTO
+    @Path("/docenten/{docentId}")
+    public Response createSkilltreeQuery(
+            SkilltreeDTO skilltreeDTO,
+            @PathParam("docentId") int docentId
     ) {
         try {
-            skilltreeService.updateSkilltree(skilltreeDTO);
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, docentId)).build();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
