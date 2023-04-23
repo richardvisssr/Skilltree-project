@@ -14,8 +14,8 @@ public class SkilltreeService {
         return skilltreeDAO.getAllSkilltrees(docentId);
     }
 
-    public void updateSkilltree(SkilltreeDTO skilltreeDTO) throws SQLException {
-        skilltreeDAO.updateSkilltreeQuery(skilltreeDTO);
+    public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
+        return skilltreeDAO.createSkilltrees(skilltreeDTO, docentId);
     }
 
     @Inject
