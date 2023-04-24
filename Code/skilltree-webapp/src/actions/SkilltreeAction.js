@@ -42,6 +42,7 @@ export const fetchCreateSkillTreeActionAsync = (title, description, userId) => {
     };
     const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
     dispatch(fetchAllSkilltreesActionAsync(userId));
+    dispatch(setCurrentSkilltreeAction(null));
     return result;
   }
 }
