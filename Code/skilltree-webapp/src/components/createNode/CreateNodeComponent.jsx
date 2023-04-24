@@ -56,7 +56,7 @@ function CreateNodeComponent() {
                             <FormFieldComponent titel="BeoordelingsCriteria" type="text" value={assesmentCriteria.join(",")} onChange={handleAssessmentCriteriaChange} />
                             <p className="text-center">Gebruik een komma om een nieuwe BeoordelingsCriteria toe te voegen</p>
                             <div className="mt-6 flex items-center justify-center gap-x-6">
-                                <button type="button" className="text-m font-semibold leading-6 text-gray-900">Annuleren</button>
+                                <button type="button" className="text-m font-semibold leading-6 text-gray-900" onClick={deleteCard}>Annuleren</button>
                                 <button
                                     type="submit"
                                     className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
