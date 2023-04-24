@@ -4,19 +4,26 @@ import { useSelector } from 'react-redux';
 import SidebarComponent from '../components/sidebarComponent';
 import TopbarComponent from '../components/topbarComponent';
 import ReactFlowComponent from '../components/ReactFlowComponent';
-// import ReactFlow from 'reactflow';
-
-
+import NoSkilltreeComponent from '../components/NoSkilltreeComponent';
 
 export default function HomeScreen() {
     const currentSkilltree = useSelector(state => state.skilltree.currentSkilltree);
     const newSkilltree = useSelector(state => state.skilltree.newSkilltree);
 
     
-    const topbar = () => {
+    const skilltreeSelected = () => {
         if (currentSkilltree !== null || newSkilltree) {
             return (
-                <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                <div>
+                    <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                    <ReactFlowComponent />
+                </div>
+            )
+        } else {
+            return (
+                <div className='text-center align-middle m-auto'>
+                    <NoSkilltreeComponent />
+                </div>
             )
         }
     }
@@ -25,8 +32,7 @@ export default function HomeScreen() {
         <div className="flex-row flex w-screen">
                 <SidebarComponent />
             <div className="flex flex-col w-full">
-                {topbar()}
-                <ReactFlowComponent />
+                {skilltreeSelected()}
             </div>
         </div>
     )
