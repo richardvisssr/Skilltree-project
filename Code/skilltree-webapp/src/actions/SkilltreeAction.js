@@ -1,5 +1,3 @@
-import { json } from "react-router-dom";
-
 const API_PATH = process.env.REACT_APP_API_URL;
 
 export function setSkilltreesAction(skilltrees) {
