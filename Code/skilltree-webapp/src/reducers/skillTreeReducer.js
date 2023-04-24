@@ -1,8 +1,7 @@
 const initialState = {
   skilltrees: [],
-  title: '',
-  description: '',
-  skilltreeSelected: false,
+  currentSkilltree: null,
+  newSkilltree: false,
 };
 
 function skillTreeReducer(state = initialState, action) {
@@ -12,17 +11,18 @@ function skillTreeReducer(state = initialState, action) {
         ...state,
         skilltrees: action.payload
       }
-    case 'skilltree/createSkilltree':
+    case 'skilltree/setCurrentSkilltree':
       return {
         ...state,
-        title: action.payload.title,
-        description: action.payload.description
+        currentSkilltree: action.payload,
+        newSkilltree: false
       }
-    case 'skilltree/setSkilltreeSlice':
+    case 'skilltree/addSkilltreeTopbar':
       return {
         ...state,
-        skilltreeSelected: action.payload
-      };
+        currentSkilltree: null,
+        newSkilltree: !state.newSkilltree
+      }
     default:
       return state;
   }

@@ -2,19 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
 import '../styles/styles.css';
-import { fetchAllSkilltreesActionAsync, addSkiltreeTopbar } from '../actions/SkilltreeAction'; 
+import {
+  fetchAllSkilltreesActionAsync,
+  addSkiltreeTopbar,
+  setCurrentSkilltreeAction
+} from '../actions/SkilltreeAction';
 
 
 export default function SidebarComponent() {
 
     
     const dispatch = useDispatch();
+    const skilltrees = useSelector(state => state.skilltree.skilltrees);
+    const newSkilltree = useSelector(state => state.skilltree.newSkilltree);
 
-    function handleButtonClick() {
-        dispatch(addSkiltreeTopbar(true));
+    function handleButtonClick(id) {
+      let currentSkilltree;
+      skilltrees.map((skilltree) => {
+        if (skilltree.id === id) {
+          currentSkilltree = skilltree;
+        }
+      });
+      dispatch(setCurrentSkilltreeAction(currentSkilltree));
+    }
+
+      function handleNewButtonClick() {
+        dispatch(addSkiltreeTopbar());
       }
-
-    const skilltrees = useSelector((state) => state.skilltree.skilltrees)
 
     //Voor te testen, later moet er een reducer komen voor de users
     const [docentId, setDocentId] = useState(1);
@@ -24,28 +38,37 @@ export default function SidebarComponent() {
       }, []);
     
     const skilltreeList = () => {
-    try {
+      try {
         const buttons = skilltrees.map((skilltree, index) =>
-            <button key={index} className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-                <span className="ml-4">{skilltree.title}</span>
+            <button key={index} className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+            onClick={() => handleButtonClick(skilltree.id)}
+            >
+                <span className="ml-12">{skilltree.title}</span>
             </button>)
                     return (<li>
                         {buttons}
                     </li>)
-    } catch {
-        return "geen skilltrees gevonden"
+      } catch {
+          return "geen skilltrees gevonden"
+      }
     }
+
+    const newSkilltreeButton = () => {
+      if (newSkilltree) {
+        return '-';
+      } else {
+        return '+';
+      }
     }
 
     return (
-        <div>
-            <aside id="separator-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <aside id="separator-sidebar" className="top-0 left-0 z-40 w-64 h-screen" aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>
-                        <button className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" onClick={handleButtonClick} >
+                        <button onClick={() => handleNewButtonClick()} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"  >
                                 <span className="ml-12">Skilltrees</span>
-                                <span className="mb-1 ml-12 text-3xl">+</span>
+                                <span className="mb-1 ml-12 text-3xl">{newSkilltreeButton()}</span>
                             </button>
                         </li>
                     </ul>
@@ -54,6 +77,5 @@ export default function SidebarComponent() {
                     </ul>
                 </div>
             </aside>
-        </div>
     )
 }

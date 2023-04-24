@@ -15,9 +15,9 @@ export function fetchAllSkilltreesActionAsync(userId) {
     };
     fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
       .then(response => response.json())
-      .then(function(result) {
+      .then(result =>
         dispatch(setSkilltreesAction(result.skilltrees))
-      })
+      )
   }
 }
 
@@ -28,10 +28,9 @@ export function setCreateSkillTreeAction(title, description) {
   };
 }
 
-export const fetchCreateSkillTreeActionAsync = (title, description) => {
+export const fetchCreateSkillTreeActionAsync = (title, description, userId) => {
   return async (dispatch) => {
     let body = {
-      id: 1,
       title: title,
       description: description
     };
@@ -41,14 +40,21 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
       body: JSON.stringify(body),
       mode: 'cors'
     };
-    const result = await fetch(`${API_PATH}/skilltrees/docenten/1`, options)
+    const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
+    dispatch(fetchAllSkilltreesActionAsync(userId));
     return result;
   }
 }
 
-export function addSkiltreeTopbar(value) {
+export function addSkiltreeTopbar() {
   return {
-    type: "skilltree/setSkilltreeSlice",
-    payload: value
+    type: "skilltree/addSkilltreeTopbar",
   };
+}
+
+export function setCurrentSkilltreeAction(skilltree) {
+  return {
+    type: "skilltree/setCurrentSkilltree",
+    payload: skilltree
+  }
 }
