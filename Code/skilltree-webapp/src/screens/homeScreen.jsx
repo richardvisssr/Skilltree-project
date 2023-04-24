@@ -13,7 +13,7 @@ export default function HomeScreen() {
     const skilltreeSelected = () => {
         if (currentSkilltree !== null || newSkilltree) {
             return (
-                <div>
+                <div className="w-full h-full flex flex-col">
                     <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
                     <ReactFlowComponent />
                 </div>
@@ -29,7 +29,7 @@ export default function HomeScreen() {
     return (
         <div className="flex-row flex w-screen">
             <SidebarComponent />
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full h-screen">
                 {skilltreeSelected()}
             </div>
         </div>

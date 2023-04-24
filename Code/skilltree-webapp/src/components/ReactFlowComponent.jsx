@@ -29,7 +29,7 @@ function reactFlowComponent() {
     const [edges, edgeChange, onEdgeChange] = useEdgesState([]);
 
     return (
-        <div className="w-full h-full">
+        <div className="w-full flex-auto">
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
