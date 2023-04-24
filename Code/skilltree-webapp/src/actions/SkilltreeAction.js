@@ -67,7 +67,7 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
       body: JSON.stringify(body),
       mode: 'cors'
     };
-    const result = await fetch(`${API_PATH}/skilltrees/create`, options)
+    const result = await fetch(`${API_PATH}/skilltrees/docenten/1`, options)
     return result;
   }
 }
