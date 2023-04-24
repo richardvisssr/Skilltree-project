@@ -10,7 +10,7 @@ function CreateNodeComponent() {
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState("");
-    const [learningOutcome, setLearningOutcome] = useState("");
+    const [learningOutcome, setLearningOutcome] = useState([]);
     const allowedValues = ["o", "v", "g"];
 
     const handleSkillChange = (event) => {

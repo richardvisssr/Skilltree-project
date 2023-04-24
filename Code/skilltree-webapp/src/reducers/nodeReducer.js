@@ -1,11 +1,11 @@
 const initialState = {
     skill: "",
     description: "",
-    assessmentCriteria: "",
-    learningOutcome: "",
-    x: "",
-    y: "",
+    positionX: "",
+    positionY: "",
     skillTreeId: "",
+    learningOutcome: "",
+    assesmentCriteria: "",
 };
 
 // eslint-disable-next-line default-param-last
@@ -16,11 +16,11 @@ const createNodeReducer = (state = initialState, action) => {
             ...state,
             skill: action.payload.skill,
             description: action.payload.description,
-            assessmentCriteria: action.payload.assessmentCriteria,
-            learningOutcome: action.payload.learningOutcome,
-            x: action.payload.x,
-            y: action.payload.y,
+            positionX: action.payload.positionX,
+            positionY: action.payload.positionY,
             skillTreeId: action.payload.skillTreeId,
+            learningOutcome: action.payload.learningOutcome,
+            assesmentCriteria: action.payload.assesmentCriteria,
         };
     default:
         return state;
