@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import { useDispatch, connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import FormFieldComponent from "./FormFieldComponent";
 import { fetchCreateNodeActionAsync } from "../../actions/Node";
 import { deleteNodeCardAction } from "../../actions/NodeCard";
@@ -38,9 +39,11 @@ function CreateNodeComponent() {
     };
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const deleteCard = () => {
         dispatch(deleteNodeCardAction(1));
+        navigate("/home");
     };
 
     // TODO: x,y,en ID meegeven
@@ -48,7 +51,6 @@ function CreateNodeComponent() {
         dispatch(fetchCreateNodeActionAsync(skill, description, assessmentCriteria, learningOutcome));
         deleteCard();
     };
-
     return (
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
@@ -79,4 +81,4 @@ function CreateNodeComponent() {
     );
 }
 
-export default connect(null, { deleteNodeCardAction })(CreateNodeComponent);
+export default CreateNodeComponent;
