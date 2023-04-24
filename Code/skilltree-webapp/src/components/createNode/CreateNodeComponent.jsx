@@ -1,10 +1,8 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import FormFieldComponent from "./FormFieldComponent";
 import { fetchCreateNodeActionAsync } from "../../actions/Node";
-// import { deleteNodeCardAction } from "../../actions/NodeCard";
 
 import "../../styles/styles.css";
 
