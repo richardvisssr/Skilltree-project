@@ -31,16 +31,16 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
     <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
       {({ open }) => (
         <>
-          <div className="ml-60 mr-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mr-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
-              <div className="flex items-center lg:hidden">
+              <div className="inset-y-0 left-0 flex items-center lg:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="block h-6" aria-hidden="true" />
                   ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon className="block h-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -58,8 +58,8 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                       alt="HAN"
                     />
                   </div>             
-                  <div className="hidden lg:ml-6 lg:block w-fit">
-                    <div className="flex space-x-4 w-fit">
+                  <div className="hidden lg:ml-6 lg:block">
+                    <div className="flex space-x-4">
                       <div className="relative rounded-md shadow-sm">
                           <input
                               type="text"
@@ -94,13 +94,16 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+              <div className="hidden lg:ml-6 lg:block">
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+                </div>
               </div>
             </div>
           </div>
           {/* Mobile dropdown menu */}
-          <Disclosure.Panel className="md:hidden">
+          <Disclosure.Panel className="lg:hidden">
+            <div className="flex flex-row">
             <div className="space-y-1 px-2 pb-3 pt-2">
               <input
                   type="text"
@@ -122,6 +125,16 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
               />
                   <button className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
             </div>
+              <div>
+                <div className="flex items-center justify-center pb-1 pt-1 ">
+                  <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Node Aanmaken</button>
+                </div>
+                <div className="flex items-center justify-center pb-1 pt-1 ">
+                  <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Koppelen</button>
+                </div>
+              </div>
+            </div>
+
           </Disclosure.Panel>
         </>
       )}
