@@ -9,7 +9,7 @@ import "../../styles/styles.css";
 function CreateNodeComponent() {
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
-    const [assessmentCriteria, setAssessmentCriteria] = useState([]);
+    const [assessmentCriteria, setAssessmentCriteria] = useState("");
     const [learningOutcome, setLearningOutcome] = useState("");
     const allowedValues = ["o", "v", "g"];
 
@@ -24,11 +24,9 @@ function CreateNodeComponent() {
     const handleAssessmentCriteriaChange = (event) => {
         const { value } = event.target;
         if (allowedValues.includes(value)) {
-            if (!assessmentCriteria.includes(value)) {
-                setAssessmentCriteria([...assessmentCriteria, value]);
-            }
+            setAssessmentCriteria(value);
         } else {
-            setAssessmentCriteria(assessmentCriteria.filter((val) => val !== value));
+            setAssessmentCriteria("");
         }
     };
 
@@ -50,15 +48,21 @@ function CreateNodeComponent() {
                     <FormFieldComponent titel="Vaardigheid" type="text" value={skill} onChange={handleSkillChange} />
                     <FormFieldComponent titel="Beschrijving" type="text" value={description} onChange={handleDescriptionChange} />
                     <FormFieldComponent titel="Leeruitkomst" type="text" value={learningOutcome} onChange={handleLearningOutcomeChange} />
-                    <FormFieldComponent titel="BeoordelingsCriteria" type="select" value={assessmentCriteria} onChange={handleAssessmentCriteriaChange} allowedValues={["o", "v", "g"]} />
+                    <FormFieldComponent titel="BeoordelingsCriteria" type="select" allowedValues={allowedValues} value={assessmentCriteria} onChange={handleAssessmentCriteriaChange}>
+                        <option value="">Kies een beoordelingscriterium</option>
+                        <option value="o">Onvoldoende</option>
+                        <option value="v">Voldoende</option>
+                        <option value="g">Goed</option>
+                    </FormFieldComponent>
+
                     <div className="mt-6 flex items-center justify-center gap-x-6">
-                        <button type="button" className="text-m font-semibold leading-6 text-gray-900">Cancel</button>
+                        <button type="button" className="text-m font-semibold leading-6 text-gray-900">Annuleren</button>
                         <button
                             type="submit"
                             className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             onClick={handleSave}
                         >
-                            Save
+                            Opslaan
                         </button>
                     </div>
                 </div>
