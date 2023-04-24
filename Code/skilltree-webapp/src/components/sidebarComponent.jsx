@@ -24,13 +24,17 @@ export default function SidebarComponent() {
       }, []);
     
     const skilltreeList = () => {
+    try {
         const buttons = skilltrees.map((skilltree, index) =>
             <button key={index} className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                 <span className="ml-4">{skilltree.title}</span>
             </button>)
-        return (<li>
-            {buttons}
-        </li>)
+                    return (<li>
+                        {buttons}
+                    </li>)
+    } catch {
+        return "geen skilltrees gevonden"
+    }
     }
 
     return (

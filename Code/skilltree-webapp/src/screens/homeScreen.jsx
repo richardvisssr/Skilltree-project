@@ -10,8 +10,6 @@ import TopbarComponent from '../components/topbarComponent';
 export default function HomeScreen() {
     const skilltreeSelected = useSelector(state => state.skilltree.skilltreeSelected);
     
-    console.log(skilltreeSelected)
-
     const selectedSkilltree = () => {
         if (skilltreeSelected === true) {
             return (
