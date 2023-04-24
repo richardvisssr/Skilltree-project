@@ -38,6 +38,7 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
+    // TODO: x,y,en ID meegeven
     const handleSave = () => {
         dispatch(fetchCreateNodeActionAsync(skill, description, assessmentCriteria, learningOutcome));
     };
