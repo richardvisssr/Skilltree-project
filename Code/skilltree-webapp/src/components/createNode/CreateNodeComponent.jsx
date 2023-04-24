@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import FormFieldComponent from "./FormFieldComponent";
 import { fetchCreateNodeActionAsync } from "../../actions/Node";
+import { deleteNodeCardAction } from "../../actions/NodeCard";
 
 import "../../styles/styles.css";
 
@@ -38,9 +39,14 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
+    const deleteCard = () => {
+        dispatch(deleteNodeCardAction(1));
+    };
+
     // TODO: x,y,en ID meegeven
     const handleSave = () => {
         dispatch(fetchCreateNodeActionAsync(skill, description, assessmentCriteria, learningOutcome));
+        deleteCard();
     };
 
     return (
@@ -52,7 +58,13 @@ function CreateNodeComponent() {
                     <FormFieldComponent titel="Leeruitkomst" type="text" value={learningOutcome} onChange={handleLearningOutcomeChange} />
                     <FormFieldComponent titel="BeoordelingsCriteria" type="select" value={assessmentCriteria} onChange={handleAssessmentCriteriaChange} allowedValues={["o", "v", "g"]} />
                     <div className="mt-6 flex items-center justify-center gap-x-6">
-                        <button type="button" className="text-m font-semibold leading-6 text-gray-900">Cancel</button>
+                        <button
+                            type="button"
+                            className="text-m font-semibold leading-6 text-gray-900"
+                            onClick={deleteCard}
+                        >
+                            Cancel
+                        </button>
                         <button
                             type="submit"
                             className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -67,4 +79,4 @@ function CreateNodeComponent() {
     );
 }
 
-export default CreateNodeComponent;
+export default connect(null, { deleteNodeCardAction })(CreateNodeComponent);
