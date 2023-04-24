@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Disclosure } from "@headlessui/react"; // Menu, Transition
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"; // BellIcon
 import { useDispatch } from "react-redux";
@@ -89,18 +88,34 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="flex items-center justify-center">
-                                        <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Node Aanmaken</button>
+                                        <button
+                                            className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                            type="button"
+                                        >
+                                            Node Aanmaken
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="flex items-center justify-center">
-                                        <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Koppelen</button>
+                                        <button
+                                            className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                            type="button"
+                                        >
+                                            Koppelen
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div className="hidden lg:ml-6 lg:block">
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                    <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+                                    <button
+                                        className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium"
+                                        onClick={handleSave}
+                                        type="button"
+                                    >
+                                        Opslaan
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -127,14 +142,30 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                                     placeholder="Beschrijving"
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
-                                <button className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+                                <button
+                                    className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                    onClick={handleSave}
+                                    type="button"
+                                >
+                                    Opslaan
+                                </button>
                             </div>
                             <div>
                                 <div className="flex items-center justify-center pb-1 pt-1 ">
-                                    <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Node Aanmaken</button>
+                                    <button
+                                        className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                        type="button"
+                                    >
+                                        Node Aanmaken
+                                    </button>
                                 </div>
                                 <div className="flex items-center justify-center pb-1 pt-1 ">
-                                    <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Koppelen</button>
+                                    <button
+                                        className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                        type="button"
+                                    >
+                                        Koppelen
+                                    </button>
                                 </div>
                             </div>
                         </div>
