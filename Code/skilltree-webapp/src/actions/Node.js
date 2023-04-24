@@ -31,7 +31,7 @@ export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria
         }),
 
     };
-    fetch(`${API_PATH}/nodes/skilltrees/3`, options)
+    fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
         .then((response) => response.json())
         .then(() => {
             dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));

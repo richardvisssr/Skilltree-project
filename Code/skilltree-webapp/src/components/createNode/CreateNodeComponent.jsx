@@ -9,9 +9,8 @@ import "../../styles/styles.css";
 function CreateNodeComponent() {
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
-    const [assessmentCriteria, setAssessmentCriteria] = useState("");
+    const [assesmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState([]);
-    const allowedValues = ["o", "v", "g"];
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -22,12 +21,8 @@ function CreateNodeComponent() {
     };
 
     const handleAssessmentCriteriaChange = (event) => {
-        const { value } = event.target;
-        if (allowedValues.includes(value)) {
-            setAssessmentCriteria(value);
-        } else {
-            setAssessmentCriteria("");
-        }
+        const criteriaArray = event.target.value.split(",");
+        setAssessmentCriteria(criteriaArray);
     };
 
     const handleLearningOutcomeChange = (event) => {
@@ -36,9 +31,8 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
-    // TODO: x,y,en ID meegeven
     const handleSave = () => {
-        dispatch(fetchCreateNodeActionAsync(skill, description, assessmentCriteria, learningOutcome));
+        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
     };
 
     return (
@@ -48,13 +42,8 @@ function CreateNodeComponent() {
                     <FormFieldComponent titel="Vaardigheid" type="text" value={skill} onChange={handleSkillChange} />
                     <FormFieldComponent titel="Beschrijving" type="text" value={description} onChange={handleDescriptionChange} />
                     <FormFieldComponent titel="Leeruitkomst" type="text" value={learningOutcome} onChange={handleLearningOutcomeChange} />
-                    <FormFieldComponent titel="BeoordelingsCriteria" type="select" allowedValues={allowedValues} value={assessmentCriteria} onChange={handleAssessmentCriteriaChange}>
-                        <option value="">Kies een beoordelingscriterium</option>
-                        <option value="o">Onvoldoende</option>
-                        <option value="v">Voldoende</option>
-                        <option value="g">Goed</option>
-                    </FormFieldComponent>
-
+                    <FormFieldComponent titel="BeoordelingsCriteria" type="text" value={assesmentCriteria.join(",")} onChange={handleAssessmentCriteriaChange} />
+                    <p className="text-center">Gebruik een komma om een nieuwe BeoordelingsCriteria toe te voegen</p>
                     <div className="mt-6 flex items-center justify-center gap-x-6">
                         <button type="button" className="text-m font-semibold leading-6 text-gray-900">Annuleren</button>
                         <button
