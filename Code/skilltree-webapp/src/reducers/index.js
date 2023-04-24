@@ -1,8 +1,9 @@
-import { combineReducers } from "redux";
-import testReducer from "./testReducer";
+import { combineReducers } from 'redux';
+import skilltreeReducer from '../reducers/skilltreeReducer';
 
 const reducers = combineReducers({
-    test: testReducer,
+  skilltree: skilltreeReducer,
 });
 
 export default reducers;
+
