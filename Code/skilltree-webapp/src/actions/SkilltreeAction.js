@@ -23,30 +23,6 @@ export function fetchAllSkilltreesActionAsync(userId) {
   }
 }
 
-// export function fetchCreateSkillTreeActionAsync(title, description) {
-//   return async (dispatch) => {
-//     const options = {
-//       method: 'POST',
-//       // credentials: 'include',
-//       mode: 'cors',
-//       body: JSON.stringify({
-//         id: 1,
-//         title: title,
-//         description: description,
-//       }),
-//     };
-//     fetch(`${API_PATH}/skilltrees/create`, options)
-//       .then(response => response.json())
-//       .then(function(result) {
-//         dispatch(setCreateSkillTreeAction(title, description))
-//       })
-//   }
-// }
-
-
-
-
-
 export function setCreateSkillTreeAction(title, description) {
   return {
     type: "skilltree/createSkilltree",
