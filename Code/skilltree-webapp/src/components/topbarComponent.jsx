@@ -6,19 +6,21 @@ import { useDispatch } from 'react-redux';
 import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
 
 
-export default function TopbarComponent() {
-    
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+export default function TopbarComponent({currentSkilltree}) {
 
-  const skilltrees = useSelector((state) => state.skilltree.skilltrees)
-  console.log(skilltrees);
+  const [title, setTitle] = useState(currentSkilltree.title);
+  const [description, setDescription] = useState(currentSkilltree.description);
 
   const dispatch = useDispatch();
   
   const handleSave = () => {
       dispatch(fetchCreateSkillTreeActionAsync(title, description));
   };
+
+  useEffect(() => {
+    setTitle(currentSkilltree.title);
+    setDescription(currentSkilltree.description);
+    }, [currentSkilltree]);
 
   return (
     <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">

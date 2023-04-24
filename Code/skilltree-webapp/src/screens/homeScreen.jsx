@@ -8,13 +8,13 @@ import TopbarComponent from '../components/topbarComponent';
 
 
 export default function HomeScreen() {
-    const skilltreeSelected = useSelector(state => state.skilltree.skilltreeSelected);
+    const currentSkilltree = useSelector(state => state.skilltree.currentSkilltree);
     
     const selectedSkilltree = () => {
-        if (skilltreeSelected === true) {
+        if (currentSkilltree !== null) {
             return (
                 <div>
-                <TopbarComponent />
+                <TopbarComponent currentSkilltree={currentSkilltree} />
                 </div>
             )
         }
