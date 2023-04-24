@@ -3,7 +3,6 @@ package nl.han.oose.project.data.dao;
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.NodeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
@@ -57,7 +56,6 @@ public class NodeDAO {
         addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
         addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
         connection.close();
-        //TODO haal de nodes weer op, maar eerst wachten op mailtje van Frank: moet de charachter (o,v,g) in nodes of assesmentCriteria?
         return getNodes(skilltreeId);
     }
 
