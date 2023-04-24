@@ -1,17 +1,17 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import TestScreen from "../screens/testScreen";
+import HomeScreen from '../screens/homeScreen';
 
 const routes = [
-    {
-        path: "/",
-        element: <Navigate to="/test" replace />,
-    },
-    {
-        path: "/test",
-        element: <TestScreen />,
-    },
+  {
+    path: '/',
+    element: <Navigate to="/home" replace />
+  },
+  {
+    path: '/home',
+    element: <HomeScreen />
+  }
 ];
 
 const router = createBrowserRouter(routes);
