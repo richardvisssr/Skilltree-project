@@ -1,7 +1,12 @@
-C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\TestResource.java
 C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\utils\DatabaseProperties.java
-C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\TestApplication.java
-C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\business\services\TestService.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\NodeRequestDTO.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\business\services\NodeService.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\dao\NodeDAO.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\datamapper\NodeDatamapper.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\NodeResource.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\datamapper\Datamapper.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\NodeDTO.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\NodesDTO.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\dto\AssesmentCriteriaDTO.java
 C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\utils\Cors.java
-C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\datamapper\TestDatamapper.java
-C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\data\dao\TestDAO.java
+C:\Users\richa\OneDrive\Documenten\GitHub\erlang-project\Code\Java-REST-API\src\main\java\nl\han\oose\project\resources\TestApplication.java

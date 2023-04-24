@@ -14,7 +14,6 @@ public class NodeDatamapper {
     public NodesDTO map(ResultSet nodeResultSet, ResultSet assesmentCriteriaResultSet) throws SQLException {
         var nodesDTO = new NodesDTO();
         List<NodeDTO> nodes = new ArrayList<>();
-        List<AssesmentCriteriaDTO> assesmentCriteria = new ArrayList<>();
 
         while (nodeResultSet.next()) {
             nodes.add(new NodeDTO(
