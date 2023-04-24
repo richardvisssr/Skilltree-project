@@ -28,7 +28,7 @@ export function setCreateSkillTreeAction(title, description) {
   };
 }
 
-export const fetchCreateSkillTreeActionAsync = (title, description) => {
+export const fetchCreateSkillTreeActionAsync = (title, description, userId) => {
   return async (dispatch) => {
     let body = {
       title: title,
@@ -40,7 +40,8 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
       body: JSON.stringify(body),
       mode: 'cors'
     };
-    const result = await fetch(`${API_PATH}/skilltrees/docenten/1`, options)
+    const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
+    dispatch(fetchAllSkilltreesActionAsync(userId));
     return result;
   }
 }

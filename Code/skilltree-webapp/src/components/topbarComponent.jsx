@@ -4,18 +4,34 @@ import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
 import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+import Popup from "./Popup";
 
 
 export default function TopbarComponent({currentSkilltree, newSkilltree}) {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [DescriptionPopup, setDescriptionPopup] = useState(false);
+  const [TitlePopup, setTitlePopup] = useState(false);
+
 
   const dispatch = useDispatch();
   
   const handleSave = () => {
-      dispatch(fetchCreateSkillTreeActionAsync(title, description));
+    if (title === '') {
+        setTitlePopup(true)
+      return;
+    }
+    if (description === '') {
+      setDescriptionPopup(true)
+      return;
+    }
+        dispatch(fetchCreateSkillTreeActionAsync(title, description, 1));
   };
+
+  const OpenPopup = (popup) => {
+    <Popup  />
+  }
 
   useEffect(() => {
     if (newSkilltree) {
