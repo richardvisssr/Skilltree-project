@@ -13,9 +13,8 @@ export default function SidebarComponent() {
 
     
     const dispatch = useDispatch();
-    const skilltreeSelected = useSelector(state => state.skilltree.skilltreeSelected);
     const skilltrees = useSelector(state => state.skilltree.skilltrees);
-    const currentSkilltree = useSelector(state => state.skilltree.currentSkilltree);
+    const newSkilltree = useSelector(state => state.skilltree.newSkilltree);
 
     function handleButtonClick(id) {
       let currentSkilltree;
@@ -39,7 +38,7 @@ export default function SidebarComponent() {
       }, []);
     
     const skilltreeList = () => {
-    try {
+      try {
         const buttons = skilltrees.map((skilltree, index) =>
             <button key={index} className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             onClick={() => handleButtonClick(skilltree.id)}
@@ -49,9 +48,17 @@ export default function SidebarComponent() {
                     return (<li>
                         {buttons}
                     </li>)
-    } catch {
-        return "geen skilltrees gevonden"
+      } catch {
+          return "geen skilltrees gevonden"
+      }
     }
+
+    const newSkilltreeButton = () => {
+      if (newSkilltree) {
+        return '-';
+      } else {
+        return '+';
+      }
     }
 
     return (
@@ -62,7 +69,7 @@ export default function SidebarComponent() {
                         <li>
                         <button onClick={() => handleNewButtonClick()} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"  >
                                 <span className="ml-12">Skilltrees</span>
-                                <span className="mb-1 ml-12 text-3xl">+</span>
+                                <span className="mb-1 ml-12 text-3xl">{newSkilltreeButton()}</span>
                             </button>
                         </li>
                     </ul>

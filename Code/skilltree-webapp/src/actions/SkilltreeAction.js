@@ -45,10 +45,9 @@ export const fetchCreateSkillTreeActionAsync = (title, description) => {
   }
 }
 
-export function addSkiltreeTopbar(value) {
+export function addSkiltreeTopbar() {
   return {
-    type: "skilltree/setCurrentSkilltree",
-    payload: value
+    type: "skilltree/addSkilltreeTopbar",
   };
 }
 

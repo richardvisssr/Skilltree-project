@@ -9,12 +9,14 @@ import TopbarComponent from '../components/topbarComponent';
 
 export default function HomeScreen() {
     const currentSkilltree = useSelector(state => state.skilltree.currentSkilltree);
+    const newSkilltree = useSelector(state => state.skilltree.newSkilltree);
+
     
     const selectedSkilltree = () => {
-        if (currentSkilltree !== null) {
+        if (currentSkilltree !== null || newSkilltree) {
             return (
                 <div>
-                <TopbarComponent currentSkilltree={currentSkilltree} />
+                    <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
                 </div>
             )
         }
