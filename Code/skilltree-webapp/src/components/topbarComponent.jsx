@@ -1,21 +1,24 @@
-//import { Fragment } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
-import React, { useState } from 'react';
 import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
 
 
 export default function TopbarComponent() {
     
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    
-    const dispatch = useDispatch();
-    
-    const handleSave = () => {
-        dispatch(fetchCreateSkillTreeActionAsync(title, description));
-    };
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const skilltrees = useSelector((state) => state.skilltree.skilltrees)
+  console.log(skilltrees);
+
+  const dispatch = useDispatch();
+  
+  const handleSave = () => {
+      dispatch(fetchCreateSkillTreeActionAsync(title, description));
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
