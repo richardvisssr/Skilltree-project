@@ -1,5 +1,6 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
+import { AiFillEdit } from "react-icons/ai";
 
 import "./nodeStyle.css";
 
@@ -9,8 +10,13 @@ export default function CustomNode({ isConnectable }) {
     return (
         <div className="customNode">
             <div
-                className="customNodeBody bg-amber-400"
+                className="customNodeBody bg-amber-300"
             >
+                <div className="edit-button">
+                    <button type="button">
+                        <AiFillEdit />
+                    </button>
+                </div>
                 <Handle
                     className="targetHandle"
                     style={{ zIndex: 2 }}
@@ -24,7 +30,9 @@ export default function CustomNode({ isConnectable }) {
                     type="target"
                     isConnectable={isConnectable}
                 />
-                {label}
+                <div className="flex justify-center items-center w-full">
+                    {label}
+                </div>
             </div>
         </div>
     );

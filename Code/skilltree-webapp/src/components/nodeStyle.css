@@ -1,13 +1,14 @@
+@import url(../styles/styles.css);
+
 .customNodeBody {
   width: 100px;
   height: 100px;
   border: 3px solid black;
   position: relative;
   overflow: hidden;
-  border-radius: 100px;
+  border-radius: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   font-weight: bold;
 }
 
@@ -15,13 +16,13 @@
   content: '';
   position: absolute;
   left: 50%;
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 99%;
   transform: translate(-50%, 0);
   background: #d6d5e6;
   z-index: 1000;
   line-height: 1;
-  border-radius: 100px;
+  border-radius: 10px 10px 0px 0px;
   color: #fff;
   font-size: 9px;
   border: 2px solid #222138;
@@ -50,4 +51,8 @@ div.targetHandle {
   transform: none;
   border: none;
   opacity: 0;
+}
+
+.edit-button {
+  z-index: 2000;
 }
