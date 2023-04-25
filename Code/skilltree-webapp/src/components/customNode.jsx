@@ -1,20 +1,35 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
 import { AiFillEdit } from "react-icons/ai";
+import { EditNodeComponent } from "./editNode/EditNodeComponent";
+import { useState } from "react";
 
 import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable }) {
     const label = "Kaas";
 
+    const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
+
+    const showEditNodeComponent = () => {
+        setIsEditNodeComponentVisible(true);
+        if(isEditNodeComponentVisible) {
+            setIsEditNodeComponentVisible(false);
+        }
+    };
+
     return (
-        <div className="customNode">
-            <div
-                className="customNodeBody bg-amber-300"
-            >
-                <div className="edit-button">
-                    <button type="button">
-                        <AiFillEdit />
+        <div>
+        <div>
+            <div className="customNode">
+                <div className="customNodeBody bg-amber-300">
+                    <div className="edit-button">
+                        <button
+                            className="edit-button"
+                            type="button"
+                            onClick={showEditNodeComponent}
+                        >
+                        <AiFillEdit/>
                     </button>
                 </div>
                 <Handle
@@ -34,6 +49,9 @@ export default function CustomNode({ isConnectable }) {
                     {label}
                 </div>
             </div>
+        </div>
+        </div>
+        {isEditNodeComponentVisible && <EditNodeComponent />}
         </div>
     );
 }
