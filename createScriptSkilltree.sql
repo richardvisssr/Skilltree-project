@@ -38,7 +38,6 @@ BEGIN TRY
     CREATE TABLE Nodes
     (
         ID                 INT UNIQUE                    NOT NULL IDENTITY (1,1),
-        Title               VARCHAR(255)                  NOT NULL,
 		Skill				VARCHAR(255)                  NOT NULL,
         Description        VARCHAR(2000)                  NOT NULL,
         PositionX          INT      DEFAULT 0            NOT NULL,
@@ -54,7 +53,7 @@ BEGIN TRY
 		(
 		ID          INT UNIQUE                    NOT NULL IDENTITY (1,1),
 		Description VARCHAR(255)                  NOT NULL, 
-		character CHAR(1) NOT NULL CHECK (character IN ('O', 'V', 'G')),
+		character CHAR(1) CHECK (character IN ('O', 'V', 'G')),
 
 		NodeID  INT NOT NULL,     
 
