@@ -30,13 +30,16 @@ function CreateNodeComponent() {
     };
 
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
-    const [cardShowState, setCardShowState] = useState(true);
+    const [cardShowState, setCardShowState] = useState(false);
+    const showCard = () => {
+        setCardShowState(true);
+    };
     const hideCard = () => {
         setCardShowState(false);
-        // navigate("/home");
     };
+
+    showCard(); // TODO: showcard uitvoeren als een node geplaatst is
 
     const handleSave = () => {
         dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
