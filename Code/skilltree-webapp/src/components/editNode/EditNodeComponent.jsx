@@ -17,7 +17,8 @@ export function EditNodeComponent() {
     return (
         <div>
             {editCardShowState ?
-                <div className="fixed inset-0 z-[10000] top-0 left-0 right-0 h-80 w-80 flex min-h-full justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative z-[10000]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0  top-0 left-0 right-0 h-80 w-80 flex min-h-full justify-center p-4 text-center sm:items-center sm:p-0">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
                         <div className="bg-white px-4 pb-4 pt-5">
                             <p className="text-center">Weet u zeker dat u deze node wil verwijderen?</p>
@@ -31,6 +32,7 @@ export function EditNodeComponent() {
                                 </button>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div> : null}
         </div>
