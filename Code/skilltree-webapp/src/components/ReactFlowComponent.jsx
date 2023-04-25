@@ -22,7 +22,7 @@ const nodeTypes = {
     custom: CustomNode,
 };
 
-function reactFlowComponent() {
+function ReactFlowComponent() {
     // eslint-disable-next-line no-unused-vars
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     // eslint-disable-next-line no-unused-vars
@@ -44,4 +44,4 @@ function reactFlowComponent() {
     );
 }
 
-export default reactFlowComponent;
+export default ReactFlowComponent;
