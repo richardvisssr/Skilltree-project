@@ -10,13 +10,18 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
 
     const dispatch = useDispatch();
 
-    const handleSave = () => {
-        if (title === "") {
-            return;
-        }
-        if (description === "") {
-            return;
-        }
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData('application/reactflow', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  };
+  
+  const handleSave = () => {
+    if (title === '') {
+      return;
+    }
+    if (description === '') {
+      return;
+    }
         dispatch(fetchCreateSkillTreeActionAsync(title, description, 1));
     };
 
@@ -87,14 +92,9 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                                     </div>
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
-                                    <div className="flex items-center justify-center">
-                                        <button
-                                            className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
-                                            type="button"
-                                        >
-                                            Node Aanmaken
-                                        </button>
-                                    </div>
+                                    <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
+                                      onDragStart={(event) => onDragStart(event, 'input')} draggable> Node aanmaken
+                                  </div>
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="flex items-center justify-center">
@@ -151,14 +151,9 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                                 </button>
                             </div>
                             <div>
-                                <div className="flex items-center justify-center pb-1 pt-1 ">
-                                    <button
-                                        className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
-                                        type="button"
-                                    >
-                                        Node Aanmaken
-                                    </button>
-                                </div>
+                              <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
+                                  onDragStart={(event) => onDragStart(event, 'input')} draggable> Node aanmaken
+                              </div>
                                 <div className="flex items-center justify-center pb-1 pt-1 ">
                                     <button
                                         className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"

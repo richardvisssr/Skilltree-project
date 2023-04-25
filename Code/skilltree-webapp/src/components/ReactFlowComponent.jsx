@@ -1,6 +1,11 @@
-import React from "react";
-
-import ReactFlow, { useNodesState, useEdgesState } from "reactflow";
+import React, { useState, useRef, useCallback }  from "react";
+import ReactFlow, {
+  ReactFlowProvider,
+  addEdge,
+  useNodesState,
+  useEdgesState,
+  Controls,
+} from 'reactflow';
 
 import CustomNode from "./customNode";
 
@@ -11,10 +16,10 @@ const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
 const initialNodes = [
     {
-        id: "1", data: { label: "-" }, type: "custom", position: { x: 100, y: 100 },
+        id: "0", data: { label: "-" }, type: "custom", position: { x: 100, y: 100 },
     },
     {
-        id: "2", data: { label: "Node 2" }, type: "custom", position: { x: 100, y: 200 },
+        id: "1", data: { label: "Node 2" }, type: "custom", position: { x: 100, y: 200 },
     },
 ];
 
@@ -22,26 +27,76 @@ const nodeTypes = {
     custom: CustomNode,
 };
 
-function reactFlowComponent() {
-    // eslint-disable-next-line no-unused-vars
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-    // eslint-disable-next-line no-unused-vars
-    const [edges, edgeChange, onEdgeChange] = useEdgesState([]);
+function ReactFlowComponent() {
+
+  let id = 0;
+  const getId = () => `dndnode_${id++}`;
+
+  const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }, []);
+
+  const onDrop = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+      const type = event.dataTransfer.getData('application/reactflow');
+
+      // check if the dropped element is valid
+      if (typeof type === 'undefined' || !type) {
+        return;
+      }
+
+      const position = reactFlowInstance.project({
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      });
+      const newNode = {
+        id: getId(),
+        type,
+        position,
+        data: { label: `${type} node` },
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [getId, reactFlowInstance, setNodes]
+  );
 
     return (
-        <div className="w-full flex-auto">
-            <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                nodeTypes={nodeTypes}
-                onNodesChange={onNodesChange}
-                onEdgesChange={onEdgeChange}
-                defaultViewport={defaultViewport}
-                minZoom={0.2}
-                maxZoom={4}
-            />
+      <ReactFlowProvider>
+        <div className="w-full flex-auto" ref={reactFlowWrapper}>
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            nodeTypes={nodeTypes}
+            onInit={setReactFlowInstance}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            defaultViewport={defaultViewport}
+            minZoom={0.2}
+            maxZoom={4}
+          >
+            <Controls />
+          </ReactFlow>
         </div>
+      </ReactFlowProvider>
     );
 }
+ export default ReactFlowComponent;
 
-export default reactFlowComponent;
+
+
+
