@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
@@ -33,6 +32,12 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
       setDescription(currentSkilltree.description);
     }
     }, [currentSkilltree, newSkilltree]);
+
+  const buttonClass = `
+    rounded-md mx-3 py-2 text-sm font-medium
+    bg-gray-100 text-black hover:bg-gray-200 hover:text-black
+    dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white 
+  `
 
   return (
     <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
@@ -73,7 +78,7 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                               value={title}
                               name='title'
                               id='title'
-                              className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                              className={buttonClass + "px-3 w-2/5"}
                               placeholder='Titel'
                               onChange={(e) => setTitle(e.target.value)}
                           />
@@ -82,8 +87,8 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                               value={description}
                               name='description'
                               id='description'
-                              className='w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
-                              placeholder='beschrijving'
+                              className={buttonClass + "px-3 w-2/5"}
+                              placeholder='Beschrijving'
                               onChange={(e) => setDescription(e.target.value)}
                           />
                       </div> 
@@ -92,18 +97,18 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex items-center justify-center">
-                          <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Node Aanmaken</button>
+                          <button className={buttonClass + "px-3 w-fit"}>Node Aanmaken</button>
                   </div>
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex items-center justify-center">
-                          <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Koppelen</button>
+                          <button className={buttonClass + "px-3 w-fit"}>Koppelen</button>
                   </div>
                 </div>
               </div>
               <div className="hidden lg:ml-6 lg:block">
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+                  <button className={buttonClass + "px-3 w-fit border-solid border-green-600 border-2"} onClick={handleSave}>Opslaan</button>
                 </div>
               </div>
             </div>
@@ -117,7 +122,7 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                   value={title}
                   name='title'
                   id='title'
-                  className='flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                  className={buttonClass + "px-3"}
                   placeholder='Titel'
                   onChange={(e) => setDescription(e.target.value)}
               />
@@ -126,18 +131,18 @@ export default function TopbarComponent({currentSkilltree, newSkilltree}) {
                   value={description}
                   name='description'
                   id='description'
-                  className='flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium'
+                  className={buttonClass + "px-3"}
                   placeholder='Beschrijving'
                   onChange={(e) => setDescription(e.target.value)}
               />
-                  <button className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" onClick={handleSave}>Opslaan</button>
+                  <button className={buttonClass + "px-3 w-fit border-solid border-green-600 border-2"} onClick={handleSave}>Opslaan</button>
             </div>
               <div>
                 <div className="flex items-center justify-center pb-1 pt-1 ">
-                  <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Node Aanmaken</button>
+                  <button className={buttonClass + "px-3 w-fit"}>Node Aanmaken</button>
                 </div>
                 <div className="flex items-center justify-center pb-1 pt-1 ">
-                  <button className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium">Koppelen</button>
+                  <button className={buttonClass + "px-3 w-fit"}>Koppelen</button>
                 </div>
               </div>
             </div>
