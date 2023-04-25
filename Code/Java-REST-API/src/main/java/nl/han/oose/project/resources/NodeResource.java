@@ -28,6 +28,19 @@ public class NodeResource {
         }
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
+    public Response getAllNodes(
+        @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try{
+            return Response.status(Response.Status.OK).entity(nodeService.getAllNodes(skilltreeId)).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Inject
     public void setNodeService(NodeService nodeService) {
         this.nodeService = nodeService;

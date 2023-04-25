@@ -17,7 +17,7 @@ public class NodeDAO {
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-    public NodesDTO getNodes(int skilltreeId) throws SQLException {
+    public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssesmentCriteriaQuery(skilltreeId));
         return nodes;
@@ -56,7 +56,7 @@ public class NodeDAO {
         addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
         addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
         connection.close();
-        return getNodes(skilltreeId);
+        return getNodesFromSkillTree(skilltreeId);
     }
 
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {

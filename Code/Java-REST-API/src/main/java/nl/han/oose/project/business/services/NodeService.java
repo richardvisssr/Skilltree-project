@@ -14,8 +14,13 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
+    public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
+        return nodeDAO.getNodesFromSkillTree(skilltreeId);
+    }
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
+
+
 }
