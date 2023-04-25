@@ -93,7 +93,7 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
-                                      onDragStart={(event) => onDragStart(event, 'input')} draggable> Node aanmaken
+                                      onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node aanmaken
                                   </div>
                                 </div>
                                 <div className="hidden lg:ml-6 lg:block">
@@ -152,7 +152,7 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
                             </div>
                             <div>
                               <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
-                                  onDragStart={(event) => onDragStart(event, 'input')} draggable> Node aanmaken
+                                  onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node aanmaken
                               </div>
                                 <div className="flex items-center justify-center pb-1 pt-1 ">
                                     <button

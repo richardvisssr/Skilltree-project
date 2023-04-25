@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormFieldComponent from "./FormFieldComponent";
 import { fetchCreateNodeActionAsync } from "../../actions/Node";
 
@@ -11,6 +11,7 @@ function CreateNodeComponent() {
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState([]);
+    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -41,7 +42,7 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
+        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
         hideCard();
     };
     /* eslint-disable react/jsx-wrap-multilines */

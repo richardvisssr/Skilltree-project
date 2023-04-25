@@ -7,14 +7,19 @@ import "./nodeStyle.css";
 export default function CustomNode({ isConnectable }) {
     const label = "Kaas";
 
+    handleButton(){
+        CreateNodeComponent
+    };
+
     return (
         <div className="customNode">
             <div
                 className="customNodeBody bg-amber-300"
             >
                 <div className="edit-button">
-                    <button type="button">
+                    <button type="button" onClick={handleButton}>
                         <AiFillEdit />
+
                     </button>
                 </div>
                 <Handle

@@ -6,7 +6,7 @@ import ReactFlow, {
   useEdgesState,
   Controls,
 } from 'reactflow';
-
+import { useSelector } from "react-redux";
 import CustomNode from "./customNode";
 
 import "reactflow/dist/style.css";
@@ -15,12 +15,12 @@ import "../styles/styles.css";
 const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
 const initialNodes = [
-    {
-        id: "0", data: { label: "-" }, type: "custom", position: { x: 100, y: 100 },
-    },
-    {
-        id: "1", data: { label: "Node 2" }, type: "custom", position: { x: 100, y: 200 },
-    },
+  {
+    id: '1',
+    type: 'custom',
+    data: { label: 'nieuwe node' },
+    position: { x: 250, y: 5 },
+  },
 ];
 
 const nodeTypes = {
@@ -28,9 +28,11 @@ const nodeTypes = {
 };
 
 function ReactFlowComponent() {
+  const skilltreesId = useSelector((state) => state.skilltree.currentSkilltree.id);
+  console.log(skilltreesId);
 
   let id = 0;
-  const getId = () => `dndnode_${id++}`;
+  const getId = () => `${id++}`;
 
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -47,31 +49,33 @@ function ReactFlowComponent() {
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
-
+  
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData('application/reactflow');
-
+  
       // check if the dropped element is valid
       if (typeof type === 'undefined' || !type) {
         return;
       }
-
+  
       const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
+      
       const newNode = {
         id: getId(),
         type,
         position,
-        data: { label: `${type} node` },
+        data: { label: `Nieuwe node` },
+        skilltreesId
       };
-
-      setNodes((nds) => nds.concat(newNode));
+  
+      setNodes((prevNodes) => [...prevNodes, newNode]);
     },
-    [getId, reactFlowInstance, setNodes]
+    [reactFlowInstance]
   );
-
+  
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
