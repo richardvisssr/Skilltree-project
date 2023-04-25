@@ -37,3 +37,9 @@ export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria
             dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
         });
 };
+
+export function showCreateCard() {
+    return {
+        type: "node/showNodeCard"
+    };
+}

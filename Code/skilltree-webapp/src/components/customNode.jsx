@@ -1,15 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Handle, Position } from "reactflow";
 import { AiFillEdit } from "react-icons/ai";
 
+import { showCreateCard } from "../actions/Node";
 import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable }) {
     const label = "Kaas";
 
-    handleButton(){
-        CreateNodeComponent
+    const dispatch = useDispatch();
+    // const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
+
+    const handleButton = () => {
+        dispatch(showCreateCard());
     };
+
 
     return (
         <div className="customNode">
@@ -19,7 +25,6 @@ export default function CustomNode({ isConnectable }) {
                 <div className="edit-button">
                     <button type="button" onClick={handleButton}>
                         <AiFillEdit />
-
                     </button>
                 </div>
                 <Handle

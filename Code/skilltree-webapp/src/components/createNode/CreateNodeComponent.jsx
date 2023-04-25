@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FormFieldComponent from "./FormFieldComponent";
-import { fetchCreateNodeActionAsync } from "../../actions/Node";
+import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/Node";
 
 import "../../styles/styles.css";
 
@@ -38,7 +38,7 @@ function CreateNodeComponent() {
     //     setCardShowState(true);
     // };
     const hideCard = () => {
-        setCardShowState(false);
+        dispatch(showCreateCard())
     };
 
     const handleSave = () => {

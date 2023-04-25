@@ -4,7 +4,7 @@ import createNodeReducer from "./nodeReducer";
 
 const reducers = combineReducers({
     skilltree: skilltreeReducer,
-    Node: createNodeReducer,
+    node: createNodeReducer,
 });
 
 export default reducers;
