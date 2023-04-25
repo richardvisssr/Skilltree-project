@@ -7,7 +7,7 @@ import { showCreateCard } from "../actions/Node";
 import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable }) {
-    const label = "Kaas";
+    const label = "Skill";
 
     const dispatch = useDispatch();
     // const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
@@ -20,7 +20,7 @@ export default function CustomNode({ isConnectable }) {
     return (
         <div className="customNode">
             <div
-                className="customNodeBody bg-amber-300"
+                className="customNodeBody bg-slate-200"
             >
                 <div className="edit-button">
                     <button type="button" onClick={handleButton}>

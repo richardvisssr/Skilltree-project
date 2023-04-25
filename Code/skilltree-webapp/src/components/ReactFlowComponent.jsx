@@ -28,8 +28,12 @@ const nodeTypes = {
 };
 
 function ReactFlowComponent() {
-  const skilltreesId = useSelector((state) => state.skilltree.currentSkilltree.id);
-  console.log(skilltreesId);
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    let skilltreeId = null;
+    if (skilltree !== null) {
+      skilltreeId = skilltree.id;
+    }
+
 
   let id = 0;
   const getId = () => `${id++}`;
@@ -68,7 +72,7 @@ function ReactFlowComponent() {
         type,
         position,
         data: { label: `Nieuwe node` },
-        skilltreesId
+        skilltreeId
       };
   
       setNodes((prevNodes) => [...prevNodes, newNode]);
