@@ -31,15 +31,14 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
-    const [cardShowState, setCardShowState] = useState(false);
-    const showCard = () => {
-        setCardShowState(true);
-    };
+    const [cardShowState, setCardShowState] = useState(true);
+    // TODO: showcard uitvoeren als een node geplaatst is en default state naar false
+    // const showCard = () => {
+    //     setCardShowState(true);
+    // };
     const hideCard = () => {
         setCardShowState(false);
     };
-
-    showCard(); // TODO: showcard uitvoeren als een node geplaatst is
 
     const handleSave = () => {
         dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
