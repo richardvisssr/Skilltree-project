@@ -1,13 +1,17 @@
 package nl.han.oose.project.resources.dto;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class NodeDTO {
-    private int id;
+    private int ID;
     private String skill;
     private String description;
     private double positionX;
     private double positionY;
+    private int skilltreeId;
+    private String learningOutcome;
+    private List<AssesmentCriteriaDTO> assesmentCriteria = new ArrayList<>();
 
     public NodeDTO() {}
 
@@ -61,6 +65,9 @@ public class NodeDTO {
         this.positionY = positionY;
     }
 
+    public int getSkilltreeId() {
+        return skilltreeId;
+    }
 
     public void setSkilltreeId(int skilltreeId) {
         this.skilltreeId = skilltreeId;

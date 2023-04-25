@@ -1,3 +1,5 @@
+CREATE DATABASE skilltree;
+
 use skilltree
 BEGIN TRY
 	BEGIN TRAN
