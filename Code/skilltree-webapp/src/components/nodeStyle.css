@@ -54,5 +54,6 @@ div.targetHandle {
 }
 
 .edit-button {
+  top: -50px;
   z-index: 2000;
 }
