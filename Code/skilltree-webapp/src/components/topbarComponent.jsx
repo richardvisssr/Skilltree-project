@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
@@ -7,6 +8,8 @@ import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
 export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+
+    const docentId = useSelector((state) => state.user.userId);
 
     const dispatch = useDispatch();
 
@@ -22,7 +25,7 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
     if (description === '') {
       return;
     }
-        dispatch(fetchCreateSkillTreeActionAsync(title, description, 1));
+        dispatch(fetchCreateSkillTreeActionAsync(title, description, docentId));
     };
 
     useEffect(() => {

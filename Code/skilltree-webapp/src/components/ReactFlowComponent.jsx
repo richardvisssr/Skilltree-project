@@ -1,4 +1,5 @@
-import React, { useState, useRef, useCallback }  from "react";
+import React, { useState, useRef, useCallback, useEffect }  from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -6,9 +7,9 @@ import ReactFlow, {
   useEdgesState,
   Controls,
 } from 'reactflow';
-import { useSelector } from "react-redux";
 import CustomNode from "./customNode";
 
+import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 
@@ -28,11 +29,41 @@ const nodeTypes = {
 };
 
 function ReactFlowComponent() {
+    // const [allNodes, setAllNodes] = useState([]);
+
+    // const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
+
+    const dispatch = useDispatch();
+
+    const allFetchedNodes = useSelector((state) => state.skilltree.nodes);    
+    
+    const convertFetchToNodes = () => {
+      let tempArray = [];
+      allFetchedNodes.map((node) => {
+        const tempObj = {
+          id: `${node.id}`,
+          type: 'custom',
+          data: { label: `${node.skill}` },
+          position: { x: node.positionX, y: node.positionY },
+        }
+        tempArray.push(tempObj);
+      })
+      setNodes(tempArray);
+    }
+
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
-    let skilltreeId = null;
+    let skilltreeId;
     if (skilltree !== null) {
       skilltreeId = skilltree.id;
     }
+
+    useEffect(() => {
+      dispatch(fetchAllNodesFromSkilltree(skilltreeId));
+    }, [skilltreeId]);
+
+    useEffect(() => {
+      convertFetchToNodes();
+    }, [allFetchedNodes])
 
 
   let id = 0;
@@ -40,7 +71,7 @@ function ReactFlowComponent() {
 
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);

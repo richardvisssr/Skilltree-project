@@ -29,7 +29,7 @@ export default function SidebarComponent() {
     }
 
     // Voor te testen, later moet er een reducer komen voor de users
-    const [docentId] = useState(1);
+    const docentId = useSelector((state) => state.user.userId);
 
     useEffect(() => {
         dispatch(fetchAllSkilltreesActionAsync(docentId));

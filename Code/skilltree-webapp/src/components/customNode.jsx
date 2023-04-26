@@ -6,8 +6,8 @@ import { AiFillEdit } from "react-icons/ai";
 import { showCreateCard } from "../actions/Node";
 import "./nodeStyle.css";
 
-export default function CustomNode({ isConnectable }) {
-    const label = "Skill";
+export default function CustomNode({ isConnectable, data }) {
+    const label = data.label;
 
     const dispatch = useDispatch();
     // const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
