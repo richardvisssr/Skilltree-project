@@ -7,7 +7,7 @@ import ReactFlow, {
   useEdgesState,
   Controls,
 } from 'reactflow';
-import CustomNode from "./customNode";
+import CustomNode from "./CustomNode";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import "reactflow/dist/style.css";
@@ -15,28 +15,26 @@ import "../styles/styles.css";
 
 const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
-const initialNodes = [
-  {
-    id: '1',
-    type: 'custom',
-    data: { label: 'nieuwe node' },
-    position: { x: 250, y: 5 },
-  },
-];
-
 const nodeTypes = {
     custom: CustomNode,
 };
 
 function ReactFlowComponent() {
-    // const [allNodes, setAllNodes] = useState([]);
-
-    // const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
-
     const dispatch = useDispatch();
 
-    const allFetchedNodes = useSelector((state) => state.skilltree.nodes);    
-    
+    const reactFlowWrapper = useRef(null);
+    const [reactFlowInstance, setReactFlowInstance] = useState(null);
+    const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+    const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+
+    let skilltreeId;
+    if (skilltree !== null) {
+      skilltreeId = skilltree.id;
+    }
+
     const convertFetchToNodes = () => {
       let tempArray = [];
       allFetchedNodes.map((node) => {
@@ -51,12 +49,6 @@ function ReactFlowComponent() {
       setNodes(tempArray);
     }
 
-    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
-    let skilltreeId;
-    if (skilltree !== null) {
-      skilltreeId = skilltree.id;
-    }
-
     useEffect(() => {
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
     }, [skilltreeId]);
@@ -65,14 +57,8 @@ function ReactFlowComponent() {
       convertFetchToNodes();
     }, [allFetchedNodes])
 
-
   let id = 0;
   const getId = () => `${id++}`;
-
-  const reactFlowWrapper = useRef(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
@@ -135,7 +121,3 @@ function ReactFlowComponent() {
     );
 }
  export default ReactFlowComponent;
-
-
-
-

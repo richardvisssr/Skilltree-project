@@ -16,9 +16,9 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
 }
 
 export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria, learningOutcome, skilltreeId) => async (dispatch) => {
+    //TODO posities niet hardcoded maken
     const positionX = 100;
     const positionY = 200;
-    // const skilltreeId = 3;
 
     const options = {
         method: "POST",

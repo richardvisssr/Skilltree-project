@@ -12,10 +12,11 @@ export default function SidebarComponent() {
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
+    // Voor te testen, later moet er een reducer komen voor de users
+    const docentId = useSelector((state) => state.user.userId);
 
     function handleButtonClick(id) {
         let currentSkilltree;
-        // eslint-disable-next-line array-callback-return
         skilltrees.map((skilltree) => {
             if (skilltree.id === id) {
                 currentSkilltree = skilltree;
@@ -27,9 +28,6 @@ export default function SidebarComponent() {
     function handleNewButtonClick() {
         dispatch(addSkiltreeTopbar());
     }
-
-    // Voor te testen, later moet er een reducer komen voor de users
-    const docentId = useSelector((state) => state.user.userId);
 
     useEffect(() => {
         dispatch(fetchAllSkilltreesActionAsync(docentId));
@@ -44,7 +42,9 @@ export default function SidebarComponent() {
                     className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                     onClick={() => handleButtonClick(skilltree.id)}
                 >
-                    <span className="ml-12">{skilltree.title}</span>
+                    <span className="ml-12">
+                        { skilltree.title }
+                    </span>
                 </button>
             ));
             return (
@@ -65,7 +65,11 @@ export default function SidebarComponent() {
     };
 
     return (
-        <aside id="separator-sidebar" className="top-0 left-0 z-40 w-64 h-screen" aria-label="Sidebar">
+        <aside
+            id="separator-sidebar"
+            className="top-0 left-0 z-40 w-64 h-screen"
+            aria-label="Sidebar"
+        >
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
@@ -75,7 +79,7 @@ export default function SidebarComponent() {
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <span className="ml-12">Skilltrees</span>
-                            <span className="mb-1 ml-12 text-3xl">{newSkilltreeButton()}</span>
+                            <span className="mb-1 ml-12 text-3xl">{ newSkilltreeButton() }</span>
                         </button>
                     </li>
                 </ul>

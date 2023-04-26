@@ -10,20 +10,19 @@ export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
 
     const dispatch = useDispatch();
-    // const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
 
     const handleButton = () => {
         dispatch(showCreateCard());
     };
 
-
     return (
         <div className="customNode">
-            <div
-                className="customNodeBody bg-slate-200"
-            >
+            <div className="customNodeBody bg-slate-200">
                 <div className="edit-button">
-                    <button type="button" onClick={handleButton}>
+                    <button 
+                        type="button" 
+                        onClick={handleButton}
+                    >
                         <AiFillEdit />
                     </button>
                 </div>

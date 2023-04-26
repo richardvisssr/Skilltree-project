@@ -73,17 +73,3 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
             .then((result) => dispatch(setAllNodesFromSkilltree(result.nodes)));
     };
 }
-
-// export function fetchAllNodesFromSkilltree(skilltreeId) {
-//     return async (dispatch) => {
-//         const options = {
-//             method: "GET",
-//             mode: "cors",
-//         };
-//         fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
-//             .then((response) => response.json())
-//             .then((result) => dispatch(setSkilltreesAction(result)));
-//     };
-// }
-
-
