@@ -4,6 +4,8 @@ import React from "react";
 import ReactFlow, { useNodesState, useEdgesState } from "reactflow";
 
 import CustomNode from "./customNode";
+import ConnectionLineStyle from "./edges/ConnectionLineStyle";
+import FloatingEdge from "./edges/FloatingEdge";
 
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
@@ -18,6 +20,10 @@ const initialNodes = [
         id: "2", data: { label: "Node 2" }, type: "custom", position: { x: 100, y: 200 },
     },
 ];
+
+const edgeTypes = {
+    floating: FloatingEdge,
+};
 
 const nodeTypes = {
     custom: CustomNode,
@@ -36,7 +42,9 @@ function reactFlowComponent() {
                 edges={edges}
                 nodeTypes={nodeTypes}
                 onNodesChange={onNodesChange}
+                edgeTypes={edgeTypes}
                 onEdgesChange={onEdgeChange}
+                connectionLineComponent={ConnectionLineStyle}
                 defaultViewport={defaultViewport}
                 minZoom={0.2}
                 maxZoom={4}
