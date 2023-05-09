@@ -39,16 +39,6 @@ public class DatabasePropertiesTest {
         assertEquals(expectedConnectionString, actualConnectionString);
     }
 
-//    @Test
-//    public void testDatabasePropertiesIOException() throws Exception {
-//        // Arrange: maak een mock van DatabaseProperties en stel deze zo in dat de connectionString methode een IOException zal gooien
-//        DatabaseProperties databaseProperties = mock(DatabaseProperties.class);
-//        when(databaseProperties.connectionString()).thenThrow(new IOException());
-//
-//        // Assert: controleer of de connectionString methode inderdaad een IOException gooit
-//        assertThrows(IOException.class, () -> databaseProperties.connectionString());
-//    }
-
     @Test
     public void testDatabasePropertiesMissingProperty() throws Exception {
         // Arrange: maak een Properties object zonder de connectionString property
