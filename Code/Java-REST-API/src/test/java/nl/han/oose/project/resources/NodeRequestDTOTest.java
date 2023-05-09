@@ -1,0 +1,139 @@
+package nl.han.oose.project.resources;
+
+import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
+import nl.han.oose.project.resources.dto.NodeDTO;
+import nl.han.oose.project.resources.dto.NodeRequestDTO;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NodeRequestDTOTest {
+
+    private NodeRequestDTO sut;
+
+    @BeforeEach
+    void setup() {
+        sut = new NodeRequestDTO();
+    }
+
+    @Test
+    void testID() {
+        // Arrange
+        int expected = 5;
+        sut.setID(expected);
+
+        // Act
+        var result = sut.getID();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testSkill() {
+        // Arrange
+        String expected = "test";
+        sut.setSkill(expected);
+
+        // Act
+        var result = sut.getSkill();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testDescription() {
+        // Arrange
+        String expected = "test";
+        sut.setDescription(expected);
+
+        // Act
+        var result = sut.getDescription();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testPositionX() {
+        // Arrange
+        int expected = 5;
+        sut.setPositionX(expected);
+
+        // Act
+        var result = sut.getPositionX();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testPositionY() {
+        // Arrange
+        int expected = 5;
+        sut.setPositionY(expected);
+
+        // Act
+        var result = sut.getPositionY();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testSkilltreeId() {
+        // Arrange
+        int expected = 5;
+        sut.setSkilltreeId(expected);
+
+        // Act
+        var result = sut.getSkilltreeId();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testLearningOutcome() {
+        // Arrange
+        String expected = "test";
+        sut.setLearningOutcome(expected);
+
+        // Act
+        var result = sut.getLearningOutcome();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testAssesmentCriteria() {
+        // Arrange
+        List<String> expected = new ArrayList<>();
+        expected.add("world");
+        sut.setAssesmentCriteria(expected);
+
+        // Act
+        var result = sut.getAssesmentCriteria();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void testNodeDTO() {
+        // Arrange
+        String expected = "test";
+        sut = new NodeRequestDTO(5, expected, expected, 5, 5, 5, expected);
+
+        // Act
+        var result = sut.getSkill();
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+}
