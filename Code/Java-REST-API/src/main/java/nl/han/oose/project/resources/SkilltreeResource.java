@@ -15,12 +15,12 @@ public class SkilltreeResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/docenten/{docentId}")
+    @Path("/gebruikers/{gebruikerId}")
     public Response getAllSkilltrees(
-            @PathParam("docentId") int docentId
+            @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(docentId)).build();
+            return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
@@ -29,17 +29,22 @@ public class SkilltreeResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/docenten/{docentId}")
+    @Path("/gebruikers/{gebruikerId}")
     public Response createSkilltree(
             SkilltreeDTO skilltreeDTO,
-            @PathParam("docentId") int docentId
+            @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, docentId)).build();
+            return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/gebruikers/{gebruikerId}")
 
     @Inject
     public void setSkilltreeService(SkilltreeService skilltreeService) {

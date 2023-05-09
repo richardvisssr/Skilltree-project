@@ -17,35 +17,35 @@ public class SkilltreeDAO {
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-    public SkilltreesDTO getAllSkilltrees(int docentId) throws SQLException {
+    public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllSkilltreesQuery(docentId));
+        var result = datamapper.map(getAllSkilltreesQuery(gebruikerId));
         connection.close();
         return result;
     }
 
-    public SkilltreesDTO createSkilltrees(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
+    public SkilltreesDTO createSkilltrees(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        createSkilltreeQuery(skilltreeDTO, docentId);
+        createSkilltreeQuery(skilltreeDTO, gebruikerId);
         connection.close();
-        return getAllSkilltrees(docentId);
+        return getAllSkilltrees(gebruikerId);
     }
 
-    private ResultSet getAllSkilltreesQuery(int docentId) throws SQLException {
+    private ResultSet getAllSkilltreesQuery(int gebruikerId) throws SQLException {
         var query = "SELECT * FROM Skilltrees WHERE UserID = ?";
         var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, docentId);
+        stmt.setInt(1, gebruikerId);
         var result = stmt.executeQuery();
         return result;
     }
 
-    private void createSkilltreeQuery(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
+    private void createSkilltreeQuery(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var query = "INSERT INTO Skilltrees(title, description, UserID) VALUES (?, ?, ?)";
         var stmt = connection.prepareStatement(query);
         stmt.setString(1, skilltreeDTO.getTitle());
         stmt.setString(2, skilltreeDTO.getDescription());
-        stmt.setInt(3, docentId);
+        stmt.setInt(3, gebruikerId);
         stmt.executeUpdate();
         connection.close();
     }
