@@ -99,4 +99,38 @@ public class SkilltreeResourceTest {
             fail();
         }
     }
+
+    @Test
+    void updateSkilltree() {
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(skilltreeService.updateSkilltree(skilltreeDTO, GEBRUIKER_ID)).thenReturn(skilltreesDTO);
+
+            //Act
+            var result = sut.updateSkilltree(skilltreeDTO, GEBRUIKER_ID);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void updateSkilltreeWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(skilltreeService.updateSkilltree(skilltreeDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
+
+            // Act
+            var result = sut.updateSkilltree(skilltreeDTO, GEBRUIKER_ID);
+
+            // Arrange
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
 }
