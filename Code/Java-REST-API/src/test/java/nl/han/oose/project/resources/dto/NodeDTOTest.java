@@ -1,4 +1,4 @@
-package nl.han.oose.project.resources;
+package nl.han.oose.project.resources.dto;
 
 import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
 import nl.han.oose.project.resources.dto.NodeDTO;
