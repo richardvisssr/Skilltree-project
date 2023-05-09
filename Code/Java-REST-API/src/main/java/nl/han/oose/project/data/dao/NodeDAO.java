@@ -17,7 +17,7 @@ public class NodeDAO {
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-    public NodesDTO getNodes(int skilltreeId) throws SQLException {
+    public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssesmentCriteriaQuery(skilltreeId));
         return nodes;
@@ -56,7 +56,30 @@ public class NodeDAO {
         addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
         addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
         connection.close();
-        return getNodes(skilltreeId);
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    public int getHighestNodeId() throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var highestNodeId = getHighestNodeIdQuery();
+        connection.close();
+        return highestNodeId;
+    }
+
+    private int getHighestNodeIdQuery() throws SQLException {
+        var query = "SELECT TOP 1 ID \n" +
+                "from Nodes\n" +
+                "ORDER BY ID\n" +
+                "DESC";
+        var stmt = connection.prepareStatement(query);
+        var resultSet = stmt.executeQuery();
+
+        int nodeId = 0;
+        if(resultSet.next()){
+            nodeId = resultSet.getInt("ID");
+        }
+
+        return nodeId;
     }
 
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {

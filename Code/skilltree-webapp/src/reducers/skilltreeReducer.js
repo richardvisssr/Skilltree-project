@@ -2,6 +2,7 @@ const initialState = {
     skilltrees: [],
     currentSkilltree: null,
     newSkilltree: false,
+    nodes: [],
 };
 
 // eslint-disable-next-line default-param-last
@@ -24,6 +25,11 @@ function skillTreeReducer(state = initialState, action) {
             currentSkilltree: null,
             newSkilltree: !state.newSkilltree,
         };
+    case "skilltree/setAllNodes":
+        return {
+            ...state,
+            nodes: action.payload,
+        }
     default:
         return state;
     }
