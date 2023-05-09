@@ -8,6 +8,8 @@ import ReactFlow, {
   Controls,
 } from 'reactflow';
 import CustomNode from "./CustomNode";
+import FloatingEdge from "./edges/FloatingEdge";
+import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
