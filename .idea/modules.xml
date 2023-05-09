@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/erlang-project.iml" filepath="$PROJECT_DIR$/.idea/erlang-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" filepath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" />
     </modules>
   </component>
 </project>
