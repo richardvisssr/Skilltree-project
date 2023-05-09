@@ -7,6 +7,7 @@ const initialState = {
     learningOutcome: "",
     assesmentCriteria: "",
     showCard: false,
+    highestNodeId: null,
 };
 
 // eslint-disable-next-line default-param-last
@@ -27,6 +28,11 @@ const createNodeReducer = (state = initialState, action) => {
         return {
             ...state,
             showCard: !state.showCard,
+        }
+    case "node/highestNodeId":
+        return {
+            ...state,
+            highestNodeId: action.payload
         }
     default:
         return state;

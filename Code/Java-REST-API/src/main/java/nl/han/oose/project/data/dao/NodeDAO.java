@@ -59,6 +59,29 @@ public class NodeDAO {
         return getNodesFromSkillTree(skilltreeId);
     }
 
+    public int getHighestNodeId() throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var highestNodeId = getHighestNodeIdQuery();
+        connection.close();
+        return highestNodeId;
+    }
+
+    private int getHighestNodeIdQuery() throws SQLException {
+        var query = "SELECT TOP 1 ID \n" +
+                "from Nodes\n" +
+                "ORDER BY ID\n" +
+                "DESC";
+        var stmt = connection.prepareStatement(query);
+        var resultSet = stmt.executeQuery();
+
+        int nodeId = 0;
+        if(resultSet.next()){
+            nodeId = resultSet.getInt("ID");
+        }
+
+        return nodeId;
+    }
+
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
         var insertNodeQuery = "INSERT INTO Nodes (Skill, Description, PositionX, PositionY, SkillTreeID)\n" +
                 "VALUES \n" +

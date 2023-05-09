@@ -10,10 +10,11 @@ import ReactFlow, {
 import CustomNode from "./CustomNode";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
+import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 
-const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
+const defaultViewport = { x: 0, y: 0 };
 
 const nodeTypes = {
     custom: CustomNode,
@@ -26,14 +27,29 @@ function ReactFlowComponent() {
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
+  
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const [currentNodeId, setCurrentNodeId] = useState(0);
 
     let skilltreeId;
     if (skilltree !== null) {
       skilltreeId = skilltree.id;
     }
+
+    useEffect(() => {
+      dispatch(fetchHighestNodeIdActionAsync());
+      dispatch(fetchAllNodesFromSkilltree(skilltreeId));
+    }, [skilltreeId]);
+
+    useEffect(() => {
+      convertFetchToNodes();
+    }, [allFetchedNodes])
+
+    useEffect(() => {
+      setCurrentNodeId(highestNodeId + 1)
+    }, [highestNodeId])
 
     const convertFetchToNodes = () => {
       let tempArray = [];
@@ -49,17 +65,6 @@ function ReactFlowComponent() {
       setNodes(tempArray);
     }
 
-    useEffect(() => {
-      dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-    }, [skilltreeId]);
-
-    useEffect(() => {
-      convertFetchToNodes();
-    }, [allFetchedNodes])
-
-  let id = 0;
-  const getId = () => `${id++}`;
-
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   const onDragOver = useCallback((event) => {
@@ -70,7 +75,6 @@ function ReactFlowComponent() {
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
-  
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData('application/reactflow');
   
@@ -84,22 +88,28 @@ function ReactFlowComponent() {
         y: event.clientY - reactFlowBounds.top,
       });
       
+      setCurrentNodeId(currentNodeId + 1);
+
       const newNode = {
-        id: getId(),
+        id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node` },
-        skilltreeId
+        data: { label: `Nieuwe node` }
       };
-  
+
       setNodes((prevNodes) => [...prevNodes, newNode]);
-    },
-    [reactFlowInstance]
+
+      const description = "";
+      const assesmentCriteria = [];
+      const learningOutcome = "";
+      dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+    }
   );
   
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
+        {console.log(nodes)}
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -111,6 +121,7 @@ function ReactFlowComponent() {
             onDrop={onDrop}
             onDragOver={onDragOver}
             defaultViewport={defaultViewport}
+            fitView
             minZoom={0.2}
             maxZoom={4}
           >

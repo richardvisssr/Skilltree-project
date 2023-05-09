@@ -18,10 +18,13 @@ public class NodeService {
         return nodeDAO.getNodesFromSkillTree(skilltreeId);
     }
 
+    public int getHighestNodeId() throws SQLException {
+        return nodeDAO.getHighestNodeId();
+    }
+
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
-
 
 }

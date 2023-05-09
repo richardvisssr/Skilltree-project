@@ -9,7 +9,7 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-    const docentId = useSelector((state) => state.user.userId);
+    const userId = useSelector((state) => state.user.userId);
 
     const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
         if (description === '') {
         return;
         }
-            dispatch(fetchCreateSkillTreeActionAsync(title, description, docentId));
+            dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
         };
 
         useEffect(() => {

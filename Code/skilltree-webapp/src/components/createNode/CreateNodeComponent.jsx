@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormFieldComponent from "./FormFieldComponent";
-import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/Node";
+import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
 import "../../styles/styles.css";
 
 function CreateNodeComponent() {
@@ -34,10 +34,6 @@ function CreateNodeComponent() {
     };
 
     const [cardShowState, setCardShowState] = useState(true);
-    //TODO: showcard uitvoeren als een node geplaatst is en default state naar false
-    // const showCard = () => {
-    //     setCardShowState(true);
-    // };
 
     const hideCard = () => {
         dispatch(showCreateCard())
@@ -47,8 +43,6 @@ function CreateNodeComponent() {
         dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
         hideCard();
     };
-    /* eslint-disable react/jsx-wrap-multilines */
-    /* eslint-disable operator-linebreak */
     return (
         <div>
             { cardShowState ?

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Handle, Position } from "reactflow";
 import { AiFillEdit } from "react-icons/ai";
 
-import { showCreateCard } from "../actions/Node";
+import { showCreateCard } from "../actions/NodeAction";
 import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable, data }) {

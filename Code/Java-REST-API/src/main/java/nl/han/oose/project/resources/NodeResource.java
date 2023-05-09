@@ -41,6 +41,16 @@ public class NodeResource {
         }
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getHighestNodeId() {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.getHighestNodeId()).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Inject
     public void setNodeService(NodeService nodeService) {
         this.nodeService = nodeService;
