@@ -15,7 +15,11 @@ public class SkilltreeService {
     }
 
     public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
-        return skilltreeDAO.createSkilltrees(skilltreeDTO, gebruikerId);
+        return skilltreeDAO.createSkilltree(skilltreeDTO, gebruikerId);
+    }
+
+    public SkilltreesDTO updateSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
+        return skilltreeDAO.updateSkilltree(skilltreeDTO, gebruikerId);
     }
 
     @Inject

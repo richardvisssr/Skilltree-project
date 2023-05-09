@@ -17,7 +17,7 @@ public class SkilltreeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
     public Response getAllSkilltrees(
-            @PathParam("gebruikerId") int gebruikerId
+        @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
@@ -31,8 +31,8 @@ public class SkilltreeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
     public Response createSkilltree(
-            SkilltreeDTO skilltreeDTO,
-            @PathParam("gebruikerId") int gebruikerId
+        SkilltreeDTO skilltreeDTO,
+        @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
@@ -45,6 +45,16 @@ public class SkilltreeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
+    public Response updateSkilltree(
+        SkilltreeDTO skilltreeDTO,
+        @PathParam("gebruikerId") int gebruikerId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
     @Inject
     public void setSkilltreeService(SkilltreeService skilltreeService) {

@@ -13,7 +13,7 @@ export function fetchAllSkilltreesActionAsync(userId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
+        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options)
             .then((response) => response.json())
             .then((result) => dispatch(setSkilltreesAction(result.skilltrees)));
     };
@@ -37,7 +37,7 @@ export const fetchCreateSkillTreeActionAsync = (title, description, userId) => a
         body: JSON.stringify(body),
         mode: "cors",
     };
-    const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options);
+    const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
     dispatch(fetchAllSkilltreesActionAsync(userId));
     return result;
 };
