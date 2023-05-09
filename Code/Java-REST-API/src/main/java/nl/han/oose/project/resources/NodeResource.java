@@ -24,6 +24,29 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.createNode(nodeDTO, skilltreeId)).build();
         } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
+    public Response getAllNodes(
+        @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try{
+            return Response.status(Response.Status.OK).entity(nodeService.getAllNodes(skilltreeId)).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getHighestNodeId() {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.getHighestNodeId()).build();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

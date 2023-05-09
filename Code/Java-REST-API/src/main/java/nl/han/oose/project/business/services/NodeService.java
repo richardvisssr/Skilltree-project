@@ -14,8 +14,17 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
+    public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
+        return nodeDAO.getNodesFromSkillTree(skilltreeId);
+    }
+
+    public int getHighestNodeId() throws SQLException {
+        return nodeDAO.getHighestNodeId();
+    }
+
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
+
 }

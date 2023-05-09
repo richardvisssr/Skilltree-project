@@ -11,11 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/SkilltreeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/SkilltreeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/utils/Cors.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/utils/Cors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/SkilltreeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/SkilltreeResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/NodeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/NodeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/Java-REST-API.war" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/Java-REST-API.war" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +62,8 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "0e9d72ba8ac9a260042e1b83d85a8ed7",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -176,6 +174,9 @@
       <workItem from="1681975101896" duration="57000" />
       <workItem from="1681998341644" duration="708000" />
       <workItem from="1682065601947" duration="6096000" />
+      <workItem from="1682415925141" duration="44000" />
+      <workItem from="1682415989336" duration="35000" />
+      <workItem from="1682416042521" duration="673000" />
     </task>
     <servers />
   </component>
