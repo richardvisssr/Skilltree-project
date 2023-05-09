@@ -35,7 +35,6 @@ export const fetchCreateNodeActionAsync = (skill, description, positionX, positi
 };
 
 export function setHighestNodeIdAction(nodeId) {
-    console.log("ACION", nodeId);
     return {
         type: "node/highestNodeId",
         payload: nodeId,

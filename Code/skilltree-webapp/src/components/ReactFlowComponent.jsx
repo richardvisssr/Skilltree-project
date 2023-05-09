@@ -109,7 +109,6 @@ function ReactFlowComponent() {
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
-        {console.log(nodes)}
           <ReactFlow
             nodes={nodes}
             edges={edges}
