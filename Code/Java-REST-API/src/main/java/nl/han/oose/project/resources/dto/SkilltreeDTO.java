@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkilltreeDTO {
-    private double id;
+    private int id;
     private String title;
     private String description;
     private List<NodeDTO> nodes = new ArrayList<>();
@@ -12,7 +12,7 @@ public class SkilltreeDTO {
 
     public SkilltreeDTO(){}
 
-    public SkilltreeDTO(double id, String title, String description) {
+    public SkilltreeDTO(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -20,7 +20,7 @@ public class SkilltreeDTO {
         this.edges = edges;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -40,7 +40,7 @@ public class SkilltreeDTO {
         this.edges = edges;
     }
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 

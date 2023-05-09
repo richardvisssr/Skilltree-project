@@ -22,7 +22,7 @@ public class NodeResourceTest {
     private NodeRequestDTO nodeRequestDTO;
     private NodeService nodeService;
 
-    private static final int DOCENT_ID = 1;
+    private static final int GEBRUIKER_ID = 1;
 
     @BeforeEach
     void setup() {
@@ -40,10 +40,10 @@ public class NodeResourceTest {
         try {
             //Arrange
             var expected = Response.Status.OK.getStatusCode();
-            when(nodeService.createNode(nodeRequestDTO, DOCENT_ID)).thenReturn(nodesDTO);
+            when(nodeService.createNode(nodeRequestDTO, GEBRUIKER_ID)).thenReturn(nodesDTO);
 
             //Act
-            var result = sut.createNode(nodeRequestDTO, DOCENT_ID);
+            var result = sut.createNode(nodeRequestDTO, GEBRUIKER_ID);
 
             //Assert
             Assertions.assertEquals(expected, result.getStatus());
@@ -57,10 +57,10 @@ public class NodeResourceTest {
         try {
             // Arrange
             var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-            when(nodeService.createNode(nodeRequestDTO, DOCENT_ID)).thenThrow(new SQLException());
+            when(nodeService.createNode(nodeRequestDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
 
             // Act
-            var result = sut.createNode(nodeRequestDTO, DOCENT_ID);
+            var result = sut.createNode(nodeRequestDTO, GEBRUIKER_ID);
 
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
