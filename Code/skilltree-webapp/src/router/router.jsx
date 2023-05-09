@@ -1,5 +1,5 @@
-import React from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import React from "react";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import HomeScreen from '../screens/homeScreen';
 

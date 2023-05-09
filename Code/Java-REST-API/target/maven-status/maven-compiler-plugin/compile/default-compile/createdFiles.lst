@@ -1,0 +1,12 @@
+nl\han\oose\project\business\services\NodeService.class
+nl\han\oose\project\resources\dto\NodeDTO.class
+nl\han\oose\project\data\utils\Cors.class
+nl\han\oose\project\data\dao\NodeDAO.class
+nl\han\oose\project\resources\NodeResource.class
+nl\han\oose\project\resources\dto\NodesDTO.class
+nl\han\oose\project\resources\dto\AssesmentCriteriaDTO.class
+nl\han\oose\project\data\utils\DatabaseProperties.class
+nl\han\oose\project\resources\dto\NodeRequestDTO.class
+nl\han\oose\project\resources\TestApplication.class
+nl\han\oose\project\data\datamapper\Datamapper.class
+nl\han\oose\project\data\datamapper\NodeDatamapper.class
