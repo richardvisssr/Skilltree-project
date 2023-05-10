@@ -1,5 +1,6 @@
 package nl.han.oose.project.resources;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -16,6 +17,7 @@ public class EdgeResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @Path("/skilltrees/{skilltreeId}")
     public Response createEdge(
             EdgeDTO edgeDTO,
@@ -23,6 +25,19 @@ public class EdgeResource {
     ) {
         try {
             return Response.status(Response.Status.OK).entity(edgeService.createEdge(edgeDTO, skilltreeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
+    public Response getAllEdges(
+            @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(edgeService.getAllEdges(skilltreeId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }

@@ -14,9 +14,13 @@ public class EdgeService {
     public EdgesDTO createEdge(EdgeDTO edgeDTO, int skilltreeId) throws SQLException {
         return edgeDAO.createEdge(edgeDTO, skilltreeId);
     }
-
+    public EdgesDTO getAllEdges(int skilltreeId) throws SQLException {
+        return edgeDAO.getAllEdgesFromSkilltree(skilltreeId);
+    }
     @Inject
     public void setEdgeDAO(EdgeDAO edgeDAO) {
         this.edgeDAO = edgeDAO;
     }
+
+
 }

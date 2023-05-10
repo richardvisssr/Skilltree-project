@@ -1,41 +1,51 @@
 package nl.han.oose.project.resources.dto;
 
 public class EdgeDTO {
-    private String EdgeId;
-    private String TargetId;
-    private String SourceId;
+    private String edgeId;
+    private String targetId;
+    private String sourceId;
+
+    private int skillTreeID;
 
     public EdgeDTO() {
     }
 
-    public EdgeDTO(String EdgeId, String TargetId, String SourceId) {
-        this.EdgeId = EdgeId;
-        this.TargetId = TargetId;
-        this.SourceId = SourceId;
+    public EdgeDTO(String edgeId, String targetId, String sourceId, int skillTreeID) {
+        this.edgeId = edgeId;
+        this.targetId = targetId;
+        this.sourceId = sourceId;
+        this.skillTreeID = skillTreeID;
     }
 
     public String getEdgeId() {
-        return EdgeId;
+        return edgeId;
     }
 
     public void setEdgeId(String edgeId) {
-        EdgeId = edgeId;
+        this.edgeId = edgeId;
     }
 
     public String getTargetId() {
-        return TargetId;
+        return targetId;
     }
 
     public void setTargetId(String targetId) {
-        TargetId = targetId;
+        this.targetId = targetId;
     }
 
     public String getSourceId() {
-        return SourceId;
+        return sourceId;
     }
 
     public void setSourceId(String sourceId) {
-        SourceId = sourceId;
+        this.sourceId = sourceId;
     }
 
+    public int getSkillTreeID() {
+        return skillTreeID;
+    }
+
+    public void setSkillTreeID(int skillTreeID) {
+        this.skillTreeID = skillTreeID;
+    }
 }

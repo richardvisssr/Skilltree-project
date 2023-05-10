@@ -10,7 +10,6 @@ import java.util.List;
 
 public class EdgeDatamapper {
     public EdgesDTO map(ResultSet edgeResultSet) throws SQLException {
-        System.out.println("EdgeDatamapper: " + edgeResultSet);
         var edgesDTO = new EdgesDTO();
         List<EdgeDTO> edges = new ArrayList<>();
 
@@ -18,7 +17,8 @@ public class EdgeDatamapper {
             edges.add(new EdgeDTO(
                     edgeResultSet.getString("EdgeId"),
                     edgeResultSet.getString("TargetID"),
-                    edgeResultSet.getString("SourceID")
+                    edgeResultSet.getString("SourceID"),
+                    edgeResultSet.getInt("SkillTreeID")
             ));
         }
         edgesDTO.setEdges(edges);

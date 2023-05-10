@@ -25,7 +25,7 @@ public class EdgeDAO {
     }
 
     private ResultSet getAllEdgesFromSkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT EdgeId, TargetID, SourceID FROM Edges WHERE SkilltreeID = ?";
+        var query = "SELECT EdgeId, TargetID, SourceID, SkillTreeID FROM Edges WHERE SkilltreeID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
         var result = stmt.executeQuery();

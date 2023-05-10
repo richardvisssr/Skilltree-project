@@ -14,6 +14,7 @@ import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
+import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 import {fetchCreateEdgeActionAsync} from "../actions/EdgeAction";
@@ -51,6 +52,7 @@ function ReactFlowComponent() {
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
+    const allFetchedEdges = useSelector((state) => state.skilltree.edges);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
     const [currentNodeId, setCurrentNodeId] = useState(0);
@@ -63,11 +65,32 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
+      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
     }, [skilltreeId]);
 
-    useEffect(() => {
+  const convertFetchToEdges = () => {
+    let tempArray = [];
+    allFetchedEdges.map((edge) => {
+      const tempObj = {
+        id: `${edge.edgeId}`,
+        source: `${edge.sourceId}`,
+        target: `${edge.targetId}`,
+        type: 'floating',
+        style: { strokeWidth: 3, stroke: 'black' },
+        markerEnd: {
+            type: MarkerType.ArrowClosed,
+            color: 'black',
+        }
+      }
+      tempArray.push(tempObj);
+    })
+    setEdges(tempArray);
+  }
+
+  useEffect(() => {
       convertFetchToNodes();
-    }, [allFetchedNodes])
+      convertFetchToEdges();
+    }, [allFetchedNodes, allFetchedEdges])
 
     useEffect(() => {
       setCurrentNodeId(highestNodeId + 1)
@@ -97,7 +120,7 @@ function ReactFlowComponent() {
     useEffect(() => {
         if(edges.length > 0) {
             const lastEdge = edges[edges.length - 1];
-            dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId));
+            dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
         }
     }, [edges]);
 
@@ -143,6 +166,7 @@ function ReactFlowComponent() {
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
+          {console.log(edges)}
           <ReactFlow
             nodes={nodes}
             edges={edges}
