@@ -43,7 +43,6 @@ export default function HomeScreen() {
             </div>
         );
         }
-        console.log(currentSkilltree);
     };
 
     return (
