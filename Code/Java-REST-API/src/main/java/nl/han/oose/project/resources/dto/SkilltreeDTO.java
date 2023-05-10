@@ -40,7 +40,7 @@ public class SkilltreeDTO {
         this.edges = edges;
     }
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
