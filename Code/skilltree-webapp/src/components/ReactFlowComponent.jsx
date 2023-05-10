@@ -14,8 +14,6 @@ import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../ac
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 
-const defaultViewport = { x: 0, y: 0 };
-
 const nodeTypes = {
     custom: CustomNode,
 };
@@ -103,7 +101,7 @@ function ReactFlowComponent() {
       const assesmentCriteria = [];
       const learningOutcome = "";
       dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
-    }
+    },
   );
   
     return (
@@ -119,7 +117,6 @@ function ReactFlowComponent() {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            defaultViewport={defaultViewport}
             fitView
             minZoom={0.2}
             maxZoom={4}

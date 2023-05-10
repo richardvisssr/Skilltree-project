@@ -1,5 +1,5 @@
 const initialState = {
-  userId: 1,
+  userId: 2,
 }
 
 // eslint-disable-next-line default-param-last
