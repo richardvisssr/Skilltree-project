@@ -1,4 +1,5 @@
-import {ReactFlow} from "reactflow";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React from "react";
 
 export default function ReactFlowComponent() {
     const nodes = [
