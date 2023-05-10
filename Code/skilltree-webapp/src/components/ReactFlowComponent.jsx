@@ -117,12 +117,17 @@ function ReactFlowComponent() {
     setEdges((eds) => addEdge(params, eds))
   }, []);
 
-    useEffect(() => {
-        if(edges.length > 0) {
-            const lastEdge = edges[edges.length - 1];
-            dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
+  useEffect(() => {
+    let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
+      if (edges.length > 0) {
+        const lastEdge = edges[edges.length - 1];
+        if(lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
+            return;
         }
-    }, [edges]);
+        dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
+      }
+  }, [edges])
+
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -166,7 +171,6 @@ function ReactFlowComponent() {
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
-          {console.log(edges)}
           <ReactFlow
             nodes={nodes}
             edges={edges}
