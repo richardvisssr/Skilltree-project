@@ -23,6 +23,47 @@ public class NodeDAO {
         return nodes;
     }
 
+    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
+        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
+        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
+        connection.close();
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    public NodesDTO updateNode(NodeRequestDTO nodeRequestDTODTO, int nodeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        updateNodeQuery(nodeRequestDTODTO, nodeId);
+        updateAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), nodeId);
+        updateLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), nodeId);
+        connection.close();
+        return getNodes(nodeId);
+    }
+
+    public int getHighestNodeId() throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var highestNodeId = getHighestNodeIdQuery();
+        connection.close();
+        return highestNodeId;
+    }
+
+    private int getHighestNodeIdQuery() throws SQLException {
+        var query = "SELECT TOP 1 ID \n" +
+                "from Nodes\n" +
+                "ORDER BY ID\n" +
+                "DESC";
+        var stmt = connection.prepareStatement(query);
+        var resultSet = stmt.executeQuery();
+
+        int nodeId = 0;
+        if(resultSet.next()){
+            nodeId = resultSet.getInt("ID");
+        }
+
+        return nodeId;
+    }
+
     private ResultSet getAssesmentCriteriaQuery(int skilltreeId) throws SQLException {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
@@ -49,39 +90,6 @@ public class NodeDAO {
         var result = stmt.executeQuery();
         return result;
     }
-
-    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
-        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
-        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
-        connection.close();
-        return getNodesFromSkillTree(skilltreeId);
-    }
-
-    public int getHighestNodeId() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var highestNodeId = getHighestNodeIdQuery();
-        connection.close();
-        return highestNodeId;
-    }
-
-    private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
-        var stmt = connection.prepareStatement(query);
-        var resultSet = stmt.executeQuery();
-
-        int nodeId = 0;
-        if(resultSet.next()){
-            nodeId = resultSet.getInt("ID");
-        }
-
-        return nodeId;
-    }
-
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
         var insertNodeQuery = "INSERT INTO Nodes (Skill, Description, PositionX, PositionY, SkillTreeID)\n" +
                 "VALUES \n" +
@@ -123,6 +131,37 @@ public class NodeDAO {
         stmt.setInt(2, createdNodeId);
         stmt.executeUpdate();
     }
+
+    private void updateLearningOutcomeQuery(String learningOutcome, int nodeId) throws SQLException {
+        var updateQuery = "UPDATE LearningOutcome SET Description = ? WHERE NodeID = ?";
+        var stmt = connection.prepareStatement(updateQuery);
+        stmt.setString(1, learningOutcome);
+        stmt.setInt(2, nodeId);
+        stmt.executeUpdate();
+    }
+
+    private void updateAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {
+        // Insert updated assessment criteria
+        for (String assessmentCriterion : assesmentCriteriaDTO) {
+            var insertQuery = "UPDATE AssesmentCriteria SET Description = ? WHERE NodeID = ?" +
+                    "VALUES (?, ?)";
+            var insertStmt = connection.prepareStatement(insertQuery);
+            insertStmt.setString(1, assessmentCriterion);
+            insertStmt.setInt(2, nodeId);
+            insertStmt.executeUpdate();
+        }
+    }
+
+    private void updateNodeQuery(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
+        var updateNodeQuery = "UPDATE Nodes SET Skill = ?, Description = ? WHERE NodeID = ?";
+        var stmt = connection.prepareStatement(updateNodeQuery);
+        stmt.setString(1, nodeDTO.getSkill());
+        stmt.setString(2, nodeDTO.getDescription());
+        stmt.setInt(3, nodeId);
+        stmt.executeUpdate();
+    }
+
+
 
     @Inject
     public void setNodeDatamapper(NodeDatamapper nodeDatamapper) {
