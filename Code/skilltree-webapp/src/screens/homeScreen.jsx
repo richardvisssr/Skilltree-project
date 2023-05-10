@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponent from "../components/SidebarComponent";
-import TopbarComponent from "../components/TopbarComponent";
+import SidebarComponent from "../components/sidebarComponent";
+import TopbarComponent from "../components/topbarComponent";
 import ReactFlowComponent from "../components/ReactFlowComponent";
 import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
-import CreateNodeComponent from "../components/createNode/CreateNodeComponent";
+import CreateNodeComponent from "../components/createNode/UpdateNodeComponent";
 
 export default function HomeScreen() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);

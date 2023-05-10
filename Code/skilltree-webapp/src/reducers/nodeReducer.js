@@ -24,18 +24,31 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
-    case "node/showNodeCard":
-        return {
-            ...state,
-            showCard: !state.showCard,
-        }
-    case "node/highestNodeId":
-        return {
-            ...state,
-            highestNodeId: action.payload
-        }
-    default:
-        return state;
+    }
+};
+
+const updateNodeReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "node/updateNode":
+            return {
+                ...state,
+                skill: action.payload.skill,
+                description: action.payload.description,
+                learningOutcome: action.payload.learningOutcome,
+                assesmentCriteria: action.payload.assesmentCriteria,
+            };
+        case "node/showNodeCard":
+            return {
+                ...state,
+                showCard: !state.showCard,
+            }
+        case "node/highestNodeId":
+            return {
+                ...state,
+                highestNodeId: action.payload
+            }
+        default:
+            return state;
     }
 };
 
