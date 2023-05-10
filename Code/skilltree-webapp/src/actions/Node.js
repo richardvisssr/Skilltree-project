@@ -37,3 +37,34 @@ export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria
             dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
         });
 };
+
+export function setDeleteNodeAction(nodeId) {
+    return {
+        type: "node/deleteNode",
+        payload: {
+            nodeId,
+        }
+    }
+}
+
+export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+            nodeId
+        }),
+
+    };
+
+    fetch(`${API_PATH}/nodes/${nodeId}`, options)
+        .then((response) => response.json())
+        .then(() => {
+            dispatch(setDeleteNodeAction(nodeId));
+        });
+
+}

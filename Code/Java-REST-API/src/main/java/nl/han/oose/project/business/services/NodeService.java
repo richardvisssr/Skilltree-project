@@ -14,6 +14,10 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
+    public int deleteNode(int nodeId) throws SQLException {
+        return nodeDAO.deleteNode(nodeId);
+    }
+
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;

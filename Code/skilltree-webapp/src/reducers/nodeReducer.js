@@ -1,4 +1,5 @@
 const initialState = {
+    nodeId: null,
     skill: "",
     description: "",
     positionX: "",
@@ -9,7 +10,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-const createNodeReducer = (state = initialState, action) => {
+const nodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
         return {
@@ -22,9 +23,14 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
+    case "node/deleteNode":
+        return {
+            ...state,
+            nodeId: action.payload.nodeId,
+        };
     default:
         return state;
     }
 };
 
-export default createNodeReducer;
+export default nodeReducer;
