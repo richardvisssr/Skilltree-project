@@ -3,13 +3,15 @@ import { useSelector } from 'react-redux';
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
-import { fetchCreateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../actions/SkilltreeAction';
 
-export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
+export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
     const userId = useSelector((state) => state.user.userId);
+    const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
+    const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
 
     const dispatch = useDispatch();
 
@@ -22,10 +24,17 @@ export default function TopbarComponent({ currentSkilltree, newSkilltree }) {
         if (title === '') {
         return;
         }
+        
         if (description === '') {
         return;
         }
+        
+        if (newSkilltree) {
             dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
+
+        } else if (currentSkilltree !== null) {
+            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId))
+        }
         };
 
         useEffect(() => {
