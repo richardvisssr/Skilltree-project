@@ -14,8 +14,8 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
-    public NodesDTO updateNode(NodeRequestDTO nodeDTO) throws SQLException {
-        return nodeDAO.updateNode(nodeDTO);
+    public NodesDTO updateNode(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
+        return nodeDAO.updateNode(nodeDTO, nodeId);
     }
 
     public NodesDTO getAllNodes(int skilltreeId) throws SQLException {

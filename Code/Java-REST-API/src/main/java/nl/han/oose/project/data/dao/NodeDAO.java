@@ -37,8 +37,9 @@ public class NodeDAO {
         updateNodeQuery(nodeRequestDTODTO, nodeId);
         updateAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), nodeId);
         updateLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), nodeId);
+        var skilltreeId = nodeRequestDTODTO.getSkilltreeId();
         connection.close();
-        return getNodes(nodeId);
+        return getNodesFromSkillTree(skilltreeId);
     }
 
     public int getHighestNodeId() throws SQLException {
@@ -153,7 +154,7 @@ public class NodeDAO {
     }
 
     private void updateNodeQuery(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
-        var updateNodeQuery = "UPDATE Nodes SET Skill = ?, Description = ? WHERE NodeID = ?";
+        var updateNodeQuery = "UPDATE Nodes SET Skill = ?, Description = ? WHERE ID = ?";
         var stmt = connection.prepareStatement(updateNodeQuery);
         stmt.setString(1, nodeDTO.getSkill());
         stmt.setString(2, nodeDTO.getDescription());

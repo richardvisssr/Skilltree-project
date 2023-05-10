@@ -37,8 +37,7 @@ public class NodeResource {
             @PathParam("nodeId") int nodeId
     ) {
         try {
-            nodeService.updateNode(nodeDTO, nodeId);
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.OK).entity(nodeService.updateNode(nodeDTO, nodeId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
