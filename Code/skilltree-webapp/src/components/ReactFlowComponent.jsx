@@ -5,8 +5,9 @@ import ReactFlow, {
   addEdge,
   useNodesState,
   useEdgesState,
-  Controls,
+  Controls, MarkerType,
 } from 'reactflow';
+
 import CustomNode from "./CustomNode";
 import FloatingEdge from "./edges/FloatingEdge";
 import ConnectionLineStyle from "./edges/ConnectionLineStyle";
@@ -25,6 +26,20 @@ const edgeTypes = {
 const nodeTypes = {
     custom: CustomNode,
 };
+
+const defaultEdgeOptions = {
+  style: { strokeWidth: 3, stroke: 'black' },
+  type: 'floating',
+  markerEnd: {
+    type: MarkerType.ArrowClosed,
+    color: 'black',
+  },
+};
+const connectionLineStyle = {
+  strokeWidth: 3,
+  stroke: 'black',
+};
+
 
 function ReactFlowComponent() {
     const dispatch = useDispatch();
@@ -118,15 +133,17 @@ function ReactFlowComponent() {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            connectionLineComponent={ConnectionLineStyle}
-            onConnect={onConnect}
             edgeTypes={edgeTypes}
             nodeTypes={nodeTypes}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            connectionLineComponent={ConnectionLineStyle}
+            connectionLineStyle={connectionLineStyle}
+            defaultEdgeOptions={defaultEdgeOptions}
             defaultViewport={defaultViewport}
             fitView
             minZoom={0.2}
