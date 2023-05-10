@@ -17,7 +17,9 @@ export default function HomeScreen() {
             return (
                 <CreateNodeComponent />
             )
-        } else {
+            }else if(currentSkilltree == null){
+                <ReactFlowComponent />
+            }else if(currentSkilltree !== null){
             return (
                 <ReactFlowComponent />
             )
@@ -25,19 +27,22 @@ export default function HomeScreen() {
     }
 
     const skilltreeSelected = () => {
-        if (currentSkilltree !== null || newSkilltree) {
+        if (currentSkilltree !== null) {
             return (
                 <div className="w-full h-full flex flex-col">
                     <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
                     {showScreen()}
                 </div>
             );
-        }
+        } else if (currentSkilltree == null && newSkilltree){
         return (
-            <div className="text-center align-middle m-auto">
-                <NoSkilltreeComponent />
+            <div className="w-full h-full flex flex-col">
+                <TopbarComponent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
+                {showScreen()}
             </div>
         );
+        }
     };
 
     return (
