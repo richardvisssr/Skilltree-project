@@ -21,7 +21,7 @@ export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria
     const skilltreeId = 3;
 
     const options = {
-        method: "POST",
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         },
