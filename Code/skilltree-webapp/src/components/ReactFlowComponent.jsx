@@ -16,6 +16,7 @@ import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
+import {fetchCreateEdgeActionAsync} from "../actions/EdgeAction";
 
 const defaultViewport = { x: 0, y: 0 };
 
@@ -86,7 +87,19 @@ function ReactFlowComponent() {
       setNodes(tempArray);
     }
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback((params) => {
+    if(params.source === params.target) {
+      return;
+    }
+    setEdges((eds) => addEdge(params, eds))
+  }, []);
+
+    useEffect(() => {
+        if(edges.length > 0) {
+            const lastEdge = edges[edges.length - 1];
+            dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId));
+        }
+    }, [edges]);
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
