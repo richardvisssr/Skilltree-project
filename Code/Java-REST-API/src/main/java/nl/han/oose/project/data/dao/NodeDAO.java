@@ -6,10 +6,7 @@ import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class NodeDAO {
@@ -78,6 +75,21 @@ public class NodeDAO {
             nodeId = resultSet.getInt("id");
         }
 
+        return nodeId;
+    }
+
+    public int deleteNode(int nodeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var result = deleteNodeQuery(nodeId);
+        connection.close();
+        return result;
+    }
+
+    private int deleteNodeQuery(int nodeId) throws SQLException {
+        var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
+        var stmt = connection.prepareStatement(deleteNodeQuery);
+        stmt.setInt(1, nodeId);
+        stmt.executeQuery();
         return nodeId;
     }
 

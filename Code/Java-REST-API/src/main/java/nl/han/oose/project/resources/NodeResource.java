@@ -28,6 +28,20 @@ public class NodeResource {
         }
     }
 
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{nodeId}")
+    public Response deleteNode(
+            @PathParam("nodeId") int nodeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.deleteNode(nodeId)).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Inject
     public void setNodeService(NodeService nodeService) {
         this.nodeService = nodeService;
