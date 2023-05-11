@@ -1,56 +1,91 @@
 package nl.han.oose.project.resources.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NodeDTO {
-    private double id;
-    private String title;
+    private int ID;
     private String skill;
     private String description;
-    private int positionX;
-    private int positionY;
-    private int skillTreeId;
+    private double positionX;
+    private double positionY;
+    private int skilltreeId;
+    private String learningOutcome;
+    private List<AssesmentCriteriaDTO> assesmentCriteria = new ArrayList<>();
 
-    public NodeDTO(double id, String title, String skill, String description, int positionX, int positionY, int skillTreeId) {
-        this.id = id;
-        this.title = title;
+    public NodeDTO() {}
+
+    public NodeDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
+        this.ID = ID;
         this.skill = skill;
         this.description = description;
         this.positionX = positionX;
         this.positionY = positionY;
-        this.skillTreeId = skillTreeId;
+        this.skilltreeId = skilltreeId;
+        this.learningOutcome = learningOutcome;
     }
 
-    public double getId() { return id; }
-    public String getTitle() {
-        return title;
+    public int getID() {
+        return ID;
     }
-    public void setTitle(String title) {
-        this.title = title;
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
+
     public String getSkill() {
         return skill;
     }
+
     public void setSkill(String skill) {
         this.skill = skill;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
-    public int getPositionX() {
+
+    public double getPositionX() {
         return positionX;
     }
-    public void setPositionX(int positionX) {
+
+    public void setPositionX(double positionX) {
         this.positionX = positionX;
     }
-    public int getPositionY() {
+
+    public double getPositionY() {
         return positionY;
     }
-    public void setPositionY(int positionY) {
+
+    public void setPositionY(double positionY) {
         this.positionY = positionY;
     }
-    public int getSkillTreeID() {
-        return skillTreeId;
+
+    public int getSkilltreeId() {
+        return skilltreeId;
+    }
+
+    public void setSkilltreeId(int skilltreeId) {
+        this.skilltreeId = skilltreeId;
+    }
+
+    public String getLearningOutcome() {
+        return learningOutcome;
+    }
+
+    public void setLearningOutcome(String learningOutcome) {
+        this.learningOutcome = learningOutcome;
+    }
+
+    public List<AssesmentCriteriaDTO> getAssesmentCriteria() {
+        return assesmentCriteria;
+    }
+
+    public void setAssesmentCriteria(List<AssesmentCriteriaDTO> assesmentCriteria) {
+        this.assesmentCriteria = assesmentCriteria;
     }
 }
