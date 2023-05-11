@@ -3,7 +3,6 @@ package nl.han.oose.project.data.dao;
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.SkilltreeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.SkilltreeResource;
 import nl.han.oose.project.resources.dto.SkilltreeDTO;
 import nl.han.oose.project.resources.dto.SkilltreesDTO;
 
@@ -17,37 +16,54 @@ public class SkilltreeDAO {
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-    public SkilltreesDTO getAllSkilltrees(int docentId) throws SQLException {
+    public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllSkilltreesQuery(docentId));
+        var result = datamapper.map(getAllSkilltreesQuery(gebruikerId));
         connection.close();
         return result;
     }
 
-    public SkilltreesDTO createSkilltrees(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
+    public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        createSkilltreeQuery(skilltreeDTO, docentId);
+        createSkilltreeQuery(skilltreeDTO, gebruikerId);
         connection.close();
-        return getAllSkilltrees(docentId);
+        return getAllSkilltrees(gebruikerId);
     }
 
-    private ResultSet getAllSkilltreesQuery(int docentId) throws SQLException {
+    public SkilltreesDTO updateSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        updateSkilltreeQuery(skilltreeDTO, gebruikerId);
+        connection.close();
+        return getAllSkilltrees(gebruikerId);
+    }
+
+    private ResultSet getAllSkilltreesQuery(int gebruikerId) throws SQLException {
         var query = "SELECT * FROM Skilltrees WHERE UserID = ?";
         var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, docentId);
+        stmt.setInt(1, gebruikerId);
         var result = stmt.executeQuery();
         return result;
     }
 
-    private void createSkilltreeQuery(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
+    private void createSkilltreeQuery(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         var query = "INSERT INTO Skilltrees(title, description, UserID) VALUES (?, ?, ?)";
         var stmt = connection.prepareStatement(query);
         stmt.setString(1, skilltreeDTO.getTitle());
         stmt.setString(2, skilltreeDTO.getDescription());
-        stmt.setInt(3, docentId);
+        stmt.setInt(3, gebruikerId);
         stmt.executeUpdate();
-        connection.close();
+    }
+
+    private void updateSkilltreeQuery(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
+        var query = "UPDATE SkillTrees\n" +
+                "SET Title = ?, Description= ? \n" +
+                "WHERE ID = ? AND UserID = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setString(1, skilltreeDTO.getTitle());
+        stmt.setString(2, skilltreeDTO.getDescription());
+        stmt.setInt(3, skilltreeDTO.getId());
+        stmt.setInt(4, gebruikerId);
+        stmt.executeUpdate();
     }
 
     @Inject
