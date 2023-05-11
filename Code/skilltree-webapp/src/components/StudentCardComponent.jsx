@@ -4,15 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/styles.css";
 
 export default function StudentCardComponent() {
-    const dispatch = useDispatch();
-    const userId = useSelector((state) => state.user.userId);
-    const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
 
     const students = ["Jorian", "Richard", "Mitchel", "Thomas", "Sanad", "Kim", "Jeroen", "Jesse", "Jord", "Jordy", "Jordi", "Jordie", "Pim", "Bart", "Frank", "Marco", "Helen", "Joey"];
-
-    // useEffect(() => {
-    //     dispatch(fetchAllStudentsActionAsync(userId, currentSkilltree.id));
-    // }, []);
 
     const studentList = () => {
         try {
