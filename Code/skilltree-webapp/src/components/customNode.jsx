@@ -10,7 +10,7 @@ import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
-    const nodeId = -1
+    const nodeId = data.nodeId;
 
     const [isDeleteNodeComponentVisible, setIsDeleteNodeComponentVisible] = useState(false);
 
