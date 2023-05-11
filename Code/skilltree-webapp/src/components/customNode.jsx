@@ -1,7 +1,6 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { EditNodeComponent } from "./editNode/EditNodeComponent";
 import { DeleteNodeComponent } from "./deleteNode/DeleteNodeComponent";
 import { useState } from "react";
 
@@ -11,12 +10,7 @@ export default function CustomNode({ isConnectable }) {
     const label = "Kaas";
     const nodeId = -1
 
-    const [isEditNodeComponentVisible, setIsEditNodeComponentVisible] = useState(false);
     const [isDeleteNodeComponentVisible, setIsDeleteNodeComponentVisible] = useState(false);
-
-    const showEditNodeComponent = () => {
-        setIsEditNodeComponentVisible(!isEditNodeComponentVisible);
-    };
 
     const showDeleteNodeComponent = () => {
         setIsDeleteNodeComponentVisible(!isDeleteNodeComponentVisible);
@@ -40,7 +34,6 @@ export default function CustomNode({ isConnectable }) {
                                 <button
                                     className="node-button edit-button"
                                     type="button"
-                                    onClick={showEditNodeComponent}
                                 >
                                 <AiFillEdit/>
                                 </button>
@@ -76,7 +69,6 @@ export default function CustomNode({ isConnectable }) {
             </div>
             : null}
 
-            {isEditNodeComponentVisible && <EditNodeComponent />}
             {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
         
         </div>
