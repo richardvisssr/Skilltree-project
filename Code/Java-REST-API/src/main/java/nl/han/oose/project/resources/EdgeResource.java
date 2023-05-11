@@ -24,7 +24,7 @@ public class EdgeResource {
             @PathParam("skilltreeId") int skilltreeId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(edgeService.createEdge(edgeDTO, skilltreeId)).build();
+            return Response.status(Response.Status.CREATED).entity(edgeService.createEdge(edgeDTO, skilltreeId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
