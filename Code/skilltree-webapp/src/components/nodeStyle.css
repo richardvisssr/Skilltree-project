@@ -53,6 +53,11 @@ div.targetHandle {
   opacity: 0;
 }
 
-.edit-button {
+.node-button-container {
+  top: -50px;
   z-index: 2000;
+}
+
+.node-button {
+  z-index: 3000;
 }

@@ -92,7 +92,7 @@ function ReactFlowComponent() {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node` }
+        data: { label: `Nieuwe node`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);
@@ -127,4 +127,5 @@ function ReactFlowComponent() {
       </ReactFlowProvider>
     );
 }
- export default ReactFlowComponent;
+
+export default ReactFlowComponent;
