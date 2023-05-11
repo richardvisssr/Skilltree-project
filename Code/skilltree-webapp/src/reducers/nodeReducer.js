@@ -24,6 +24,8 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
+        default:
+            return state;
     }
 };
 
@@ -52,4 +54,9 @@ const updateNodeReducer = (state = initialState, action) => {
     }
 };
 
-export default createNodeReducer;
+const nodeReducer = {
+    createNodeReducer,
+    updateNodeReducer
+}
+
+export default nodeReducer;

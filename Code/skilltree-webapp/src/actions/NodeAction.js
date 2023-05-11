@@ -34,6 +34,37 @@ export const fetchCreateNodeActionAsync = (skill, description, positionX, positi
         });
 };
 
+export function setUpdateNodeAction(skill, description, learningOutcome, assesmentCriteria) {
+    return {
+        type: "node/updateNode",
+            payload: {
+                skill,
+                description,
+                learningOutcome,
+                assesmentCriteria: [assesmentCriteria],
+        },
+    };
+ }
+
+export const fetchUpdateNodeActionAsync = (skill, description, learningOutcome, assesmentCriteria) => async (dispatch) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+        skill, description, learningOutcome, assesmentCriteria,
+        }),
+
+    };
+    fetch(`${API_PATH}/nodes`, options)
+        .then((response) => response.json())
+        .then(() => {
+            dispatch(setUpdateNodeAction(skill, description, learningOutcome, assesmentCriteria));
+    });
+};
+
 export function setHighestNodeIdAction(nodeId) {
     return {
         type: "node/highestNodeId",
@@ -56,36 +87,5 @@ export function fetchHighestNodeIdActionAsync() {
 export function showCreateCard() {
     return {
         type: "node/showNodeCard"
-    };
-
-    export function updateNodeAction(skill, description, learningOutcome, assesmentCriteria) {
-        return {
-            type: "node/updateNode",
-            payload: {
-                skill,
-                description,
-                learningOutcome,
-                assesmentCriteria: [assesmentCriteria],
-            },
-        };
-    }
-
-    export const fetchUpdateNodeActionAsync = (skill, description, assesmentCriteria, learningOutcome) => async (dispatch) => {
-        const options = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            mode: "cors",
-            body: JSON.stringify({
-                skill, description, learningOutcome, assesmentCriteria,
-            }),
-
-        };
-        fetch(`${API_PATH}/nodes`, options)
-            .then((response) => response.json())
-            .then(() => {
-                dispatch(setCreateNodeAction(skill, description, learningOutcome, assesmentCriteria));
-            });
     };
 }
