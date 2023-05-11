@@ -28,6 +28,22 @@ public class NodeResource {
         }
     }
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{nodeId}")
+    public Response updateNode(
+            NodeRequestDTO nodeDTO,
+            @PathParam("nodeId") int nodeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.updateNode(nodeDTO, nodeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")

@@ -11,9 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/NodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/NodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/NodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/NodeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/NodeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/NodeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/screens/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/screens/homeScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +96,7 @@
       <recent name="nl.han.oose.project.resources.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SkilltreeDTOTest">
+  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final">
     <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -276,6 +278,7 @@
       <workItem from="1682415925141" duration="44000" />
       <workItem from="1682415989336" duration="35000" />
       <workItem from="1682416042521" duration="673000" />
+      <workItem from="1683722570539" duration="606000" />
     </task>
     <servers />
   </component>
@@ -302,7 +305,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java</url>
           <line>12</line>
-          <properties class="nl.han.oose.project.business.services.SkilltreeService">
+          <properties class="nl.han.oose.project.business.services.SkilltreeService" method="getAllSkilltrees">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
