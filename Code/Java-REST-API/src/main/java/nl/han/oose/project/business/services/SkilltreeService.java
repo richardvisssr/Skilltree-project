@@ -10,12 +10,16 @@ import java.sql.SQLException;
 public class SkilltreeService {
     private SkilltreeDAO skilltreeDAO;
 
-    public SkilltreesDTO getAllSkilltrees(int docentId) throws SQLException {
-        return skilltreeDAO.getAllSkilltrees(docentId);
+    public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
+        return skilltreeDAO.getAllSkilltrees(gebruikerId);
     }
 
-    public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int docentId) throws SQLException {
-        return skilltreeDAO.createSkilltrees(skilltreeDTO, docentId);
+    public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
+        return skilltreeDAO.createSkilltree(skilltreeDTO, gebruikerId);
+    }
+
+    public SkilltreesDTO updateSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
+        return skilltreeDAO.updateSkilltree(skilltreeDTO, gebruikerId);
     }
 
     @Inject

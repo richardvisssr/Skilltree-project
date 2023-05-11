@@ -15,11 +15,7 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
     };
 }
 
-export const fetchCreateNodeActionAsync = (skill, description, assesmentCriteria, learningOutcome) => async (dispatch) => {
-    const positionX = 100;
-    const positionY = 200;
-    const skilltreeId = 3;
-
+export const fetchCreateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) => async (dispatch) => {
     const options = {
         method: "POST",
         headers: {
@@ -66,5 +62,29 @@ export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
         .then(() => {
             dispatch(setDeleteNodeAction(nodeId));
         });
+}
 
+export function setHighestNodeIdAction(nodeId) {
+    return {
+        type: "node/highestNodeId",
+        payload: nodeId,
+    };
+}
+
+export function fetchHighestNodeIdActionAsync() {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+        fetch(`${API_PATH}/nodes`, options)
+            .then((response) => response.json())
+            .then((result) => dispatch(setHighestNodeIdAction(result)));
+    };
+}
+
+export function showCreateCard() {
+    return {
+        type: "node/showNodeCard"
+    };
 }

@@ -7,6 +7,8 @@ const initialState = {
     skillTreeId: "",
     learningOutcome: "",
     assesmentCriteria: "",
+    showCard: false,
+    highestNodeId: null,
 };
 
 // eslint-disable-next-line default-param-last
@@ -28,6 +30,16 @@ const nodeReducer = (state = initialState, action) => {
             ...state,
             nodeId: action.payload.nodeId,
         };
+    case "node/showNodeCard":
+        return {
+            ...state,
+            showCard: !state.showCard,
+        }
+    case "node/highestNodeId":
+        return {
+            ...state,
+            highestNodeId: action.payload
+        }
     default:
         return state;
     }

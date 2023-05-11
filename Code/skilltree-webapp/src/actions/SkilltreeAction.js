@@ -13,7 +13,7 @@ export function fetchAllSkilltreesActionAsync(userId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
+        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options)
             .then((response) => response.json())
             .then((result) => dispatch(setSkilltreesAction(result.skilltrees)));
     };
@@ -37,7 +37,7 @@ export const fetchCreateSkillTreeActionAsync = (title, description, userId) => a
         body: JSON.stringify(body),
         mode: "cors",
     };
-    const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options);
+    const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
     dispatch(fetchAllSkilltreesActionAsync(userId));
     return result;
 };
@@ -54,3 +54,39 @@ export function setCurrentSkilltreeAction(skilltree) {
         payload: skilltree,
     };
 }
+
+export function setAllNodesFromSkilltree(nodes) {
+    return {
+        type: "skilltree/setAllNodes",
+        payload: nodes,
+    }
+}
+
+export function fetchAllNodesFromSkilltree(skilltreeId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+            .then((result) => dispatch(setAllNodesFromSkilltree(result.nodes)));
+    };
+}
+
+export const fetchUpdateSkillTreeActionAsync = (id, title, description, userId) => async (dispatch) => {
+    const body = {
+        id,
+        title,
+        description,
+    };
+    const options = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        mode: "cors",
+    };
+    const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
+    dispatch(fetchAllSkilltreesActionAsync(userId));
+    return result;
+};

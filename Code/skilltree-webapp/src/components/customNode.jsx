@@ -1,13 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Handle, Position } from "reactflow";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DeleteNodeComponent } from "./deleteNode/DeleteNodeComponent";
 import { useState } from "react";
 
+import { showCreateCard } from "../actions/NodeAction";
 import "./nodeStyle.css";
 
-export default function CustomNode({ isConnectable }) {
-    const label = "Kaas";
+export default function CustomNode({ isConnectable, data }) {
+    const label = data.label;
     const nodeId = -1
 
     const [isDeleteNodeComponentVisible, setIsDeleteNodeComponentVisible] = useState(false);
@@ -22,6 +24,12 @@ export default function CustomNode({ isConnectable }) {
         setIsNodeVisible(false);
     }
 
+    const dispatch = useDispatch();
+
+    const handleButton = () => {
+        dispatch(showCreateCard());
+    };
+
     return (
         <div>
             {isNodeVisible ?
@@ -34,6 +42,7 @@ export default function CustomNode({ isConnectable }) {
                                 <button
                                     className="node-button edit-button"
                                     type="button"
+                                    onClick={handleButton}
                                 >
                                 <AiFillEdit/>
                                 </button>
@@ -50,9 +59,9 @@ export default function CustomNode({ isConnectable }) {
                         </div>
                         <Handle
                             className="targetHandle"
-                            style={{ zIndex: 2 }}
-                            position={Position.Right}
-                            type="source"
+                                style={{ zIndex: 2 }}
+                                position={Position.Right}
+                                type="source"
                             isConnectable={isConnectable}
                         />
                         <Handle

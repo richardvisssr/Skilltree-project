@@ -24,6 +24,14 @@ public class NodeRequestDTO {
         this.learningOutcome = learningOutcome;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public String getSkill() {
         return skill;
     }

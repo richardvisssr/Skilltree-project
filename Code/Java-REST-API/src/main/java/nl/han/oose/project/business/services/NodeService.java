@@ -17,9 +17,17 @@ public class NodeService {
     public int deleteNode(int nodeId) throws SQLException {
         return nodeDAO.deleteNode(nodeId);
     }
+    public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
+        return nodeDAO.getNodesFromSkillTree(skilltreeId);
+    }
+
+    public int getHighestNodeId() throws SQLException {
+        return nodeDAO.getHighestNodeId();
+    }
 
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
+
 }
