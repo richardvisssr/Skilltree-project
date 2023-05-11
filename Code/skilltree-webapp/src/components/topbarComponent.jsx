@@ -4,10 +4,12 @@ import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
 import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+import StudentCardComponent from './StudentCardComponent';
 
 export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [showStudentCard, setShowStudentCard] = useState(false);
 
     const userId = useSelector((state) => state.user.userId);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
@@ -19,6 +21,22 @@ export default function TopbarComponent() {
         event.dataTransfer.setData('application/reactflow', nodeType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const showCard = () => {
+        if (currentSkilltree !== null && showStudentCard) {
+            return (
+                <StudentCardComponent />
+            )
+        }
+    }
+
+    const koppelButtonAction = () => {
+        if (showStudentCard === false) {
+            setShowStudentCard(true);
+        } else {
+            setShowStudentCard(false);
+        }
+    }
   
     const handleSave = () => {
         if (title === '') {
@@ -111,8 +129,9 @@ export default function TopbarComponent() {
                                     <div className="hidden lg:ml-6 lg:block">
                                         <div className="flex items-center justify-center">
                                             <button
-                                                className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                                className=" dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
+                                                onClick={koppelButtonAction}
                                             >
                                                 Koppelen
                                             </button>
@@ -175,9 +194,11 @@ export default function TopbarComponent() {
                                         </button>
                                     </div>
                                 </div>
+                                
                             </div>
 
                         </Disclosure.Panel>
+                        {showCard()}
                     </>
                 )}
             </Disclosure>
