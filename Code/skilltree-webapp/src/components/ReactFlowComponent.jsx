@@ -19,8 +19,6 @@ import "reactflow/dist/style.css";
 import "../styles/styles.css";
 import {fetchCreateEdgeActionAsync} from "../actions/EdgeAction";
 
-const defaultViewport = { x: 0, y: 0 };
-
 const edgeTypes = {
     floating: FloatingEdge,
 };
@@ -165,7 +163,7 @@ function ReactFlowComponent() {
       const assesmentCriteria = [];
       const learningOutcome = "";
       dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
-    }
+    },
   );
   
     return (
@@ -185,7 +183,6 @@ function ReactFlowComponent() {
             connectionLineComponent={ConnectionLineStyle}
             connectionLineStyle={connectionLineStyle}
             defaultEdgeOptions={defaultEdgeOptions}
-            defaultViewport={defaultViewport}
             fitView
             minZoom={0.2}
             maxZoom={4}

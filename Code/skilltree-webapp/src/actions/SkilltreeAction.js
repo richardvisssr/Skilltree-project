@@ -13,7 +13,7 @@ export function fetchAllSkilltreesActionAsync(userId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options)
+        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options)
             .then((response) => response.json())
             .then((result) => dispatch(setSkilltreesAction(result.skilltrees)));
     };
@@ -32,17 +32,16 @@ export function fetchCreateSkillTreeActionAsync(title, description, userId) {
             title,
             description,
         };
-        const options = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(body),
-            mode: "cors",
-        };
-        const result = await fetch(`${API_PATH}/skilltrees/docenten/${userId}`, options);
-        dispatch(fetchAllSkilltreesActionAsync(userId));
-        return result;
+    const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        mode: "cors",
     };
-}
+    const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
+    dispatch(fetchAllSkilltreesActionAsync(userId));
+    return result;
+};
 
 export function addSkiltreeTopbar() {
     return {
@@ -75,3 +74,22 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
             .then((result) => dispatch(setAllNodesFromSkilltree(result.nodes)));
     };
 }
+
+    export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
+        return async (dispatch) => {
+            const body = {
+                id,
+                title,
+                description,
+            };
+            const options = {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+                mode: "cors",
+            };
+            const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
+            dispatch(fetchAllSkilltreesActionAsync(userId));
+            return result;
+        }
+    }
