@@ -29,6 +29,14 @@ export default function TopbarComponent() {
             )
         }
     }
+
+    const koppelButtonAction = () => {
+        if (showStudentCard === false) {
+            setShowStudentCard(true);
+        } else {
+            setShowStudentCard(false);
+        }
+    }
   
     const handleSave = () => {
         if (title === '') {
@@ -123,7 +131,7 @@ export default function TopbarComponent() {
                                             <button
                                                 className=" dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
-                                                onClick={setShowStudentCard(true)}
+                                                onClick={koppelButtonAction}
                                             >
                                                 Koppelen
                                             </button>
