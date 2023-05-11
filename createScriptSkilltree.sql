@@ -74,13 +74,14 @@ BEGIN TRY
 		);
 		
 
-    CREATE TABLE Edges
+ CREATE TABLE Edges
     (
         ID          INT UNIQUE NOT NULL IDENTITY (1,1),
 
         SourceID    INT        NULL,
         TargetID    INT        NULL,
         SkillTreeID INT        NOT NULL,
+		EdgeId		varchar(255) NOT NULL,
 
         CONSTRAINT PK_Edges PRIMARY KEY (ID),
         CONSTRAINT CHK_SourceID_TargetID CHECK (SourceID != TargetID),
