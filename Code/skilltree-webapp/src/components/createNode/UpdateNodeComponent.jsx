@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormFieldComponent from "./FormFieldComponent";
-import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
+import { fetchUpdateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
 import "../../styles/styles.css";
 
 function CreateNodeComponent() {
@@ -11,8 +11,6 @@ function CreateNodeComponent() {
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState([]);
-
-    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
 
     const dispatch = useDispatch();
 
@@ -40,7 +38,7 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
+        dispatch(fetchUpdateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
         hideCard();
     };
     return (
