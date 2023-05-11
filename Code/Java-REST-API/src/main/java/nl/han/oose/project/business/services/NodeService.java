@@ -16,6 +16,7 @@ public class NodeService {
 
     public int deleteNode(int nodeId) throws SQLException {
         return nodeDAO.deleteNode(nodeId);
+    }
     public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
         return nodeDAO.getNodesFromSkillTree(skilltreeId);
     }
