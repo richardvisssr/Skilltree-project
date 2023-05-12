@@ -11,7 +11,6 @@ const initialState = {
     currentNode: null,
 };
 
-// eslint-disable-next-line default-param-last
 const createNodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
@@ -25,31 +24,23 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
-        case "node/updateNode":
-            return {
-                ...state,
-                skill: action.payload.skill,
-                description: action.payload.description,
-                learningOutcome: action.payload.learningOutcome,
-                assesmentCriteria: action.payload.assesmentCriteria,
-            };
-        case "node/showNodeCard":
-            return {
-                ...state,
-                showCard: !state.showCard,
-            }
-        case "node/highestNodeId":
-            return {
-                ...state,
-                highestNodeId: action.payload
-            }
-        case "node/setCurrentNode":
-            return {
-                ...state,
-                currentNode: action.payload
-            }
-        default:
-            return state;
+    case "node/showNodeCard":
+        return {
+            ...state,
+            showCard: !state.showCard,
+        }
+    case "node/highestNodeId":
+        return {
+            ...state,
+            highestNodeId: action.payload
+        }
+    case "node/setCurrentNode":
+        return {
+            ...state,
+            currentNode: action.payload
+        }
+    default:
+        return state;
     }
 };
 

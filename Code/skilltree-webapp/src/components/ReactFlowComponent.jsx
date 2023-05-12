@@ -55,7 +55,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}`, nodeId: `${node.id}`},
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);

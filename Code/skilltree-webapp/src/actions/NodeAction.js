@@ -98,3 +98,10 @@ export function showCreateCard(currentNodeId) {
     };
 
 }
+
+export function currentNodeSelectedAction(nodeId) {
+    return {
+        type: "node/setCurrentNode",
+        payload: nodeId
+    }
+}

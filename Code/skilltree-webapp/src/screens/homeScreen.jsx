@@ -5,7 +5,7 @@ import SidebarComponent from "../components/SidebarComponent";
 import TopbarComponent from "../components/TopbarComponent";
 import ReactFlowComponent from "../components/ReactFlowComponent";
 import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
-import CreateNodeComponent from "../components/createNode/UpdateNodeComponent";
+import UpdateNodeComponent from "../components/createNode/UpdateNodeComponent";
 
 export default function HomeScreen() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
@@ -15,7 +15,7 @@ export default function HomeScreen() {
     const showScreen = () => {
         if (showNodeCard) {
             return (
-                <CreateNodeComponent />
+                <UpdateNodeComponent />
             )
             }else if(currentSkilltree == null){
                 <ReactFlowComponent />
