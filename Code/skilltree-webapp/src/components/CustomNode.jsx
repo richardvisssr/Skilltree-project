@@ -1,15 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Handle, Position } from "reactflow";
+import {Handle, Position, useStore} from "reactflow";
 import { AiFillEdit } from "react-icons/ai";
 
 import { showCreateCard } from "../actions/NodeAction";
 import "./nodeStyle.css";
 
+const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
 
     const dispatch = useDispatch();
+    const connectionNodeId = useStore(connectionNodeIdSelector);
+    const isTarget = connectionNodeId && connectionNodeId !== data.id;
+    const targetHandleStyle = { zIndex: isTarget ? 3 : 1 };
 
     const handleButton = () => {
         dispatch(showCreateCard());
@@ -35,6 +39,7 @@ export default function CustomNode({ isConnectable, data }) {
                 />
                 <Handle
                     className="targetHandle"
+                    style={targetHandleStyle}
                     position={Position.Left}
                     type="target"
                     isConnectable={isConnectable}
