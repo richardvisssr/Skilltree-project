@@ -92,7 +92,7 @@ public class NodeResourceTest {
     }
 
     @Test
-    void deleteNodeWithException() {
+    void deleteNodeInvalidNodeId() {
         try {
             //Arrange
             var nodeId = -69;
