@@ -141,10 +141,16 @@ public class NodeDAO {
         stmt.executeUpdate();
     }
 
-    private void updateAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {
+    private void updateAssesmentCriteriaQuery(List<String> assessmentCriteriaDTO, int nodeId) throws SQLException {
+        // Delete existing assessment criteria for the given nodeId
+        var deleteQuery = "DELETE FROM AssesmentCriteria WHERE NodeID = ?";
+        var deleteStmt = connection.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, nodeId);
+        deleteStmt.executeUpdate();
+
         // Insert updated assessment criteria
-        for (String assessmentCriterion : assesmentCriteriaDTO) {
-            var insertQuery = "UPDATE AssesmentCriteria SET Description = ? WHERE NodeID = ?" +
+        for (String assessmentCriterion : assessmentCriteriaDTO) {
+            var insertQuery = "INSERT INTO AssesmentCriteria (Description, NodeID)\n" +
                     "VALUES (?, ?)";
             var insertStmt = connection.prepareStatement(insertQuery);
             insertStmt.setString(1, assessmentCriterion);
@@ -152,6 +158,7 @@ public class NodeDAO {
             insertStmt.executeUpdate();
         }
     }
+
 
     private void updateNodeQuery(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
         var updateNodeQuery = "UPDATE Nodes SET Skill = ?, Description = ? WHERE ID = ?";

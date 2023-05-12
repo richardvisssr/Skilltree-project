@@ -79,7 +79,7 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        console.log(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId);
+
         dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
         hideCard();
       };

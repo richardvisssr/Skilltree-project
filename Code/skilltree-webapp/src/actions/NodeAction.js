@@ -10,7 +10,7 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
             positionY,
             skilltreeId,
             learningOutcome,
-            assesmentCriteria: [assesmentCriteria],
+            assesmentCriteria,
         },
     };
 }
@@ -67,6 +67,7 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
             dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
     });
 };
+
 
 export function setHighestNodeIdAction(nodeId) {
     return {
