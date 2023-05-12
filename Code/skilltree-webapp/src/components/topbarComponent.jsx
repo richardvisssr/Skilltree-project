@@ -117,7 +117,7 @@ export default function TopbarComponent() {
                                     <div className="hidden lg:ml-6 lg:block">
                                         <div className="flex items-center justify-center">
                                             <button
-                                                className=" dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                                className="bg-pink-400 dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
                                                 onClick={handleButton}
                                             >

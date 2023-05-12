@@ -42,7 +42,7 @@ export default function StudentCardComponent() {
 
     return (
 <aside id="default-sidebar" className="absolute top-16 right-0 z-40 w-64 h-[calc(100vh-64px)] transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div className="h-[calc(100vh-64px)] px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-pink-700">
+   <div className="h-[calc(100vh-64px)] px-3 py-4 overflow-y-auto bg-pink-400 dark:bg-pink-700">
       <ul className="space-y-2 font-medium">
          {studentList()}
       </ul>
