@@ -29,7 +29,7 @@ function CreateNodeComponent() {
         
         const tempArr = [];
         currentNode.assesmentCriteria.map(assesmentCriterium => {
-            tempArr.push(assesmentCriterium)
+            tempArr.push(assesmentCriterium.description)
         })
 
         setSkill(currentNode.skill);
@@ -55,7 +55,7 @@ function CreateNodeComponent() {
         let returnString = "";
 
         for (let i = 0; i < assesmentCriteria.length; i++) {
-            returnString += assesmentCriteria[i].description;
+            returnString += assesmentCriteria[i];
             // zorgt er voor dat er geen '#' wordt gezet na de laatse assesmentcriterium 
             if (i !== (assesmentCriteria.length - 1)) {
                 returnString += "#";
