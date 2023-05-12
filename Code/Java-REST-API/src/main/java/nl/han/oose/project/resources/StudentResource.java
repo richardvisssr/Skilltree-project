@@ -2,7 +2,6 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -15,7 +14,6 @@ public class StudentResource {
     private StudentService studentService;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("")
     public Response getAllStudents() {
         try {
             return Response.status(Response.Status.OK).entity(studentService.getAllStudents()).build();
