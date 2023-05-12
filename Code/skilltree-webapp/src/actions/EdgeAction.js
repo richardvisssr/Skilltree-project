@@ -28,7 +28,7 @@ export function fetchCreateEdgeActionAsync(sourceId, targetId, skillTreeID, edge
 }
 
 export function fetchDeleteEdgeActionAsync(id) {
-    return async (dispatch) => {
+  return async (dispatch) => {
         const options = {
         method: "DELETE",
         headers: {
@@ -38,5 +38,6 @@ export function fetchDeleteEdgeActionAsync(id) {
         };
         fetch(`${API_PATH}/edges/${id}`, options)
             .then((response) => response.json())
+            .then(() => {dispatch({type: "skilltree/deleteEdge", payload: id})});
     };
 }

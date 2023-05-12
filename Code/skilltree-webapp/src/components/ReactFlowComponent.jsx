@@ -27,19 +27,6 @@ const nodeTypes = {
     custom: CustomNode,
 };
 
-const defaultEdgeOptions = {
-  style: { strokeWidth: 3, stroke: 'black' },
-  type: 'floating',
-  markerEnd: {
-    type: MarkerType.ArrowClosed,
-    color: 'black',
-  },
-};
-const connectionLineStyle = {
-  strokeWidth: 3,
-  stroke: 'black',
-};
-
 
 function ReactFlowComponent() {
     const dispatch = useDispatch();
@@ -54,6 +41,27 @@ function ReactFlowComponent() {
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
     const [currentNodeId, setCurrentNodeId] = useState(0);
+    const [deletedEdge, setDeletedEdge] = useState(false);
+
+  const deleteEdge = (id) => {
+    setEdges((eds) => eds.filter((e) => e.id !== id));
+  }
+
+  const defaultEdgeOptions = {
+    style: { strokeWidth: 3, stroke: 'black' },
+    type: 'floating',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      color: 'black',
+    },
+    data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
+  };
+  const connectionLineStyle = {
+    strokeWidth: 3,
+    stroke: 'black',
+  };
+
+
 
     let skilltreeId;
     if (skilltree !== null) {
@@ -78,7 +86,8 @@ function ReactFlowComponent() {
         markerEnd: {
             type: MarkerType.ArrowClosed,
             color: 'black',
-        }
+        },
+        data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
       }
       tempArray.push(tempObj);
     })
@@ -116,14 +125,18 @@ function ReactFlowComponent() {
   }, []);
 
   useEffect(() => {
-    let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
+    if(!deletedEdge) {
+      let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
       if (edges.length > 0) {
         const lastEdge = edges[edges.length - 1];
-        if(lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
-            return;
+        if (lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
+          return;
         }
         dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
       }
+    } else {
+        setDeletedEdge(false);
+    }
   }, [edges])
 
 
