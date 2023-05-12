@@ -1,5 +1,6 @@
 package nl.han.oose.project.resources;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -20,5 +21,10 @@ public class StudentResource {
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @Inject
+    public void setStudentService(StudentService studentService){
+        this.studentService = studentService;
     }
 }

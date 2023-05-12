@@ -34,4 +34,9 @@ public class StudentDAO {
     public void setDatamapper(StudentDatamapper datamapper) {
         this.datamapper = datamapper;
     }
+
+    @Inject
+    public void setDatabaseProperties(DatabaseProperties databaseProperties) {
+        this.databaseProperties = databaseProperties;
+    }
 }
