@@ -33,7 +33,7 @@ BEGIN TRY
 
         UserID   INT                   NOT NULL,
 
-		CONSTRAINT FK_Skilltree_User_ID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE CASCADE,
+		CONSTRAINT FK_Skilltree_User_ID FOREIGN KEY (UserID) REFERENCES Users (ID) ON DELETE CASCADE,
         CONSTRAINT PK_SkillTrees PRIMARY KEY (ID)
     );
 
@@ -96,7 +96,7 @@ CREATE TABLE userskilltree (
     skilltreeID INT,
     PRIMARY KEY (userID, skilltreeID),
     CONSTRAINT FK_UserSkillTree_UserID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE NO ACTION,
-    CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES Skilltrees (ID) ON DELETE CASCADE
+    CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
 );
 
 
