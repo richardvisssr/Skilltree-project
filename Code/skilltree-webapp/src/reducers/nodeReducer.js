@@ -11,7 +11,6 @@ const initialState = {
     currentNode: null,
 };
 
-// eslint-disable-next-line default-param-last
 const createNodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":

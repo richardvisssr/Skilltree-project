@@ -9,7 +9,6 @@ import "./nodeStyle.css";
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
     const nodeId = data.nodeId;
-    console.log(nodeId);
 
     const dispatch = useDispatch();
 
