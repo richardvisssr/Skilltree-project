@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/StudentCardComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/StudentCardComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,6 +275,7 @@
       <workItem from="1682415989336" duration="35000" />
       <workItem from="1682416042521" duration="673000" />
       <workItem from="1683791466121" duration="786000" />
+      <workItem from="1683876750982" duration="377000" />
     </task>
     <servers />
   </component>
