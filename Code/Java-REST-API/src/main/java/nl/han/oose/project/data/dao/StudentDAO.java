@@ -3,7 +3,6 @@ package nl.han.oose.project.data.dao;
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.StudentDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentsDTO;
 
 import java.sql.Connection;
@@ -12,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class StudentDAO {
     private StudentDatamapper datamapper;
+    private int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
     public StudentsDTO getAllStudents() throws SQLException {
@@ -22,16 +22,13 @@ public class StudentDAO {
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT * FROM Users WHERE RoleId = 2";
+        var query = "SELECT * FROM Users WHERE RoleId = ?";
         var stmt = connection.prepareStatement(query);
+        stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
         return result;
     }
 
-    @Inject
-    public void setDatabaseProperties(DatabaseProperties databaseProperties) {
-        this.databaseProperties = databaseProperties;
-    }
 
     @Inject
     public void setDatamapper(StudentDatamapper datamapper) {
