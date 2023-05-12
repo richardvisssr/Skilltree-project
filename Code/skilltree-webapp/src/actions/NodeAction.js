@@ -15,23 +15,25 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
     };
 }
 
-export const fetchCreateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) => async (dispatch) => {
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify({
-            skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
-        }),
+export function fetchCreateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) {
+    return async (dispatch) => {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({
+                skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
+            }),
 
+        };
+        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+            .then(() => {
+                dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
+            });
     };
-    fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
-        .then((response) => response.json())
-        .then(() => {
-            dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
-        });
 };
 
 export function setHighestNodeIdAction(nodeId) {
