@@ -2,6 +2,7 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
+import nl.han.oose.project.data.dao.NodeDAO;
 import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
@@ -19,6 +20,7 @@ public class NodeResourceTest {
     private NodeResource sut;
     private NodeDTO nodeDTO;
     private NodesDTO nodesDTO;
+    private NodeDAO nodeDAO;
     private NodeRequestDTO nodeRequestDTO;
     private NodeService nodeService;
 
@@ -29,6 +31,7 @@ public class NodeResourceTest {
         sut = new NodeResource();
         nodesDTO = mock(NodesDTO.class);
         nodeDTO = mock(NodeDTO.class);
+        nodeDAO = mock(NodeDAO.class);
         nodeRequestDTO = mock(NodeRequestDTO.class);
         nodeService = mock(NodeService.class);
 
@@ -65,6 +68,42 @@ public class NodeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void deleteNode() {
+        try {
+            //Arrange
+            sut.createNode(nodeRequestDTO, GEBRUIKER_ID);
+            var nodeId = nodeDAO.getHighestNodeId();
+
+            var expected = Response.Status.OK.getStatusCode();
+
+            //Act
+            var result = sut.deleteNode(nodeId);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void deleteNodeWithException() {
+        try {
+            //Arrange
+            var nodeId = -69;
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+
+            //Act
+            var result = sut.deleteNode(nodeId);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
     }
