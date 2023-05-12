@@ -9,7 +9,7 @@ BEGIN TRY
         ID        INT UNIQUE                    NOT NULL IDENTITY (1,1),
         Role      VARCHAR(255)                  NOT NULL,
 
-        CONSTRAINT PK_Roles PRIMARY KEY (ID),
+        CONSTRAINT PK_Roles PRIMARY KEY (ID)
     );
 
     CREATE TABLE Users
@@ -22,7 +22,7 @@ BEGIN TRY
         RoleID    INT                               NOT NULL,
 
         CONSTRAINT PK_Users PRIMARY KEY (ID),
-        CONSTRAINT FK_Users_RoleID_ID FOREIGN KEY (RoleID) REFERENCES Roles (ID) ON UPDATE CASCADE,
+        CONSTRAINT FK_Users_RoleID_ID FOREIGN KEY (RoleID) REFERENCES Roles (ID) ON UPDATE CASCADE
     );
 
     CREATE TABLE SkillTrees
@@ -48,7 +48,7 @@ BEGIN TRY
         SkillTreeID        INT                           NOT NULL,
 
         CONSTRAINT PK_Nodes PRIMARY KEY (ID, SkillTreeID),
-        CONSTRAINT FK_Nodes_SkillTreeID_ID FOREIGN KEY (SkillTreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE,
+        CONSTRAINT FK_Nodes_SkillTreeID_ID FOREIGN KEY (SkillTreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
     );
 
 		CREATE TABLE AssesmentCriteria
@@ -90,6 +90,16 @@ BEGIN TRY
         CONSTRAINT FK_Edges_ChildID_ID FOREIGN KEY (TargetID) REFERENCES Nodes (ID),
         CONSTRAINT UQ_SourceID_TargetID UNIQUE (SourceID, TargetID)
     );
+
+CREATE TABLE userskilltree (
+    userID INT,
+    skilltreeID INT,
+    PRIMARY KEY (userID, skilltreeID),
+    CONSTRAINT FK_UserSkillTree_UserID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE NO ACTION,
+    CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES Skilltrees (ID) ON DELETE CASCADE
+);
+
+
 
 
     COMMIT TRAN
