@@ -8,6 +8,7 @@ import ReactFlow, {
   Controls,
 } from 'reactflow';
 import CustomNode from "./customNode";
+import StudentCardComponent from "./StudentCardComponent";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
@@ -29,6 +30,7 @@ function ReactFlowComponent() {
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const showStudentCard = useSelector((state) => state.student.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
 
     let skilltreeId;
@@ -48,6 +50,14 @@ function ReactFlowComponent() {
     useEffect(() => {
       setCurrentNodeId(highestNodeId + 1)
     }, [highestNodeId])
+
+    const showStudentCardComponent = () => {
+      if (showStudentCard) {
+        return (
+          <StudentCardComponent/>
+        )
+      }
+    }
 
     const convertFetchToNodes = () => {
       let tempArray = [];
@@ -124,6 +134,7 @@ function ReactFlowComponent() {
             <Controls />
           </ReactFlow>
         </div>
+        {showStudentCardComponent()}
       </ReactFlowProvider>
     );
 }

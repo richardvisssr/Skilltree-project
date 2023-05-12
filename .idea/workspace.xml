@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/dto/NodeRequestDTO.class" afterDir="false" />
-    </list>
+    <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -274,6 +271,7 @@
       <workItem from="1682415989336" duration="35000" />
       <workItem from="1682416042521" duration="673000" />
       <workItem from="1683791466121" duration="786000" />
+      <workItem from="1683876750982" duration="377000" />
     </task>
     <servers />
   </component>
