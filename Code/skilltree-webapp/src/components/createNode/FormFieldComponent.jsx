@@ -6,7 +6,6 @@ function formFieldComponent({
 }) {
 
     const showField = () => {
-        console.log(fieldType)
         if (fieldType === "input") {
             return (
                 <input
@@ -19,7 +18,6 @@ function formFieldComponent({
                 />
             )
         } else if (fieldType === "textarea") {
-            console.log("textarea")
             return (
                 <textarea
                     name={title}
