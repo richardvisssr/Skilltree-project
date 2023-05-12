@@ -3,7 +3,6 @@ const initialState = {
     showCard: false,
 };
 
-// eslint-disable-next-line default-param-last
 function studentsReducer(state = initialState, action) {
     switch (action.type) {
     case "students/setStudents":
