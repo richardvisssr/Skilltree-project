@@ -7,17 +7,18 @@ import { fetchUpdateNodeActionAsync, showCreateCard } from "../../actions/NodeAc
 import "../../styles/styles.css";
 
 function CreateNodeComponent() {
+    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
 
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
-    const [learningOutcome, setLearningOutcome] = useState([]);
+    const [learningOutcome, setLearningOutcome] = useState("");
+    const [positionX, setPositionX] = useState("");
+    const [positionY, setPositionY] = useState("");
 
     const dispatch = useDispatch();
-
-    const { currentNode, positionX, positionY, skilltreeId } = useSelector((state) => state.node);
 
     const updateNode = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNode) => {
         return fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNode);
@@ -43,6 +44,8 @@ function CreateNodeComponent() {
         setDescription(currentNode.description);
         setAssessmentCriteria(tempArr);
         setLearningOutcome(currentNode.learningOutcome);
+        setPositionX(currentNode.positionX);
+        setPositionY(currentNode.positionY);
     }, [currentNodeId]);
 
     const handleSkillChange = (event) => {
@@ -82,7 +85,7 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(updateNode(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNode));
+        dispatch(updateNode(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
         hideCard();
       };
 

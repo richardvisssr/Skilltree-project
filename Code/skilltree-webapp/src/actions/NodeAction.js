@@ -94,7 +94,6 @@ export function currentNodeSelectedAction(nodeId) {
 export function showCreateCard(currentNodeId) {
     return {
         type: "node/showNodeCard",
-        payload: currentNodeId,
     };
 
 }

@@ -7,7 +7,7 @@ import ReactFlow, {
   useEdgesState,
   Controls,
 } from 'reactflow';
-import CustomNode from "./customNode";
+import CustomNode from "./CustomNode";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
