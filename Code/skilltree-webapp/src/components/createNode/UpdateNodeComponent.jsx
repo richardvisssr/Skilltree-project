@@ -6,7 +6,7 @@ import FormFieldComponent from "./FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
 import "../../styles/styles.css";
 
-function CreateNodeComponent() {
+function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
@@ -21,7 +21,7 @@ function CreateNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let currentNode = {}
+        let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
                 currentNode = node;
@@ -30,17 +30,20 @@ function CreateNodeComponent() {
         })
         
         const tempArr = [];
+        if(currentNode.assesmentCriteria !== undefined){
         currentNode.assesmentCriteria.map(assesmentCriterium => {
             tempArr.push(assesmentCriterium.description)
         })
+    }
 
+    
         setSkill(currentNode.skill);
         setDescription(currentNode.description);
         setAssessmentCriteria(tempArr);
         setLearningOutcome(currentNode.learningOutcome);
         setPositionX(currentNode.positionX);
         setPositionY(currentNode.positionY);
-    }, [currentNodeId]);
+    }, [currentNodeId,nodes]);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -136,4 +139,4 @@ function CreateNodeComponent() {
     );
 }
 
-export default CreateNodeComponent;
+export default UpdateNodeComponent;

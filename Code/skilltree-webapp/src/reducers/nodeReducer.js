@@ -11,7 +11,7 @@ const initialState = {
     currentNode: null,
 };
 
-const createNodeReducer = (state = initialState, action) => {
+const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
         return {
@@ -55,4 +55,4 @@ const createNodeReducer = (state = initialState, action) => {
     }
 };
 
-export default createNodeReducer;
+export default NodeReducer;
