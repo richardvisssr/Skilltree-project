@@ -47,7 +47,7 @@ function CreateNodeComponent() {
     };
 
     const handleAssessmentCriteriaChange = (event) => {
-        const criteriaArray = event.target.value.split(",");
+        const criteriaArray = event.target.value.split("#");
         setAssessmentCriteria(criteriaArray);
     };
 
@@ -56,9 +56,9 @@ function CreateNodeComponent() {
 
         for (let i = 0; i < assesmentCriteria.length; i++) {
             returnString += assesmentCriteria[i].description;
-            // zorgt er voor dat er geen komma wordt gezet na de laatse assesmentcriterium 
+            // zorgt er voor dat er geen '#' wordt gezet na de laatse assesmentcriterium 
             if (i !== (assesmentCriteria.length - 1)) {
-                returnString += ",";
+                returnString += "#";
             }
         }
         return returnString;
@@ -86,29 +86,28 @@ function CreateNodeComponent() {
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
                         <div className="bg-white px-4 pb-4 pt-5">
                             <FormFieldComponent
-                                titel="Vaardigheid"
-                                type="text" value={skill}
+                                title="Vaardigheid" 
+                                value={skill}
                                 onChange={handleSkillChange}
                             />
                             <FormFieldComponent
-                                titel="Beschrijving"
-                                type="text"
+                                title="Beschrijving"
                                 value={description}
                                 onChange={handleDescriptionChange}
                             />
                             <FormFieldComponent
-                                titel="Leeruitkomst"
-                                type="text"
+                                fieldType="textarea"
+                                title="Leeruitkomst"
                                 value={learningOutcome}
                                 onChange={handleLearningOutcomeChange}
                             />
                             <FormFieldComponent
-                                titel="BeoordelingsCriteria"
-                                type="text"
+                                fieldType="textarea"
+                                title="BeoordelingsCriteria"
                                 value={mapAssesmentCriteria()}
                                 onChange={handleAssessmentCriteriaChange}
                             />
-                            <p className="text-center">Gebruik een komma om een nieuwe BeoordelingsCriteria toe te voegen</p>
+                            <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
                             <div className="mt-6 flex items-center justify-center gap-x-6">
                                 <button
                                     type="button"
