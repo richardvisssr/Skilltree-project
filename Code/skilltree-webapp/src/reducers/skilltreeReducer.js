@@ -5,7 +5,6 @@ const initialState = {
     nodes: [],
 };
 
-// eslint-disable-next-line default-param-last
 function skillTreeReducer(state = initialState, action) {
     switch (action.type) {
     case "skilltree/setSkilltrees":

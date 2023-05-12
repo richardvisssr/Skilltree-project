@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormFieldComponent from "./FormFieldComponent";
@@ -7,14 +7,36 @@ import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/NodeAc
 import "../../styles/styles.css";
 
 function CreateNodeComponent() {
+    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
+    const nodes = useSelector((state) => state.skilltree.nodes)
+    const currentNodeId = useSelector((state) => state.node.currentNode)
+
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
-    const [learningOutcome, setLearningOutcome] = useState([]);
-
-    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
+    const [learningOutcome, setLearningOutcome] = useState("");
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        let currentNode = {}
+        nodes.map(node => {
+            if (node.id == currentNodeId) {
+                currentNode = node;
+                return;
+            }
+        })
+        
+        const tempArr = [];
+        currentNode.assesmentCriteria.map(assesmentCriterium => {
+            tempArr.push(assesmentCriterium)
+        })
+
+        setSkill(currentNode.skill);
+        setDescription(currentNode.description);
+        setAssessmentCriteria(tempArr);
+        setLearningOutcome(currentNode.learningOutcome);
+    }, [currentNodeId]);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -28,6 +50,19 @@ function CreateNodeComponent() {
         const criteriaArray = event.target.value.split(",");
         setAssessmentCriteria(criteriaArray);
     };
+
+    const mapAssesmentCriteria = () => {
+        let returnString = "";
+
+        for (let i = 0; i < assesmentCriteria.length; i++) {
+            returnString += assesmentCriteria[i].description;
+            // zorgt er voor dat er geen komma wordt gezet na de laatse assesmentcriterium 
+            if (i !== (assesmentCriteria.length - 1)) {
+                returnString += ",";
+            }
+        }
+        return returnString;
+    }
 
     const handleLearningOutcomeChange = (event) => {
         setLearningOutcome(event.target.value);
@@ -43,6 +78,7 @@ function CreateNodeComponent() {
         dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
         hideCard();
     };
+
     return (
         <div>
             { cardShowState ?
@@ -69,7 +105,7 @@ function CreateNodeComponent() {
                             <FormFieldComponent
                                 titel="BeoordelingsCriteria"
                                 type="text"
-                                value={assesmentCriteria.join(",")}
+                                value={mapAssesmentCriteria()}
                                 onChange={handleAssessmentCriteriaChange}
                             />
                             <p className="text-center">Gebruik een komma om een nieuwe BeoordelingsCriteria toe te voegen</p>

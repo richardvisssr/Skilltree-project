@@ -7,7 +7,7 @@ import ReactFlow, {
   useEdgesState,
   Controls,
 } from 'reactflow';
-import CustomNode from "./customNode";
+import CustomNode from "./CustomNode";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
@@ -55,7 +55,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}` },
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);
@@ -92,7 +92,7 @@ function ReactFlowComponent() {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node` }
+        data: { label: `Nieuwe node`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);
