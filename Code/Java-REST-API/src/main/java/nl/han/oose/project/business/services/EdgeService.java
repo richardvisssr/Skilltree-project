@@ -23,4 +23,7 @@ public class EdgeService {
     }
 
 
+    public String deleteEdge(String edgeId) throws SQLException {
+        return edgeDAO.deleteEdge(edgeId);
+    }
 }
