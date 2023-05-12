@@ -34,12 +34,15 @@ export const fetchCreateNodeActionAsync = (skill, description, positionX, positi
         });
 };
 
-export function setUpdateNodeAction(skill, description, learningOutcome, assesmentCriteria) {
+export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,) {
     return {
         type: "node/updateNode",
             payload: {
                 skill,
                 description,
+                positionX,
+                positionY,
+                skilltreeId,
                 learningOutcome,
                 assesmentCriteria: [assesmentCriteria],
         },
@@ -61,7 +64,7 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
     fetch(`${API_PATH}/nodes/${nodeId}`, options)
         .then((response) => response.json())
         .then(() => {
-            dispatch(setUpdateNodeAction(skill, description, learningOutcome, assesmentCriteria));
+            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
     });
 };
 

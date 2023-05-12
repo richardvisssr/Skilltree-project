@@ -20,12 +20,6 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
-    const updateNode = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNode) => {
-        return fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNode);
-      };
-    // const [learningOutcome, setLearningOutcome] = useState("");
-
-
     useEffect(() => {
         let currentNode = {}
         nodes.map(node => {
@@ -85,7 +79,8 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(updateNode(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
+        console.log(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId);
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
         hideCard();
       };
 
