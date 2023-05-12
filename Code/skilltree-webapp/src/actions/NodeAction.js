@@ -46,7 +46,7 @@ export function setUpdateNodeAction(skill, description, learningOutcome, assesme
     };
  }
 
-export const fetchUpdateNodeActionAsync = (skill, description, learningOutcome, assesmentCriteria) => async (dispatch) => {
+export const fetchUpdateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, nodeId) => async (dispatch) => {
     const options = {
         method: "PUT",
         headers: {
@@ -54,11 +54,11 @@ export const fetchUpdateNodeActionAsync = (skill, description, learningOutcome, 
         },
         mode: "cors",
         body: JSON.stringify({
-        skill, description, learningOutcome, assesmentCriteria,
+            skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
         }),
 
     };
-    fetch(`${API_PATH}/nodes`, options)
+    fetch(`${API_PATH}/nodes/${nodeId}`, options)
         .then((response) => response.json())
         .then(() => {
             dispatch(setUpdateNodeAction(skill, description, learningOutcome, assesmentCriteria));
@@ -84,8 +84,17 @@ export function fetchHighestNodeIdActionAsync() {
     };
 }
 
-export function showCreateCard() {
+export function currentNodeSelectedAction(nodeId) {
     return {
-        type: "node/showNodeCard"
+        type: "node/setCurrentNode",
+        payload: nodeId
+    }
+};
+
+export function showCreateCard(currentNodeId) {
+    return {
+        type: "node/showNodeCard",
+        payload: currentNodeId,
     };
+
 }

@@ -14,6 +14,11 @@ function CreateNodeComponent() {
 
     const dispatch = useDispatch();
 
+    const nodeId = useSelector((state) => state.node.currentNode);
+    const positionX = useSelector((state) => state.node.positionX);
+    const positionY = useSelector((state) => state.node.positionY);
+    const skilltreeId = useSelector((state) => state.node.skilltreeId);
+
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
     };
@@ -38,9 +43,10 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchUpdateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome));
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY ,assesmentCriteria, learningOutcome, skilltreeId, nodeId));
         hideCard();
     };
+
     return (
         <div>
             { cardShowState ?

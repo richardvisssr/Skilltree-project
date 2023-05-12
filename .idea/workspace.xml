@@ -11,12 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/NodeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/NodeAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/createNode/UpdateNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/createNode/UpdateNodeComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/nodeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/nodeReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

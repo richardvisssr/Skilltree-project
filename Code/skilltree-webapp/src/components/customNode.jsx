@@ -1,17 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Handle, Position } from "reactflow";
 import { AiFillEdit } from "react-icons/ai";
 
-import { showCreateCard } from "../actions/NodeAction";
+import { showCreateCard, currentNodeSelectedAction } from "../actions/NodeAction";
 import "./nodeStyle.css";
 
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
+    const nodeId = data.nodeId;
 
     const dispatch = useDispatch();
 
     const handleButton = () => {
+        dispatch(currentNodeSelectedAction(nodeId));
         dispatch(showCreateCard());
     };
 
