@@ -16,7 +16,6 @@ public class StudentDatamapper implements Datamapper {
         while (resultSet.next()) {
             students.add(
                     new StudentDTO(
-                            resultSet.getInt("ID"),
                             resultSet.getString("Firstname"),
                             resultSet.getString("Lastname")
                     )

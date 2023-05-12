@@ -22,7 +22,7 @@ public class StudentDAO {
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT * FROM Users WHERE RoleId = ?";
+        var query = "SELECT Firstname, Lastname FROM Users WHERE RoleId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
@@ -33,5 +33,10 @@ public class StudentDAO {
     @Inject
     public void setDatamapper(StudentDatamapper datamapper) {
         this.datamapper = datamapper;
+    }
+
+    @Inject
+    public void setDatabaseProperties(DatabaseProperties databaseProperties) {
+        this.databaseProperties = databaseProperties;
     }
 }
