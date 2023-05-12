@@ -9,7 +9,7 @@ function studentsReducer(state = initialState, action) {
     case "students/setStudents":
         return {
             ...state,
-            students: action.payload,
+            students: action.payload.students,
         };
         case "students/showStudentCard":
             return {

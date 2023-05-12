@@ -7,15 +7,15 @@ export function setStudentsAction(students) {
     };
 }
 
-export function fetchAllStudentsActionAsync(userId, currentSkilltreeId) {
+export function fetchAllStudentsActionAsync() {
     return async (dispatch) => {
         const options = {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options)
+        fetch(`${API_PATH}/students`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setStudentsAction(result.students)));
+            .then((result) => dispatch(setStudentsAction(result)));
     };
 }
 

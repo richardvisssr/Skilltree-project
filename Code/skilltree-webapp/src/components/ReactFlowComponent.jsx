@@ -7,7 +7,7 @@ import ReactFlow, {
   useEdgesState,
   Controls, MarkerType,
 } from 'reactflow';
-import CustomNode from "./customNode";
+import CustomNode from "./CustomNode";
 import StudentCardComponent from "./StudentCardComponent";
 
 import FloatingEdge from "./edges/FloatingEdge";

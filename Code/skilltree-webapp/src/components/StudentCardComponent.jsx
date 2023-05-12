@@ -7,13 +7,10 @@ import "../styles/styles.css";
 export default function StudentCardComponent() {
 
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.user.userId);
-    const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
-
-    const students = ["Jorian", "Richard", "Mitchel", "Thomas", "Sanad", "Kim", "Jeroen", "Jesse", "Jord", "Jordy", "Jordi", "Jordie", "Pim", "Bart", "Frank", "Marco", "Helen", "Joey"];
+    const students = useSelector((state) => state.student.students);
 
     useEffect(() => {
-        dispatch(fetchAllStudentsActionAsync(userId, currentSkilltree.id));
+        dispatch(fetchAllStudentsActionAsync());
     }, []);
     
     const studentList = () => {
@@ -26,7 +23,7 @@ export default function StudentCardComponent() {
                 
             <div className="flex items-center mb-4">
                 <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-                <label for="default-checkbox" className="ml-2 text-ml font-medium text-gray-900 dark:text-gray-300">{ student }</label>
+                <label for="default-checkbox" className="ml-2 text-ml font-medium text-gray-900 dark:text-gray-300">{ student.firstname + " " + student.lastname }</label>
             </div>
                 </div>
             ));
