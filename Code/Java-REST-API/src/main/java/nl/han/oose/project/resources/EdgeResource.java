@@ -50,7 +50,8 @@ public class EdgeResource {
             @PathParam("edgeId") String edgeId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(edgeService.deleteEdge(edgeId)).build();
+            edgeService.deleteEdge(edgeId);
+            return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }

@@ -49,11 +49,10 @@ public class EdgeDAO {
         stmt.executeUpdate();
     }
 
-    public String deleteEdge(String edgeId) throws SQLException {
+    public void deleteEdge(String edgeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         deleteEdgeQuery(edgeId);
         connection.close();
-        return edgeId;
     }
 
     private void deleteEdgeQuery(String edgeId) throws SQLException{
