@@ -6,12 +6,15 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.SkilltreeService;
 import nl.han.oose.project.resources.dto.SkilltreeDTO;
+import nl.han.oose.project.business.services.StudentService;
+
 
 import java.sql.SQLException;
 
 @Path("/skilltrees")
 public class SkilltreeResource {
     private SkilltreeService skilltreeService;
+    private StudentService studentService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +54,16 @@ public class SkilltreeResource {
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    @GET
+    @Path("/{skilltreeId}/students")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getStudentsBySkilltree(@PathParam("skilltreeId") int skilltreeId) {
+        try {
+            return Response.status(Response.Status.OK).entity(studentService.getStudentsBySkilltree(skilltreeId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }

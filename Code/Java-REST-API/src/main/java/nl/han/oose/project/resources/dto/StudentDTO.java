@@ -4,6 +4,7 @@ public class StudentDTO {
     private String firstname;
     private String lastname;
 
+
     // Constructors, getters, and setters
 
     // Default constructor

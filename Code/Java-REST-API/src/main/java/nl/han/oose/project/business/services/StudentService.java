@@ -6,6 +6,7 @@ import nl.han.oose.project.data.dao.StudentDAO;
 import nl.han.oose.project.resources.dto.StudentsDTO;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class StudentService {
 
@@ -13,6 +14,14 @@ public class StudentService {
 
     public StudentsDTO getAllStudents() throws SQLException {
         return studentDAO.getAllStudents();
+    }
+
+    public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
+        return studentDAO.getStudentsBySkilltree(skilltreeId);
+    }
+
+    public void addStudentsToSkilltree(List <Integer> studentId, int skilltreeId) throws SQLException {
+        studentDAO.addStudentsToSkilltree(studentId, skilltreeId);
     }
 
     @Inject
