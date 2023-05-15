@@ -4,6 +4,7 @@ import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.NodeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
+import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
 import java.sql.Connection;
@@ -124,22 +125,23 @@ public class NodeDAO {
         stmt.executeUpdate();
     }
 
-    public void updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
+    public NodesDTO updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (NodeRequestDTO nodeRequestDTO : nodesDTO.getNodes()) {
-            updateNodePositionQuery(nodeRequestDTO, skilltreeId);
+        for (NodeDTO nodeDTO : nodesDTO.getNodes()) {
+            updateNodePositionsQuery(nodeDTO, skilltreeId);
         }
         connection.close();
+        return getNodesFromSkillTree(skilltreeId);
     }
 
-    private void updateNodePositionsQuery(NodeRequestDTO nodeRequestDTO, int skilltreeId) throws SQLException {
+    private void updateNodePositionsQuery(NodeDTO nodeDTO, int skilltreeId) throws SQLException {
         var query = "UPDATE Nodes\n" +
                 "SET PositionX = ?, PositionY = ?\n" +
                 "WHERE ID = ? AND SkillTreeID = ?";
         var stmt = connection.prepareStatement(query);
-        stmt.setDouble(1, nodeRequestDTO.getPositionX());
-        stmt.setDouble(2, nodeRequestDTO.getPositionY());
-        stmt.setInt(3, nodeRequestDTO.getId());
+        stmt.setDouble(1, nodeDTO.getPositionX());
+        stmt.setDouble(2, nodeDTO.getPositionY());
+        stmt.setInt(3, nodeDTO.getID());
         stmt.setInt(4, skilltreeId);
         stmt.executeUpdate();
     }
