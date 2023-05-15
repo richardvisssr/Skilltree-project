@@ -43,6 +43,19 @@ public class EdgeResource {
         }
     }
 
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{edgeId}")
+    public Response deleteEdge(
+            @PathParam("edgeId") String edgeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(edgeService.deleteEdge(edgeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @Inject
     public void setEdgeService(EdgeService edgeService) {
         this.edgeService = edgeService;
