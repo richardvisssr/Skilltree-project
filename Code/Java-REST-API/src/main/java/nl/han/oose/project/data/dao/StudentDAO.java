@@ -22,7 +22,7 @@ public class StudentDAO {
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT Firstname, Lastname FROM Users WHERE RoleId = ?";
+        var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
