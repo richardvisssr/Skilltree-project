@@ -135,11 +135,12 @@ public class NodeDAO {
     private void updateNodePositionsQuery(NodeRequestDTO nodeRequestDTO, int skilltreeId) throws SQLException {
         var query = "UPDATE Nodes\n" +
                 "SET PositionX = ?, PositionY = ?\n" +
-                "WHERE ID = ?";
+                "WHERE ID = ? AND SkillTreeID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setDouble(1, nodeRequestDTO.getPositionX());
         stmt.setDouble(2, nodeRequestDTO.getPositionY());
         stmt.setInt(3, nodeRequestDTO.getId());
+        stmt.setInt(4, skilltreeId);
         stmt.executeUpdate();
     }
 
