@@ -4,20 +4,27 @@ import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
 import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+import { fetchLinkStudentsToSkilltreeActionAsync } from '../actions/StudentAction';
 import { showStudentCard } from '../actions/StudentAction';
 
 
 export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [firstRenderDone, setFirstRenderDone] = useState(false);
 
     const userId = useSelector((state) => state.user.userId);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    const selectedStudents = useSelector((state) => state.student.selectedStudents);
 
     const dispatch = useDispatch();
 
     const handleButton = () => {
+        if (firstRenderDone) {
+            dispatch(fetchLinkStudentsToSkilltreeActionAsync(currentSkilltree.id, selectedStudents));
+        }
+        setFirstRenderDone(!firstRenderDone);
         dispatch(showStudentCard());
     };
 
@@ -28,18 +35,17 @@ export default function TopbarComponent() {
   
     const handleSave = () => {
         if (title === '') {
-        return;
+            return;
         }
         
         if (description === '') {
-        return;
+            return;
         }
         
         if (newSkilltree) {
             dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
-
         } else if (currentSkilltree !== null) {
-            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId))
+            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId));
         }
         };
 

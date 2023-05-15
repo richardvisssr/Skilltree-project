@@ -24,3 +24,30 @@ export function showStudentCard() {
         type: "students/showStudentCard"
     };
 }
+
+export function setSelectedStudensAction(students) {
+    return {
+        type: "students/setSelectedStudents",
+        payload: students
+    }
+}
+
+export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
+    return async (dispatch) => {
+        //TODO GET gekoppelde studenten en vergelijk de arrays
+        console.log(skilltreeId, students);
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     mode: "cors",
+        //     body: JSON.stringify({
+        //         students
+        //     }),
+
+        // };
+
+        // fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+    };
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllStudentsActionAsync } from "../actions/StudentAction";
+import { fetchAllStudentsActionAsync, setSelectedStudensAction } from "../actions/StudentAction";
 
 import "../styles/styles.css";
 
@@ -15,13 +15,22 @@ export default function StudentCardComponent() {
         dispatch(fetchAllStudentsActionAsync());
     }, []);
 
+    useEffect(() => {
+        dispatch(setSelectedStudensAction(selectedStudents))
+    }, [selectedStudents]);
+
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
         if (event.target.checked) {
-            selectedStudents.push(event.target.value)
+            var student = students.filter(student => {
+                return student.id == event.target.value
+            });
+            const tempArr = selectedStudents;
+            tempArr.push(student[0]);
+            setSelectedStudensAction(tempArr);
         } else {
-            var filteredArray = selectedStudents.filter(e => e !== event.target.value)
-            setSelectedStudents(filteredArray)
+            const filteredArray = selectedStudents.filter(student => student.id != event.target.value);
+            setSelectedStudents(filteredArray);
         }
     }
     
@@ -59,7 +68,6 @@ export default function StudentCardComponent() {
         <aside id="default-sidebar" className="absolute top-16 right-0 z-40 w-64 h-[calc(100vh-64px)] transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div className="h-[calc(100vh-64px)] px-3 py-4 overflow-y-auto bg-pink-700 dark:bg-pink-700">
                 <ul className="space-y-2 font-medium">
-                    {console.log(students)}
                     {studentList()}
                 </ul>
             </div>

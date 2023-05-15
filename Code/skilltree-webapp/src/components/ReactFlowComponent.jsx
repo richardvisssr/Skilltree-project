@@ -99,7 +99,7 @@ function ReactFlowComponent() {
     const showStudentCardComponent = () => {
       if (showStudentCard) {
         return (
-          <StudentCardComponent/>
+          <StudentCardComponent />
         )
       }
     }
