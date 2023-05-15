@@ -61,7 +61,6 @@ public class NodeResource {
         @PathParam("skilltreeId") int skilltreeId
     ) {
         try {
-            System.out.println("nodesDTO: " + nodesDTO);
             return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodesDTO, skilltreeId)).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
