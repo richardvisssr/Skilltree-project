@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchAllStudentsActionAsync } from "../actions/StudentAction";
 
 import "../styles/styles.css";
 
 export default function StudentCardComponent() {
 
+    const dispatch = useDispatch();
+    const students = useSelector((state) => state.student.students);
+
     const [selectedStudents, setSelectedStudents] = useState([]);
 
-    const students = [
-        {ID: 1, Firstname: "Jorian", Lastname: "henkie"}, 
-        {ID: 2, Firstname: "piet", Lastname: "Jansen"}, 
-        {ID: 3, name: "henk", Lastname: "Peters"}
-    ];
+    useEffect(() => {
+        dispatch(fetchAllStudentsActionAsync());
+    });
 
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
@@ -22,14 +24,13 @@ export default function StudentCardComponent() {
             setSelectedStudents(filteredArray)
         }
     }
-
+    
     const studentList = () => {
         const studentsList = students.map((student) => (
             <div
                 key={student.ID}
                 className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg dark:text-white group"
             >
-                
                 <div className="flex items-center mb-4">
                     <input 
                         id="default-checkbox" 
@@ -55,12 +56,12 @@ export default function StudentCardComponent() {
     };
 
     return (
-        <aside id="default-sidebar" className="fixed top-0 right-0 z-40 w-64 transition-transform h-screen -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-            <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-pink-700">
-                <ul className="space-y-2 font-medium">
-                    {studentList()}
-                </ul>
-            </div>
+        <aside id="default-sidebar" className="absolute top-16 right-0 z-40 w-64 h-[calc(100vh-64px)] transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <div className="h-[calc(100vh-64px)] px-3 py-4 overflow-y-auto bg-pink-700 dark:bg-pink-700">
+            <ul className="space-y-2 font-medium">
+                {studentList()}
+            </ul>
+        </div>
         </aside>
-    );
+    );  
 }

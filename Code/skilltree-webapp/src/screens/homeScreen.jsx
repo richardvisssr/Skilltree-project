@@ -22,7 +22,7 @@ export default function HomeScreen() {
             }else if(currentSkilltree !== null){
             return (
                 <ReactFlowComponent />
-            )
+            );
         }
     }
 
