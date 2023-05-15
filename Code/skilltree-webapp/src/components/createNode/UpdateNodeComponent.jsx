@@ -31,6 +31,7 @@ function UpdateNodeComponent() {
         
         const tempArr = [];
         if(currentNode.assesmentCriteria !== undefined){
+            // console.log(currentNode.assesmentCriteria);
         currentNode.assesmentCriteria.map(assesmentCriterium => {
             tempArr.push(assesmentCriterium.description)
         })
@@ -68,6 +69,7 @@ function UpdateNodeComponent() {
                 returnString += "#";
             }
         }
+        // console.log(assesmentCriteria + "map");
         return returnString;
     }
 
@@ -82,7 +84,6 @@ function UpdateNodeComponent() {
     };
 
     const handleSave = () => {
-
         dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
         hideCard();
       };
