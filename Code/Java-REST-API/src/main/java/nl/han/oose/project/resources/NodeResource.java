@@ -51,7 +51,7 @@ public class NodeResource {
         }
     }
 
-    @UPDATE
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
