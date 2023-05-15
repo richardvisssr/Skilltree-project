@@ -15,11 +15,10 @@ export default function HomeScreen() {
     const showScreen = () => {
         if (showNodeCard) {
             return (
-                <CreateNodeComponent />
+                <CreateNodeComponent/>
             )
-            }else if(currentSkilltree == null){
-                <ReactFlowComponent />
-            }else if(currentSkilltree !== null){
+        }
+        if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponent />
             )

@@ -1,3 +1,4 @@
+
 const API_PATH = process.env.REACT_APP_API_URL;
 export function fetchallEdgesFromSkilltree(skilltreeId) {
     return async (dispatch) => {
@@ -9,7 +10,6 @@ export function fetchallEdgesFromSkilltree(skilltreeId) {
         });
     };
 }
-
 
 export function fetchCreateEdgeActionAsync(sourceId, targetId, skillTreeID, edgeId) {
   return async (dispatch) => {
@@ -25,4 +25,18 @@ export function fetchCreateEdgeActionAsync(sourceId, targetId, skillTreeID, edge
     fetch(`${API_PATH}/edges/skilltrees/${skillTreeID}`, options)
         .then((response) => response.json())
   };
+}
+
+export function fetchDeleteEdgeActionAsync(id) {
+  return async (dispatch) => {
+        const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        };
+        fetch(`${API_PATH}/edges/${id}`, options)
+            .then(() => dispatch({type: "skilltree/deleteEdge", payload: id}));
+    };
 }

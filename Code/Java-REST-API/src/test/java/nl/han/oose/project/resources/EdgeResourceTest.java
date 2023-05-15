@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class EdgeResourceTest {
 
@@ -95,6 +94,38 @@ public class EdgeResourceTest {
 
             // Act
             var result = sut.createEdge(edgeDTO, skilltreeId);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void deleteEdge() {
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            doNothing().when(edgeService).deleteEdge("1");
+            // Act
+            var result = sut.deleteEdge("1");
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void deleteEdgeWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            doThrow(new SQLException()).when(edgeService).deleteEdge("-1");
+            // Act
+            var result = sut.deleteEdge("-1");
 
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
