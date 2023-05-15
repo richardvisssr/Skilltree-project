@@ -68,4 +68,21 @@ public class NodeResourceTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void updateNode(){
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.updateNode(nodeRequestDTO, GEBRUIKER_ID)).thenReturn(nodesDTO);
+
+            //Act
+            var result = sut.updateNode(nodeRequestDTO, GEBRUIKER_ID);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
