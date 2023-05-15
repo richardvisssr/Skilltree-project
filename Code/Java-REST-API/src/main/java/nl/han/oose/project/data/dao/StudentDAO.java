@@ -35,7 +35,9 @@ public class StudentDAO {
     public void addStudentsToSkilltree(List<Integer> studentsId, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         for (Integer i : studentsId) {
-            addStudentToSkilltreeQuery(i, skilltreeId);
+            if (!isStudentInSkilltree(i, skilltreeId)) {
+                addStudentToSkilltreeQuery(i, skilltreeId);
+            }
         }
         connection.close();
     }
@@ -68,6 +70,16 @@ public class StudentDAO {
 
     }
 
+    private boolean isStudentInSkilltree(int studentId, int skilltreeId) throws SQLException {
+        var query = "SELECT COUNT(*) FROM userskilltree WHERE userId = ? AND skilltreeId = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setInt(1, studentId);
+        stmt.setInt(2, skilltreeId);
+        var resultSet = stmt.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+        return count > 0;
+    }
 
     @Inject
     public void setDatamapper(StudentDatamapper datamapper) {
