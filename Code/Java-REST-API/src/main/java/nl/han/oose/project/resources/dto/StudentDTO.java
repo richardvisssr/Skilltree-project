@@ -1,8 +1,10 @@
 package nl.han.oose.project.resources.dto;
 
 public class StudentDTO {
+    private int id;
     private String firstname;
     private String lastname;
+
 
     // Constructors, getters, and setters
 
@@ -11,7 +13,8 @@ public class StudentDTO {
     }
 
     // Constructor with all fields
-    public StudentDTO(String firstname, String lastname) {
+    public StudentDTO(int id, String firstname, String lastname) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -34,5 +37,12 @@ public class StudentDTO {
         this.lastname = lastname;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
 
