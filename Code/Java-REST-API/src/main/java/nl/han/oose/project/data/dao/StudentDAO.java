@@ -32,11 +32,11 @@ public class StudentDAO {
         return result;
     }
 
-    public void addStudentsToSkilltree(List<Integer> studentsId, int skilltreeId) throws SQLException {
+    public void addStudentsToSkilltree(List<Integer> studentsIds, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer i : studentsId) {
-            if (!isStudentInSkilltree(i, skilltreeId)) {
-                addStudentToSkilltreeQuery(i, skilltreeId);
+        for (Integer studentId : studentsIds) {
+            if (!isStudentInSkilltree(studentId, skilltreeId)) {
+                addStudentToSkilltreeQuery(studentId, skilltreeId);
             }
         }
         connection.close();

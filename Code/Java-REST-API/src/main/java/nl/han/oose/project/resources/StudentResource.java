@@ -5,6 +5,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.StudentService;
+import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.StudentDTO;
+import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -26,7 +29,7 @@ public class StudentResource {
     }
 
     @GET
-    @Path("skilltree/{skilltreeId}")
+    @Path("skilltrees/{skilltreeId}")
 
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudentsBySkilltree(@PathParam("skilltreeId") int skilltreeId) {
@@ -38,19 +41,17 @@ public class StudentResource {
     }
 
     @POST
-    @Path("skilltree/{skilltreeId}")
-    public Response addStudentsToSkilltree(@PathParam("skilltreeId") int skilltreeId, @QueryParam("studentIds") String studentIds) {
+    @Path("skilltrees/{skilltreeId}")
+    public Response addStudentsToSkilltree(@PathParam("skilltreeId") int skilltreeId, StudentsRequestDTO studentsRequestDTO) {
         try {
-            List<Integer> studentIdList = Arrays.stream(studentIds.split(","))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
 
-            studentService.addStudentsToSkilltree(studentIdList, skilltreeId);
+            studentService.addStudentsToSkilltree(studentsRequestDTO, skilltreeId);
             return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 
 
     @Inject
