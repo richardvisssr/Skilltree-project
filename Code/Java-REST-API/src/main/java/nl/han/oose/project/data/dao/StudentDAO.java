@@ -17,12 +17,14 @@ public class StudentDAO {
     private int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+
     public StudentsDTO getAllStudents() throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = datamapper.map(getAllStudentsQuery());
         connection.close();
         return result;
     }
+
     public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
@@ -32,7 +34,7 @@ public class StudentDAO {
 
     public void addStudentsToSkilltree(List<Integer> studentsId, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer i: studentsId) {
+        for (Integer i : studentsId) {
             addStudentToSkilltreeQuery(i, skilltreeId);
         }
         connection.close();
@@ -47,7 +49,7 @@ public class StudentDAO {
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "u.Firstname, u.Lastname " +
+        var query = "SELECT u.Firstname, u.Lastname " +
                 "FROM Users u JOIN userskilltree us ON u.Id = us.userId" +
                 " WHERE us.skilltreeId = ?";
         var stmt = connection.prepareStatement(query);

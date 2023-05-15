@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @Path("/students")
 public class StudentResource {
     private StudentService studentService;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllStudents() {
@@ -24,7 +25,7 @@ public class StudentResource {
         }
     }
 
-//    @POST
+    //    @POST
 //    @Path("/{studentId}/skilltrees/{skilltreeId}")
 //    public Response addStudentToSkilltree(@PathParam("studentId") int studentId, @PathParam("skilltreeId") int skilltreeId) {
 //        try {
@@ -50,9 +51,8 @@ public class StudentResource {
     }
 
 
-
     @Inject
-    public void setStudentService(StudentService studentService){
+    public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
 }

@@ -20,7 +20,7 @@ public class StudentService {
         return studentDAO.getStudentsBySkilltree(skilltreeId);
     }
 
-    public void addStudentsToSkilltree(List <Integer> studentId, int skilltreeId) throws SQLException {
+    public void addStudentsToSkilltree(List<Integer> studentId, int skilltreeId) throws SQLException {
         studentDAO.addStudentsToSkilltree(studentId, skilltreeId);
     }
 
