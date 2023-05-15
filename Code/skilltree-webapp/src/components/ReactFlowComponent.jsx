@@ -29,6 +29,7 @@ function ReactFlowComponent() {
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const showCard = useSelector((state) => state.node.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
 
     let skilltreeId;
@@ -39,7 +40,9 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-    }, [skilltreeId]);
+    }, [skilltreeId, showCard]);
+
+
 
     useEffect(() => {
       convertFetchToNodes();

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormFieldComponent from "./FormFieldComponent";
-import { fetchCreateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
+import { fetchUpdateNodeActionAsync, showCreateCard } from "../../actions/NodeAction";
 import "../../styles/styles.css";
 
-function CreateNodeComponent() {
+function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
@@ -15,11 +15,13 @@ function CreateNodeComponent() {
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
+    const [positionX, setPositionX] = useState("");
+    const [positionY, setPositionY] = useState("");
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let currentNode = {}
+        let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
                 currentNode = node;
@@ -28,15 +30,21 @@ function CreateNodeComponent() {
         })
         
         const tempArr = [];
+        if(currentNode.assesmentCriteria !== undefined){
+            // console.log(currentNode.assesmentCriteria);
         currentNode.assesmentCriteria.map(assesmentCriterium => {
             tempArr.push(assesmentCriterium.description)
         })
+    }
 
+    
         setSkill(currentNode.skill);
         setDescription(currentNode.description);
         setAssessmentCriteria(tempArr);
         setLearningOutcome(currentNode.learningOutcome);
-    }, [currentNodeId]);
+        setPositionX(currentNode.positionX);
+        setPositionY(currentNode.positionY);
+    }, [currentNodeId,nodes]);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -61,6 +69,7 @@ function CreateNodeComponent() {
                 returnString += "#";
             }
         }
+        // console.log(assesmentCriteria + "map");
         return returnString;
     }
 
@@ -75,9 +84,9 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
         hideCard();
-    };
+      };
 
     return (
         <div>
@@ -131,4 +140,4 @@ function CreateNodeComponent() {
     );
 }
 
-export default CreateNodeComponent;
+export default UpdateNodeComponent;

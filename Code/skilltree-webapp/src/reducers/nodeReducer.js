@@ -11,7 +11,7 @@ const initialState = {
     currentNode: null,
 };
 
-const createNodeReducer = (state = initialState, action) => {
+const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
         return {
@@ -24,6 +24,17 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
+        case "node/updateNode":
+            return {
+                ...state,
+                skill: action.payload.skill,
+                description: action.payload.description,
+                positionX: action.payload.positionX,
+                positionY: action.payload.positionY,
+                skillTreeId: action.payload.skillTreeId,
+                learningOutcome: action.payload.learningOutcome,
+                assesmentCriteria: action.payload.assesmentCriteria,
+            };
     case "node/showNodeCard":
         return {
             ...state,
@@ -44,4 +55,4 @@ const createNodeReducer = (state = initialState, action) => {
     }
 };
 
-export default createNodeReducer;
+export default NodeReducer;
