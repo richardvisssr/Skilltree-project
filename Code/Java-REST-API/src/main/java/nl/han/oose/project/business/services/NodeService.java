@@ -22,6 +22,10 @@ public class NodeService {
         return nodeDAO.getHighestNodeId();
     }
 
+    public NodesDTO updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
+        return nodeDAO.updateNodesPositions(nodesDTO, skilltreeId);
+    }
+
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
