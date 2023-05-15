@@ -25,18 +25,20 @@ public class StudentResource {
         }
     }
 
-    //    @POST
-//    @Path("/{studentId}/skilltrees/{skilltreeId}")
-//    public Response addStudentToSkilltree(@PathParam("studentId") int studentId, @PathParam("skilltreeId") int skilltreeId) {
-//        try {
-//            studentService.addStudentToSkilltree(studentId, skilltreeId);
-//            return Response.status(Response.Status.OK).build();
-//        } catch (SQLException e) {
-//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-//        }
-//    }
+    @GET
+    @Path("skilltree/{skilltreeId}")
+
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getStudentsBySkilltree(@PathParam("skilltreeId") int skilltreeId) {
+        try {
+            return Response.status(Response.Status.OK).entity(studentService.getStudentsBySkilltree(skilltreeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @POST
-    @Path("/{skilltreeId}")
+    @Path("skilltree/{skilltreeId}")
     public Response addStudentsToSkilltree(@PathParam("skilltreeId") int skilltreeId, @QueryParam("studentIds") String studentIds) {
         try {
             List<Integer> studentIdList = Arrays.stream(studentIds.split(","))
