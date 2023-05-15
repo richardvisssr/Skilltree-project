@@ -7,6 +7,7 @@ import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.SkilltreeService;
 import nl.han.oose.project.resources.dto.SkilltreeDTO;
 
+
 import java.sql.SQLException;
 
 @Path("/skilltrees")
@@ -17,7 +18,7 @@ public class SkilltreeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
     public Response getAllSkilltrees(
-        @PathParam("gebruikerId") int gebruikerId
+            @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
@@ -31,8 +32,8 @@ public class SkilltreeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
     public Response createSkilltree(
-        SkilltreeDTO skilltreeDTO,
-        @PathParam("gebruikerId") int gebruikerId
+            SkilltreeDTO skilltreeDTO,
+            @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
@@ -46,8 +47,8 @@ public class SkilltreeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gebruikers/{gebruikerId}")
     public Response updateSkilltree(
-        SkilltreeDTO skilltreeDTO,
-        @PathParam("gebruikerId") int gebruikerId
+            SkilltreeDTO skilltreeDTO,
+            @PathParam("gebruikerId") int gebruikerId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
