@@ -1,9 +1,12 @@
-import { useCallback } from 'react';
-import { useStore, getStraightPath } from 'reactflow';
+import {useCallback, useEffect, useState} from 'react';
+import {useStore, getStraightPath, BaseEdge, EdgeLabelRenderer} from 'reactflow';
 
 import { getEdgeParams } from './EdgesUtils.js';
+import {useDispatch, useSelector} from "react-redux";
 
-function FloatingEdge({ id, source, target, markerEnd, style }) {
+import { fetchDeleteEdgeActionAsync } from "../../actions/EdgeAction";
+function FloatingEdge({ id, source, target, markerEnd, style, data}) {
+  const dispatch = useDispatch();
   const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source), [source]));
   const targetNode = useStore(useCallback((store) => store.nodeInternals.get(target), [target]));
 
@@ -13,21 +16,36 @@ function FloatingEdge({ id, source, target, markerEnd, style }) {
 
   const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
 
-  const [edgePath] = getStraightPath({
+  const [edgePath, labelX, labelY] = getStraightPath({
     sourceX: sx,
     sourceY: sy,
     targetX: tx,
     targetY: ty,
   });
 
+  const deleteEdge = () => {
+    dispatch(fetchDeleteEdgeActionAsync(id));
+    data.setDeletedEdge(true);
+    data.deleteEdge(id);
+  }
+
   return (
-      <path
-          id={id}
-          className="react-flow__edge-path"
-          d={edgePath}
-          markerEnd={markerEnd}
-          style={style}
-      />
+      <>
+        <EdgeLabelRenderer>
+          <div
+              style={{
+                position: 'absolute',
+                transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
+                pointerEvents: 'all',
+              }}
+          >
+            <button onClick={() => deleteEdge()} className="text-red-700 bg-black rounded-full w-5 h-5 leading-none font-bold">
+              X
+            </button>
+          </div>
+          </EdgeLabelRenderer>
+        <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} id={id} />
+        </>
   );
 }
 
