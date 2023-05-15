@@ -37,7 +37,6 @@ export function fetchDeleteEdgeActionAsync(id) {
         mode: "cors",
         };
         fetch(`${API_PATH}/edges/${id}`, options)
-            .then((response) => response.json())
-            .then(() => {dispatch({type: "skilltree/deleteEdge", payload: id})});
+            .then(() => dispatch({type: "skilltree/deleteEdge", payload: id}));
     };
 }
