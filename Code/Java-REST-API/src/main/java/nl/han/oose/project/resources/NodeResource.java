@@ -51,6 +51,21 @@ public class NodeResource {
         }
     }
 
+    @UPDATE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
+    public Response updateNodePosition(
+        NodeRequestDTO nodeDTO,
+        @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodeDTO, skilltreeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @Inject
     public void setNodeService(NodeService nodeService) {
         this.nodeService = nodeService;

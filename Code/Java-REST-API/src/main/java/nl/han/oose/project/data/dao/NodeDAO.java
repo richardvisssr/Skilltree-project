@@ -124,6 +124,25 @@ public class NodeDAO {
         stmt.executeUpdate();
     }
 
+    public void updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        for (NodeRequestDTO nodeRequestDTO : nodesDTO.getNodes()) {
+            updateNodePositionQuery(nodeRequestDTO, skilltreeId);
+        }
+        connection.close();
+    }
+
+    private void updateNodePositionsQuery(NodeRequestDTO nodeRequestDTO, int skilltreeId) throws SQLException {
+        var query = "UPDATE Nodes\n" +
+                "SET PositionX = ?, PositionY = ?\n" +
+                "WHERE ID = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setDouble(1, nodeRequestDTO.getPositionX());
+        stmt.setDouble(2, nodeRequestDTO.getPositionY());
+        stmt.setInt(3, nodeRequestDTO.getId());
+        stmt.executeUpdate();
+    }
+
     @Inject
     public void setNodeDatamapper(NodeDatamapper nodeDatamapper) {
         this.nodeDatamapper = nodeDatamapper;
