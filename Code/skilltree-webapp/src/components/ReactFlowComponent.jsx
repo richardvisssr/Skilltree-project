@@ -40,7 +40,6 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-      console.log(dispatch(fetchAllNodesFromSkilltree(skilltreeId)));
     }, [skilltreeId, showCard]);
 
 
