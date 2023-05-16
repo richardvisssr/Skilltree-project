@@ -67,3 +67,9 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
             .then((result) => dispatch(setSelectedStudentsAction(result.students)));
     };
 }
+
+export function clearStudentCardAction() {
+    return {
+        type: "students/clearStudentCard"
+    };
+}

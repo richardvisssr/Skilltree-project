@@ -21,6 +21,12 @@ function studentsReducer(state = initialState, action) {
                 ...state,
                 selectedStudents: action.payload,
             }
+        case "students/clearStudentCard":
+            return {
+                ...state,
+                selectedStudents : [],
+                showCard: false,
+            }
     default:
         return state;
     }
