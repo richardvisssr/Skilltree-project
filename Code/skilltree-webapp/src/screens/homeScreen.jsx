@@ -17,9 +17,8 @@ export default function HomeScreen() {
             return (
                 <UpdateNodeComponent />
             )
-            }else if(currentSkilltree == null){
-                <ReactFlowComponent />
-            }else if(currentSkilltree !== null){
+        }
+        if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponent />
             )

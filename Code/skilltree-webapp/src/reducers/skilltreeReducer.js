@@ -3,6 +3,7 @@ const initialState = {
     currentSkilltree: null,
     newSkilltree: false,
     nodes: [],
+    edges: [],
 };
 
 function skillTreeReducer(state = initialState, action) {
@@ -28,6 +29,11 @@ function skillTreeReducer(state = initialState, action) {
         return {
             ...state,
             nodes: action.payload,
+        }
+    case "skilltree/setAllEdges":
+        return {
+            ...state,
+            edges: action.payload.edges,
         }
     default:
         return state;
