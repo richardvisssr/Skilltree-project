@@ -41,5 +41,12 @@ public class StudentDTO {
         this.lastname = lastname;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
 
