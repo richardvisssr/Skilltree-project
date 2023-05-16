@@ -64,10 +64,10 @@ public class NodeDAO {
     }
 
     private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
+        var query = "DECLARE @IdentityValue INT;\n" +
+                     "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
+                     "SELECT @IdentityValue AS 'ID'";
+
         var stmt = connection.prepareStatement(query);
         var resultSet = stmt.executeQuery();
 
