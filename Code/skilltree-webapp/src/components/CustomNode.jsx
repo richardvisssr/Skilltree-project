@@ -35,44 +35,53 @@ export default function CustomNode({ isConnectable, data }) {
     };
 
     return (
-        <div className="customNode">
-            <div className="customNodeBody bg-slate-200">
-                <div className="node-button-container">
-                    <button
-                        className="node-button edit-button"
-                        type="button" 
-                        onClick={handleButton}
-                    >
-                        <AiFillEdit />
-                    </button>
-                </div>
-                <div className="node-button-container">
-                    <button
-                        className="node-button delete-button"
-                        type="button"
-                        onClick={showDeleteNodeComponent}
-                    >
-                    <AiFillDelete/>
-                    </button>
-                </div>
-                <Handle
-                    className="targetHandle"
-                    style={{ zIndex: 2 }}
-                    position={Position.Right}
-                    type="source"
-                    isConnectable={isConnectable}
-                />
-                <Handle
-                    className="targetHandle"
-                    style={targetHandleStyle}
-                    position={Position.Left}
-                    type="target"
-                    isConnectable={isConnectable}
-                />
-                <div className="flex justify-center items-center w-full">
-                    {label}
+        <div>
+
+            {isNodeVisible ?
+            
+            <div className="customNode">
+                <div className="customNodeBody bg-slate-200">
+                    <div className="flex">
+                        <div className="node-button-container">
+                            <button
+                                className="node-button edit-button"
+                                type="button" 
+                                onClick={handleButton}
+                            >
+                                <AiFillEdit />
+                            </button>
+                        </div>
+                        <div className="node-button-container">
+                            <button
+                                className="node-button delete-button"
+                                type="button"
+                                onClick={showDeleteNodeComponent}
+                            >
+                            <AiFillDelete/>
+                            </button>
+                        </div>
+                    </div>
+                    <Handle
+                        className="targetHandle"
+                        style={{ zIndex: 2 }}
+                        position={Position.Right}
+                        type="source"
+                        isConnectable={isConnectable}
+                    />
+                    <Handle
+                        className="targetHandle"
+                        style={targetHandleStyle}
+                        position={Position.Left}
+                        type="target"
+                        isConnectable={isConnectable}
+                    />
+                    <div className="flex justify-center items-center w-full">
+                        {label}
+                    </div>
                 </div>
             </div>
+
+            : null }
 
             {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
         

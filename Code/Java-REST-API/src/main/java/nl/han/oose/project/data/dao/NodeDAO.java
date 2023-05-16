@@ -113,7 +113,7 @@ public class NodeDAO {
         var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
         var stmt = connection.prepareStatement(deleteNodeQuery);
         stmt.setInt(1, nodeId);
-        var result = stmt.executeQuery();
+        stmt.executeQuery();
         return nodeId;
     }
 

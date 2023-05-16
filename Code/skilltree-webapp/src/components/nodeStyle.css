@@ -54,10 +54,16 @@ div.targetHandle {
 }
 
 .node-button-container {
+  display: flex;
   top: -50px;
   z-index: 2000;
 }
 
 .node-button {
   z-index: 3000;
+}
+
+.delete-button {
+  position: absolute;
+  right: 0px;
 }

@@ -90,4 +90,21 @@ public class NodeResourceTest {
             throw new RuntimeException(e);
         }
     }
+
+//    @Test
+//    void deleteNodeInvalidNodeId() {
+//        try {
+//            //Arrange
+//            var nodeId = -1;
+//            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+//
+//            //Act
+//            var result = sut.deleteNode(nodeId);
+//
+//            // Assert
+//            Assertions.assertEquals(expected, result.getStatus());
+//        } catch (RuntimeException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
