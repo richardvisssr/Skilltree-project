@@ -19,6 +19,8 @@ const nodeTypes = {
 };
 
 function ReactFlowComponent() {
+
+
     const dispatch = useDispatch();
 
     const reactFlowWrapper = useRef(null);
@@ -55,7 +57,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}` },
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);
@@ -88,19 +90,27 @@ function ReactFlowComponent() {
       
       setCurrentNodeId(currentNodeId + 1);
 
+      
+
+      //aanmaken
+      const label = `Nieuwe node`
+      const description = "";
+      const assesmentCriteria = [];
+      const learningOutcome = "";
+      dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+
+      //console.log("highest nodeId: "+highestNodeId);
+      console.log("current nodeId: "+currentNodeId);
+
       const newNode = {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node`, nodeId: `${currentNodeId}` }
+        data: { label: `${label}`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);
-
-      const description = "";
-      const assesmentCriteria = [];
-      const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+    
     },
   );
   

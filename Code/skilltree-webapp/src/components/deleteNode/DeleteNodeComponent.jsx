@@ -10,6 +10,7 @@ export function DeleteNodeComponent(props) {
     const [deleteCardShowState] = useState(true);
     
     const deleteCard = () => {
+        console.log("current in delete: "+props.nodeId)
         dispatch(fetchDeleteNodeActionAsync(props.nodeId));
         hideCard();
         props.hideNode();

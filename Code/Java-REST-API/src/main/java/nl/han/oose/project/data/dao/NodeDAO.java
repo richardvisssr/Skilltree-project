@@ -102,6 +102,7 @@ public class NodeDAO {
     }
 
     public int deleteNode(int nodeId) throws SQLException {
+        System.out.println("NodeDAO deletenode nodeid: " + nodeId);
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = deleteNodeQuery(nodeId);
         connection.close();
@@ -112,7 +113,7 @@ public class NodeDAO {
         var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
         var stmt = connection.prepareStatement(deleteNodeQuery);
         stmt.setInt(1, nodeId);
-        stmt.executeQuery();
+        var result = stmt.executeQuery();
         return nodeId;
     }
 
