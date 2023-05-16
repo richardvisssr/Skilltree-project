@@ -78,8 +78,40 @@ public class NodeResourceTest {
 
             //Act
             var result = sut.updateNode(nodeRequestDTO, GEBRUIKER_ID);
+                        //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    void updateNodesPositions() {
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.updateNodesPositions(nodesDTO, GEBRUIKER_ID)).thenReturn(nodesDTO);
+
+            //Act
+            var result = sut.updateNodesPositions(nodesDTO, GEBRUIKER_ID);
 
             //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void updateNodesPositionsWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(nodeService.updateNodesPositions(nodesDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
+
+            // Act
+            var result = sut.updateNodesPositions(nodesDTO, GEBRUIKER_ID);
+
+            // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
             throw new RuntimeException(e);

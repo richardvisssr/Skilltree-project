@@ -104,3 +104,19 @@ export function showCreateCard(currentNodeId) {
 
 }
 
+export function fetchAllNodesPositionsActionAsync(skilltreeId, nodes) {
+    return async (dispatch) => {
+        const options = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "PUT",
+            mode: "cors",
+            body: JSON.stringify({
+                nodes,
+            }),
+        };
+        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+    };
+}

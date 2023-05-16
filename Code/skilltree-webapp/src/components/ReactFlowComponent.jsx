@@ -13,7 +13,7 @@ import FloatingEdge from "./edges/FloatingEdge";
 import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
+import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
@@ -179,6 +179,20 @@ function ReactFlowComponent() {
       dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
     },
   );
+
+  const onPositionClick = () => {
+    let tempArray = [];
+    nodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        positionX: node.position.x,
+        positionY: node.position.y,
+      }
+      tempArray.push(tempObj);
+    })
+    dispatch(fetchAllNodesPositionsActionAsync(skilltreeId, tempArray));
+  };
+
   
     return (
       <ReactFlowProvider>
@@ -203,6 +217,7 @@ function ReactFlowComponent() {
           >
             <Controls />
           </ReactFlow>
+          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update posities</button>
         </div>
       </ReactFlowProvider>
     );
