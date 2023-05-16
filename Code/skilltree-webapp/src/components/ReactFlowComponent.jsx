@@ -16,6 +16,7 @@ import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
+import { fetchAllStudentsFromSkilltreeActionAsync } from "../actions/StudentAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 import {fetchCreateEdgeActionAsync} from "../actions/EdgeAction";
@@ -66,6 +67,7 @@ function ReactFlowComponent() {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
       dispatch(fetchallEdgesFromSkilltree(skilltreeId));
+      dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
     }, [skilltreeId]);
 
   const convertFetchToEdges = () => {
@@ -99,7 +101,7 @@ function ReactFlowComponent() {
     const showStudentCardComponent = () => {
       if (showStudentCard) {
         return (
-          <StudentCardComponent/>
+          <StudentCardComponent />
         )
       }
     }

@@ -5,9 +5,6 @@ public class StudentDTO {
     private String firstname;
     private String lastname;
 
-
-    // Constructors, getters, and setters
-
     // Default constructor
     public StudentDTO() {
     }
@@ -20,6 +17,13 @@ public class StudentDTO {
     }
 
     // Getters and setters for each field
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -35,14 +39,6 @@ public class StudentDTO {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
 

@@ -32,18 +32,33 @@ public class StudentDAO {
         return result;
     }
 
-    public void addStudentsToSkilltree(List<Integer> studentsIds, int skilltreeId) throws SQLException {
+    public void addStudentsToSkilltree(List<Integer> newStudents, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : studentsIds) {
-            if (!isStudentInSkilltree(studentId, skilltreeId)) {
-                addStudentToSkilltreeQuery(studentId, skilltreeId);
-            }
+        for (Integer studentId : newStudents) {
+            addStudentToSkilltreeQuery(studentId, skilltreeId);
         }
         connection.close();
     }
 
+    public void removeStudentsFromSkilltree(List<Integer> deletedStudents, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        for (Integer studentId : deletedStudents) {
+            removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+        }
+        connection.close();
+    }
+
+    private void removeStudentFromSkilltreeQuery(Integer studentId, int skilltreeId) throws SQLException {
+        var query = "DELETE FROM userskilltree\n" +
+                "WHERE userID = ? AND skilltreeID = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setInt(1, studentId);
+        stmt.setInt(2, skilltreeId);
+        stmt.executeUpdate();
+    }
+
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT Firstname, Lastname FROM Users WHERE RoleId = ?";
+        var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
@@ -51,9 +66,11 @@ public class StudentDAO {
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT u.Firstname, u.Lastname " +
-                "FROM Users u JOIN userskilltree us ON u.Id = us.userId" +
-                " WHERE us.skilltreeId = ?";
+        var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
+                "FROM Users u \n" +
+                "JOIN userskilltree us \n" +
+                "ON u.ID = us.userId\n" +
+                "WHERE us.skilltreeId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
         var result = stmt.executeQuery();
@@ -67,18 +84,6 @@ public class StudentDAO {
         stmt.setInt(1, studentId);
         stmt.setInt(2, skilltreeId);
         stmt.executeUpdate();
-
-    }
-
-    private boolean isStudentInSkilltree(int studentId, int skilltreeId) throws SQLException {
-        var query = "SELECT COUNT(*) FROM userskilltree WHERE userId = ? AND skilltreeId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        var resultSet = stmt.executeQuery();
-        resultSet.next();
-        int count = resultSet.getInt(1);
-        return count > 0;
     }
 
     @Inject

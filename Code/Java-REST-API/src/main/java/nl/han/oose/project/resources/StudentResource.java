@@ -5,14 +5,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.StudentService;
-import nl.han.oose.project.resources.dto.StudentsDTO;
-import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Path("/students")
 public class StudentResource {
@@ -29,9 +24,8 @@ public class StudentResource {
     }
 
     @GET
-    @Path("skilltrees/{skilltreeId}")
-
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
     public Response getStudentsBySkilltree(@PathParam("skilltreeId") int skilltreeId) {
         try {
             return Response.status(Response.Status.OK).entity(studentService.getStudentsBySkilltree(skilltreeId)).build();
@@ -40,19 +34,18 @@ public class StudentResource {
         }
     }
 
-    @POST
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("skilltrees/{skilltreeId}")
-    public Response addStudentsToSkilltree(@PathParam("skilltreeId") int skilltreeId, StudentsRequestDTO studentsRequestDTO) {
+    public Response updateStudentsToSkilltree(@PathParam("skilltreeId") int skilltreeId, StudentsRequestDTO studentsRequestDTO) {
         try {
-
-            studentService.addStudentsToSkilltree(studentsRequestDTO, skilltreeId);
-            return Response.status(Response.Status.OK).build();
+            var students = studentService.updateStudentsToSkilltree(studentsRequestDTO, skilltreeId);
+            return Response.status(Response.Status.OK).entity(students).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
 
     @Inject
     public void setStudentService(StudentService studentService) {

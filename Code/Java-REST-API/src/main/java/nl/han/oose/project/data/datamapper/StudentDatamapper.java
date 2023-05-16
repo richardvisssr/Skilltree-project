@@ -12,17 +12,15 @@ public class StudentDatamapper implements Datamapper {
     @Override
     public StudentsDTO map(ResultSet resultSet) throws SQLException {
         List<StudentDTO> students = new ArrayList<>();
-
         while (resultSet.next()) {
             students.add(
                     new StudentDTO(
-                            resultSet.getInt("Id"),
+                            resultSet.getInt("ID"),
                             resultSet.getString("Firstname"),
                             resultSet.getString("Lastname")
                     )
             );
         }
-
         return new StudentsDTO(students);
     }
 
