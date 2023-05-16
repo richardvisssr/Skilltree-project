@@ -4,17 +4,16 @@ import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.StudentService;
 import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+
 public class StudentResourceTest {
     private StudentResource sut;
     private StudentsDTO studentsDTO;
@@ -94,6 +93,37 @@ public class StudentResourceTest {
             var result = sut.getStudentsBySkilltree(skilltreeId);
 
             // Arrange
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void addStudentsToSkilltree() {
+        // Arrange
+        var expected = Response.Status.OK.getStatusCode();
+        StudentsRequestDTO studentsRequestDTO = mock(StudentsRequestDTO.class);
+
+        // Act
+        var result = sut.addStudentsToSkilltree(skilltreeId, studentsRequestDTO);
+
+        // Assert
+        Assertions.assertEquals(expected, result.getStatus());
+    }
+
+    @Test
+    void addStudentsToSkilltreeWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            StudentsRequestDTO studentsRequestDTO = mock(StudentsRequestDTO.class);
+            doThrow(new SQLException()).when(studentService).addStudentsToSkilltree(studentsRequestDTO, skilltreeId);
+
+            // Act
+            var result = sut.addStudentsToSkilltree(skilltreeId, studentsRequestDTO);
+
+            // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
             fail();

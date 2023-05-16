@@ -19,15 +19,15 @@ public class NodeDAO {
 
     public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssesmentCriteriaQuery(skilltreeId));
+        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
         return nodes;
     }
 
-    private ResultSet getAssesmentCriteriaQuery(int skilltreeId) throws SQLException {
+    private ResultSet getAssessmentCriteriaQuery(int skilltreeId) throws SQLException {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
                 "FROM Nodes n\n" +
-                "INNER JOIN AssesmentCriteria ac\n" +
+                "INNER JOIN AssessmentCriteria ac\n" +
                 "ON n.ID = ac.NodeID\n" +
                 "WHERE n.SkillTreeID = ?";
         var stmt = connection.prepareStatement(query);
@@ -53,7 +53,7 @@ public class NodeDAO {
     public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
-        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
+        addAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), createdNodeId);
         addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
         connection.close();
         return getNodesFromSkillTree(skilltreeId);
@@ -104,9 +104,9 @@ public class NodeDAO {
         return nodeId;
     }
 
-    private void addAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {
-        for (String assesmentCriterium : assesmentCriteriaDTO) {
-            var query = "INSERT INTO AssesmentCriteria (Description, NodeID)\n" +
+    private void addAssessmentCriteriaQuery(List<String> assessmentCriteriaDTO, int nodeId) throws SQLException {
+        for (String assesmentCriterium : assessmentCriteriaDTO) {
+            var query = "INSERT INTO AssessmentCriteria (Description, NodeID)\n" +
                     "VALUES (?, ?)";
             var stmt = connection.prepareStatement(query);
             stmt.setString(1, assesmentCriterium);

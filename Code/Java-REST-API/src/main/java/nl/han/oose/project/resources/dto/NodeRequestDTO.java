@@ -10,7 +10,7 @@ public class NodeRequestDTO {
     private double positionY;
     private int skilltreeId;
     private String learningOutcome;
-    private List<String> assesmentCriteria;
+    private List<String> assessmentCriteria;
 
     public NodeRequestDTO() {}
 
@@ -80,11 +80,11 @@ public class NodeRequestDTO {
         this.learningOutcome = learningOutcome;
     }
 
-    public List<String> getAssesmentCriteria() {
-        return assesmentCriteria;
+    public List<String> getAssessmentCriteria() {
+        return assessmentCriteria;
     }
 
-    public void setAssesmentCriteria(List<String> assesmentCriteria) {
-        this.assesmentCriteria = assesmentCriteria;
+    public void setAssessmentCriteria(List<String> assessmentCriteria) {
+        this.assessmentCriteria = assessmentCriteria;
     }
 }

@@ -1,16 +1,15 @@
 package nl.han.oose.project.resources.dto;
 
-import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AssesmentCriteriaDTOTest {
-    private AssesmentCriteriaDTO sut;
+public class AssessmentCriteriaDTOTest {
+    private AssessmentCriteriaDTO sut;
 
     @BeforeEach
     void setup() {
-        sut = new AssesmentCriteriaDTO();
+        sut = new AssessmentCriteriaDTO();
     }
 
     @Test
