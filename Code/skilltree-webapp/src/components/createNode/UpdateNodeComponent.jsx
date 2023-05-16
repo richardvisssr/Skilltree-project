@@ -22,6 +22,10 @@ function UpdateNodeComponent() {
 
     const dispatch = useDispatch();
 
+    useEffect(()=>{
+        setSkill(nodeSkill);
+    },[nodeSkill])
+
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
@@ -33,14 +37,11 @@ function UpdateNodeComponent() {
         
         const tempArr = [];
         if(currentNode.assesmentCriteria !== undefined){
-            // console.log(currentNode.assesmentCriteria);
         currentNode.assesmentCriteria.map(assesmentCriterium => {
             tempArr.push(assesmentCriterium.description)
         })
     }
 
-    
-    setSkill(currentNode.skill ?? "");
     setDescription(currentNode.description ?? "");
     setAssessmentCriteria(tempArr ?? []);
     setLearningOutcome(currentNode.learningOutcome ?? "");
@@ -71,7 +72,6 @@ function UpdateNodeComponent() {
                 returnString += "#";
             }
         }
-        // console.log(assesmentCriteria + "map");
         return returnString;
     }
 
@@ -98,7 +98,7 @@ function UpdateNodeComponent() {
                         <div className="bg-white px-4 pb-4 pt-5">
                             <FormFieldComponent
                                 title="Vaardigheid" 
-                                value={nodeSkill}
+                                value={skill}
                                 onChange={handleSkillChange}
                             />
                             <FormFieldComponent
