@@ -25,7 +25,6 @@ function ReactFlowComponent() {
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);

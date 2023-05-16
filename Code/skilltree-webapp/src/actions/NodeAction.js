@@ -16,6 +16,7 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
 }
 
 export const fetchCreateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) => async (dispatch) => {
+    
     const options = {
         method: "POST",
         headers: {

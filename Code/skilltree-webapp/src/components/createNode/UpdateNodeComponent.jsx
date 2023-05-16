@@ -10,6 +10,7 @@ function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
+    const nodeSkill = useSelector((state) => state.node.skill)
 
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
@@ -17,6 +18,7 @@ function UpdateNodeComponent() {
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
+
 
     const dispatch = useDispatch();
 
@@ -38,12 +40,12 @@ function UpdateNodeComponent() {
     }
 
     
-        setSkill(currentNode.skill);
-        setDescription(currentNode.description);
-        setAssessmentCriteria(tempArr);
-        setLearningOutcome(currentNode.learningOutcome);
-        setPositionX(currentNode.positionX);
-        setPositionY(currentNode.positionY);
+    setSkill(currentNode.skill ?? "");
+    setDescription(currentNode.description ?? "");
+    setAssessmentCriteria(tempArr ?? []);
+    setLearningOutcome(currentNode.learningOutcome ?? "");
+    setPositionX(currentNode.positionX ?? "");
+    setPositionY(currentNode.positionY ?? "");
     }, [currentNodeId,nodes]);
 
     const handleSkillChange = (event) => {
@@ -96,7 +98,7 @@ function UpdateNodeComponent() {
                         <div className="bg-white px-4 pb-4 pt-5">
                             <FormFieldComponent
                                 title="Vaardigheid" 
-                                value={skill}
+                                value={nodeSkill}
                                 onChange={handleSkillChange}
                             />
                             <FormFieldComponent
