@@ -14,6 +14,10 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
+    public NodesDTO updateNode(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
+        return nodeDAO.updateNode(nodeDTO, nodeId);
+    }
+
     public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
         return nodeDAO.getNodesFromSkillTree(skilltreeId);
     }
@@ -30,5 +34,6 @@ public class NodeService {
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
+
 
 }
