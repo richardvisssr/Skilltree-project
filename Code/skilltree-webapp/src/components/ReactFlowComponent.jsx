@@ -35,11 +35,11 @@ function ReactFlowComponent() {
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const allFetchedEdges = useSelector((state) => state.skilltree.edges);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const showCard = useSelector((state) => state.node.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
     const [deletedEdge, setDeletedEdge] = useState(false);
 
@@ -71,8 +71,9 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
-    }, [skilltreeId]);
+    }, [skilltreeId, showCard]);
+
+
 
   const convertFetchToEdges = () => {
     let tempArray = [];
@@ -109,7 +110,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}` },
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);
@@ -167,7 +168,7 @@ function ReactFlowComponent() {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node` }
+        data: { label: `Nieuwe node`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);

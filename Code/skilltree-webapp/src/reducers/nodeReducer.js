@@ -8,11 +8,13 @@ const initialState = {
     assesmentCriteria: "",
     showCard: false,
     highestNodeId: null,
+    currentNode: null,
 };
 
-const createNodeReducer = (state = initialState, action) => {
+const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
+        console.log(action.payload.skill,);
         return {
             ...state,
             skill: action.payload.skill,
@@ -23,6 +25,17 @@ const createNodeReducer = (state = initialState, action) => {
             learningOutcome: action.payload.learningOutcome,
             assesmentCriteria: action.payload.assesmentCriteria,
         };
+        case "node/updateNode":
+            return {
+                ...state,
+                skill: action.payload.skill,
+                description: action.payload.description,
+                positionX: action.payload.positionX,
+                positionY: action.payload.positionY,
+                skillTreeId: action.payload.skillTreeId,
+                learningOutcome: action.payload.learningOutcome,
+                assesmentCriteria: action.payload.assesmentCriteria,
+            };
     case "node/showNodeCard":
         return {
             ...state,
@@ -33,9 +46,14 @@ const createNodeReducer = (state = initialState, action) => {
             ...state,
             highestNodeId: action.payload
         }
+    case "node/setCurrentNode":
+        return {
+            ...state,
+            currentNode: action.payload
+        }
     default:
         return state;
     }
 };
 
-export default createNodeReducer;
+export default NodeReducer;

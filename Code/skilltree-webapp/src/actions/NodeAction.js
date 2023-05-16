@@ -10,7 +10,7 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
             positionY,
             skilltreeId,
             learningOutcome,
-            assesmentCriteria: [assesmentCriteria],
+            assesmentCriteria,
         },
     };
 }
@@ -36,6 +36,41 @@ export function fetchCreateNodeActionAsync(skill, description, positionX, positi
     };
 };
 
+export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,) {
+    return {
+        type: "node/updateNode",
+            payload: {
+                skill,
+                description,
+                positionX,
+                positionY,
+                skilltreeId,
+                learningOutcome,
+                assesmentCriteria: [assesmentCriteria],
+        },
+    };
+ }
+
+export const fetchUpdateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, nodeId) => async (dispatch) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+            skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
+        }),
+
+    };
+    fetch(`${API_PATH}/nodes/${nodeId}`, options)
+        .then((response) => response.json())
+        .then(() => {
+            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
+    });
+};
+
+
 export function setHighestNodeIdAction(nodeId) {
     return {
         type: "node/highestNodeId",
@@ -55,10 +90,18 @@ export function fetchHighestNodeIdActionAsync() {
     };
 }
 
-export function showCreateCard() {
+export function currentNodeSelectedAction(nodeId) {
     return {
-        type: "node/showNodeCard"
+        type: "node/setCurrentNode",
+        payload: nodeId
+    }
+};
+
+export function showCreateCard(currentNodeId) {
+    return {
+        type: "node/showNodeCard",
     };
+
 }
 
 export function fetchAllNodesPositionsActionAsync(skilltreeId, nodes) {
