@@ -46,7 +46,6 @@ export function setDeleteNodeAction(nodeId) {
 }
 
 export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
-
     const options = {
         method: "DELETE",
         headers: {
