@@ -174,8 +174,6 @@ function ReactFlowComponent() {
       const learningOutcome = "";
       dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
 
-      console.log("NodeId of new node: "+currentNodeId);
-
       const newNode = {
         id: `${currentNodeId}`,
         type,

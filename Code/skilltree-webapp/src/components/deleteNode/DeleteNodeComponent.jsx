@@ -10,7 +10,6 @@ export function DeleteNodeComponent(props) {
     const [deleteCardShowState] = useState(true);
     
     const deleteCard = () => {
-        console.log("Deleting node with nodeId "+props.nodeId)
         dispatch(fetchDeleteNodeActionAsync(props.nodeId));
         hideCard();
         props.hideNode();
@@ -19,8 +18,7 @@ export function DeleteNodeComponent(props) {
     const hideCard = () => {
         props.showDeleteNodeComponent();
     };
-    /* eslint-disable react/jsx-wrap-multilines */
-    /* eslint-disable operator-linebreak */
+
     return (
         <div>
             {deleteCardShowState ?
