@@ -12,7 +12,6 @@ public class StudentDatamapper implements Datamapper {
     @Override
     public StudentsDTO map(ResultSet resultSet) throws SQLException {
         List<StudentDTO> students = new ArrayList<>();
-
         while (resultSet.next()) {
             students.add(
                     new StudentDTO(
@@ -22,7 +21,6 @@ public class StudentDatamapper implements Datamapper {
                     )
             );
         }
-
         return new StudentsDTO(students);
     }
 

@@ -25,7 +25,7 @@ export function showStudentCard() {
     };
 }
 
-export function setSelectedStudensAction(students) {
+export function setSelectedStudentsAction(students) {
     return {
         type: "students/setSelectedStudents",
         payload: students
@@ -34,20 +34,36 @@ export function setSelectedStudensAction(students) {
 
 export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
     return async (dispatch) => {
-        //TODO GET gekoppelde studenten en vergelijk de arrays
-        console.log(skilltreeId, students);
-        // const options = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     mode: "cors",
-        //     body: JSON.stringify({
-        //         students
-        //     }),
+        const studentIds = [];
+        students.forEach(student => {
+            studentIds.push({"id": student.id})
+        });
 
-        // };
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({
+                "students": studentIds
+            }),
+        };
 
-        // fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+        fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+            .then(response => response.json())
+            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+    };
+}
+
+export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+        fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
     };
 }

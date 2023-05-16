@@ -1,7 +1,6 @@
 package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
-import nl.han.oose.project.data.dao.SkilltreeDAO;
 import nl.han.oose.project.data.dao.StudentDAO;
 import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentRequestDTO;
@@ -24,13 +23,48 @@ public class StudentService {
         return studentDAO.getStudentsBySkilltree(skilltreeId);
     }
 
-public void addStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
-    List<Integer> studentIds = new ArrayList<>();
-    for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
-        studentIds.add(student.getId());
+    public StudentsDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
+        var currentStudents = getStudentsBySkilltree(skilltreeId);
+
+        List<Integer> newStudents = new ArrayList<>();
+        List<Integer> oldStudents = new ArrayList<>();
+        List<Integer> deletedStudents = new ArrayList<>();
+        for (StudentDTO studentDTO : currentStudents.getStudents()) {
+            boolean found = false;
+            for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
+                if (studentDTO.getId() == student.getId()) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                deletedStudents.add(studentDTO.getId());
+            }
+        }
+
+        for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
+            boolean found = false;
+            for (StudentDTO studentDTO : currentStudents.getStudents()) {
+                if (studentDTO.getId() == student.getId()) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                newStudents.add(student.getId());
+            } else {
+                oldStudents.add(student.getId());
+            }
+        }
+
+        //add to skilltree
+        studentDAO.addStudentsToSkilltree(newStudents, skilltreeId);
+
+        //remove from skilltree
+        studentDAO.removeStudentsFromSkilltree(deletedStudents, skilltreeId);
+
+        return getStudentsBySkilltree(skilltreeId);
     }
-    studentDAO.addStudentsToSkilltree(studentIds, skilltreeId);
-}
     @Inject
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
