@@ -14,7 +14,6 @@ const initialState = {
 const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
     case "node/createNode":
-        console.log(action.payload.skill,);
         return {
             ...state,
             skill: action.payload.skill,
