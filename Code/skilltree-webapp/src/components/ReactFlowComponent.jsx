@@ -172,9 +172,9 @@ function ReactFlowComponent() {
       setNodes((prevNodes) => [...prevNodes, newNode]);
 
       const description = "";
-      const assesmentCriteria = [];
+      const assessmentCriteria = [];
       const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+      dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltreeId))
     },
   );
   

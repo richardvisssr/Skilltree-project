@@ -5,7 +5,7 @@ const initialState = {
     positionY: "",
     skillTreeId: "",
     learningOutcome: "",
-    assesmentCriteria: "",
+    assessmentCriteria: "",
     showCard: false,
     highestNodeId: null,
 };
@@ -21,7 +21,7 @@ const createNodeReducer = (state = initialState, action) => {
             positionY: action.payload.positionY,
             skillTreeId: action.payload.skillTreeId,
             learningOutcome: action.payload.learningOutcome,
-            assesmentCriteria: action.payload.assesmentCriteria,
+            assessmentCriteria: action.payload.assessmentCriteria,
         };
     case "node/showNodeCard":
         return {

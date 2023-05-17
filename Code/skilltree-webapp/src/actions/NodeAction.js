@@ -1,6 +1,6 @@
 const API_PATH = process.env.REACT_APP_API_URL;
 
-export function setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria) {
+export function setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria) {
     return {
         type: "node/createNode",
         payload: {
@@ -10,12 +10,12 @@ export function setCreateNodeAction(skill, description, positionX, positionY, sk
             positionY,
             skilltreeId,
             learningOutcome,
-            assesmentCriteria: [assesmentCriteria],
+            assessmentCriteria: [assessmentCriteria],
         },
     };
 }
 
-export function fetchCreateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) {
+export function fetchCreateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId) {
     return async (dispatch) => {
         const options = {
             method: "POST",
@@ -24,14 +24,14 @@ export function fetchCreateNodeActionAsync(skill, description, positionX, positi
             },
             mode: "cors",
             body: JSON.stringify({
-                skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
+                skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria,
             }),
 
         };
         fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
             .then(() => {
-                dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
+                dispatch(setCreateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria));
             });
     };
 };

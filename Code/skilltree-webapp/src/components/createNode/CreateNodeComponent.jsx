@@ -9,7 +9,7 @@ import "../../styles/styles.css";
 function CreateNodeComponent() {
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
-    const [assesmentCriteria, setAssessmentCriteria] = useState([]);
+    const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState([]);
 
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
@@ -40,7 +40,7 @@ function CreateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchCreateNodeActionAsync(skill, description, assesmentCriteria, learningOutcome, skilltreeId));
+        dispatch(fetchCreateNodeActionAsync(skill, description, assessmentCriteria, learningOutcome, skilltreeId));
         hideCard();
     };
     return (
@@ -69,7 +69,7 @@ function CreateNodeComponent() {
                             <FormFieldComponent
                                 titel="BeoordelingsCriteria"
                                 type="text"
-                                value={assesmentCriteria.join(",")}
+                                value={assessmentCriteria.join(",")}
                                 onChange={handleAssessmentCriteriaChange}
                             />
                             <p className="text-center">Gebruik een komma om een nieuwe BeoordelingsCriteria toe te voegen</p>
