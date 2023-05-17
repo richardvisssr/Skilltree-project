@@ -1,4 +1,5 @@
 const initialState = {
+    nodeId: null,
     skill: "",
     description: "",
     positionX: "",
@@ -24,21 +25,21 @@ const NodeReducer = (state = initialState, action) => {
                 learningOutcome: action.payload.learningOutcome,
                 assesmentCriteria: action.payload.assesmentCriteria,
             };
-    case "node/showNodeCard":
-        return {
-            ...state,
-            showCard: !state.showCard,
-        }
-    case "node/highestNodeId":
-        return {
-            ...state,
-            highestNodeId: action.payload
-        }
-    case "node/setCurrentNode":
-        return {
-            ...state,
-            currentNode: action.payload
-        }
+        case "node/showNodeCard":
+            return {
+                ...state,
+                showCard: !state.showCard,
+            };
+        case "node/highestNodeId":
+            return {
+                ...state,
+                highestNodeId: action.payload
+            };
+        case "node/setCurrentNode":
+            return {
+                ...state,
+                currentNode: action.payload
+            };
     default:
         return state;
     }

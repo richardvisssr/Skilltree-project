@@ -68,6 +68,21 @@ public class NodeResource {
         }
     }
 
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{nodeId}")
+    public Response deleteNode(
+            @PathParam("nodeId") int nodeId
+    ) {
+        try {
+            nodeService.deleteNode(nodeId);
+            return Response.status(Response.Status.OK).build();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

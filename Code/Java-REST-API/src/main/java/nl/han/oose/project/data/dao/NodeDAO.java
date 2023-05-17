@@ -7,10 +7,7 @@ import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class NodeDAO {
@@ -50,22 +47,6 @@ public class NodeDAO {
         return highestNodeId;
     }
 
-    private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
-        var stmt = connection.prepareStatement(query);
-        var resultSet = stmt.executeQuery();
-
-        int nodeId = 0;
-        if(resultSet.next()){
-            nodeId = resultSet.getInt("ID");
-        }
-
-        return nodeId;
-    }
-
     private ResultSet getAssesmentCriteriaQuery(int skilltreeId) throws SQLException {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
@@ -92,6 +73,23 @@ public class NodeDAO {
         var result = stmt.executeQuery();
         return result;
     }
+
+    private int getHighestNodeIdQuery() throws SQLException {
+        var query = "DECLARE @IdentityValue INT;\n" +
+                     "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
+                     "SELECT @IdentityValue AS 'ID'";
+
+        var stmt = connection.prepareStatement(query);
+        var resultSet = stmt.executeQuery();
+
+        int nodeId = 0;
+        if(resultSet.next()){
+            nodeId = resultSet.getInt("ID");
+        }
+
+        return nodeId;
+    }
+
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
         var insertNodeQuery = "INSERT INTO Nodes (Skill, Description, PositionX, PositionY, SkillTreeID)\n" +
                 "VALUES \n" +
@@ -112,6 +110,19 @@ public class NodeDAO {
         }
 
         return nodeId;
+    }
+
+    public void deleteNode(int nodeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        deleteNodeQuery(nodeId);
+        connection.close();
+    }
+
+    private void deleteNodeQuery(int nodeId) throws SQLException {
+        var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
+        var stmt = connection.prepareStatement(deleteNodeQuery);
+        stmt.setInt(1, nodeId);
+        stmt.execute();
     }
 
     private void addAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {

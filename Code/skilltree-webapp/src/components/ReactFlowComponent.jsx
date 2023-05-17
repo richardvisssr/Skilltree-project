@@ -29,6 +29,8 @@ const nodeTypes = {
 
 
 function ReactFlowComponent() {
+
+
     const dispatch = useDispatch();
 
     const reactFlowWrapper = useRef(null);
@@ -164,19 +166,24 @@ function ReactFlowComponent() {
       
       setCurrentNodeId(currentNodeId + 1);
 
+      
+
+      //aanmaken
+      const label = `Nieuwe node`
+      const description = "";
+      const assesmentCriteria = [];
+      const learningOutcome = "";
+      dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+
       const newNode = {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node`, nodeId: `${currentNodeId}` }
+        data: { label: `${label}`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);
-
-      const description = "";
-      const assesmentCriteria = [];
-      const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(currentNodeId, newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+    
     },
   );
 
@@ -222,4 +229,5 @@ function ReactFlowComponent() {
       </ReactFlowProvider>
     );
 }
- export default ReactFlowComponent;
+
+export default ReactFlowComponent;

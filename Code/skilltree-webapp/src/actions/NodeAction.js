@@ -37,6 +37,34 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
     };
 };
 
+export function setDeleteNodeAction(nodeId) {
+    return {
+        type: "node/deleteNode",
+        payload: {
+            nodeId,
+        }
+    }
+}
+
+export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+            nodeId
+        }),
+
+    };
+
+    fetch(`${API_PATH}/nodes/${nodeId}`, options)
+        .then((response) => response.json())
+        .then(() => {
+            dispatch(setDeleteNodeAction(nodeId));
+        });
+}
 export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,) {
     return {
         type: "node/updateNode",
