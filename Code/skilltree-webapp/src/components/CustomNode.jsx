@@ -36,7 +36,6 @@ export default function CustomNode({ isConnectable, data }) {
     const handleButton = () => {
         dispatch(currentNodeSelectedAction(nodeId));
         dispatch(showCreateCard());
-        // console.log(assesmentCriteria + "Opgehaald");
     };
 
     return (

@@ -10,7 +10,6 @@ function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
-
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
@@ -22,6 +21,7 @@ function UpdateNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+
         let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
