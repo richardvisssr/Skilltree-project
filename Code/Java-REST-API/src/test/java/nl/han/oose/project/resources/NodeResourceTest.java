@@ -13,14 +13,12 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class NodeResourceTest {
     private NodeResource sut;
     private NodeDTO nodeDTO;
     private NodesDTO nodesDTO;
-    private NodeDAO nodeDAO;
     private NodeRequestDTO nodeRequestDTO;
     private NodeService nodeService;
 
@@ -31,7 +29,6 @@ public class NodeResourceTest {
         sut = new NodeResource();
         nodesDTO = mock(NodesDTO.class);
         nodeDTO = mock(NodeDTO.class);
-        nodeDAO = mock(NodeDAO.class);
         nodeRequestDTO = mock(NodeRequestDTO.class);
         nodeService = mock(NodeService.class);
 
@@ -75,20 +72,18 @@ public class NodeResourceTest {
     @Test
     void deleteNode() {
         try {
-            //Arrange
-            sut.createNode(nodeRequestDTO, GEBRUIKER_ID);
-            var nodeId = nodeDAO.getHighestNodeId();
-
+            // Arrange
             var expected = Response.Status.OK.getStatusCode();
+            doNothing().when(nodeService).deleteNode(1);
 
-            //Act
-            var result = sut.deleteNode(nodeId);
+            // Act
+            var result = sut.deleteNode(1);
 
-            //Assert
+            // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    
+
 }

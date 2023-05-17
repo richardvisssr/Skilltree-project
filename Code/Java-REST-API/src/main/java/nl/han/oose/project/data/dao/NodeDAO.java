@@ -101,11 +101,10 @@ public class NodeDAO {
         return nodeId;
     }
 
-    public int deleteNode(int nodeId) throws SQLException {
+    public void deleteNode(int nodeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         deleteNodeQuery(nodeId);
         connection.close();
-        return nodeId;
     }
 
     private void deleteNodeQuery(int nodeId) throws SQLException {
