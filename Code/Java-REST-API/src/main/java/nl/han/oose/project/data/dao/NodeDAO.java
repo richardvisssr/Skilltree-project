@@ -64,10 +64,10 @@ public class NodeDAO {
     }
 
     private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
+        var query = "DECLARE @IdentityValue INT;\n" +
+                     "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
+                     "SELECT @IdentityValue AS 'ID'";
+
         var stmt = connection.prepareStatement(query);
         var resultSet = stmt.executeQuery();
 
@@ -101,19 +101,17 @@ public class NodeDAO {
         return nodeId;
     }
 
-    public int deleteNode(int nodeId) throws SQLException {
+    public void deleteNode(int nodeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = deleteNodeQuery(nodeId);
+        deleteNodeQuery(nodeId);
         connection.close();
-        return result;
     }
 
-    private int deleteNodeQuery(int nodeId) throws SQLException {
+    private void deleteNodeQuery(int nodeId) throws SQLException {
         var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
         var stmt = connection.prepareStatement(deleteNodeQuery);
         stmt.setInt(1, nodeId);
-        stmt.executeQuery();
-        return nodeId;
+        stmt.execute();
     }
 
     private void addAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {

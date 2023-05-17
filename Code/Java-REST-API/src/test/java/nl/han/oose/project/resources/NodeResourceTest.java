@@ -2,6 +2,7 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
+import nl.han.oose.project.data.dao.NodeDAO;
 import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
@@ -12,8 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class NodeResourceTest {
     private NodeResource sut;
@@ -68,4 +68,22 @@ public class NodeResourceTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void deleteNode() {
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            doNothing().when(nodeService).deleteNode(1);
+
+            // Act
+            var result = sut.deleteNode(1);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
