@@ -25,7 +25,7 @@ export default function CustomNode({ isConnectable, data }) {
         setIsNodeVisible(false);
     }
     //test
-    const assesmentCriteria = useSelector((state) => state.node.assesmentCriteria)
+    const assessmentCriteria = useSelector((state) => state.node.assessmentCriteria)
 
 
     const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 const API_PATH = process.env.REACT_APP_API_URL;
 
-export function setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria) {
+export function setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria) {
     return {
         type: "skilltree/createNode",
         payload: {
@@ -11,12 +11,12 @@ export function setCreateNodeAction(nodeId, skill, description, positionX, posit
             positionY,
             skilltreeId,
             learningOutcome,
-            assesmentCriteria,
+            assessmentCriteria,
         },
     };
 }
 
-export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId) {
+export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId) {
     return async (dispatch) => {
         const options = {
             method: "POST",
@@ -25,14 +25,14 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
             },
             mode: "cors",
             body: JSON.stringify({
-                skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
+                skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria,
             }),
 
         };
         fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
             .then(() => {
-                dispatch(setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
+                dispatch(setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria));
             });
     };
 };
@@ -65,8 +65,8 @@ export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
             dispatch(setDeleteNodeAction(nodeId));
         });
 }
-export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria, nodeId) {
-    console.log(assesmentCriteria)
+export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria, nodeId) {
+    console.log(assessmentCriteria)
     return {
         type: "skilltree/updateNode",
             payload: {
@@ -77,12 +77,12 @@ export function setUpdateNodeAction(skill, description, positionX, positionY, sk
                 positionY,
                 skilltreeId,
                 learningOutcome,
-                assesmentCriteria: [assesmentCriteria],
+                assessmentCriteria: [assessmentCriteria],
         },
     };
  }
 
-export const fetchUpdateNodeActionAsync = (skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, nodeId) => async (dispatch) => {
+export const fetchUpdateNodeActionAsync = (skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, nodeId) => async (dispatch) => {
     const options = {
         method: "PUT",
         headers: {
@@ -90,14 +90,14 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
         },
         mode: "cors",
         body: JSON.stringify({
-            skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
+            skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria,
         }),
 
     };
     fetch(`${API_PATH}/nodes/${nodeId}`, options)
         .then((response) => response.json())
         .then(() => {
-            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria, nodeId));
+            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria, nodeId));
     });
 };
 

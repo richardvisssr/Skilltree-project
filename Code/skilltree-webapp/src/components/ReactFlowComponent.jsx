@@ -182,9 +182,9 @@ function ReactFlowComponent() {
       //aanmaken
       const label = `Nieuwe node`
       const description = "";
-      const assesmentCriteria = [];
+      const assessmentCriteria = [];
       const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(currentNodeId, label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+      dispatch(fetchCreateNodeActionAsync(currentNodeId, label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltreeId))
 
       const newNode = {
         id: `${currentNodeId}`,
