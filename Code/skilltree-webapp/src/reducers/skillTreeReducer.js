@@ -35,6 +35,13 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             edges: action.payload.edges,
         }
+    case "skilltree/createNode":
+        console.log("4", action.payload)
+        console.log("5", state.nodes)
+        return {
+            ...state,
+            nodes: [...state.nodes, action.payload],
+        }
     default:
         return state;
     }

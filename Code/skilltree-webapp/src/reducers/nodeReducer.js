@@ -13,17 +13,18 @@ const initialState = {
 
 const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
-    case "node/createNode":
-        return {
-            ...state,
-            skill: action.payload.skill,
-            description: action.payload.description,
-            positionX: action.payload.positionX,
-            positionY: action.payload.positionY,
-            skillTreeId: action.payload.skillTreeId,
-            learningOutcome: action.payload.learningOutcome,
-            assesmentCriteria: action.payload.assesmentCriteria,
-        };
+    // case "node/createNode":
+    //     console.log("4");
+    //     return {
+    //         ...state,
+    //         skill: action.payload.skill,
+    //         description: action.payload.description,
+    //         positionX: action.payload.positionX,
+    //         positionY: action.payload.positionY,
+    //         skillTreeId: action.payload.skillTreeId,
+    //         learningOutcome: action.payload.learningOutcome,
+    //         assesmentCriteria: action.payload.assesmentCriteria,
+    //     };
         case "node/updateNode":
             return {
                 ...state,

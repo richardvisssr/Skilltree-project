@@ -11,9 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/target/classes/nl/han/oose/project/resources/NodeResource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/NodeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/NodeAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/ReactFlowComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/createNode/UpdateNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/createNode/UpdateNodeComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/nodeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/nodeReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skilltreeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/skilltreeReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,6 +290,7 @@
       <workItem from="1682416042521" duration="673000" />
       <workItem from="1683722570539" duration="606000" />
       <workItem from="1683710618812" duration="5706000" />
+      <workItem from="1684309459253" duration="881000" />
     </task>
     <servers />
   </component>

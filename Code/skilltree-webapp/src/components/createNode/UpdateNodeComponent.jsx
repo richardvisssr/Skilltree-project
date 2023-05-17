@@ -10,7 +10,6 @@ function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
-
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assesmentCriteria, setAssessmentCriteria] = useState([]);
@@ -22,9 +21,16 @@ function UpdateNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+      console.log("kaas")  
+    }, [nodes]);
+
+    useEffect(() => {
+    console.log("dit zijn de nodes", nodes);
+
         let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
+                console.log("kom ik hier wel?");
                 currentNode = node;
                 return;
             }
