@@ -19,8 +19,8 @@ public class NodeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
     public Response createNode(
-        NodeRequestDTO nodeDTO,
-        @PathParam("skilltreeId") int skilltreeId
+            NodeRequestDTO nodeDTO,
+            @PathParam("skilltreeId") int skilltreeId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.createNode(nodeDTO, skilltreeId)).build();
@@ -49,9 +49,9 @@ public class NodeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
     public Response getAllNodes(
-        @PathParam("skilltreeId") int skilltreeId
+            @PathParam("skilltreeId") int skilltreeId
     ) {
-        try{
+        try {
             return Response.status(Response.Status.OK).entity(nodeService.getAllNodes(skilltreeId)).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);

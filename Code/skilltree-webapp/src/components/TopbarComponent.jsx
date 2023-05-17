@@ -4,16 +4,29 @@ import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
 import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../actions/SkilltreeAction';
+import { fetchLinkStudentsToSkilltreeActionAsync, clearStudentCardAction } from '../actions/StudentAction';
+import { showStudentCard } from '../actions/StudentAction';
+
 
 export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [firstRenderDone, setFirstRenderDone] = useState(false);
 
     const userId = useSelector((state) => state.user.userId);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    const selectedStudents = useSelector((state) => state.student.selectedStudents);
 
     const dispatch = useDispatch();
+
+    const handleButton = () => {
+        if (firstRenderDone) {
+            dispatch(fetchLinkStudentsToSkilltreeActionAsync(currentSkilltree.id, selectedStudents));
+        }
+        setFirstRenderDone(!firstRenderDone);
+        dispatch(showStudentCard());
+    };
 
     const onDragStart = (event, nodeType) => {
         event.dataTransfer.setData('application/reactflow', nodeType);
@@ -22,18 +35,17 @@ export default function TopbarComponent() {
   
     const handleSave = () => {
         if (title === '') {
-        return;
+            return;
         }
         
         if (description === '') {
-        return;
+            return;
         }
         
         if (newSkilltree) {
             dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
-
         } else if (currentSkilltree !== null) {
-            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId))
+            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId));
         }
         };
 
@@ -45,6 +57,7 @@ export default function TopbarComponent() {
                 setTitle(currentSkilltree.title);
                 setDescription(currentSkilltree.description);
             }
+            dispatch(clearStudentCardAction());
         }, [currentSkilltree, newSkilltree]);
 
         return (
@@ -111,8 +124,9 @@ export default function TopbarComponent() {
                                     <div className="hidden lg:ml-6 lg:block">
                                         <div className="flex items-center justify-center">
                                             <button
-                                                className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                                className="bg-pink-700 dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
+                                                onClick={handleButton}
                                             >
                                                 Koppelen
                                             </button>
@@ -175,6 +189,7 @@ export default function TopbarComponent() {
                                         </button>
                                     </div>
                                 </div>
+                                
                             </div>
 
                         </Disclosure.Panel>

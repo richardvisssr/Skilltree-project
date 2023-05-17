@@ -17,7 +17,7 @@ public class NodeDAO {
 
     public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssesmentCriteriaQuery(skilltreeId));
+        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
         return nodes;
     }
 
@@ -51,7 +51,7 @@ public class NodeDAO {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
                 "FROM Nodes n\n" +
-                "INNER JOIN AssesmentCriteria ac\n" +
+                "INNER JOIN AssessmentCriteria ac\n" +
                 "ON n.ID = ac.NodeID\n" +
                 "WHERE n.SkillTreeID = ?";
         var stmt = connection.prepareStatement(query);

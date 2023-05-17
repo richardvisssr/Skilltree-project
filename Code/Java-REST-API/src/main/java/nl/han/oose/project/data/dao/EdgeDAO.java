@@ -2,7 +2,6 @@ package nl.han.oose.project.data.dao;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.EdgeDatamapper;
-import nl.han.oose.project.data.datamapper.NodeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.EdgeDTO;
 import nl.han.oose.project.resources.dto.EdgesDTO;

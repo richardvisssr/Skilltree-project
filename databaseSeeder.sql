@@ -21,7 +21,7 @@ VALUES
     ('testSkill', 'Dit is een test skill zodat ik de query kan testen', 100, 100, 1),
     ('node voor skilltree 2', 'Dit is een test skill zodat ik de query kan testen', 100, 100, 2)
 
-INSERT INTO AssesmentCriteria (Description, NodeID)
+INSERT INTO AssessmentCriteria (Description, NodeID)
 VALUES 
     ('dit is een test description', 1),
     ('dit is een tweede test description', 1),

@@ -7,14 +7,16 @@ import ReactFlow, {
   useEdgesState,
   Controls, MarkerType,
 } from 'reactflow';
-
 import CustomNode from "./CustomNode";
+import StudentCardComponent from "./StudentCardComponent";
+
 import FloatingEdge from "./edges/FloatingEdge";
 import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
+import { fetchAllStudentsFromSkilltreeActionAsync } from "../actions/StudentAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
 import {fetchCreateEdgeActionAsync} from "../actions/EdgeAction";
@@ -41,6 +43,7 @@ function ReactFlowComponent() {
     const allFetchedEdges = useSelector((state) => state.skilltree.edges);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const showStudentCard = useSelector((state) => state.student.showCard);
     const showCard = useSelector((state) => state.node.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
     const [deletedEdge, setDeletedEdge] = useState(false);
@@ -73,9 +76,9 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-    }, [skilltreeId, showCard]);
-
-
+      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
+      dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
+    }, [skilltreeId,showCard]);
 
   const convertFetchToEdges = () => {
     let tempArray = [];
@@ -105,6 +108,14 @@ function ReactFlowComponent() {
     useEffect(() => {
       setCurrentNodeId(highestNodeId + 1)
     }, [highestNodeId])
+
+    const showStudentCardComponent = () => {
+      if (showStudentCard) {
+        return (
+          <StudentCardComponent />
+        )
+      }
+    }
 
     const convertFetchToNodes = () => {
       let tempArray = [];
@@ -226,6 +237,7 @@ function ReactFlowComponent() {
           </ReactFlow>
           <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update posities</button>
         </div>
+        {showStudentCardComponent()}
       </ReactFlowProvider>
     );
 }
