@@ -51,7 +51,7 @@ BEGIN TRY
         CONSTRAINT FK_Nodes_SkillTreeID_ID FOREIGN KEY (SkillTreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
     );
 
-		CREATE TABLE AssesmentCriteria
+		CREATE TABLE AssessmentCriteria
 		(
 		ID          INT UNIQUE                    NOT NULL IDENTITY (1,1),
 		Description VARCHAR(255)                  NOT NULL, 
@@ -60,7 +60,7 @@ BEGIN TRY
 		NodeID  INT NOT NULL,     
 
         CONSTRAINT PK_AssessmentsCriteria PRIMARY KEY (ID),
-		CONSTRAINT FK_AssesmentCriteria_Nodes_ID FOREIGN KEY (NodeID) REFERENCES Nodes (ID) ON DELETE CASCADE
+		CONSTRAINT FK_AssessmentCriteria_Nodes_ID FOREIGN KEY (NodeID) REFERENCES Nodes (ID) ON DELETE CASCADE
 		);
 
 		CREATE TABLE LearningOutcome
