@@ -113,6 +113,17 @@ export default function TopbarComponent() {
                                                         onChange={(e) => setDescription(e.target.value)}
                                                     />
                                                 </div>
+                                                <div className="hidden lg:ml-6 lg:block">
+                                        <div className="flex items-center justify-center">
+                                            <button
+                                            className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium"
+                                            onClick={handleSave}
+                                            type="button"
+                                        >
+                                            Opslaan
+                                        </button>
+                                        </div>
+                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -121,27 +132,16 @@ export default function TopbarComponent() {
                                         onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node aanmaken
                                     </div>
                                     </div>
-                                    <div className="hidden lg:ml-6 lg:block">
-                                        <div className="flex items-center justify-center">
-                                            <button
+                                </div>
+                                <div className="hidden lg:ml-6 lg:block">
+                                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                                    <button
                                                 className="bg-pink-700 dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
                                                 onClick={handleButton}
                                             >
-                                                Koppelen
+                                                Student Koppelen
                                             </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="hidden lg:ml-6 lg:block">
-                                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                        <button
-                                            className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium"
-                                            onClick={handleSave}
-                                            type="button"
-                                        >
-                                            Opslaan
-                                        </button>
                                     </div>
                                 </div>
                             </div>
