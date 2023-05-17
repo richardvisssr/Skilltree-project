@@ -74,15 +74,6 @@ public class NodeDAO {
         return result;
     }
 
-    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
-        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
-        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
-        connection.close();
-        return getNodesFromSkillTree(skilltreeId);
-    }
-
     private int getHighestNodeIdQuery() throws SQLException {
         var query = "DECLARE @IdentityValue INT;\n" +
                      "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
