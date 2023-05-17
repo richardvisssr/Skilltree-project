@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DeleteNodeComponent } from "./deleteNode/DeleteNodeComponent";
 import { useState } from "react";
