@@ -16,7 +16,7 @@ function UpdateNodeComponent() {
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
-
+    console.log(assesmentCriteria,"1");
 
     const dispatch = useDispatch();
 
@@ -83,6 +83,7 @@ function UpdateNodeComponent() {
 
     const handleSave = () => {
         dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
+        console.log(assesmentCriteria,"2");
         hideCard();
       };
 

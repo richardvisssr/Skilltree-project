@@ -40,6 +40,26 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             nodes: [...state.nodes, action.payload],
         }
+        case "skilltree/updateNode":
+            console.log(action.payload.assesmentCriteria,"1");
+            const updatedNodes = state.nodes.map((node) => {
+              if (node.id === action.payload.id) {
+                return {
+                  ...node,
+                  skill: action.payload.skill,
+                  description: action.payload.description,
+                  learningOutcome: action.payload.learningOutcome,
+                  assesmentCriteria: action.payload.assesmentCriteria,
+                };
+              }
+              return node;
+            });
+            console.log(action.payload.assesmentCriteria,"2");
+            return {
+              ...state,
+              nodes: updatedNodes,
+            };
+            
     default:
         return state;
     }

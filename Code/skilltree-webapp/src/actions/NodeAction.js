@@ -65,10 +65,12 @@ export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
             dispatch(setDeleteNodeAction(nodeId));
         });
 }
-export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,) {
+export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria, nodeId) {
+    console.log(assesmentCriteria)
     return {
-        type: "node/updateNode",
+        type: "skilltree/updateNode",
             payload: {
+               "id":nodeId,
                 skill,
                 description,
                 positionX,
@@ -95,7 +97,7 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
     fetch(`${API_PATH}/nodes/${nodeId}`, options)
         .then((response) => response.json())
         .then(() => {
-            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria));
+            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria, nodeId));
     });
 };
 
