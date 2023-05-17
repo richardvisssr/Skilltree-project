@@ -6,7 +6,6 @@ const initialState = {
     edges: [],
 };
 
-// eslint-disable-next-line default-param-last
 function skillTreeReducer(state = initialState, action) {
     switch (action.type) {
     case "skilltree/setSkilltrees":
@@ -35,6 +34,11 @@ function skillTreeReducer(state = initialState, action) {
         return {
             ...state,
             edges: action.payload.edges,
+        }
+    case "skilltree/createNode":
+        return {
+            ...state,
+            nodes: [...state.nodes, action.payload],
         }
     default:
         return state;

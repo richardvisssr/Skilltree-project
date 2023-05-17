@@ -4,12 +4,10 @@ import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.NodeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
+import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class NodeDAO {
@@ -23,7 +21,33 @@ public class NodeDAO {
         return nodes;
     }
 
-    private ResultSet getAssessmentCriteriaQuery(int skilltreeId) throws SQLException {
+    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
+        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
+        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
+        connection.close();
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    public NodesDTO updateNode(NodeRequestDTO nodeRequestDTODTO, int nodeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        updateNodeQuery(nodeRequestDTODTO, nodeId);
+        updateAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), nodeId);
+        updateLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), nodeId);
+        var skilltreeId = nodeRequestDTODTO.getSkilltreeId();
+        connection.close();
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    public int getHighestNodeId() throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var highestNodeId = getHighestNodeIdQuery();
+        connection.close();
+        return highestNodeId;
+    }
+
+    private ResultSet getAssesmentCriteriaQuery(int skilltreeId) throws SQLException {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
                 "FROM Nodes n\n" +
@@ -50,27 +74,11 @@ public class NodeDAO {
         return result;
     }
 
-    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
-        addAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), createdNodeId);
-        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
-        connection.close();
-        return getNodesFromSkillTree(skilltreeId);
-    }
-
-    public int getHighestNodeId() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var highestNodeId = getHighestNodeIdQuery();
-        connection.close();
-        return highestNodeId;
-    }
-
     private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
+        var query = "DECLARE @IdentityValue INT;\n" +
+                     "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
+                     "SELECT @IdentityValue AS 'ID'";
+
         var stmt = connection.prepareStatement(query);
         var resultSet = stmt.executeQuery();
 
@@ -104,9 +112,22 @@ public class NodeDAO {
         return nodeId;
     }
 
-    private void addAssessmentCriteriaQuery(List<String> assessmentCriteriaDTO, int nodeId) throws SQLException {
-        for (String assesmentCriterium : assessmentCriteriaDTO) {
-            var query = "INSERT INTO AssessmentCriteria (Description, NodeID)\n" +
+    public void deleteNode(int nodeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        deleteNodeQuery(nodeId);
+        connection.close();
+    }
+
+    private void deleteNodeQuery(int nodeId) throws SQLException {
+        var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
+        var stmt = connection.prepareStatement(deleteNodeQuery);
+        stmt.setInt(1, nodeId);
+        stmt.execute();
+    }
+
+    private void addAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {
+        for (String assesmentCriterium : assesmentCriteriaDTO) {
+            var query = "INSERT INTO AssesmentCriteria (Description, NodeID)\n" +
                     "VALUES (?, ?)";
             var stmt = connection.prepareStatement(query);
             stmt.setString(1, assesmentCriterium);
@@ -121,6 +142,63 @@ public class NodeDAO {
         var stmt = connection.prepareStatement(query);
         stmt.setString(1, learningOutcome);
         stmt.setInt(2, createdNodeId);
+        stmt.executeUpdate();
+    }
+
+    private void updateLearningOutcomeQuery(String learningOutcome, int nodeId) throws SQLException {
+        var updateQuery = "UPDATE LearningOutcome SET Description = ? WHERE NodeID = ?";
+        var stmt = connection.prepareStatement(updateQuery);
+        stmt.setString(1, learningOutcome);
+        stmt.setInt(2, nodeId);
+        stmt.executeUpdate();
+    }
+
+    private void updateAssesmentCriteriaQuery(List<String> assessmentCriteriaDTO, int nodeId) throws SQLException {
+        // Delete existing assessment criteria for the given nodeId
+        var deleteQuery = "DELETE FROM AssesmentCriteria WHERE NodeID = ?";
+        var deleteStmt = connection.prepareStatement(deleteQuery);
+        deleteStmt.setInt(1, nodeId);
+        deleteStmt.executeUpdate();
+
+        // Insert updated assessment criteria
+        for (String assessmentCriterion : assessmentCriteriaDTO) {
+            var insertQuery = "INSERT INTO AssesmentCriteria (Description, NodeID)\n" +
+                    "VALUES (?, ?)";
+            var insertStmt = connection.prepareStatement(insertQuery);
+            insertStmt.setString(1, assessmentCriterion);
+            insertStmt.setInt(2, nodeId);
+            insertStmt.executeUpdate();
+        }
+    }
+
+
+    private void updateNodeQuery(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
+        var updateNodeQuery = "UPDATE Nodes SET Skill = ?, Description = ? WHERE ID = ?";
+        var stmt = connection.prepareStatement(updateNodeQuery);
+        stmt.setString(1, nodeDTO.getSkill());
+        stmt.setString(2, nodeDTO.getDescription());
+        stmt.setInt(3, nodeId);
+        stmt.executeUpdate();
+    }
+
+    public NodesDTO updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        for (NodeDTO nodeDTO : nodesDTO.getNodes()) {
+            updateNodePositionsQuery(nodeDTO, skilltreeId);
+        }
+        connection.close();
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    private void updateNodePositionsQuery(NodeDTO nodeDTO, int skilltreeId) throws SQLException {
+        var query = "UPDATE Nodes\n" +
+                "SET PositionX = ?, PositionY = ?\n" +
+                "WHERE ID = ? AND SkillTreeID = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setDouble(1, nodeDTO.getPositionX());
+        stmt.setDouble(2, nodeDTO.getPositionY());
+        stmt.setInt(3, nodeDTO.getID());
+        stmt.setInt(4, skilltreeId);
         stmt.executeUpdate();
     }
 

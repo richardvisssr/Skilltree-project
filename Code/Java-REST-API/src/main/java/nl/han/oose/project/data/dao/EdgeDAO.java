@@ -48,6 +48,20 @@ public class EdgeDAO {
         stmt.executeUpdate();
     }
 
+    public void deleteEdge(String edgeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        deleteEdgeQuery(edgeId);
+        connection.close();
+    }
+
+    private void deleteEdgeQuery(String edgeId) throws SQLException{
+        var query = "DELETE FROM Edges WHERE EdgeId = ?";
+        var stmt = connection.prepareStatement(query);
+        stmt.setString(1, edgeId);
+        stmt.executeUpdate();
+    }
+
+
     @Inject
     public void setEdgeDatamapperDatamapper(EdgeDatamapper edgeDatamapper) {
         this.edgeDatamapper = edgeDatamapper;

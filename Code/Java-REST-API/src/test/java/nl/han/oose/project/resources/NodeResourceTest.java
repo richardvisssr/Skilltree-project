@@ -2,6 +2,7 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
+import nl.han.oose.project.data.dao.NodeDAO;
 import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
@@ -12,8 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class NodeResourceTest {
     private NodeResource sut;
@@ -61,6 +61,54 @@ public class NodeResourceTest {
 
             // Act
             var result = sut.createNode(nodeRequestDTO, GEBRUIKER_ID);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Test
+    void updateNode(){
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.updateNode(nodeRequestDTO, GEBRUIKER_ID)).thenReturn(nodesDTO);
+
+            //Act
+            var result = sut.updateNode(nodeRequestDTO, GEBRUIKER_ID);
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void updateNodesPositions() {
+        try {
+            //Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.updateNodesPositions(nodesDTO, GEBRUIKER_ID)).thenReturn(nodesDTO);
+
+            //Act
+            var result = sut.updateNodesPositions(nodesDTO, GEBRUIKER_ID);
+
+            //Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void updateNodesPositionsWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(nodeService.updateNodesPositions(nodesDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
+
+            // Act
+            var result = sut.updateNodesPositions(nodesDTO, GEBRUIKER_ID);
 
             // Assert
             Assertions.assertEquals(expected, result.getStatus());

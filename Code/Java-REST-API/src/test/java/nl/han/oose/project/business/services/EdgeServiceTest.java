@@ -58,4 +58,22 @@ public class EdgeServiceTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void testDeleteEdge() {
+        try {
+            // Arrange
+                var expected = new EdgesDTO();
+
+                sut.createEdge(new EdgeDTO("test", "test", "test", 5), 1);
+
+                // Act
+                sut.deleteEdge("test");
+
+                // Assert
+                org.junit.jupiter.api.Assertions.assertEquals(expected.getEdges(), sut.getAllEdges(1).getEdges());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

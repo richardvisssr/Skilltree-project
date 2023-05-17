@@ -14,7 +14,7 @@ import FloatingEdge from "./edges/FloatingEdge";
 import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
+import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../actions/StudentAction";
 import "reactflow/dist/style.css";
@@ -29,34 +29,44 @@ const nodeTypes = {
     custom: CustomNode,
 };
 
-const defaultEdgeOptions = {
-  style: { strokeWidth: 3, stroke: 'black' },
-  type: 'floating',
-  markerEnd: {
-    type: MarkerType.ArrowClosed,
-    color: 'black',
-  },
-};
-const connectionLineStyle = {
-  strokeWidth: 3,
-  stroke: 'black',
-};
-
 
 function ReactFlowComponent() {
+
+
     const dispatch = useDispatch();
 
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const allFetchedEdges = useSelector((state) => state.skilltree.edges);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
     const showStudentCard = useSelector((state) => state.student.showCard);
+    const showCard = useSelector((state) => state.node.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
+    const [deletedEdge, setDeletedEdge] = useState(false);
+
+  const deleteEdge = (id) => {
+    setEdges((eds) => eds.filter((e) => e.id !== id));
+  }
+
+  const defaultEdgeOptions = {
+    style: { strokeWidth: 3, stroke: 'black' },
+    type: 'floating',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      color: 'black',
+    },
+    data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
+  };
+  const connectionLineStyle = {
+    strokeWidth: 3,
+    stroke: 'black',
+  };
+
+
 
     let skilltreeId;
     if (skilltree !== null) {
@@ -68,7 +78,7 @@ function ReactFlowComponent() {
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
       dispatch(fetchallEdgesFromSkilltree(skilltreeId));
       dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
-    }, [skilltreeId]);
+    }, [skilltreeId,showCard]);
 
   const convertFetchToEdges = () => {
     let tempArray = [];
@@ -82,7 +92,8 @@ function ReactFlowComponent() {
         markerEnd: {
             type: MarkerType.ArrowClosed,
             color: 'black',
-        }
+        },
+        data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
       }
       tempArray.push(tempObj);
     })
@@ -112,7 +123,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}` },
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);
@@ -128,14 +139,18 @@ function ReactFlowComponent() {
   }, []);
 
   useEffect(() => {
-    let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
+    if(!deletedEdge) {
+      let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
       if (edges.length > 0) {
         const lastEdge = edges[edges.length - 1];
-        if(lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
-            return;
+        if (lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
+          return;
         }
         dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
       }
+    } else {
+        setDeletedEdge(false);
+    }
   }, [edges])
 
 
@@ -162,21 +177,40 @@ function ReactFlowComponent() {
       
       setCurrentNodeId(currentNodeId + 1);
 
+      
+
+      //aanmaken
+      const label = `Nieuwe node`
+      const description = "";
+      const assesmentCriteria = [];
+      const learningOutcome = "";
+      dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
+
       const newNode = {
         id: `${currentNodeId}`,
         type,
         position,
-        data: { label: `Nieuwe node` }
+        data: { label: `${label}`, nodeId: `${currentNodeId}` }
       };
 
       setNodes((prevNodes) => [...prevNodes, newNode]);
-
-      const description = "";
-      const assessmentCriteria = [];
-      const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltreeId))
+    
     },
   );
+
+  const onPositionClick = () => {
+    let tempArray = [];
+    nodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        positionX: node.position.x,
+        positionY: node.position.y,
+      }
+      tempArray.push(tempObj);
+    })
+    dispatch(fetchAllNodesPositionsActionAsync(skilltreeId, tempArray));
+  };
+
   
     return (
       <ReactFlowProvider>
@@ -201,9 +235,11 @@ function ReactFlowComponent() {
           >
             <Controls />
           </ReactFlow>
+          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update posities</button>
         </div>
         {showStudentCardComponent()}
       </ReactFlowProvider>
     );
 }
- export default ReactFlowComponent;
+
+export default ReactFlowComponent;

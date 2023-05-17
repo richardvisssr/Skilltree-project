@@ -14,6 +14,13 @@ public class NodeService {
         return nodeDAO.createNode(nodeDTO, skilltreeId);
     }
 
+    public void deleteNode(int nodeId) throws SQLException {
+        nodeDAO.deleteNode(nodeId);
+    }
+    public NodesDTO updateNode(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
+        return nodeDAO.updateNode(nodeDTO, nodeId);
+    }
+
     public NodesDTO getAllNodes(int skilltreeId) throws SQLException {
         return nodeDAO.getNodesFromSkillTree(skilltreeId);
     }
@@ -22,9 +29,14 @@ public class NodeService {
         return nodeDAO.getHighestNodeId();
     }
 
+    public NodesDTO updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
+        return nodeDAO.updateNodesPositions(nodesDTO, skilltreeId);
+    }
+
     @Inject
     public void setNodeDAO(NodeDAO nodeDAO) {
         this.nodeDAO = nodeDAO;
     }
+
 
 }
