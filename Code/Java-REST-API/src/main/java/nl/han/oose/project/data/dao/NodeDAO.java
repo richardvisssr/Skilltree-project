@@ -47,22 +47,6 @@ public class NodeDAO {
         return highestNodeId;
     }
 
-    private int getHighestNodeIdQuery() throws SQLException {
-        var query = "SELECT TOP 1 ID \n" +
-                "from Nodes\n" +
-                "ORDER BY ID\n" +
-                "DESC";
-        var stmt = connection.prepareStatement(query);
-        var resultSet = stmt.executeQuery();
-
-        int nodeId = 0;
-        if(resultSet.next()){
-            nodeId = resultSet.getInt("ID");
-        }
-
-        return nodeId;
-    }
-
     private ResultSet getAssesmentCriteriaQuery(int skilltreeId) throws SQLException {
         var query = "SELECT\n" +
                 "ac.Description as AcceptationCriteriaDescription, ac.character, ac.NodeID\n" +
@@ -89,6 +73,32 @@ public class NodeDAO {
         var result = stmt.executeQuery();
         return result;
     }
+
+    public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
+        addAssesmentCriteriaQuery(nodeRequestDTODTO.getAssesmentCriteria(), createdNodeId);
+        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
+        connection.close();
+        return getNodesFromSkillTree(skilltreeId);
+    }
+
+    private int getHighestNodeIdQuery() throws SQLException {
+        var query = "DECLARE @IdentityValue INT;\n" +
+                     "SET @IdentityValue = IDENT_CURRENT('Nodes');\n" +
+                     "SELECT @IdentityValue AS 'ID'";
+
+        var stmt = connection.prepareStatement(query);
+        var resultSet = stmt.executeQuery();
+
+        int nodeId = 0;
+        if(resultSet.next()){
+            nodeId = resultSet.getInt("ID");
+        }
+
+        return nodeId;
+    }
+
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
         var insertNodeQuery = "INSERT INTO Nodes (Skill, Description, PositionX, PositionY, SkillTreeID)\n" +
                 "VALUES \n" +
@@ -111,19 +121,17 @@ public class NodeDAO {
         return nodeId;
     }
 
-    public int deleteNode(int nodeId) throws SQLException {
+    public void deleteNode(int nodeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = deleteNodeQuery(nodeId);
+        deleteNodeQuery(nodeId);
         connection.close();
-        return result;
     }
 
-    private int deleteNodeQuery(int nodeId) throws SQLException {
+    private void deleteNodeQuery(int nodeId) throws SQLException {
         var deleteNodeQuery = "DELETE FROM Nodes WHERE ID = ?";
         var stmt = connection.prepareStatement(deleteNodeQuery);
         stmt.setInt(1, nodeId);
-        stmt.executeQuery();
-        return nodeId;
+        stmt.execute();
     }
 
     private void addAssesmentCriteriaQuery(List<String> assesmentCriteriaDTO, int nodeId) throws SQLException {

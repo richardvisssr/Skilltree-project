@@ -18,8 +18,7 @@ export function DeleteNodeComponent(props) {
     const hideCard = () => {
         props.showDeleteNodeComponent();
     };
-    /* eslint-disable react/jsx-wrap-multilines */
-    /* eslint-disable operator-linebreak */
+
     return (
         <div>
             {deleteCardShowState ?

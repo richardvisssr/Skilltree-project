@@ -76,7 +76,8 @@ public class NodeResource {
             @PathParam("nodeId") int nodeId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(nodeService.deleteNode(nodeId)).build();
+            nodeService.deleteNode(nodeId);
+            return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
