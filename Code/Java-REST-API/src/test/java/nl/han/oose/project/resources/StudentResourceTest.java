@@ -106,7 +106,7 @@ public class StudentResourceTest {
         StudentsRequestDTO studentsRequestDTO = mock(StudentsRequestDTO.class);
 
         // Act
-        var result = sut.addStudentsToSkilltree(skilltreeId, studentsRequestDTO);
+        var result = sut.updateStudentsToSkilltree(skilltreeId, studentsRequestDTO);
 
         // Assert
         Assertions.assertEquals(expected, result.getStatus());
@@ -118,10 +118,10 @@ public class StudentResourceTest {
             // Arrange
             var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
             StudentsRequestDTO studentsRequestDTO = mock(StudentsRequestDTO.class);
-            doThrow(new SQLException()).when(studentService).addStudentsToSkilltree(studentsRequestDTO, skilltreeId);
+            doThrow(new SQLException()).when(studentService).updateStudentsToSkilltree(studentsRequestDTO, skilltreeId);
 
             // Act
-            var result = sut.addStudentsToSkilltree(skilltreeId, studentsRequestDTO);
+            var result = sut.updateStudentsToSkilltree(skilltreeId, studentsRequestDTO);
 
             // Assert
             Assertions.assertEquals(expected, result.getStatus());

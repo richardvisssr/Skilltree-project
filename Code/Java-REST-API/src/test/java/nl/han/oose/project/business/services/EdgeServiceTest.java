@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class EdgeServiceTest {
     private EdgeService sut;
@@ -30,6 +31,7 @@ public class EdgeServiceTest {
             var edgeDTO = new EdgeDTO("test", "test", "test", 5);
             var expected = new EdgesDTO();
             expected.setEdges(List.of(edgeDTO));
+            when(edgeDAO.createEdge(anyObject(), anyInt())).thenReturn(expected);
 
             // Act
             var result = sut.createEdge(edgeDTO, 1);
@@ -48,6 +50,7 @@ public class EdgeServiceTest {
             var edgeDTO = new EdgeDTO("test", "test", "test", 5);
             var expected = new EdgesDTO();
             expected.setEdges(List.of(edgeDTO));
+            when(edgeDAO.getAllEdgesFromSkilltree(anyInt())).thenReturn(expected);
 
             // Act
             var result = sut.getAllEdges(1);
