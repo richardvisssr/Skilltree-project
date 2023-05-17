@@ -4,12 +4,11 @@ public class StudentRequestDTO {
 
     private int id;
 
+    public StudentRequestDTO(){}
+
     public StudentRequestDTO(int id) {
         this.id = id;
     }
-
-    public StudentRequestDTO(){}
-
 
     public int getId() {
         return id;

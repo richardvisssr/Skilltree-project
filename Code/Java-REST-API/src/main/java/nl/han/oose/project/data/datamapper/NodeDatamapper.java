@@ -1,8 +1,7 @@
 package nl.han.oose.project.data.datamapper;
 
-import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
+import nl.han.oose.project.resources.dto.AssessmentCriteriaDTO;
 import nl.han.oose.project.resources.dto.NodeDTO;
-import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NodeDatamapper {
-    public NodesDTO map(ResultSet nodeResultSet, ResultSet assesmentCriteriaResultSet) throws SQLException {
+    public NodesDTO map(ResultSet nodeResultSet, ResultSet assessmentCriteriaResultSet) throws SQLException {
         var nodesDTO = new NodesDTO();
         List<NodeDTO> nodes = new ArrayList<>();
 
@@ -27,13 +26,13 @@ public class NodeDatamapper {
             ));
         }
 
-        while (assesmentCriteriaResultSet.next()) {
-            var nodeId = assesmentCriteriaResultSet.getInt("NodeID");
+        while (assessmentCriteriaResultSet.next()) {
+            var nodeId = assessmentCriteriaResultSet.getInt("NodeID");
             for (NodeDTO node : nodes) {
                 if(node != null && node.getID() == nodeId) {
-                    node.getAssesmentCriteria().add(new AssesmentCriteriaDTO(
-                            assesmentCriteriaResultSet.getString("AcceptationCriteriaDescription"),
-                            assesmentCriteriaResultSet.getString("character")
+                    node.getAssessmentCriteria().add(new AssessmentCriteriaDTO(
+                            assessmentCriteriaResultSet.getString("AcceptationCriteriaDescription"),
+                            assessmentCriteriaResultSet.getString("character")
                     ));
                 }
             }

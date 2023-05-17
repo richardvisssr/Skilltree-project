@@ -1,8 +1,5 @@
 package nl.han.oose.project.resources.dto;
 
-import nl.han.oose.project.resources.dto.AssesmentCriteriaDTO;
-import nl.han.oose.project.resources.dto.NodeDTO;
-import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -111,14 +108,14 @@ public class NodeRequestDTOTest {
     }
 
     @Test
-    void testAssesmentCriteria() {
+    void testAssessmentCriteria() {
         // Arrange
         List<String> expected = new ArrayList<>();
         expected.add("world");
-        sut.setAssesmentCriteria(expected);
+        sut.setAssessmentCriteria(expected);
 
         // Act
-        var result = sut.getAssesmentCriteria();
+        var result = sut.getAssessmentCriteria();
 
         // Assert
         Assertions.assertEquals(expected, result);

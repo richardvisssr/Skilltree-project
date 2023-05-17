@@ -11,7 +11,7 @@ public class NodeDTO {
     private double positionY;
     private int skilltreeId;
     private String learningOutcome;
-    private List<AssesmentCriteriaDTO> assesmentCriteria = new ArrayList<>();
+    private List<AssessmentCriteriaDTO> assessmentCriteria = new ArrayList<>();
 
     public NodeDTO() {}
 
@@ -81,11 +81,11 @@ public class NodeDTO {
         this.learningOutcome = learningOutcome;
     }
 
-    public List<AssesmentCriteriaDTO> getAssesmentCriteria() {
-        return assesmentCriteria;
+    public List<AssessmentCriteriaDTO> getAssessmentCriteria() {
+        return assessmentCriteria;
     }
 
-    public void setAssesmentCriteria(List<AssesmentCriteriaDTO> assesmentCriteria) {
-        this.assesmentCriteria = assesmentCriteria;
+    public void setAssessmentCriteria(List<AssessmentCriteriaDTO> assessmentCriteria) {
+        this.assessmentCriteria = assessmentCriteria;
     }
 }

@@ -1,12 +1,12 @@
 package nl.han.oose.project.resources.dto;
 
-public class AssesmentCriteriaDTO {
+public class AssessmentCriteriaDTO {
     private String description;
     private String character;
 
-    public AssesmentCriteriaDTO() {}
+    public AssessmentCriteriaDTO() {}
 
-    public AssesmentCriteriaDTO(String description, String character) {
+    public AssessmentCriteriaDTO(String description, String character) {
         this.description = description;
         this.character = character;
     }
