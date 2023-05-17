@@ -12,11 +12,11 @@ function UpdateNodeComponent() {
     const currentNodeId = useSelector((state) => state.node.currentNode)
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
-    const [assesmentCriteria, setAssessmentCriteria] = useState([]);
+    const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
-    console.log(assesmentCriteria,"1");
+    console.log(assessmentCriteria,"1");
 
     const dispatch = useDispatch();
 
@@ -31,9 +31,9 @@ function UpdateNodeComponent() {
         })
         
         const tempArr = [];
-        if(currentNode.assesmentCriteria !== undefined){
-        currentNode.assesmentCriteria.map(assesmentCriterium => {
-            tempArr.push(assesmentCriterium.description)
+        if(currentNode.assessmentCriteria !== undefined){
+        currentNode.assessmentCriteria.map(assessmentCriterium => {
+            tempArr.push(assessmentCriterium.description)
         })
     }
 
@@ -58,13 +58,13 @@ function UpdateNodeComponent() {
         setAssessmentCriteria(criteriaArray);
     };
 
-    const mapAssesmentCriteria = () => {
+    const mapAssessmentCriteria = () => {
         let returnString = "";
 
-        for (let i = 0; i < assesmentCriteria.length; i++) {
-            returnString += assesmentCriteria[i];
-            // zorgt er voor dat er geen '#' wordt gezet na de laatse assesmentcriterium 
-            if (i !== (assesmentCriteria.length - 1)) {
+        for (let i = 0; i < assessmentCriteria.length; i++) {
+            returnString += assessmentCriteria[i];
+            // zorgt er voor dat er geen '#' wordt gezet na de laatse assessmentcriterium 
+            if (i !== (assessmentCriteria.length - 1)) {
                 returnString += "#";
             }
         }
@@ -82,8 +82,8 @@ function UpdateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assesmentCriteria, learningOutcome, skilltreeId, currentNodeId));
-        console.log(assesmentCriteria,"2");
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, currentNodeId));
+        console.log(assessmentCriteria,"2");
         hideCard();
       };
 
@@ -112,7 +112,7 @@ function UpdateNodeComponent() {
                             <FormFieldComponent
                                 fieldType="textarea"
                                 title="BeoordelingsCriteria"
-                                value={mapAssesmentCriteria()}
+                                value={mapAssessmentCriteria()}
                                 onChange={handleAssessmentCriteriaChange}
                             />
                             <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
