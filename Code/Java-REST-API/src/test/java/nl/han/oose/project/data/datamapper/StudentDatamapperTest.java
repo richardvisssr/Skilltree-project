@@ -34,7 +34,7 @@ import java.util.List;
             expectedStudents.add(new StudentDTO(1, "John", "Doe"));
             expectedStudents.add(new StudentDTO(2, "Jane", "Smith"));
             when(resultSet.next()).thenReturn(true, true, false);
-            when(resultSet.getInt("Id")).thenReturn(1, 2);
+            when(resultSet.getInt("ID")).thenReturn(1, 2);
             when(resultSet.getString("Firstname")).thenReturn("John", "Jane");
             when(resultSet.getString("Lastname")).thenReturn("Doe", "Smith");
 
