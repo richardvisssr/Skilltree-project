@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DeleteNodeComponent } from "./deleteNode/DeleteNodeComponent";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
-import { showCreateCard } from "../actions/NodeAction";
+import { showCreateCard, currentNodeSelectedAction } from "../actions/NodeAction";
 import "./nodeStyle.css";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
@@ -24,6 +25,9 @@ export default function CustomNode({ isConnectable, data }) {
     const hideNode = () => {
         setIsNodeVisible(false);
     }
+    //test
+    const assesmentCriteria = useSelector((state) => state.node.assesmentCriteria)
+
 
     const dispatch = useDispatch();
     const connectionNodeId = useStore(connectionNodeIdSelector);
@@ -31,7 +35,9 @@ export default function CustomNode({ isConnectable, data }) {
     const targetHandleStyle = { zIndex: isTarget ? 3 : 1 };
 
     const handleButton = () => {
+        dispatch(currentNodeSelectedAction(nodeId));
         dispatch(showCreateCard());
+        // console.log(assesmentCriteria + "Opgehaald");
     };
 
     return (

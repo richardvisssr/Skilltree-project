@@ -6,6 +6,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
+import nl.han.oose.project.resources.dto.NodesDTO;
 
 import java.sql.SQLException;
 
@@ -27,6 +28,22 @@ public class NodeResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{nodeId}")
+    public Response updateNode(
+            NodeRequestDTO nodeDTO,
+            @PathParam("nodeId") int nodeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.updateNode(nodeDTO, nodeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -62,6 +79,21 @@ public class NodeResource {
             return Response.status(Response.Status.OK).entity(nodeService.deleteNode(nodeId)).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/skilltrees/{skilltreeId}")
+    public Response updateNodesPositions(
+        NodesDTO nodesDTO,
+        @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try {
+            return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodesDTO, skilltreeId)).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 

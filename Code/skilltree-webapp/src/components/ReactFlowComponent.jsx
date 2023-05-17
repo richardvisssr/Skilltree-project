@@ -13,7 +13,7 @@ import FloatingEdge from "./edges/FloatingEdge";
 import ConnectionLineStyle from "./edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync } from "../actions/NodeAction";
+import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../actions/EdgeAction";
 import "reactflow/dist/style.css";
 import "../styles/styles.css";
@@ -35,11 +35,11 @@ function ReactFlowComponent() {
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  
     const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
     const allFetchedEdges = useSelector((state) => state.skilltree.edges);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
+    const showCard = useSelector((state) => state.node.showCard);
     const [currentNodeId, setCurrentNodeId] = useState(0);
     const [deletedEdge, setDeletedEdge] = useState(false);
 
@@ -71,8 +71,9 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
-    }, [skilltreeId]);
+    }, [skilltreeId, showCard]);
+
+
 
   const convertFetchToEdges = () => {
     let tempArray = [];
@@ -109,7 +110,7 @@ function ReactFlowComponent() {
         const tempObj = {
           id: `${node.id}`,
           type: 'custom',
-          data: { label: `${node.skill}` },
+          data: { label: `${node.skill}`, nodeId: `${node.id}` },
           position: { x: node.positionX, y: node.positionY },
         }
         tempArray.push(tempObj);
@@ -178,6 +179,20 @@ function ReactFlowComponent() {
       dispatch(fetchCreateNodeActionAsync(newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
     },
   );
+
+  const onPositionClick = () => {
+    let tempArray = [];
+    nodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        positionX: node.position.x,
+        positionY: node.position.y,
+      }
+      tempArray.push(tempObj);
+    })
+    dispatch(fetchAllNodesPositionsActionAsync(skilltreeId, tempArray));
+  };
+
   
     return (
       <ReactFlowProvider>
@@ -202,6 +217,7 @@ function ReactFlowComponent() {
           >
             <Controls />
           </ReactFlow>
+          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update posities</button>
         </div>
       </ReactFlowProvider>
     );
