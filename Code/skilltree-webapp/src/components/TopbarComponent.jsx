@@ -47,12 +47,6 @@ export default function TopbarComponent() {
             }
         }, [currentSkilltree, newSkilltree]);
 
-        const buttonClass = `
-            rounded-md mx-3 py-2 text-sm font-medium
-            bg-gray-100 text-black hover:bg-gray-200 hover:text-black
-            dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white 
-        `
-
         return (
             <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
                 {({ open }) => (
@@ -92,7 +86,7 @@ export default function TopbarComponent() {
                                                         value={title}
                                                         name="title"
                                                         id="title"
-                                                        className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-2/5"
+                                                        className="w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium"
                                                         placeholder="Titel"
                                                         onChange={(e) => setTitle(e.target.value)}
                                                     />
@@ -101,8 +95,8 @@ export default function TopbarComponent() {
                                                         value={description}
                                                         name="description"
                                                         id="description"
-                                                        className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-2/5"
-                                                        placeholder="Beschrijving"
+                                                        className="w-2/5 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium"
+                                                        placeholder="beschrijving"
                                                         onChange={(e) => setDescription(e.target.value)}
                                                     />
                                                 </div>
@@ -110,14 +104,14 @@ export default function TopbarComponent() {
                                         </div>
                                     </div>
                                     <div className="hidden lg:ml-6 lg:block">
-                                        <div className="dndnode input rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit"
+                                        <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
                                         onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node aanmaken
                                     </div>
                                     </div>
                                     <div className="hidden lg:ml-6 lg:block">
                                         <div className="flex items-center justify-center">
                                             <button
-                                                className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit"
+                                                className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                                 type="button"
                                             >
                                                 Koppelen
@@ -128,7 +122,7 @@ export default function TopbarComponent() {
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                         <button
-                                            className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit border-solid border-green-600 border-2"
+                                            className="border-solid border-green-600 border-2 bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-5 py-2 text-sm font-medium"
                                             onClick={handleSave}
                                             type="button"
                                         >
@@ -147,7 +141,7 @@ export default function TopbarComponent() {
                                         value={title}
                                         name="title"
                                         id="title"
-                                        className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3"
+                                        className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium"
                                         placeholder="Titel"
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
@@ -156,12 +150,12 @@ export default function TopbarComponent() {
                                         value={description}
                                         name="description"
                                         id="description"
-                                        className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3"
+                                        className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md mx-3 px-3 py-2 text-sm font-medium"
                                         placeholder="Beschrijving"
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
                                     <button
-                                        className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit border-solid border-green-600 border-2"
+                                        className="flex bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                         onClick={handleSave}
                                         type="button"
                                     >
@@ -169,12 +163,12 @@ export default function TopbarComponent() {
                                     </button>
                                 </div>
                                 <div>
-                                <div className="dndnode input rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit" 
+                                <div className="dndnode input bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium" 
                                     onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node aanmaken
                                 </div>
                                     <div className="flex items-center justify-center pb-1 pt-1 ">
                                         <button
-                                            className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 hover:text-black dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 w-fit"
+                                            className="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
                                             type="button"
                                         >
                                             Koppelen
