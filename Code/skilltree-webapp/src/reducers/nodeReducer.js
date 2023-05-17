@@ -6,7 +6,7 @@ const initialState = {
     positionY: "",
     skillTreeId: "",
     learningOutcome: "",
-    assessmentCriteria: "",
+    assesmentCriteria: "",
     showCard: false,
     highestNodeId: null,
     currentNode: null,

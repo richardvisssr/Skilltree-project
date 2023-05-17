@@ -25,7 +25,7 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
             },
             mode: "cors",
             body: JSON.stringify({
-                skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria,
+                skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria,
             }),
 
         };
