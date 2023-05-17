@@ -1,7 +1,6 @@
 const API_PATH = process.env.REACT_APP_API_URL;
 
 export function setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assesmentCriteria) {
-    console.log("3");
     return {
         type: "skilltree/createNode",
         payload: {

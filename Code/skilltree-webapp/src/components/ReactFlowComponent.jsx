@@ -177,7 +177,6 @@ function ReactFlowComponent() {
       const assesmentCriteria = [];
       const learningOutcome = "";
       dispatch(fetchCreateNodeActionAsync(currentNodeId, newNode.data.label, description, position.x, position.y ,assesmentCriteria, learningOutcome, skilltreeId))
-      console.log("1");
     },
   );
 

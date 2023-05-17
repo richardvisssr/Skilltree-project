@@ -21,16 +21,10 @@ function UpdateNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      console.log("kaas")  
-    }, [nodes]);
-
-    useEffect(() => {
-    console.log("dit zijn de nodes", nodes);
 
         let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
-                console.log("kom ik hier wel?");
                 currentNode = node;
                 return;
             }

@@ -10,8 +10,6 @@ const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
     const nodeId = data.nodeId;
-    //test
-    const assesmentCriteria = useSelector((state) => state.node.assesmentCriteria)
 
 
     const dispatch = useDispatch();
@@ -22,7 +20,6 @@ export default function CustomNode({ isConnectable, data }) {
     const handleButton = () => {
         dispatch(currentNodeSelectedAction(nodeId));
         dispatch(showCreateCard());
-        // console.log(assesmentCriteria + "Opgehaald");
     };
 
     return (
