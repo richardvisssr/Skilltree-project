@@ -56,13 +56,11 @@ export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
         },
         mode: "cors",
         body: JSON.stringify({
-            nodeId
+            nodeId,
         }),
-
     };
 
     fetch(`${API_PATH}/nodes/${nodeId}`, options)
-        .then((response) => response.json())
         .then(() => {
             dispatch(setDeleteNodeAction(nodeId));
         });
