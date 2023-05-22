@@ -71,7 +71,7 @@ export default function StudentCardComponent() {
                     />
                     <label 
                         htmlFor="default-checkbox" 
-                        className="ml-2 text-ml font-medium text-gray-900 dark:text-gray-300"
+                        className="ml-2 text-ml font-medium text-white dark:text-white"
                     >
                         { student.firstname + " " + student.lastname }
                     </label>
