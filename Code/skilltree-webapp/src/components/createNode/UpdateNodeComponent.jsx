@@ -16,12 +16,10 @@ function UpdateNodeComponent() {
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
-    console.log(assessmentCriteria,"1");
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         let currentNode = {};
         nodes.map(node => {
             if (node.id == currentNodeId) {
@@ -32,18 +30,18 @@ function UpdateNodeComponent() {
         
         const tempArr = [];
         if(currentNode.assessmentCriteria !== undefined){
-        currentNode.assessmentCriteria.map(assessmentCriterium => {
-            tempArr.push(assessmentCriterium.description)
-        })
-    }
+            currentNode.assessmentCriteria.map(assessmentCriterium => {
+                tempArr.push(assessmentCriterium.description)
+            })
+        }
 
-    setSkill(currentNode.skill ?? "");
-    setDescription(currentNode.description ?? "");
-    setAssessmentCriteria(tempArr ?? []);
-    setLearningOutcome(currentNode.learningOutcome ?? "");
-    setPositionX(currentNode.positionX ?? "");
-    setPositionY(currentNode.positionY ?? "");
-    }, [currentNodeId,nodes]);
+        setSkill(currentNode.skill ?? "");
+        setDescription(currentNode.description ?? "");
+        setAssessmentCriteria(tempArr ?? []);
+        setLearningOutcome(currentNode.learningOutcome ?? "");
+        setPositionX(currentNode.positionX ?? "");
+        setPositionY(currentNode.positionY ?? "");
+    }, []);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -83,7 +81,6 @@ function UpdateNodeComponent() {
 
     const handleSave = () => {
         dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, currentNodeId));
-        console.log(assessmentCriteria,"2");
         hideCard();
       };
 
