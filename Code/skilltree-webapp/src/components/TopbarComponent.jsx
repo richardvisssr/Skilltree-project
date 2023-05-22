@@ -60,6 +60,25 @@ export default function TopbarComponent() {
             dispatch(clearStudentCardAction());
         }, [currentSkilltree, newSkilltree]);
 
+        const koppelButton = () => {
+            if (!newSkilltree) {
+                return (
+                    <div className="hidden lg:ml-6 lg:block">
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <button
+                                    className="bg-pink-700 dark:bg-pink-700 text-gray-300 hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-medium"
+                                    type="button"
+                                    onClick={handleButton}
+                                >
+                                    Student Koppelen
+                                </button>
+                        </div>
+                    </div>
+                )
+            }
+            return;
+        }
+
         return (
             <Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800">
                 {({ open }) => (
@@ -133,17 +152,7 @@ export default function TopbarComponent() {
                                     </div>
                                     </div>
                                 </div>
-                                <div className="hidden lg:ml-6 lg:block">
-                                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                    <button
-                                                className="bg-pink-700 text-white hover:bg-pink-900 hover:text-white rounded-md w-fit mx-3 px-5 py-2 text-sm font-bold border-2 border-pink-700 hover:border-pink-900"
-                                                type="button"
-                                                onClick={handleButton}
-                                            >
-                                                Student Koppelen
-                                            </button>
-                                    </div>
-                                </div>
+                                {koppelButton()}
                             </div>
                         </div>
                         {/* Mobile dropdown menu */}
