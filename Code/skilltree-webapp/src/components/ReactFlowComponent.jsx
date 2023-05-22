@@ -235,7 +235,7 @@ function ReactFlowComponent() {
           >
             <Controls />
           </ReactFlow>
-          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update posities</button>
+          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update Posities</button>
         </div>
         {showStudentCardComponent()}
       </ReactFlowProvider>
