@@ -41,7 +41,6 @@ function skillTreeReducer(state = initialState, action) {
             nodes: [...state.nodes, action.payload],
         }
         case "skilltree/updateNode":
-            console.log(action.payload.assessmentCriteria,"1");
             const updatedNodes = state.nodes.map((node) => {
               if (node.id === action.payload.id) {
                 return {
@@ -54,7 +53,6 @@ function skillTreeReducer(state = initialState, action) {
               }
               return node;
             });
-            console.log(action.payload.assessmentCriteria,"2");
             return {
               ...state,
               nodes: updatedNodes,

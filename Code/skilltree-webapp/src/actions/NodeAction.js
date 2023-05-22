@@ -1,3 +1,5 @@
+import { fetchAllNodesFromSkilltree } from "./SkilltreeAction";
+
 const API_PATH = process.env.REACT_APP_API_URL;
 
 export function setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria) {
@@ -65,22 +67,6 @@ export const fetchDeleteNodeActionAsync = (nodeId) => async (dispatch) => {
             dispatch(setDeleteNodeAction(nodeId));
         });
 }
-export function setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria, nodeId) {
-    console.log(assessmentCriteria)
-    return {
-        type: "skilltree/updateNode",
-            payload: {
-               "id":nodeId,
-                skill,
-                description,
-                positionX,
-                positionY,
-                skilltreeId,
-                learningOutcome,
-                assessmentCriteria: [assessmentCriteria],
-        },
-    };
- }
 
 export const fetchUpdateNodeActionAsync = (skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, nodeId) => async (dispatch) => {
     const options = {
@@ -97,7 +83,7 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
     fetch(`${API_PATH}/nodes/${nodeId}`, options)
         .then((response) => response.json())
         .then(() => {
-            dispatch(setUpdateNodeAction(skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria, nodeId));
+            dispatch(fetchAllNodesFromSkilltree(skilltreeId));
     });
 };
 
