@@ -8,7 +8,7 @@ import { fetchLinkStudentsToSkilltreeActionAsync, clearStudentCardAction } from 
 import { showStudentCard } from '../../actions/StudentAction';
 
 
-export default function TopbarComponentDocent() {
+export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [firstRenderDone, setFirstRenderDone] = useState(false);
@@ -96,7 +96,7 @@ export default function TopbarComponentDocent() {
                                         )}
                                     </Disclosure.Button>
                                 </div>
-                                <div className="flex flex-1 items-center justify-center">
+                                <div className="flex flex-1 items-center justify-between">
                                     <div className="flex w-3/5">
                                         <div className="flex items-center">
                                             <img
@@ -132,24 +132,22 @@ export default function TopbarComponentDocent() {
                                                         onChange={(e) => setDescription(e.target.value)}
                                                     />
                                                 </div>
-                                                <div className="hidden lg:ml-6 lg:block">
-                                        <div className="flex items-center justify-center">
-                                            <button
-                                            className="rounded-md mx-3 py-2 text-sm font-bold text-white hover:bg-green-600 dark:hover:text-white px-3 w-fit bg-green-500 border-2 border-green-500 hover:border-green-600"
-                                            onClick={handleSave}
-                                            type="button"
-                                        >
-                                            Opslaan
-                                        </button>
-                                        </div>
-                                    </div>
+                                                <button
+                                                    className="rounded-md mx-3 py-1 text-sm font-bold text-white hover:bg-green-600 dark:hover:text-white px-3 w-fit bg-green-500 border-2 border-green-500 hover:border-green-600"
+                                                    onClick={handleSave}
+                                                    type="button"
+                                                >
+                                                Opslaan
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="hidden lg:ml-6 lg:block">
-                                        <div style={{cursor: "grab"}} className="dndnode input rounded-md mx-3 py-2 text-sm font-bold bg-slate-200 text-black hover:bg-gray-300 hover:text-black dark:bg-slate-200 dark:text-black dark:hover:bg-gray-300 px-3 w-fit border-dotted border-black border-2 "
-                                        onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node Aanmaken
-                                    </div>
+                                    <div>
+                                        <div className="hidden lg:ml-6 lg:block">
+                                            <div style={{cursor: "grab"}} className="dndnode input rounded-md mx-3 py-2 text-sm font-bold bg-slate-200 text-black hover:bg-gray-300 hover:text-black dark:bg-slate-200 dark:text-black dark:hover:bg-gray-300 px-3 w-fit border-dotted border-black border-2 "
+                                            onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node Aanmaken
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 {koppelButton()}
