@@ -72,10 +72,17 @@ export default function SidebarComponentStudent() {
         >
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
-
+                    <li>
+                        <div
+                            className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        >
+                            <span className="ml-12">Skilltrees</span>
+                        </div>
+                    </li>
                 </ul>
                 <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
+
                 </ul>
             </div>
         </aside>
