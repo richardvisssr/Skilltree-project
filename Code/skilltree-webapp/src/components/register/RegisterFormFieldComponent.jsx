@@ -5,9 +5,21 @@ function RegisterFormFieldComponent({
     title,
     type = "text",
     value,
-    onChange,
     options
 }) {
+
+    const validateEmail = (email) => {
+        // Regex voor e-mailvalidatie
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePassword = (password) => {
+        // Regex voor wachtwoordvalidatie (minimaal 8 tekens, minstens 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken)
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
+
     const showField = () => {
         if (fieldType === "input") {
             return (
@@ -15,8 +27,6 @@ function RegisterFormFieldComponent({
                     type={type}
                     name={title}
                     id={title}
-                    value={value}
-                    onChange={onChange}
                     className="block w-full px-4 py-2 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
             );
@@ -26,16 +36,30 @@ function RegisterFormFieldComponent({
                     name={title}
                     id={title}
                     value={value}
-                    onChange={onChange}
                     className="block w-full px-4 py-2 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
-                    <option value="">Selecteer een optie</option>
+                    <option value="">Selecteer een rol</option>
                     {options.map((option) => (
                         <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                 </select>
             );
         }
+    };
+
+    const validateField = () => {
+        if (type === "text" && value) {
+            if (title === "E-mail" && !validateEmail(value)) {
+                return <p className="text-red-500 text-sm mt-1">Ongeldig e-mailadres</p>;
+            } else if (title === "Wachtwoord" && !validatePassword(value)) {
+                return (
+                    <p className="text-red-500 text-sm mt-1">
+                        Het wachtwoord moet minimaal 8 tekens bevatten en minstens 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken.
+                    </p>
+                );
+            }
+        }
+        return null;
     };
 
     if (type === "text") {
@@ -47,7 +71,10 @@ function RegisterFormFieldComponent({
                 >
                     {title}
                 </label>
-                <div className="mt-1">{showField()}</div>
+                <div className="mt-1">
+                    {validateField()}
+                    {showField()}
+                </div>
             </div>
         );
     }
