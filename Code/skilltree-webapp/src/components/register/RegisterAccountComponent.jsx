@@ -1,5 +1,5 @@
 import React from "react";
-import RegisterFormFieldComponent from "./RegisterFormFieldComponent";
+import FormFieldComponent from "../node/createNode/FormFieldComponent";
 import "../../styles/styles.css";
 
 function RegisterAccountComponent() {
@@ -8,24 +8,23 @@ function RegisterAccountComponent() {
             <div className="w-5/6 max-w-md">
                 <div className="bg-white rounded-lg shadow-xl p-6">
                     <h2 className="text-2xl font-semibold mb-4">Registratie</h2>
-                    <RegisterFormFieldComponent
+                    <FormFieldComponent
                         fieldType="input"
                         title="Naam"
                     />
-                    <RegisterFormFieldComponent
+                    <FormFieldComponent
                         fieldType="input"
                         title="Achternaam"
                     />
-                    <RegisterFormFieldComponent
+                    <FormFieldComponent
                         fieldType="input"
                         title="E-mail"
                     />
-                    <RegisterFormFieldComponent
+                    <FormFieldComponent
                         fieldType="input"
                         title="Wachtwoord"
                     />
-                    <p>minimaal 8 tekens, minstens 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken</p>
-                    <RegisterFormFieldComponent
+                    <FormFieldComponent
                         fieldType="dropdown"
                         title="Rol"
                         options={[
