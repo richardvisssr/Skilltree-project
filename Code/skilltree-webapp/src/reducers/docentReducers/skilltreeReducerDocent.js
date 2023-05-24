@@ -6,7 +6,7 @@ const initialState = {
     edges: [],
 };
 
-function skillTreeReducer(state = initialState, action) {
+function skilltreeReducerDocent(state = initialState, action) {
     switch (action.type) {
     case "skilltree/setSkilltrees":
         return {
@@ -62,4 +62,4 @@ function skillTreeReducer(state = initialState, action) {
         return state;
     }
 }
-export default skillTreeReducer;
+export default skilltreeReducerDocent;
