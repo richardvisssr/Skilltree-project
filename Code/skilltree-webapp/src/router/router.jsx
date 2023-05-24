@@ -14,7 +14,7 @@ const routes = [
         element: <HomeScreen />,
     },
     {
-        path: "/register",
+        path: "/registreer",
         element: <RegisterScreen />,
     },
 ];
