@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import HomeScreen from "../screens/homeScreen";
+import LoginScreen from "../screens/loginScreen";
 
 const routes = [
     {
@@ -12,6 +13,10 @@ const routes = [
         path: "/home",
         element: <HomeScreen />,
     },
+    {
+        path: "/login",
+        element: <LoginScreen />,
+    }
 ];
 
 const router = createBrowserRouter(routes);
