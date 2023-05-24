@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponentStudent from "../components/studentComponent/SidebarComponentStudent";
-import TopbarComponentStudent from "../components/studentComponent/TopbarComponentStudent";
+import SidebarComponentStudent from "../components/studentComponent/SidebarComponent";
+import TopbarComponentStudent from "../components/studentComponent/TopbarComponent";
 import ReactFlowComponentStudent from "../components/studentComponent/ReactFlowComponentStudent";
 import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
 import UpdateNodeComponent from "../components/node/createNode/UpdateNodeComponent";

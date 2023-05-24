@@ -8,7 +8,7 @@ import {
     setCurrentSkilltreeAction,
 } from "../../actions/SkilltreeAction";
 
-export default function SidebarComponentStudent() {
+export default function SidebarComponent() {
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
@@ -73,16 +73,18 @@ export default function SidebarComponentStudent() {
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
-                        <div
+                        <button
+                            onClick={() => handleNewButtonClick()}
+                            type="button"
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <span className="ml-12">Skilltrees</span>
-                        </div>
+                            <span className="mb-1 ml-12 text-3xl">{ newSkilltreeButton() }</span>
+                        </button>
                     </li>
                 </ul>
                 <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
-
                 </ul>
             </div>
         </aside>
