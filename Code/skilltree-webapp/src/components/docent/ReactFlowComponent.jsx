@@ -10,16 +10,16 @@ import ReactFlow, {
 import CustomNode from "../node/CustomNode";
 import StudentCardComponent from "../StudentCardComponent";
 
-import FloatingEdge from "../edges/FloatingEdge";
+import FloatingEdge from "../edges/docent/FloatingEdge";
 import ConnectionLineStyle from "../edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../../actions/SkilltreeAction";
 import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../actions/docentActions/EdgeActionDocent";
+import { fetchallEdgesFromSkilltree } from "../../actions/docent/EdgeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../../actions/StudentAction";
 import "reactflow/dist/style.css";
 import "../../styles/styles.css";
-import {fetchCreateEdgeActionAsync} from "../../actions/docentActions/EdgeActionDocent";
+import {fetchCreateEdgeActionAsync} from "../../actions/docent/EdgeAction";
 
 const edgeTypes = {
     floating: FloatingEdge,
@@ -30,7 +30,7 @@ const nodeTypes = {
 };
 
 
-function ReactFlowComponentStudent() {
+function ReactFlowComponent() {
 
 
     const dispatch = useDispatch();
@@ -242,4 +242,4 @@ function ReactFlowComponentStudent() {
     );
 }
 
-export default ReactFlowComponentStudent;
+export default ReactFlowComponent;
