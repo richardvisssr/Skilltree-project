@@ -146,19 +146,10 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.10</version>
-                    <configuration>
-                        <destFile>${basedir}/target/site/jacoco/jacoco.xml</destFile>
-                        <dataFile>${basedir}/target/site/jacoco/jacoco.xml</dataFile>
-                        <output>file</output>
-                        <append>true</append>
-                        <excludes>
-                            <exclude>*MethodAccess</exclude>
-                        </excludes>
-                    </configuration>
+                    <version>0.8.6</version>
                     <executions>
                         <execution>
-                            <id>jacoco-initialize</id>
+                            <id>prepare-agent</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
@@ -169,7 +160,7 @@
                             <goals>
                                 <goal>report</goal>
                             </goals>
-                            <phase>prepare-package</phase>
+                            <phase>test</phase>
                         </execution>
                     </executions>
                 </plugin>
