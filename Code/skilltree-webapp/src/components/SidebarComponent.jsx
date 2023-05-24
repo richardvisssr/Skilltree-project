@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdPersonAddAlt1 } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/styles.css";
 import {
@@ -10,13 +11,14 @@ import {
 } from "../actions/SkilltreeAction";
 
 export default function SidebarComponent() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     // Voor te testen, later moet er een reducer komen voor de users
     const userId = useSelector((state) => state.user.userId);
 
-    function handleButtonClick(id) {
+    function handleSkilltreeButtonClick(id) {
         let currentSkilltree;
         skilltrees.map((skilltree) => {
             if (skilltree.id === id) {
@@ -41,7 +43,7 @@ export default function SidebarComponent() {
                     type="button"
                     key={skilltree.id}
                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                    onClick={() => handleButtonClick(skilltree.id)}
+                    onClick={() => handleSkilltreeButtonClick(skilltree.id)}
                 >
                     <span className="ml-4">
                         { skilltree.title }
@@ -58,11 +60,16 @@ export default function SidebarComponent() {
         }
     };
 
+    const handleRegisterButtonClick = () => {
+        navigate("/registreer");
+    }
+
     const registerButton = () => {
         return(
         <button
             type="button"
             className="flex z-50 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+            onClick={() => handleRegisterButtonClick()}
         >
             <div className="flex" >
                 <MdPersonAddAlt1 size={20} /> 
