@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDeleteNodeActionAsync } from "../../actions/NodeAction";
+import { fetchDeleteNodeActionAsync } from "../../../actions/NodeAction";
 
-import "../../styles/styles.css";
+import "../../../styles/styles.css";
 
 export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
