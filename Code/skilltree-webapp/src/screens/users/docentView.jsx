@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponentStudent from "../components/student/SidebarComponent";
-import TopbarComponentStudent from "../components/student/TopbarComponent";
-import ReactFlowComponentStudent from "../components/student/ReactFlowComponent";
-import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../components/node/createNode/student/UpdateNodeComponent";
+import SidebarComponentDocent from "../../components/docent/SidebarComponent";
+import TopbarComponentDocent from "../../components/docent/TopbarComponent";
+import ReactFlowComponentDocent from "../../components/docent/ReactFlowComponent";
+import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
+import UpdateNodeComponent from "../../components/node/createNode/users/docent/UpdateNodeComponent";
 
-export default function StudentView() {
+export default function DocentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const showNodeCard = useSelector((state) => state.node.showCard);
@@ -20,7 +20,7 @@ export default function StudentView() {
         }
         if (currentSkilltree !== null) {
             return (
-                <ReactFlowComponentStudent />
+                <ReactFlowComponentDocent />
             );
         }
     }
@@ -29,14 +29,14 @@ export default function StudentView() {
         if (currentSkilltree !== null) {
             return (
                 <div className="w-full h-full flex flex-col">
-                    <TopbarComponentStudent />
+                    <TopbarComponentDocent />
                     {showScreen()}
                 </div>
             );
         } else if (currentSkilltree == null && newSkilltree){
         return (
             <div className="w-full h-full flex flex-col">
-                <TopbarComponentStudent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                <TopbarComponentDocent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
                 <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
                 {showScreen()}
             </div>
@@ -46,7 +46,7 @@ export default function StudentView() {
 
     return (
         <div className="flex-row flex w-screen">
-            <SidebarComponentStudent />
+            <SidebarComponentDocent />
             <div className="flex flex-col w-full h-screen">
                 {skilltreeSelected()}
             </div>

@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux';
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
-import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../../actions/SkilltreeAction';
-import { fetchLinkStudentsToSkilltreeActionAsync, clearStudentCardAction } from '../../actions/StudentAction';
-import { showStudentCard } from '../../actions/StudentAction';
+import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../../../actions/SkilltreeAction';
+import { fetchLinkStudentsToSkilltreeActionAsync, clearStudentCardAction, showStudentCard } from '../../../actions/StudentAction';
 
 
 export default function TopbarComponent() {

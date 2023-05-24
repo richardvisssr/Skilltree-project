@@ -7,19 +7,19 @@ import ReactFlow, {
   useEdgesState,
   Controls, MarkerType,
 } from 'reactflow';
-import CustomNode from "../node/student/CustomNode";
-import StudentCardComponent from "../StudentCardComponent";
+import CustomNode from "../../node/users/student/CustomNode";
+import StudentCardComponent from "../../StudentCardComponent";
 
-import FloatingEdge from "../edges/student/FloatingEdge";
-import ConnectionLineStyle from "../edges/ConnectionLineStyle";
+import FloatingEdge from "../../edges/FloatingEdge";
+import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
-import { fetchAllNodesFromSkilltree } from "../../actions/SkilltreeAction";
-import { fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../actions/student/EdgeAction";
-import { fetchAllStudentsFromSkilltreeActionAsync } from "../../actions/StudentAction";
+import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../../actions/NodeAction";
+import { fetchallEdgesFromSkilltree } from "../../../actions/users/student/EdgeAction";
+import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 import "reactflow/dist/style.css";
-import "../../styles/styles.css";
-import {fetchCreateEdgeActionAsync} from "../../actions/student/EdgeAction";
+import "../../../styles/styles.css";
+import {fetchCreateEdgeActionAsync} from "../../../actions/users/student/EdgeAction";
 
 const edgeTypes = {
     floating: FloatingEdge,

@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import FormFieldComponent from "../FormFieldComponent";
-import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
-import "../../../../styles/styles.css";
+import FormFieldComponent from "../../FormFieldComponent";
+import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../../actions/NodeAction";
+import "../../../../../styles/styles.css";
 
 function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);

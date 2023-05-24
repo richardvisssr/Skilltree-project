@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DocentView from "../screens/docentView";
-import StudentView from "../screens/studentView";
+import DocentView from "./users/docentView";
+import StudentView from "./users/studentView";
 
 export default function HomeScreen() {
   const showDocentView = true;

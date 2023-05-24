@@ -1,10 +1,10 @@
 import {useCallback, useEffect, useState} from 'react';
 import {useStore, getStraightPath, BaseEdge, EdgeLabelRenderer} from 'reactflow';
 
-import { getEdgeParams } from '../EdgesUtils.js';
+import { getEdgeParams } from './EdgesUtils.js';
 import {useDispatch, useSelector} from "react-redux";
 
-import { fetchDeleteEdgeActionAsync } from "../../../actions/docent/EdgeAction.js";
+import { fetchDeleteEdgeActionAsync } from "../../actions/users/docent/EdgeAction.js";
 function FloatingEdge({ id, source, target, markerEnd, style, data}) {
   const dispatch = useDispatch();
   const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source), [source]));
@@ -39,9 +39,6 @@ function FloatingEdge({ id, source, target, markerEnd, style, data}) {
                 pointerEvents: 'all',
               }}
           >
-            <button onClick={() => deleteEdge()} className="text-red-700 bg-black rounded-full w-5 h-5 leading-none font-bold">
-              X
-            </button>
           </div>
           </EdgeLabelRenderer>
         <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} id={id} />
