@@ -10,7 +10,7 @@ import ReactFlow, {
 import CustomNode from "../../node/users/student/CustomNode";
 import StudentCardComponent from "../../StudentCardComponent";
 
-import FloatingEdge from "../../edges/FloatingEdge";
+import FloatingEdge from "../../edges/users/student/FloatingEdge";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
