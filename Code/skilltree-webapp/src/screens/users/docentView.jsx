@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponentDocent from "../../components/docent/SidebarComponent";
-import TopbarComponentDocent from "../../components/docent/TopbarComponent";
-import ReactFlowComponentDocent from "../../components/docent/ReactFlowComponent";
+import SidebarComponentDocent from "../../components/users/docent/SidebarComponent";
+import TopbarComponentDocent from "../../components/users/docent/TopbarComponent";
+import ReactFlowComponentDocent from "../../components/users/docent/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
 import UpdateNodeComponent from "../../components/node/createNode/users/docent/UpdateNodeComponent";
 

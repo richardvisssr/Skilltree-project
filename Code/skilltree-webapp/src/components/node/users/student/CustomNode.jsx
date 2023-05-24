@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillDelete, AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import { DeleteNodeComponent } from "../../deleteNode/DeleteNodeComponent";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

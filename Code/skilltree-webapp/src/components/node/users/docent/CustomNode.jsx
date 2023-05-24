@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillDelete, AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineInfoCircle } from "react-icons/ai";
 import { DeleteNodeComponent } from "../../deleteNode/DeleteNodeComponent";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,7 +61,7 @@ export default function CustomNode({ isConnectable, data }) {
                                 type="button"
                                 onClick={showDeleteNodeComponent}
                             >
-                            <AiFillDelete/>
+                            <AiOutlineDelete/>
                             </button>
                         </div>
                     </div>
