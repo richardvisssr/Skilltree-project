@@ -8,7 +8,7 @@ import {
     setCurrentSkilltreeAction,
 } from "../../actions/SkilltreeAction";
 
-export default function SidebarComponentDocent() {
+export default function SidebarComponent() {
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
