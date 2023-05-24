@@ -7,14 +7,14 @@ import ReactFlow, {
   useEdgesState,
   Controls, MarkerType,
 } from 'reactflow';
-import CustomNode from "../node/CustomNode";
+import CustomNode from "../node/student/CustomNode";
 import StudentCardComponent from "../StudentCardComponent";
 
 import FloatingEdge from "../edges/student/FloatingEdge";
 import ConnectionLineStyle from "../edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../actions/NodeAction";
+import { fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../actions/NodeAction";
 import { fetchallEdgesFromSkilltree } from "../../actions/student/EdgeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../../actions/StudentAction";
 import "reactflow/dist/style.css";
@@ -131,13 +131,6 @@ function ReactFlowComponent() {
       setNodes(tempArray);
     }
 
-  const onConnect = useCallback((params) => {
-    if(params.source === params.target) {
-      return;
-    }
-    setEdges((eds) => addEdge(params, eds))
-  }, []);
-
   useEffect(() => {
     if(!deletedEdge) {
       let lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
@@ -158,74 +151,37 @@ function ReactFlowComponent() {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
   }, []);
-
-  const onDrop = useCallback(
-    (event) => {
-      event.preventDefault();
-      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-      const type = event.dataTransfer.getData('application/reactflow');
-  
-      // check if the dropped element is valid
-      if (typeof type === 'undefined' || !type) {
-        return;
-      }
-  
-      const position = reactFlowInstance.project({
-        x: event.clientX - reactFlowBounds.left,
-        y: event.clientY - reactFlowBounds.top,
-      });
-      
-      setCurrentNodeId(currentNodeId + 1);
-
-      
-
-      //aanmaken
-      const label = `Nieuwe node`
-      const description = "";
-      const assessmentCriteria = [];
-      const learningOutcome = "";
-      dispatch(fetchCreateNodeActionAsync(currentNodeId, label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltreeId))
-
-      const newNode = {
-        id: `${currentNodeId}`,
-        type,
-        position,
-        data: { label: `${label}`, nodeId: `${currentNodeId}` }
-      };
-
-      setNodes((prevNodes) => [...prevNodes, newNode]);
-    
-    },
-  );
-
-  const onPositionClick = () => {
-    let tempArray = [];
-    nodes.map((node) => {
-      const tempObj = {
-        id: `${node.id}`,
-        positionX: node.position.x,
-        positionY: node.position.y,
-      }
-      tempArray.push(tempObj);
-    })
-    dispatch(fetchAllNodesPositionsActionAsync(skilltreeId, tempArray));
-  };
-
   
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
-          <ReactFlow
+          {/* <ReactFlow
             nodes={nodes}
             edges={edges}
             edgeTypes={edgeTypes}
             nodeTypes={nodeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
+            // onConnect={onConnect}
             onInit={setReactFlowInstance}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
+            // onDrop={onDrop}
+            // onDragOver={onDragOver}
+            connectionLineComponent={ConnectionLineStyle}
+            connectionLineStyle={connectionLineStyle}
+            defaultEdgeOptions={defaultEdgeOptions}
+            fitView
+            minZoom={0.2}
+            maxZoom={4}
+          > */}
+
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            edgeTypes={edgeTypes}
+            nodeTypes={nodeTypes}
+            nodesConnectable={false}
+            nodesDraggable={false}
+            onInit={setReactFlowInstance}
             connectionLineComponent={ConnectionLineStyle}
             connectionLineStyle={connectionLineStyle}
             defaultEdgeOptions={defaultEdgeOptions}
@@ -233,11 +189,10 @@ function ReactFlowComponent() {
             minZoom={0.2}
             maxZoom={4}
           >
-            <Controls />
+
+            <Controls showInteractive={false}/>
           </ReactFlow>
-          <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update Posities</button>
         </div>
-        {showStudentCardComponent()}
       </ReactFlowProvider>
     );
 }

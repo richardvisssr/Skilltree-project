@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import FormFieldComponent from "./FormFieldComponent";
-import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../actions/NodeAction";
-import "../../../styles/styles.css";
+import FormFieldComponent from "../FormFieldComponent";
+import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
+import "../../../../styles/styles.css";
 
 function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
@@ -43,19 +43,6 @@ function UpdateNodeComponent() {
         setPositionY(currentNode.positionY ?? "");
     }, []);
 
-    const handleSkillChange = (event) => {
-        setSkill(event.target.value);
-    };
-
-    const handleDescriptionChange = (event) => {
-        setDescription(event.target.value);
-    };
-
-    const handleAssessmentCriteriaChange = (event) => {
-        const criteriaArray = event.target.value.split("#");
-        setAssessmentCriteria(criteriaArray);
-    };
-
     const mapAssessmentCriteria = () => {
         let returnString = "";
 
@@ -69,20 +56,11 @@ function UpdateNodeComponent() {
         return returnString;
     }
 
-    const handleLearningOutcomeChange = (event) => {
-        setLearningOutcome(event.target.value);
-    };
-
     const [cardShowState, setCardShowState] = useState(true);
 
     const hideCard = () => {
         dispatch(showCreateCard())
     };
-
-    const handleSave = () => {
-        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, currentNodeId));
-        hideCard();
-      };
 
     return (
         <div>
@@ -93,40 +71,32 @@ function UpdateNodeComponent() {
                             <FormFieldComponent
                                 title="Vaardigheid" 
                                 value={skill}
-                                onChange={handleSkillChange}
+                                disabled={true}
                             />
                             <FormFieldComponent
                                 title="Beschrijving"
                                 value={description}
-                                onChange={handleDescriptionChange}
+                                disabled={true}
                             />
                             <FormFieldComponent
                                 fieldType="textarea"
                                 title="Leeruitkomst"
                                 value={learningOutcome}
-                                onChange={handleLearningOutcomeChange}
+                                disabled={true}
                             />
                             <FormFieldComponent
                                 fieldType="textarea"
                                 title="BeoordelingsCriteria"
                                 value={mapAssessmentCriteria()}
-                                onChange={handleAssessmentCriteriaChange}
+                                disabled={true}
                             />
-                            <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
                             <div className="mt-6 flex items-center justify-center gap-x-6">
                                 <button
                                     type="button"
                                     className="text-m font-semibold leading-6 text-gray-900"
                                     onClick={hideCard}
                                 >
-                                    Annuleren
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    onClick={handleSave}
-                                >
-                                    Opslaan
+                                    Terug
                                 </button>
                             </div>
                         </div>
