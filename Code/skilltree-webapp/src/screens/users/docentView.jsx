@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponentDocent from "../components/docentComponent/SidebarComponent";
-import TopbarComponentDocent from "../components/docentComponent/TopbarComponent";
-import ReactFlowComponentDocent from "../components/docentComponent/ReactFlowComponentDocent";
-import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../components/node/createNode/UpdateNodeComponent";
+import SidebarComponentDocent from "../../components/users/docent/SidebarComponent";
+import TopbarComponentDocent from "../../components/users/docent/TopbarComponent";
+import ReactFlowComponentDocent from "../../components/users/docent/ReactFlowComponent";
+import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
+import UpdateNodeComponent from "../../components/node/users/docent/UpdateNodeComponent";
 
 export default function DocentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);

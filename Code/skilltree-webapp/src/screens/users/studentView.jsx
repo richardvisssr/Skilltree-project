@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import SidebarComponentStudent from "../components/studentComponent/SidebarComponent";
-import TopbarComponentStudent from "../components/studentComponent/TopbarComponent";
-import ReactFlowComponentStudent from "../components/studentComponent/ReactFlowComponentStudent";
-import NoSkilltreeComponent from "../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../components/node/createNode/UpdateNodeComponent";
+import SidebarComponentStudent from "../../components/users/student/SidebarComponent";
+import TopbarComponentStudent from "../../components/users/student/TopbarComponent";
+import ReactFlowComponentStudent from "../../components/users/student/ReactFlowComponent";
+import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
+import UpdateNodeComponent from "../../components/node/users/student/ViewNodeComponent";
 
 export default function StudentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);

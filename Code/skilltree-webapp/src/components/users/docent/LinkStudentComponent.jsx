@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllStudentsActionAsync, setSelectedStudentsAction, fetchAllStudentsFromSkilltreeActionAsync } from "../actions/StudentAction";
+import { fetchAllStudentsActionAsync, setSelectedStudentsAction, fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 
-import "../styles/styles.css";
+import "../../../styles/styles.css";
 
-export default function StudentCardComponent() {
+export default function LinkStudentComponent() {
 
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.students);

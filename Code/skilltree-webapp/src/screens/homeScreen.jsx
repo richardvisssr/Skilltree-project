@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DocentView from "../screens/docentView";
-import StudentView from "../screens/studentView";
+import DocentView from "./users/docentView";
+import StudentView from "./users/studentView";
 
 export default function HomeScreen() {
   const showDocentView = true;
@@ -8,7 +8,7 @@ export default function HomeScreen() {
   return (
     <div>
       {/* Hier komt de inhoud van de HomeScreen */}
-      {showDocentView && <DocentView />}
+      {showDocentView && <StudentView />}
       {/*{showDocentView && <StudentView />}*/}
     </div>
   );

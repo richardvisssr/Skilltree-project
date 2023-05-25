@@ -7,19 +7,19 @@ import ReactFlow, {
   useEdgesState,
   Controls, MarkerType,
 } from 'reactflow';
-import CustomNode from "../node/CustomNode";
-import StudentCardComponent from "../StudentCardComponent";
+import CustomNode from "../../node/users/docent/CustomNode";
+import LinkStudentComponent from "./LinkStudentComponent";
 
-import FloatingEdge from "../edges/FloatingEdge";
-import ConnectionLineStyle from "../edges/ConnectionLineStyle";
+import FloatingEdge from "../../edges/users/docent/FloatingEdge";
+import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
-import { fetchAllNodesFromSkilltree } from "../../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../actions/docentActions/EdgeActionDocent";
-import { fetchAllStudentsFromSkilltreeActionAsync } from "../../actions/StudentAction";
+import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../../actions/NodeAction";
+import { fetchallEdgesFromSkilltree } from "../../../actions/EdgeAction";
+import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 import "reactflow/dist/style.css";
-import "../../styles/styles.css";
-import {fetchCreateEdgeActionAsync} from "../../actions/docentActions/EdgeActionDocent";
+import "../../../styles/styles.css";
+import {fetchCreateEdgeActionAsync} from "../../../actions/EdgeAction";
 
 const edgeTypes = {
     floating: FloatingEdge,
@@ -30,7 +30,7 @@ const nodeTypes = {
 };
 
 
-function ReactFlowComponentStudent() {
+function ReactFlowComponent() {
 
 
     const dispatch = useDispatch();
@@ -112,7 +112,7 @@ function ReactFlowComponentStudent() {
     const showStudentCardComponent = () => {
       if (showStudentCard) {
         return (
-          <StudentCardComponent />
+          <LinkStudentComponent />
         )
       }
     }
@@ -242,4 +242,4 @@ function ReactFlowComponentStudent() {
     );
 }
 
-export default ReactFlowComponentStudent;
+export default ReactFlowComponent;

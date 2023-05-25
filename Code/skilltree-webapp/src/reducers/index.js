@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import skilltreeReducer from "./docentReducers/skilltreeReducerDocent";
+import skilltreeReducer from "./skilltreeReducer";
 import createNodeReducer from "./nodeReducer";
 import userReducer from "./userReducer";
 import studentsReduces from "./studentsReducer";
