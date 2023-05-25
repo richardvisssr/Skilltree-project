@@ -17,8 +17,7 @@ public class NodeDAO {
 
     public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var nodes = nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
-        return nodes;
+        return nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
     }
 
     public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
@@ -56,8 +55,7 @@ public class NodeDAO {
                 "WHERE n.SkillTreeID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
     private ResultSet getNodesQuery(int skilltreeId) throws SQLException {
@@ -70,8 +68,7 @@ public class NodeDAO {
                 "WHERE n.SkillTreeID = ?\n";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
     private int getHighestNodeIdQuery() throws SQLException {

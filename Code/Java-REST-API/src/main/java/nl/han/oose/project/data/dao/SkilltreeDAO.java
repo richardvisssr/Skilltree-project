@@ -41,8 +41,7 @@ public class SkilltreeDAO {
         var query = "SELECT * FROM Skilltrees WHERE UserID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, gebruikerId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
     private void createSkilltreeQuery(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {

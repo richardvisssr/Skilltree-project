@@ -24,6 +24,11 @@ public class StudentDatamapper implements Datamapper {
         return new StudentsDTO(students);
     }
 
+    @Override
+    public Object map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+        return null;
+    }
+
 }
 
 

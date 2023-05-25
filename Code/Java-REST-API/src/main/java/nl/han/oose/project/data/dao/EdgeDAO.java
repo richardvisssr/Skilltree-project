@@ -19,16 +19,14 @@ public class EdgeDAO {
 
     public EdgesDTO getAllEdgesFromSkilltree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = edgeDatamapper.map(getAllEdgesFromSkilltreeQuery(skilltreeId));
-        return result;
+        return edgeDatamapper.map(getAllEdgesFromSkilltreeQuery(skilltreeId));
     }
 
     private ResultSet getAllEdgesFromSkilltreeQuery(int skilltreeId) throws SQLException {
         var query = "SELECT EdgeId, TargetID, SourceID, SkillTreeID FROM Edges WHERE SkilltreeID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
     public EdgesDTO createEdge(EdgeDTO edgeDTO, int skilltreeId) throws SQLException {

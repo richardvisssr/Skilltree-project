@@ -25,4 +25,9 @@ public class SkilltreeDatamapper implements Datamapper{
 
         return new SkilltreesDTO(skilltrees);
     }
+
+    @Override
+    public Object map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+        return null;
+    }
 }

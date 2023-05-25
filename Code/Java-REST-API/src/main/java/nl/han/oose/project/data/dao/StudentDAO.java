@@ -3,7 +3,6 @@ package nl.han.oose.project.data.dao;
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.StudentDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentsDTO;
 
 import java.sql.Connection;
@@ -61,8 +60,7 @@ public class StudentDAO {
         var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
@@ -73,8 +71,7 @@ public class StudentDAO {
                 "WHERE us.skilltreeId = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+        return stmt.executeQuery();
     }
 
 
