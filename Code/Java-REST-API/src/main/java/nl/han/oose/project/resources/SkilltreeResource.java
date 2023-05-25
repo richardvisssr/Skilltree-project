@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 @Path("/skilltrees")
 public class SkilltreeResource {
     private static final Logger LOGGER  = Logger.getLogger(SkilltreeResource.class.getName());
+    private static final String ERROR_MESSAGE = "Error ";
+
     private SkilltreeService skilltreeService;
 
     @GET
@@ -25,7 +27,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info("Error: " + e);
+            LOGGER.info(ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -41,7 +43,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info("Error: " + e);
+            LOGGER.info(ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -57,7 +59,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info("Error: " + e);
+            LOGGER.info(ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
