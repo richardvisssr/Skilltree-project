@@ -17,6 +17,8 @@ public class NodeDAO {
     
     private PreparedStatement stmt;
 
+    private ResultSet resultSet;
+
     public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
@@ -114,7 +116,7 @@ public class NodeDAO {
                      "SELECT @IdentityValue AS 'ID'";
 
         stmt = connection.prepareStatement(query);
-        var resultSet = stmt.executeQuery();
+        resultSet = stmt.executeQuery();
 
         int nodeId = 0;
         if(resultSet.next()){
@@ -127,6 +129,7 @@ public class NodeDAO {
         }
         finally {
             stmt.close();
+            resultSet.close();
         }
     }
 
@@ -143,7 +146,7 @@ public class NodeDAO {
             stmt.setDouble(3, nodeDTO.getPositionX());
             stmt.setDouble(4, nodeDTO.getPositionY());
             stmt.setInt(5, skilltreeId);
-            var resultSet = stmt.executeQuery();
+            resultSet = stmt.executeQuery();
 
             int nodeId = 0;
             if (resultSet.next()) {
@@ -156,6 +159,7 @@ public class NodeDAO {
         }
         finally {
             stmt.close();
+            resultSet.close();
         }
     }
 
