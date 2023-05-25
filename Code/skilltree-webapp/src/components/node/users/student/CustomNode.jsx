@@ -1,6 +1,5 @@
 import React from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { DeleteNodeComponent } from "../../deleteNode/DeleteNodeComponent";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
@@ -45,17 +44,6 @@ export default function CustomNode({ isConnectable, data }) {
             
             <div className="customNode">
                 <div className="customNodeBody bg-slate-200">
-                    <div className="flex">
-                        <div className="node-button-container">
-                            <button
-                                className="node-button edit-button"
-                                type="button" 
-                                onClick={handleButton}
-                            >
-                                <AiOutlineInfoCircle />
-                            </button>
-                        </div>
-                    </div>
                     <Handle
                         className="targetHandle"
                         style={{ zIndex: 2 }}
@@ -70,16 +58,32 @@ export default function CustomNode({ isConnectable, data }) {
                         type="target"
                         isConnectable={isConnectable}
                     />
-                    <div className="flex justify-center items-center w-full">
-                        {label}
-                    </div>
+                    <button
+                        className="h-full"
+                        type="button"
+                        onClick={handleButton}>
+                        <div className="flex justify-center items-center w-full">
+                            {label}
+                        </div>
+                    </button>
                 </div>
             </div>
 
             : null }
 
-            {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
-        
+            {/* <div className="flex">
+                    <div className="node-button-container">
+                        <button
+                            className="node-button edit-button"
+                            type="button" 
+                            onClick={handleButton}
+                        >
+                            <AiOutlineInfoCircle />
+                        </button>
+                    </div>
+                </div> */}
         </div>
     );
+    
 }
+

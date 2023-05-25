@@ -5,7 +5,7 @@ import SidebarComponentStudent from "../../components/users/student/SidebarCompo
 import TopbarComponentStudent from "../../components/users/student/TopbarComponent";
 import ReactFlowComponentStudent from "../../components/users/student/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../../components/node/createNode/users/student/UpdateNodeComponent";
+import UpdateNodeComponent from "../../components/node/users/student/UpdateNodeComponent";
 
 export default function StudentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);

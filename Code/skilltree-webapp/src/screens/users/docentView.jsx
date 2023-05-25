@@ -5,7 +5,7 @@ import SidebarComponentDocent from "../../components/users/docent/SidebarCompone
 import TopbarComponentDocent from "../../components/users/docent/TopbarComponent";
 import ReactFlowComponentDocent from "../../components/users/docent/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../../components/node/createNode/users/docent/UpdateNodeComponent";
+import UpdateNodeComponent from "../../components/node/users/docent/UpdateNodeComponent";
 
 export default function DocentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
