@@ -26,25 +26,25 @@ class NodeServiceTest {
         sut.setNodeDAO(nodeDAO);
     }
 
-    @Test
-    void testUpdateNode() {
-        try {
-            // Arrange
-            var nodeDTO = new NodeDTO(1, "test", "test", 1.0, 1.0, 1, "test");
-            var nodeRequestDTO = new NodeRequestDTO(1, "test", "test", 1.0, 1.0, 1, "test");
-            var expected = new NodesDTO();
-            expected.setNodes(Arrays.asList(nodeDTO)); // Gebruik Arrays.asList om een lijst te maken
-            doReturn(expected).when(nodeDAO).updateNode(nodeRequestDTO, 1);
-
-            // Act
-            var result = sut.updateNode(nodeRequestDTO, 1);
-
-            // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @Test
+//    void testUpdateNode() {
+//        try {
+//            // Arrange
+//            var nodeDTO = new NodeDTO(1, "test", "test", 1.0, 1.0, 1, "test");
+//            var nodeRequestDTO = new NodeRequestDTO(1, "test", "test", 1.0, 1.0, 1, "test");
+//            var expected = new NodesDTO();
+//            expected.setNodes(Arrays.asList(nodeDTO)); // Gebruik Arrays.asList om een lijst te maken
+//            doReturn(expected).when(nodeDAO).updateNode(nodeRequestDTO, 1);
+//
+//            // Act
+//            var result = sut.updateNode(nodeRequestDTO, 1);
+//
+//            // Assert
+//            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
 

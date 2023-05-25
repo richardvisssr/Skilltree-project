@@ -4,7 +4,9 @@ public class StudentRequestDTO {
 
     private int id;
 
-    public StudentRequestDTO(){}
+    public StudentRequestDTO(){
+        // Default constructor
+    }
 
     public StudentRequestDTO(int id) {
         this.id = id;

@@ -9,9 +9,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeDatamapper {
+public class NodeDatamapper implements Datamapper<NodesDTO> {
+
+    @Override
+    public NodesDTO map(ResultSet resultSet) throws SQLException {
+        return null;
+    }
+
+    @Override
     public NodesDTO map(ResultSet nodeResultSet, ResultSet assessmentCriteriaResultSet) throws SQLException {
-        var nodesDTO = new NodesDTO();
         List<NodeDTO> nodes = new ArrayList<>();
 
         while (nodeResultSet.next()) {
@@ -25,6 +31,12 @@ public class NodeDatamapper {
                     nodeResultSet.getString("LearningOutcomeDescription")
             ));
         }
+
+        return result(nodes, assessmentCriteriaResultSet);
+    }
+
+    private NodesDTO result(List<NodeDTO> nodes, ResultSet assessmentCriteriaResultSet) throws SQLException {
+        var nodesDTO = new NodesDTO();
 
         while (assessmentCriteriaResultSet.next()) {
             var nodeId = assessmentCriteriaResultSet.getInt("NodeID");
