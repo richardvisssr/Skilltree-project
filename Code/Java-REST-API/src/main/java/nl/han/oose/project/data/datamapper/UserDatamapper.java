@@ -19,6 +19,7 @@ public class UserDatamapper implements Datamapper {
                             resultSet.getString("Firstname"),
                             resultSet.getString("Lastname"),
                             resultSet.getString("Email"),
+                            resultSet.getString("password"),
                             resultSet.getInt("RoleId")
                     )
             );

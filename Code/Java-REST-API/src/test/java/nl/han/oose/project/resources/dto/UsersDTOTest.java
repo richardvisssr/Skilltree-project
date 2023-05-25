@@ -18,8 +18,8 @@ public class UsersDTOTest {
     void testConstructorAndGetters() {
         // Arrange
         List<UserDTO> students = new ArrayList<>();
-        students.add(new UserDTO(1, "John", "Doe", "John@Doe.com", 1));
-        students.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", 2));
+        students.add(new UserDTO(1, "John", "Doe", "John@Doe.com", "test", 1));
+        students.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", "test", 2));
 
         // Act
         sut = new UsersDTO(students);
@@ -32,8 +32,8 @@ public class UsersDTOTest {
     void testSetters() {
         // Arrange
         List<UserDTO> students = new ArrayList<>();
-        students.add(new UserDTO(1, "John", "Doe", "John@Doe.com", 1));
-        students.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", 2));
+        students.add(new UserDTO(1, "John", "Doe", "John@Doe.com", "test", 1));
+        students.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", "test", 2));
 
         // Act
         sut.setUsers(students);

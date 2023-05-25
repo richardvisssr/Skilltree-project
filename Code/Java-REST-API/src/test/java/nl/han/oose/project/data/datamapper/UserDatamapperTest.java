@@ -31,8 +31,8 @@ import java.util.List;
         void mapResultSetToStudentsDTO() throws SQLException {
             // Arrange
             List<UserDTO> expectedStudents = new ArrayList<>();
-            expectedStudents.add(new UserDTO(1, "John", "Doe", "John@Doe.com", 1));
-            expectedStudents.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", 2));
+            expectedStudents.add(new UserDTO(1, "John", "Doe", "John@Doe.com", "test", 1));
+            expectedStudents.add(new UserDTO(2, "Jane", "Smith", "Jane@Smith.com", "test2", 2));
             when(resultSet.next()).thenReturn(true, true, false);
             when(resultSet.getInt("ID")).thenReturn(1, 2);
             when(resultSet.getString("Firstname")).thenReturn("John", "Jane");

@@ -19,8 +19,9 @@ public class UserDTOTest {
         String lastname = "Doe";
         String email = "John@Doe.com";
         int roleId = 1;
+        String password = "test";
         // Act
-        sut = new UserDTO(id, firstname, lastname, email, roleId);
+        sut = new UserDTO(id, firstname, lastname, email, password, roleId);
 
         // Assert
         assertEquals(id, sut.getId());

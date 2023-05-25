@@ -19,4 +19,10 @@ public class UserResource {
             userService.createUser(userDTO);
         return Response.status(Response.Status.CREATED).build();
     }
+
+    @Inject
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
 }
