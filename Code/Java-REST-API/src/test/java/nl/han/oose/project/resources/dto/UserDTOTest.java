@@ -27,6 +27,8 @@ public class UserDTOTest {
         assertEquals(id, sut.getId());
         assertEquals(firstname, sut.getFirstname());
         assertEquals(lastname, sut.getLastname());
+        assertEquals(email, sut.getEmail());
+        assertEquals(roleId, sut.getRoleId());
     }
 
     @Test
@@ -35,16 +37,22 @@ public class UserDTOTest {
         int id = 1;
         String firstname = "John";
         String lastname = "Doe";
+        String email = "John@Doe.com";
+        int roleId = 1;
 
         // Act
         sut.setId(id);
         sut.setFirstname(firstname);
         sut.setLastname(lastname);
+        sut.setEmail(email);
+        sut.setRoleId(roleId);
 
         // Assert
         assertEquals(id, sut.getId());
         assertEquals(firstname, sut.getFirstname());
         assertEquals(lastname, sut.getLastname());
+        assertEquals(email, sut.getEmail());
+        assertEquals(roleId, sut.getRoleId());
     }
 
     @Test

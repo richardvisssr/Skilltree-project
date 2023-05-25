@@ -30,6 +30,27 @@ public class UserDAO {
         stmt.setInt(5, userDTO.getRoleId());
         stmt.executeUpdate();
     }
+
+
+    public UsersDTO getAllUsers() throws SQLException {
+        connection = DriverManager.getConnection(databaseProperties.connectionString());
+        var result = datamapper.map(getAllUsersQuery());
+        connection.close();
+        return result;
+    }
+
+    private ResultSet getAllUsersQuery() throws SQLException {
+        var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
+                "FROM Users";
+        var stmt = connection.prepareStatement(query);
+        return stmt.executeQuery();
+    }
+
+    @Inject
+    public void setDatamapper(UserDatamapper datamapper) {
+        this.datamapper = datamapper;
+    }
+
     @Inject
     public void setDatabaseProperties(DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;

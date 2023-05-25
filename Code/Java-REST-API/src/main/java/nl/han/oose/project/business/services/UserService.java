@@ -13,9 +13,13 @@ public class UserService {
         userDAO.createUser(userDTO);
     }
 
+
+    public UsersDTO getAllUsers() throws SQLException {
+        return userDAO.getAllUsers();
+    };
+
     @Inject
     public void setUserDAO(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
-
 }
