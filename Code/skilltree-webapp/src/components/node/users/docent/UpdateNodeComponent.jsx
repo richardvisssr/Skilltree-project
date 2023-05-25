@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormFieldComponent from "./FormFieldComponent";
-import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../actions/NodeAction";
-import "../../../styles/styles.css";
+import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
+import "../../../../styles/styles.css";
 
 function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
@@ -119,7 +119,7 @@ function UpdateNodeComponent() {
                                     className="text-m font-semibold leading-6 text-gray-900"
                                     onClick={hideCard}
                                 >
-                                    Annuleren
+                                    Terug
                                 </button>
                                 <button
                                     type="submit"
