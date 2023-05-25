@@ -67,7 +67,6 @@ export default function TopbarComponent() {
                                                         id="title"
                                                         className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black dark:bg-gray-900 dark:text-gray-300 px-3 w-2/5"
                                                         placeholder="Titel"
-                                                        onChange={(e) => setTitle(e.target.value)}
                                                         disabled
                                                     />
                                                     <input
@@ -77,7 +76,6 @@ export default function TopbarComponent() {
                                                         id="description"
                                                         className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black dark:bg-gray-900 dark:text-gray-300 px-3 w-2/5"
                                                         placeholder="Beschrijving"
-                                                        onChange={(e) => setDescription(e.target.value)}
                                                         disabled
                                                     />
                                                 </div>
@@ -101,7 +99,6 @@ export default function TopbarComponent() {
                                         id="title"
                                         className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black dark:bg-gray-900 dark:text-gray-300 px-3"
                                         placeholder="Titel"
-                                        onChange={(e) => setDescription(e.target.value)}
                                         disabled
                                     />
                                     <input
@@ -111,7 +108,6 @@ export default function TopbarComponent() {
                                         id="description"
                                         className="rounded-md mx-3 py-2 text-sm font-medium bg-gray-100 text-black dark:bg-gray-900 dark:text-gray-300 px-3"
                                         placeholder="Beschrijving"
-                                        onChange={(e) => setDescription(e.target.value)}
                                         disabled
                                     />
                                 </div>
