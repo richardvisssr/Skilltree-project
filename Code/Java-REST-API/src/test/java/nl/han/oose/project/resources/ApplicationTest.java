@@ -9,7 +9,7 @@ class ApplicationTest {
     @Test
     public void testGetApplicationPath() {
         // Arrange
-        Application sut = new Application();
+        ApplicationResource sut = new ApplicationResource();
         String expectedPath = "/";
 
         // Act

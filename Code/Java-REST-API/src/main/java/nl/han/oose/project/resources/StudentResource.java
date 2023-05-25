@@ -8,9 +8,11 @@ import nl.han.oose.project.business.services.StudentService;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Path("/students")
 public class StudentResource {
+    private static final Logger LOGGER  = Logger.getLogger(StudentResource.class.getName());
     private StudentService studentService;
 
     @GET
@@ -19,6 +21,7 @@ public class StudentResource {
         try {
             return Response.status(Response.Status.OK).entity(studentService.getAllStudents()).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -30,6 +33,7 @@ public class StudentResource {
         try {
             return Response.status(Response.Status.OK).entity(studentService.getStudentsBySkilltree(skilltreeId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -43,6 +47,7 @@ public class StudentResource {
             var students = studentService.updateStudentsToSkilltree(studentsRequestDTO, skilltreeId);
             return Response.status(Response.Status.OK).entity(students).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }

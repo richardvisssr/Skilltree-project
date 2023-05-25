@@ -9,9 +9,11 @@ import nl.han.oose.project.resources.dto.NodeRequestDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Path("/nodes")
 public class NodeResource {
+    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
     private NodeService nodeService;
 
     @POST
@@ -25,6 +27,7 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.createNode(nodeDTO, skilltreeId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -40,6 +43,7 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.updateNode(nodeDTO, nodeId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -54,6 +58,7 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.getAllNodes(skilltreeId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             throw new RuntimeException(e);
         }
     }
@@ -64,6 +69,7 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.getHighestNodeId()).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             throw new RuntimeException(e);
         }
     }
@@ -79,6 +85,7 @@ public class NodeResource {
             nodeService.deleteNode(nodeId);
             return Response.status(Response.Status.OK).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             throw new RuntimeException(e);
         }
     }
@@ -94,6 +101,7 @@ public class NodeResource {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodesDTO, skilltreeId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }

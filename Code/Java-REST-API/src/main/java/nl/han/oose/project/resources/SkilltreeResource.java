@@ -9,9 +9,11 @@ import nl.han.oose.project.resources.dto.SkilltreeDTO;
 
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Path("/skilltrees")
 public class SkilltreeResource {
+    private static final Logger LOGGER  = Logger.getLogger(SkilltreeResource.class.getName());
     private SkilltreeService skilltreeService;
 
     @GET
@@ -23,6 +25,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -38,6 +41,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -53,6 +57,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
+            LOGGER.info("Error: " + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
