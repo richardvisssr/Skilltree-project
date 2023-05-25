@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import HomeScreen from "../screens/homeScreen";
+import RegisterScreen from "../screens/registerScreen";
 
 const routes = [
     {
@@ -11,6 +12,10 @@ const routes = [
     {
         path: "/home",
         element: <HomeScreen />,
+    },
+    {
+        path: "/registreer",
+        element: <RegisterScreen />,
     },
 ];
 
