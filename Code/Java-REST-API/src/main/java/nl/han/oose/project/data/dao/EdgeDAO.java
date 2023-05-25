@@ -35,7 +35,7 @@ public class EdgeDAO {
             createEdgeQuery(edgeDTO, skilltreeId);
             return getAllEdgesFromSkilltree(skilltreeId);
         } catch (SQLException e) {
-            throw new SQLException("Edge already exists");
+            throw new SQLException(e);
         }
         finally {
             connection.close();
@@ -57,7 +57,7 @@ public class EdgeDAO {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         deleteEdgeQuery(edgeId);
         } catch (SQLException e) {
-            throw new SQLException("Edge does not exist");
+            throw new SQLException(e);
         }
         finally {
             connection.close();

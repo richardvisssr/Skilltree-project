@@ -17,24 +17,41 @@ public class SkilltreeDAO {
     private Connection connection;
 
     public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllSkilltreesQuery(gebruikerId));
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getAllSkilltreesQuery(gebruikerId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+        }
     }
 
     public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        createSkilltreeQuery(skilltreeDTO, gebruikerId);
-        connection.close();
-        return getAllSkilltrees(gebruikerId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            createSkilltreeQuery(skilltreeDTO, gebruikerId);
+            return getAllSkilltrees(gebruikerId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+        }
     }
 
     public SkilltreesDTO updateSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        updateSkilltreeQuery(skilltreeDTO, gebruikerId);
-        connection.close();
-        return getAllSkilltrees(gebruikerId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            updateSkilltreeQuery(skilltreeDTO, gebruikerId);
+            return getAllSkilltrees(gebruikerId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+        }
     }
 
     private ResultSet getAllSkilltreesQuery(int gebruikerId) throws SQLException {
