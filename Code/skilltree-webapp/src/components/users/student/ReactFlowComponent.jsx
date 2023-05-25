@@ -15,11 +15,11 @@ import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
 import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
 import { fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../../actions/users/student/EdgeAction";
+import { fetchallEdgesFromSkilltree } from "../../../actions/EdgeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 import "reactflow/dist/style.css";
 import "../../../styles/styles.css";
-import {fetchCreateEdgeActionAsync} from "../../../actions/users/student/EdgeAction";
+import {fetchCreateEdgeActionAsync} from "../../../actions/EdgeAction";
 
 const edgeTypes = {
     floating: FloatingEdge,

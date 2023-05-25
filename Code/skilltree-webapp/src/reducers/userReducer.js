@@ -1,5 +1,6 @@
 const initialState = {
   userId: 1,
+  rolId: 2,
 }
 
 function userReducer(state = initialState, action) {
