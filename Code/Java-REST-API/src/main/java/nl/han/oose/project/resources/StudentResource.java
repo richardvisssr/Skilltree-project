@@ -17,6 +17,7 @@ public class StudentResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllStudents() {
         try {
+            System.out.println("AAAA");
             return Response.status(Response.Status.OK).entity(studentService.getAllStudents()).build();
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

@@ -6,10 +6,11 @@ const initialState = {
 
 function studentsReducer(state = initialState, action) {
     switch (action.type) {
-    case "students/setStudents":
+        case "students/setStudents":
+        console.log("reducer", action.payload)
         return {
             ...state,
-            students: action.payload.students,
+            students: action.payload.users,
         };
         case "students/showStudentCard":
             return {

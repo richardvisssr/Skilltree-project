@@ -4,12 +4,15 @@ import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.UserDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.UserDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
+    private UserDatamapper datamapper;
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
@@ -26,20 +29,24 @@ public class UserDAO {
         stmt.setString(1, userDTO.getFirstname());
         stmt.setString(2, userDTO.getLastname());
         stmt.setString(3, userDTO.getEmail());
-        stmt.setString(4, userDTO.getPassword());
+        stmt.setString(4, "passpass");
         stmt.setInt(5, userDTO.getRoleId());
         stmt.executeUpdate();
     }
 
 
     public UsersDTO getAllUsers() throws SQLException {
+        System.out.println("3");
         connection = DriverManager.getConnection(databaseProperties.connectionString());
+        System.out.println("4");
         var result = datamapper.map(getAllUsersQuery());
+        System.out.println("5");
         connection.close();
         return result;
     }
 
     private ResultSet getAllUsersQuery() throws SQLException {
+        System.out.println("6");
         var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
                 "FROM Users";
         var stmt = connection.prepareStatement(query);
@@ -55,4 +62,5 @@ public class UserDAO {
     public void setDatabaseProperties(DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;
     }
+
 }
