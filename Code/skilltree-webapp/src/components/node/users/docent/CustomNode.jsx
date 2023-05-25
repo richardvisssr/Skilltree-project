@@ -43,7 +43,7 @@ export default function CustomNode({ isConnectable, data }) {
 
             {isNodeVisible ?
             
-            <div className="customNode">
+            <div className="customNode-docent">
                 <div className="customNodeBody bg-slate-200">
                     <div className="flex">
                         <div className="node-button-container">
