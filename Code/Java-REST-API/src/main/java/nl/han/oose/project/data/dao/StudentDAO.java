@@ -1,10 +1,9 @@
 package nl.han.oose.project.data.dao;
 
 import jakarta.inject.Inject;
-import nl.han.oose.project.data.datamapper.StudentDatamapper;
+import nl.han.oose.project.data.datamapper.UserDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.StudentDTO;
-import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,19 +12,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class StudentDAO {
-    private StudentDatamapper datamapper;
+    private UserDatamapper datamapper;
     private int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
-    public StudentsDTO getAllStudents() throws SQLException {
+    public UsersDTO getAllStudents() throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = datamapper.map(getAllStudentsQuery());
         connection.close();
         return result;
     }
 
-    public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
+    public UsersDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
         var result = datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
         connection.close();
@@ -87,7 +86,7 @@ public class StudentDAO {
     }
 
     @Inject
-    public void setDatamapper(StudentDatamapper datamapper) {
+    public void setDatamapper(UserDatamapper datamapper) {
         this.datamapper = datamapper;
     }
 

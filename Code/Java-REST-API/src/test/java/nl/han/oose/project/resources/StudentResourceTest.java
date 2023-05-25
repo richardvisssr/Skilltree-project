@@ -2,8 +2,8 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.StudentService;
-import nl.han.oose.project.resources.dto.StudentDTO;
-import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.UserDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,15 +16,15 @@ import static org.mockito.Mockito.*;
 
 public class StudentResourceTest {
     private StudentResource sut;
-    private StudentsDTO studentsDTO;
-    private StudentDTO studentDTO;
+    private UsersDTO studentsDTO;
+    private UserDTO studentDTO;
     private StudentService studentService;
     int skilltreeId = 1;
     @BeforeEach
     void setup() {
         sut = new StudentResource();
-        studentsDTO = mock(StudentsDTO.class);
-        studentDTO = mock(StudentDTO.class);
+        studentsDTO = mock(UsersDTO.class);
+        studentDTO = mock(UserDTO.class);
         studentService = mock(StudentService.class);
 
         sut.setStudentService(studentService);

@@ -2,9 +2,9 @@ package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.dao.StudentDAO;
-import nl.han.oose.project.resources.dto.StudentDTO;
+import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.StudentRequestDTO;
-import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 
 import java.sql.SQLException;
@@ -15,21 +15,21 @@ public class StudentService {
 
     private StudentDAO studentDAO;
 
-    public StudentsDTO getAllStudents() throws SQLException {
+    public UsersDTO getAllStudents() throws SQLException {
         return studentDAO.getAllStudents();
     }
 
-    public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
+    public UsersDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
         return studentDAO.getStudentsBySkilltree(skilltreeId);
     }
 
-    public StudentsDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
+    public UsersDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
         var currentStudents = getStudentsBySkilltree(skilltreeId);
 
         List<Integer> newStudents = new ArrayList<>();
         List<Integer> oldStudents = new ArrayList<>();
         List<Integer> deletedStudents = new ArrayList<>();
-        for (StudentDTO studentDTO : currentStudents.getStudents()) {
+        for (UserDTO studentDTO : currentStudents.getUsers()) {
             boolean found = false;
             for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
                 if (studentDTO.getId() == student.getId()) {
@@ -44,7 +44,7 @@ public class StudentService {
 
         for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
             boolean found = false;
-            for (StudentDTO studentDTO : currentStudents.getStudents()) {
+            for (UserDTO studentDTO : currentStudents.getUsers()) {
                 if (studentDTO.getId() == student.getId()) {
                     found = true;
                     break;
