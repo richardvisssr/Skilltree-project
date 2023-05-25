@@ -12,7 +12,9 @@ public class NodeRequestDTO {
     private String learningOutcome;
     private List<String> assessmentCriteria;
 
-    public NodeRequestDTO() {}
+    public NodeRequestDTO() {
+        // Default constructor
+    }
 
     public NodeRequestDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
         this.ID = ID;

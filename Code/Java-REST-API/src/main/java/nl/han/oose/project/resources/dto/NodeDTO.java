@@ -13,7 +13,9 @@ public class NodeDTO {
     private String learningOutcome;
     private List<AssessmentCriteriaDTO> assessmentCriteria = new ArrayList<>();
 
-    public NodeDTO() {}
+    public NodeDTO() {
+        // Default constructor
+    }
 
     public NodeDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
         this.ID = ID;

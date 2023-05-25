@@ -5,8 +5,8 @@ public class StudentDTO {
     private String firstname;
     private String lastname;
 
-    // Default constructor
     public StudentDTO() {
+        // Default constructor
     }
 
     // Constructor with all fields
