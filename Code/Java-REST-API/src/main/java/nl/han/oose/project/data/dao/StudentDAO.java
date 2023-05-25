@@ -5,10 +5,7 @@ import nl.han.oose.project.data.datamapper.StudentDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.StudentsDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class StudentDAO {
@@ -16,6 +13,7 @@ public class StudentDAO {
     private int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    private PreparedStatement stmt;
 
     public StudentsDTO getAllStudents() throws SQLException {
         try {
@@ -66,39 +64,63 @@ public class StudentDAO {
     }
 
     private void removeStudentFromSkilltreeQuery(Integer studentId, int skilltreeId) throws SQLException {
-        var query = "DELETE FROM userskilltree\n" +
-                "WHERE userID = ? AND skilltreeID = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "DELETE FROM userskilltree\n" +
+                    "WHERE userID = ? AND skilltreeID = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+        }
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentRolId);
-        return stmt.executeQuery();
+        try {
+            var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentRolId);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+        }
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
-                "FROM Users u \n" +
-                "JOIN userskilltree us \n" +
-                "ON u.ID = us.userId\n" +
-                "WHERE us.skilltreeId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, skilltreeId);
-        return stmt.executeQuery();
+        try {
+            var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
+                    "FROM Users u \n" +
+                    "JOIN userskilltree us \n" +
+                    "ON u.ID = us.userId\n" +
+                    "WHERE us.skilltreeId = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, skilltreeId);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+        }
     }
 
 
     private void addStudentToSkilltreeQuery(int studentId, int skilltreeId) throws SQLException {
-        var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+        }
     }
 
     @Inject
