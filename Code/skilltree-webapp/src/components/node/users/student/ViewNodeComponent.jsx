@@ -82,10 +82,32 @@ function UpdateNodeComponent() {
                             value={mapAssessmentCriteria()}
                             disabled={true}
                         />
+                        <FormFieldComponent
+                        fieldType="dropdown"
+                        title="Feedback geven aan"
+                        options={[
+                            { value: "Kees", label: "Kees" },
+                            { value: "Klaas", label: "Student" }
+                        ]}
+                        />
+                        <FormFieldComponent
+                            fieldType="textarea"
+                            title=""
+                            value="Feedback"
+                            // onChange={handleFeedback}
+                        />
+                        <div className="mt-6 flex items-center justify-center">
+                            <button
+                                type="submit"
+                                className="w-50 bg-indigo-600 text-white font-semibold py-2 px-4 rounded hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            >
+                                Feedback opslaan
+                            </button>
+                        </div>
                         <div className="mt-6 flex items-center justify-center gap-x-6">
                             <button
                                 type="button"
-                                className="text-m font-semibold leading-6 text-gray-900"
+                                className="text-m bg-black-500 font-semibold leading-6 text-gray-900"
                                 onClick={hideCard}
                             >
                                 Terug

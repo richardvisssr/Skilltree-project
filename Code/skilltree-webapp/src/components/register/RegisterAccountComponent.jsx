@@ -1,5 +1,5 @@
 import React from "react";
-import FormFieldComponent from "../node/createNode/FormFieldComponent";
+import FormFieldComponent from "../node/users/docent/FormFieldComponent";
 import "../../styles/styles.css";
 
 function RegisterAccountComponent() {
