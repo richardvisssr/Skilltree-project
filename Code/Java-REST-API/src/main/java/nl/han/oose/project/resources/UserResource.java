@@ -5,7 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.UserService;
-import nl.han.oose.project.resources.dto.UserDTO;
+import nl.han.oose.project.resources.dto.UserRegistrationDTO;
 
 import java.sql.SQLException;
 
@@ -16,8 +16,8 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createUser(UserDTO userDTO) throws SQLException {
-        userService.createUser(userDTO);
+    public Response createUser(UserRegistrationDTO userRegistrationDTO) throws SQLException {
+        userService.createUser(userRegistrationDTO);
         return Response.status(Response.Status.CREATED).build();
     }
 
@@ -26,7 +26,6 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
         try {
-            System.out.println("1");
             return Response.status(Response.Status.OK).entity(userService.getAllUsers()).build();
         } catch (SQLException e) {
             throw new RuntimeException(e);
