@@ -18,8 +18,6 @@ public class SkilltreeDTO {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.nodes = nodes;
-        this.edges = edges;
     }
 
     public void setId(int id) {
