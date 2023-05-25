@@ -4,14 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../../styles/styles.css";
 import {
     fetchAllSkilltreesActionAsync,
-    addSkiltreeTopbar,
     setCurrentSkilltreeAction,
 } from "../../../actions/SkilltreeAction";
 
 export default function SidebarComponent() {
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
-    const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     // Voor te testen, later moet er een reducer komen voor de users
     const userId = useSelector((state) => state.user.userId);
 
@@ -23,10 +21,6 @@ export default function SidebarComponent() {
             }
         });
         dispatch(setCurrentSkilltreeAction(currentSkilltree));
-    }
-
-    function handleNewButtonClick() {
-        dispatch(addSkiltreeTopbar());
     }
 
     useEffect(() => {
@@ -55,13 +49,6 @@ export default function SidebarComponent() {
         } catch {
             return "geen skilltrees gevonden";
         }
-    };
-
-    const newSkilltreeButton = () => {
-        if (newSkilltree) {
-            return "-";
-        }
-        return "+";
     };
 
     return (

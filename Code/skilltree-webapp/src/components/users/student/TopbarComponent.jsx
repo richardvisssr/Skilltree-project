@@ -3,50 +3,17 @@ import { useSelector } from 'react-redux';
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
 import { useDispatch } from 'react-redux';
-import { fetchCreateSkillTreeActionAsync, fetchUpdateSkillTreeActionAsync } from '../../../actions/SkilltreeAction';
-import { fetchLinkStudentsToSkilltreeActionAsync, clearStudentCardAction, showStudentCard } from '../../../actions/StudentAction';
+import { clearStudentCardAction } from '../../../actions/StudentAction';
 
 
 export default function TopbarComponent() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [firstRenderDone, setFirstRenderDone] = useState(false);
 
-    const userId = useSelector((state) => state.user.userId);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
-    const selectedStudents = useSelector((state) => state.student.selectedStudents);
 
     const dispatch = useDispatch();
-
-    const handleButton = () => {
-        if (firstRenderDone) {
-            dispatch(fetchLinkStudentsToSkilltreeActionAsync(currentSkilltree.id, selectedStudents));
-        }
-        setFirstRenderDone(!firstRenderDone);
-        dispatch(showStudentCard());
-    };
-
-    const onDragStart = (event, nodeType) => {
-        event.dataTransfer.setData('application/reactflow', nodeType);
-        event.dataTransfer.effectAllowed = 'move';
-    };
-  
-    const handleSave = () => {
-        if (title === '') {
-            return;
-        }
-        
-        if (description === '') {
-            return;
-        }
-        
-        if (newSkilltree) {
-            dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
-        } else if (currentSkilltree !== null) {
-            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId));
-        }
-        };
 
         useEffect(() => {
             if (newSkilltree) {
