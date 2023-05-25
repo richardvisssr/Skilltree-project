@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../../../styles/styles.css";
+import "./deleteButton.css";
 import {
     fetchAllSkilltreesActionAsync,
     addSkiltreeTopbar,
     setCurrentSkilltreeAction,
 } from "../../../actions/SkilltreeAction";
+import { AiFillDelete } from "react-icons/ai";
 
 export default function SidebarComponent() {
     const dispatch = useDispatch();
@@ -33,19 +35,28 @@ export default function SidebarComponent() {
         dispatch(fetchAllSkilltreesActionAsync(userId));
     }, []);
 
+    function deleteSkilltree(id) {
+        console.log("delete skilltree")
+    }
+
     const skilltreeList = () => {
         try {
             const buttons = skilltrees.map((skilltree) => (
-                <button
-                    type="button"
-                    key={skilltree.id}
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                    onClick={() => handleButtonClick(skilltree.id)}
-                >
-                    <span className="ml-12">
-                        { skilltree.title }
-                    </span>
-                </button>
+                    <button
+                        type="button"
+                        key={skilltree.id}s
+                        className="skilltree-button flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                        onClick={() => handleButtonClick(skilltree.id)}
+                    >
+                        <button
+                            className="skilltree-delete"
+                            onClick={() => deleteSkilltree(skilltree.id)}>
+                            <AiFillDelete/>
+                        </button>
+                        <div className="ml-8">
+                            { skilltree.title }
+                        </div>
+                    </button>
             ));
             return (
                 <li>
