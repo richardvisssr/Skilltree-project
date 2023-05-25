@@ -16,34 +16,54 @@ public class NodeDAO {
     private Connection connection;
 
     public NodesDTO getNodesFromSkillTree(int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        return nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return nodeDatamapper.map(getNodesQuery(skilltreeId), getAssessmentCriteriaQuery(skilltreeId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     public NodesDTO createNode(NodeRequestDTO nodeRequestDTODTO, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
-        addAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), createdNodeId);
-        addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
-        connection.close();
-        return getNodesFromSkillTree(skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            var createdNodeId = createNodeQuery(nodeRequestDTODTO, skilltreeId);
+            addAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), createdNodeId);
+            addLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), createdNodeId);
+            return getNodesFromSkillTree(skilltreeId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     public NodesDTO updateNode(NodeRequestDTO nodeRequestDTODTO, int nodeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        updateNodeQuery(nodeRequestDTODTO, nodeId);
-        updateAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), nodeId);
-        updateLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), nodeId);
-        var skilltreeId = nodeRequestDTODTO.getSkilltreeId();
-        connection.close();
-        return getNodesFromSkillTree(skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            updateNodeQuery(nodeRequestDTODTO, nodeId);
+            updateAssessmentCriteriaQuery(nodeRequestDTODTO.getAssessmentCriteria(), nodeId);
+            updateLearningOutcomeQuery(nodeRequestDTODTO.getLearningOutcome(), nodeId);
+            var skilltreeId = nodeRequestDTODTO.getSkilltreeId();
+            return getNodesFromSkillTree(skilltreeId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     public int getHighestNodeId() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var highestNodeId = getHighestNodeIdQuery();
-        connection.close();
-        return highestNodeId;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return getHighestNodeIdQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     private ResultSet getAssessmentCriteriaQuery(int skilltreeId) throws SQLException {

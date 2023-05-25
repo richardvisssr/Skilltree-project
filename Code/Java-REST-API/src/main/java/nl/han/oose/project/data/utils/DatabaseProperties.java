@@ -13,7 +13,7 @@ public class DatabaseProperties {
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Can't access property file database.properties", e);
+            LOGGER.log(Level.SEVERE, "Can not access property file database.properties", e);
         }
     }
 
