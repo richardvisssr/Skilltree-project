@@ -1,30 +1,16 @@
 import React from "react";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
 import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
-import "./nodeStyle.css";
+import "../nodeStyle.css";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
     const nodeId = data.nodeId;
 
-    const [isDeleteNodeComponentVisible, setIsDeleteNodeComponentVisible] = useState(false);
-
-    const showDeleteNodeComponent = () => {
-        setIsDeleteNodeComponentVisible(!isDeleteNodeComponentVisible);
-    };
-
-    const [isNodeVisible, setIsNodeVisible] = useState(true);
-
-    const hideNode = () => {
-        setIsNodeVisible(false);
-    }
     //test
-    const assessmentCriteria = useSelector((state) => state.node.assessmentCriteria)
 
 
     const dispatch = useDispatch();
@@ -39,8 +25,6 @@ export default function CustomNode({ isConnectable, data }) {
 
     return (
         <div>
-
-            {isNodeVisible ?
             
             <div className="customNode">
                 <div className="customNodeBody bg-slate-200">
@@ -69,19 +53,6 @@ export default function CustomNode({ isConnectable, data }) {
                 </div>
             </div>
 
-            : null }
-
-            {/* <div className="flex">
-                    <div className="node-button-container">
-                        <button
-                            className="node-button edit-button"
-                            type="button" 
-                            onClick={handleButton}
-                        >
-                            <AiOutlineInfoCircle />
-                        </button>
-                    </div>
-                </div> */}
         </div>
     );
     

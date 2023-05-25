@@ -8,7 +8,7 @@ import ReactFlow, {
   Controls, MarkerType,
 } from 'reactflow';
 import CustomNode from "../../node/users/docent/CustomNode";
-import StudentCardComponent from "../../StudentCardComponent";
+import LinkStudentComponent from "./LinkStudentComponent";
 
 import FloatingEdge from "../../edges/users/docent/FloatingEdge";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
@@ -112,7 +112,7 @@ function ReactFlowComponent() {
     const showStudentCardComponent = () => {
       if (showStudentCard) {
         return (
-          <StudentCardComponent />
+          <LinkStudentComponent />
         )
       }
     }

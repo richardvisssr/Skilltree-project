@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
 import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
-import "./nodeStyle.css";
+import "../nodeStyle.css";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
