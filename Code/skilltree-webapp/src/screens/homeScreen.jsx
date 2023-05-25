@@ -7,15 +7,15 @@ export default function HomeScreen() {
 
   let view;
   switch (userRole) {
-    default:
-      view = 'Onbekende userID'
-      break;
     case 1:
       view = <DocentView />
       break;
     case 2:
       view = <StudentView />
       break;
+    default:
+      view = 'Onbekende userID'
+    break;
   }
   
   return (
