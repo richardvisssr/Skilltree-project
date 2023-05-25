@@ -6,16 +6,15 @@ import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.EdgeDTO;
 import nl.han.oose.project.resources.dto.EdgesDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class EdgeDAO {
 
     private EdgeDatamapper edgeDatamapper;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    
+    private PreparedStatement stmt;
 
     public EdgesDTO getAllEdgesFromSkilltree(int skilltreeId) throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
@@ -25,14 +24,14 @@ public class EdgeDAO {
     private ResultSet getAllEdgesFromSkilltreeQuery(int skilltreeId) throws SQLException {
         try {
             var query = "SELECT EdgeId, TargetID, SourceID, SkillTreeID FROM Edges WHERE SkilltreeID = ?";
-            var stmt = connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setInt(1, skilltreeId);
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
         }
         finally {
-            connection.close();
+            stmt.close();
         }
     }
 
@@ -52,7 +51,7 @@ public class EdgeDAO {
     private void createEdgeQuery(EdgeDTO edgeDTO, int skilltreeId) throws SQLException {
         try {
             var query = "INSERT INTO Edges(SourceID, TargetID, SkillTreeID, EdgeId) VALUES (?, ?, ?, ?)";
-            var stmt = connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setString(1, edgeDTO.getSourceId());
             stmt.setString(2, edgeDTO.getTargetId());
             stmt.setInt(3, skilltreeId);
@@ -62,7 +61,7 @@ public class EdgeDAO {
             throw new SQLException(e);
         }
         finally {
-            connection.close();
+            stmt.close();
         }
     }
 
@@ -81,14 +80,14 @@ public class EdgeDAO {
     private void deleteEdgeQuery(String edgeId) throws SQLException {
         try{
             var query = "DELETE FROM Edges WHERE EdgeId = ?";
-            var stmt = connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setString(1, edgeId);
             stmt.executeUpdate();
         } catch (SQLException e) {
-        throw new SQLException(e);
+            throw new SQLException(e);
         }
         finally {
-            connection.close();
+            stmt.close();
         }
     }
 
