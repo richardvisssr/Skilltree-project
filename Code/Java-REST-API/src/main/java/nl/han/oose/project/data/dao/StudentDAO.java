@@ -18,33 +18,51 @@ public class StudentDAO {
     private Connection connection;
 
     public StudentsDTO getAllStudents() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllStudentsQuery());
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getAllStudentsQuery());
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+        }
     }
 
     public void addStudentsToSkilltree(List<Integer> newStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : newStudents) {
-            addStudentToSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : newStudents) {
+                addStudentToSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
         }
-        connection.close();
     }
 
     public void removeStudentsFromSkilltree(List<Integer> deletedStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : deletedStudents) {
-            removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : deletedStudents) {
+                removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
         }
-        connection.close();
     }
 
     private void removeStudentFromSkilltreeQuery(Integer studentId, int skilltreeId) throws SQLException {
