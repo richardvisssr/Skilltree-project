@@ -8,7 +8,7 @@ export default function HomeScreen() {
   return (
     <div>
       {/* Hier komt de inhoud van de HomeScreen */}
-      {showDocentView && <StudentView />}
+      {showDocentView && <DocentView />}
       {/*{showDocentView && <StudentView />}*/}
     </div>
   );

@@ -1,12 +1,12 @@
 import React from "react";
-import { AiOutlineDelete, AiOutlineInfoCircle } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DeleteNodeComponent } from "./DeleteNodeComponent";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
 import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
-import "./../../nodeStyle.css";
+import "./nodeStyle.css";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
@@ -52,7 +52,7 @@ export default function CustomNode({ isConnectable, data }) {
                                 type="button" 
                                 onClick={handleButton}
                             >
-                                <AiOutlineInfoCircle />
+                                <AiFillEdit />
                             </button>
                         </div>
                         <div className="node-button-container">
@@ -61,7 +61,7 @@ export default function CustomNode({ isConnectable, data }) {
                                 type="button"
                                 onClick={showDeleteNodeComponent}
                             >
-                            <AiOutlineDelete/>
+                            <AiFillDelete />
                             </button>
                         </div>
                     </div>
