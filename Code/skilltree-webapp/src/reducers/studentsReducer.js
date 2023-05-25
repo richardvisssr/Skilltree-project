@@ -7,7 +7,6 @@ const initialState = {
 function studentsReducer(state = initialState, action) {
     switch (action.type) {
         case "students/setStudents":
-        console.log("reducer", action.payload)
         return {
             ...state,
             students: action.payload.users,

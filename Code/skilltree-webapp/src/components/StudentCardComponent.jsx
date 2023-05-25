@@ -55,13 +55,11 @@ export default function StudentCardComponent() {
     }
 
     const studentList = () => {
-        console.log(students)
         const studentsList = students.map((student) => (
             <div
                 key={student.id}
                 className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg dark:text-white group"
             >
-                {console.log(student)}
                 <div className="flex items-center mb-4">
                     <input
                         id="default-checkbox"
