@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeDatamapper implements Datamapper {
+public class NodeDatamapper implements Datamapper<NodesDTO> {
 
     @Override
-    public Object map(ResultSet resultSet) throws SQLException {
+    public NodesDTO map(ResultSet resultSet) throws SQLException {
         return null;
     }
 

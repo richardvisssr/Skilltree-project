@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EdgeDatamapper implements Datamapper {
+public class EdgeDatamapper implements Datamapper<EdgesDTO> {
 
     @Override
     public EdgesDTO map(ResultSet edgeResultSet) throws SQLException {
@@ -29,7 +29,7 @@ public class EdgeDatamapper implements Datamapper {
     }
 
     @Override
-    public Object map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+    public EdgesDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
         return null;
     }
 }
