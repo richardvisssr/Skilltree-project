@@ -13,7 +13,7 @@ import java.util.List;
 
 public class StudentDAO {
     private UserDatamapper datamapper;
-    private int studentRolId = 2;
+    private final int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
 
@@ -57,7 +57,7 @@ public class StudentDAO {
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
+        var query = "SELECT ID, Firstname, Lastname, Email, RoleID FROM Users WHERE RoleID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
@@ -65,7 +65,7 @@ public class StudentDAO {
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
+        var query = "SELECT u.ID, u.Firstname, u.Lastname, u.Email, u.RoleID \n" +
                 "FROM Users u \n" +
                 "JOIN userskilltree us \n" +
                 "ON u.ID = us.userId\n" +

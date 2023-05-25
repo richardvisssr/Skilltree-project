@@ -21,4 +21,3 @@ public class UsersDTO {
         this.users = users;
     }
 }
-

@@ -54,7 +54,7 @@ import java.util.List;
             assertEquals(expectedStudents.get(1).getEmail(), actualStudents.getUsers().get((1)).getEmail());
             assertEquals(expectedStudents.get(0).getRoleId(), actualStudents.getUsers().get((0)).getRoleId());
             assertEquals(expectedStudents.get(1).getRoleId(), actualStudents.getUsers().get((1)).getRoleId());
-        }
+            }
 
         @Test
         void mapResultSetToStudentsDTOWithEmptyResultSet() throws SQLException {

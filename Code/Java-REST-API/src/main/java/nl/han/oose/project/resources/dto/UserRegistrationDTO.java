@@ -1,26 +1,26 @@
 package nl.han.oose.project.resources.dto;
 
-public class UserDTO {
+public class UserRegistrationDTO {
     private int id;
     private String firstname;
     private String lastname;
     private String email;
     private int roleId;
-//    private String password;
+    private String password;
 
     // Default constructor
 
-    public UserDTO() {
+    public UserRegistrationDTO() {
     }
 
     // Constructor with all fields
-    public UserDTO(int id, String firstname, String lastname, String email, int roleId) {
+    public UserRegistrationDTO(int id, String firstname, String lastname, String email, String password, int roleId) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.roleId = roleId;
-//        this.password = password;
+        this.password = password;
     }
 
     // Getters and setters for each field
@@ -64,11 +64,13 @@ public class UserDTO {
         this.roleId = roleId;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
+
+
