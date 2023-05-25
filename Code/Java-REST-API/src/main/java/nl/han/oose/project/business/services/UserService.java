@@ -1,8 +1,6 @@
 package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
-import nl.han.oose.project.data.dao.SkilltreeDAO;
-import nl.han.oose.project.data.dao.StudentDAO;
 import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.data.dao.UserDAO;
 

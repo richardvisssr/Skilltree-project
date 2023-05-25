@@ -29,23 +29,23 @@ public class StudentService {
         List<Integer> newStudents = new ArrayList<>();
         List<Integer> oldStudents = new ArrayList<>();
         List<Integer> deletedStudents = new ArrayList<>();
-        for (UserDTO studentDTO : currentStudents.getUsers()) {
+        for (UserDTO userDTO : currentStudents.getUsers()) {
             boolean found = false;
             for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
-                if (studentDTO.getId() == student.getId()) {
+                if (userDTO.getId() == student.getId()) {
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                deletedStudents.add(studentDTO.getId());
+                deletedStudents.add(userDTO.getId());
             }
         }
 
         for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
             boolean found = false;
-            for (UserDTO studentDTO : currentStudents.getUsers()) {
-                if (studentDTO.getId() == student.getId()) {
+            for (UserDTO userDTO : currentStudents.getUsers()) {
+                if (userDTO.getId() == student.getId()) {
                     found = true;
                     break;
                 }
