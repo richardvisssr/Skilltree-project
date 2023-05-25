@@ -23,12 +23,6 @@ function FloatingEdge({ id, source, target, markerEnd, style, data}) {
     targetY: ty,
   });
 
-  const deleteEdge = () => {
-    dispatch(fetchDeleteEdgeActionAsync(id));
-    data.setDeletedEdge(true);
-    data.deleteEdge(id);
-  }
-
   return (
       <>
         <EdgeLabelRenderer>
