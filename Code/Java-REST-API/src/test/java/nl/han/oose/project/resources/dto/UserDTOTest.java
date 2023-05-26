@@ -1,7 +1,10 @@
 package nl.han.oose.project.resources.dto;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class UserDTOTest {
     private UserDTO sut;
@@ -19,7 +22,7 @@ public class UserDTOTest {
         String lastname = "Doe";
         String email = "John@Doe.com";
         int roleId = 1;
-
+        String password = "test";
         // Act
         sut = new UserDTO(id, firstname, lastname, email, roleId);
 
