@@ -20,10 +20,10 @@ public class NodeRequestDTOTest {
     void testID() {
         // Arrange
         int expected = 5;
-        sut.setID(expected);
+        sut.setId(expected);
 
         // Act
-        var result = sut.getID();
+        var result = sut.getId();
 
         // Assert
         Assertions.assertEquals(expected, result);

@@ -1,4 +1,4 @@
-@import url(../../styles/styles.css);
+@import url(../../../styles/styles.css);
 
 .customNodeBody {
   width: 100px;
@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.customNode:before {
+.customNode-docent:before {
   content: '';
   position: absolute;
   left: 50%;

@@ -7,6 +7,7 @@ public class StudentsDTO {
     private List<StudentDTO> students = new ArrayList<>();
 
     public StudentsDTO() {
+        // Default constructor
     }
 
     public StudentsDTO(List<StudentDTO> students) {

@@ -8,6 +8,7 @@ public class EdgeDTO {
     private int skillTreeID;
 
     public EdgeDTO() {
+        // Default constructor
     }
 
     public EdgeDTO(String edgeId, String targetId, String sourceId, int skillTreeID) {

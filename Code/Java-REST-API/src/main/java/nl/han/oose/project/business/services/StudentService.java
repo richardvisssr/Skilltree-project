@@ -26,8 +26,16 @@ public class StudentService {
     public StudentsDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
         var currentStudents = getStudentsBySkilltree(skilltreeId);
 
-        List<Integer> newStudents = new ArrayList<>();
-        List<Integer> oldStudents = new ArrayList<>();
+        //add to skilltree
+        studentDAO.addStudentsToSkilltree(addNewStudents(currentStudents, studentsRequestDTO), skilltreeId);
+
+        //remove from skilltree
+        studentDAO.removeStudentsFromSkilltree(deleteStudents(currentStudents, studentsRequestDTO), skilltreeId);
+
+        return getStudentsBySkilltree(skilltreeId);
+    }
+
+    private List<Integer> deleteStudents(StudentsDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
         List<Integer> deletedStudents = new ArrayList<>();
         for (StudentDTO studentDTO : currentStudents.getStudents()) {
             boolean found = false;
@@ -42,6 +50,12 @@ public class StudentService {
             }
         }
 
+        return deletedStudents;
+    }
+
+    private List<Integer> addNewStudents(StudentsDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
+        List<Integer> newStudents = new ArrayList<>();
+
         for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
             boolean found = false;
             for (StudentDTO studentDTO : currentStudents.getStudents()) {
@@ -52,19 +66,12 @@ public class StudentService {
             }
             if (!found) {
                 newStudents.add(student.getId());
-            } else {
-                oldStudents.add(student.getId());
             }
         }
 
-        //add to skilltree
-        studentDAO.addStudentsToSkilltree(newStudents, skilltreeId);
-
-        //remove from skilltree
-        studentDAO.removeStudentsFromSkilltree(deletedStudents, skilltreeId);
-
-        return getStudentsBySkilltree(skilltreeId);
+        return newStudents;
     }
+
     @Inject
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;

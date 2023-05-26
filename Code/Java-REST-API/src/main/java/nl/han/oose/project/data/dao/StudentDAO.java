@@ -3,13 +3,9 @@ package nl.han.oose.project.data.dao;
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.StudentDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.StudentDTO;
 import nl.han.oose.project.resources.dto.StudentsDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class StudentDAO {
@@ -17,73 +13,110 @@ public class StudentDAO {
     private int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    private PreparedStatement stmt;
 
     public StudentsDTO getAllStudents() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllStudentsQuery());
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getAllStudentsQuery());
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
+        }
     }
 
     public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
+        }
     }
 
     public void addStudentsToSkilltree(List<Integer> newStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : newStudents) {
-            addStudentToSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : newStudents) {
+                addStudentToSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
         }
-        connection.close();
     }
 
     public void removeStudentsFromSkilltree(List<Integer> deletedStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : deletedStudents) {
-            removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : deletedStudents) {
+                removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
         }
-        connection.close();
     }
 
     private void removeStudentFromSkilltreeQuery(Integer studentId, int skilltreeId) throws SQLException {
-        var query = "DELETE FROM userskilltree\n" +
-                "WHERE userID = ? AND skilltreeID = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "DELETE FROM userskilltree\n" +
+                    "WHERE userID = ? AND skilltreeID = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
-        var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentRolId);
-        var result = stmt.executeQuery();
-        return result;
+        try {
+            var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentRolId);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
-                "FROM Users u \n" +
-                "JOIN userskilltree us \n" +
-                "ON u.ID = us.userId\n" +
-                "WHERE us.skilltreeId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+        try {
+            var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
+                    "FROM Users u \n" +
+                    "JOIN userskilltree us \n" +
+                    "ON u.ID = us.userId\n" +
+                    "WHERE us.skilltreeId = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, skilltreeId);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
 
     private void addStudentToSkilltreeQuery(int studentId, int skilltreeId) throws SQLException {
-        var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Inject
