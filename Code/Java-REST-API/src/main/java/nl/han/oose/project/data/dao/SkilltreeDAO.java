@@ -17,7 +17,6 @@ public class SkilltreeDAO {
     public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
-            System.out.println("SkilltreeDAO: " + getAllSkilltreesQuery(gebruikerId));
             return datamapper.map(getAllSkilltreesQuery(gebruikerId));
         } catch (SQLException e) {
             throw new SQLException(e);
