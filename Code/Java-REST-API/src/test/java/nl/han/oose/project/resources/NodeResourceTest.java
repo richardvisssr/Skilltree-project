@@ -23,6 +23,7 @@ public class NodeResourceTest {
     private NodeService nodeService;
 
     private static final int GEBRUIKER_ID = 1;
+    private static final int SKILLTREE_ID = 1;
 
     @BeforeEach
     void setup() {
@@ -84,6 +85,43 @@ public class NodeResourceTest {
         }
     }
 
+
+    @Test
+    void testGetAllNodes() {
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.getAllNodes(SKILLTREE_ID)).thenReturn(nodesDTO);
+
+            // Act
+            var result = sut.getAllNodes(SKILLTREE_ID);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void testGetHighestNodeId() {
+        int highestNodeId = 2;
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            when(nodeService.getHighestNodeId()).thenReturn(highestNodeId);
+
+            // Act
+            var result = sut.getHighestNodeId();
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
     void updateNodesPositions() {
         try {
             //Arrange
