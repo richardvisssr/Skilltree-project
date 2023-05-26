@@ -43,7 +43,7 @@ export default function CustomNode({ isConnectable, data }) {
                         <div className="node-button-container">
                             <button
                                 className="node-button edit-button"
-                                type="button" 
+                                type="button"
                                 onClick={handleButton}
                             >
                                 <AiFillEdit />
