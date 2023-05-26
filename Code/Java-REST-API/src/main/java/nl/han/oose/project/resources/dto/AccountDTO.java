@@ -2,16 +2,15 @@ package nl.han.oose.project.resources.dto;
 
 public class AccountDTO {
     private int id;
-    private String firstname;
-    private String lastname;
+
+    private String email;
 
     private int roleId;
 
     // Constructor with all fields
-    public AccountDTO(int id, String firstname, String lastname, int roleId) {
+    public AccountDTO(int id, String email, int roleId) {
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.email = email;
         this.roleId = roleId;
     }
 
@@ -24,20 +23,12 @@ public class AccountDTO {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getRoleId() {

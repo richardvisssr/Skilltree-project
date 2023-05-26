@@ -16,8 +16,7 @@ public class AccountDatamapper implements Datamapper {
             accounts.add(
                     new AccountDTO(
                             resultSet.getInt("ID"),
-                            resultSet.getString("Firstname"),
-                            resultSet.getString("Lastname"),
+                            resultSet.getString("Email"),
                             resultSet.getInt("RoleID")
                     )
             );

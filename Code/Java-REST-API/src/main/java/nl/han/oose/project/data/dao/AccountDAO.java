@@ -23,7 +23,7 @@ public class AccountDAO {
     }
 
     private ResultSet getAllAccountsQuery() throws SQLException {
-        var query = "SELECT ID, Firstname, Lastname, RoleID FROM Users";
+        var query = "SELECT ID, Email, RoleID FROM Users";
         var stmt = connection.prepareStatement(query);
         return stmt.executeQuery();
     }
