@@ -26,7 +26,7 @@ export default function CustomNode({ isConnectable, data }) {
     return (
         <div>
             
-            <div className="customNode">
+            <div className="customNode-student">
                 <div className="customNodeBody bg-slate-200">
                     <Handle
                         className="targetHandle"
