@@ -4,6 +4,7 @@ const initialState = {
     newSkilltree: false,
     nodes: [],
     edges: [],
+    showDeleteSkilltreeCard: false,
 };
 
 function skillTreeReducer(state = initialState, action) {
@@ -40,23 +41,33 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             nodes: [...state.nodes, action.payload],
         }
-        case "skilltree/updateNode":
-            const updatedNodes = state.nodes.map((node) => {
-              if (node.id === action.payload.id) {
-                return {
-                  ...node,
-                  skill: action.payload.skill,
-                  description: action.payload.description,
-                  learningOutcome: action.payload.learningOutcome,
-                  assessmentCriteria: action.payload.assessmentCriteria,
-                };
-              }
-              return node;
-            });
+    case "skilltree/updateNode":
+        const updatedNodes = state.nodes.map((node) => {
+            if (node.id === action.payload.id) {
             return {
-              ...state,
-              nodes: updatedNodes,
+                ...node,
+                skill: action.payload.skill,
+                description: action.payload.description,
+                learningOutcome: action.payload.learningOutcome,
+                assessmentCriteria: action.payload.assessmentCriteria,
             };
+            }
+            return node;
+        });
+        return {
+            ...state,
+            nodes: updatedNodes,
+        };
+    case "skilltree/showDeleteSkilltreeCard":
+        return {
+            ...state,
+            showDeleteSkilltreeCard: true,
+        }
+    case "skilltree/hideDeleteSkilltreeCard":
+        return {
+            ...state,
+            showDeleteSkilltreeCard: false,
+        }
             
     default:
         return state;
