@@ -10,8 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/NodeResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/NodeResourceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/UserRegistrationDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/UserRegistrationDTOTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,18 +197,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeResourceTest.testGetHighestNodeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRegistrationDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java-REST-API" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
+          <option name="PATTERN" value="nl.han.oose.project.resources.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.NodeResourceTest" />
-      <option name="METHOD_NAME" value="testGetHighestNodeId" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources.dto" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.dto.UserRegistrationDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -242,10 +239,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.java in Java-REST-API" />
+        <item itemvalue="JUnit.UserRegistrationDTOTest" />
         <item itemvalue="JUnit.UserRegistrationDTOTest.testConstructorAndGetters" />
         <item itemvalue="JUnit.NodeResourceTest.testDeleteNode" />
         <item itemvalue="JUnit.EdgeServiceTest.testDeleteEdge" />
-        <item itemvalue="JUnit.NodeResourceTest.testGetHighestNodeId" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +285,7 @@
       <workItem from="1684755990227" duration="349000" />
       <workItem from="1684919566196" duration="2000" />
       <workItem from="1684999159752" duration="880000" />
-      <workItem from="1685085394387" duration="6051000" />
+      <workItem from="1685085394387" duration="6458000" />
     </task>
     <servers />
   </component>
@@ -353,7 +350,7 @@
     <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest_testConstructorAndGetters.ic" NAME="UserRegistrationDTOTest.testConstructorAndGetters Coverage Results" MODIFIED="1685093575210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$java_in_Java_REST_API.ic" NAME="java in Java-REST-API Coverage Results" MODIFIED="1685093822856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$java_in_Java_REST_API.ic" NAME="java in Java-REST-API Coverage Results" MODIFIED="1685094227271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_getAllSkilltreesWithException.ic" NAME="SkilltreeResourceTest.getAllSkilltreesWithException Coverage Results" MODIFIED="1685088415480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>

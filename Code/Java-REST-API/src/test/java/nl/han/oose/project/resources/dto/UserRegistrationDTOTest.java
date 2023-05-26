@@ -17,11 +17,13 @@ public class UserRegistrationDTOTest {
 
     @BeforeEach
     void setup() {
-        sut = new UserRegistrationDTO(ID, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE_ID);
+        sut = new UserRegistrationDTO();
     }
 
     @Test
     void testConstructorAndGetters() {
+        sut = new UserRegistrationDTO(ID, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE_ID);
+
 
         assertAll("Constructor and getters",
                 () -> assertEquals(ID, sut.getId()),

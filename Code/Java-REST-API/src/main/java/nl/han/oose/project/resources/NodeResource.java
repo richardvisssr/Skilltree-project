@@ -88,8 +88,8 @@ public class NodeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
     public Response updateNodesPositions(
-        NodesDTO nodesDTO,
-        @PathParam("skilltreeId") int skilltreeId
+            NodesDTO nodesDTO,
+            @PathParam("skilltreeId") int skilltreeId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodesDTO, skilltreeId)).build();
