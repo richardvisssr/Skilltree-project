@@ -22,10 +22,11 @@ function UpdateNodeComponent() {
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
-            if (node.id == currentNodeId) {
+            if (node.id === currentNodeId) {
                 currentNode = node;
-                return;
+                return null;
             }
+            return null;
         })
         
         const tempArr = [];
@@ -72,8 +73,6 @@ function UpdateNodeComponent() {
     const handleLearningOutcomeChange = (event) => {
         setLearningOutcome(event.target.value);
     };
-
-    const [cardShowState, setCardShowState] = useState(true);
 
     const hideCard = () => {
         dispatch(showCreateCard())
@@ -131,7 +130,8 @@ function UpdateNodeComponent() {
                             </div>
                         </div>
                     </div>
-                </div> : null }
+                </div>
+                : null}
         </div>
     );
 }

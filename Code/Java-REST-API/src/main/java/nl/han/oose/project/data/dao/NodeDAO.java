@@ -27,6 +27,7 @@ public class NodeDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -41,6 +42,7 @@ public class NodeDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -56,6 +58,7 @@ public class NodeDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -67,6 +70,7 @@ public class NodeDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -84,9 +88,6 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
     private ResultSet getNodesQuery(int skilltreeId) throws SQLException {
@@ -103,9 +104,6 @@ public class NodeDAO {
         return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 
@@ -128,7 +126,6 @@ public class NodeDAO {
             throw new SQLException(e);
         }
         finally {
-            stmt.close();
             resultSet.close();
         }
     }
@@ -158,7 +155,6 @@ public class NodeDAO {
             throw new SQLException(e);
         }
         finally {
-            stmt.close();
             resultSet.close();
         }
     }
@@ -167,11 +163,11 @@ public class NodeDAO {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             deleteNodeQuery(nodeId);
-            connection.close();
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -183,9 +179,6 @@ public class NodeDAO {
             stmt.execute();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 
@@ -202,9 +195,6 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
     private void addLearningOutcomeQuery(String learningOutcome, int createdNodeId) throws SQLException {
@@ -218,9 +208,6 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
     private void updateLearningOutcomeQuery(String learningOutcome, int nodeId) throws SQLException {
@@ -232,9 +219,6 @@ public class NodeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 
@@ -258,9 +242,6 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
 
@@ -275,9 +256,6 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
     public NodesDTO updateNodesPositions(NodesDTO nodesDTO, int skilltreeId) throws SQLException {
@@ -289,8 +267,6 @@ public class NodeDAO {
             return getNodesFromSkillTree(skilltreeId);
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            connection.close();
         }
     }
 
@@ -307,9 +283,6 @@ public class NodeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 

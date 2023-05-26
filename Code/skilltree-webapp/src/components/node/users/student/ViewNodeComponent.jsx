@@ -6,7 +6,7 @@ import FormFieldComponent from "../docent/FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 
-function UpdateNodeComponent() {
+function ViewNodeComponent() {
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
     const [skill, setSkill] = useState("");
@@ -20,9 +20,10 @@ function UpdateNodeComponent() {
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
+            //REFACTOR ==
             if (node.id == currentNodeId) {
                 currentNode = node;
-                return;
+                return null;
             }
         })
         
@@ -128,4 +129,4 @@ function UpdateNodeComponent() {
     );
 }
 
-export default UpdateNodeComponent;
+export default ViewNodeComponent;

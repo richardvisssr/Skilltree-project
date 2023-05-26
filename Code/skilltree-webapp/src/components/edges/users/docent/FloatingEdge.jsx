@@ -1,8 +1,8 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback} from 'react';
 import {useStore, getStraightPath, BaseEdge, EdgeLabelRenderer} from 'reactflow';
 
 import { getEdgeParams } from '../../EdgesUtils.js';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 import { fetchDeleteEdgeActionAsync } from "../../../../actions/EdgeAction.js";
 function FloatingEdge({ id, source, target, markerEnd, style, data}) {

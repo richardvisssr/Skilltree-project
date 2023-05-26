@@ -17,7 +17,7 @@ export default function HomeScreen() {
       view = 'Onbekende userID'
     break;
   }
-  
+
   return (
     <div>
       {view}

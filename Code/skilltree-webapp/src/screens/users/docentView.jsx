@@ -18,11 +18,12 @@ export default function DocentView() {
                 <UpdateNodeComponent />
             )
         }
-        if (currentSkilltree !== null) {
+        else if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponentDocent />
             );
         }
+        return null;
     }
 
     const skilltreeSelected = () => {
@@ -34,14 +35,15 @@ export default function DocentView() {
                 </div>
             );
         } else if (currentSkilltree == null && newSkilltree){
-        return (
-            <div className="w-full h-full flex flex-col">
-                <TopbarComponentDocent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
-                <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
-                {showScreen()}
-            </div>
-        );
+            return (
+                <div className="w-full h-full flex flex-col">
+                    <TopbarComponentDocent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                    <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
+                    {showScreen()}
+                </div>
+            );
         }
+        return null;
     };
 
     return (

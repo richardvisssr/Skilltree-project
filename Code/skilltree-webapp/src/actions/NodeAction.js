@@ -37,7 +37,7 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
                 dispatch(setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria));
             });
     };
-};
+}
 
 export function setDeleteNodeAction(nodeId) {
     return {
@@ -83,7 +83,7 @@ export const fetchUpdateNodeActionAsync = (skill, description, positionX, positi
         .then(() => {
             dispatch(fetchAllNodesFromSkilltree(skilltreeId));
     });
-};
+}
 
 
 export function setHighestNodeIdAction(nodeId) {
@@ -110,7 +110,7 @@ export function currentNodeSelectedAction(nodeId) {
         type: "node/setCurrentNode",
         payload: nodeId
     }
-};
+}
 
 export function showCreateCard(currentNodeId) {
     return {
