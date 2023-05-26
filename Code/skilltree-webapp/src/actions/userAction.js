@@ -15,8 +15,14 @@ export function fetchAllUsersActionAsync() {
         };
         const response = await fetch(`${API_PATH}/accounts`, options);
         const allUsers = await response.json();
-        console.log(allUsers);
         dispatch(setAllUsersAction(allUsers))
         return allUsers.users;
     }
+}
+
+export function currentUserSelectedAction(currentUser) {
+    return {
+        type: "users/setAllUsers",
+        payload: currentUser,
+    };
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import "../styles/styles.css";
-import {fetchAllUsersActionAsync} from "../actions/userAction";
+import {fetchAllUsersActionAsync, fetchCurrentUsersActionAsync} from "../actions/userAction";
 
 function LoginComponent() {
 
@@ -13,10 +13,10 @@ function LoginComponent() {
         dispatch(fetchAllUsersActionAsync());
     }, []);
 
-    // const handleSave = () => {
-    //     dispatch(fetchLoginActionAsync(userEmail));
-    //     showRoleView();
-    //   };
+    const handleSave = () => {
+        // dispatch(fetchCurrentUsersActionAsync(userEmailList));
+        // showRoleView();
+      };
     
     const accountList = () => {
         const userEmailList = users.map((user) => (
@@ -45,7 +45,7 @@ function LoginComponent() {
                         <button
                             type="submit"
                             className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            // onClick={handleSave}
+                            onClick={handleSave}
                         >
                             Inloggen
                         </button>
