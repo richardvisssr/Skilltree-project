@@ -1,31 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch ,useSelector } from "react-redux";
 import "../styles/styles.css";
+import {fetchAllUsersActionAsync} from "../actions/userAction";
 
 function LoginComponent() {
 
-    // hardcoded accounts
-    const accounts = [
-        {
-            firstname: "Jeroen",
-            lastname: "van der Heijden"
-        },
-        {
-            firstname: "Jeroen",
-            lastname: "van der Heijden"
-        },
-        {
-            firstname: "Jeroen",
-            lastname: "van der Heijden"
-        },
-        {
-            firstname: "Jeroen",
-            lastname: "van der Heijden"
-        },
-    ];
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchAllUsersActionAsync());
+    }, []);
+
+    const users = useSelector((state) => state.user.users)
+
+    // const handleSave = () => {
+    //     dispatch(fetchLoginActionAsync(userEmail));
+    //     showRoleView();
+    //   };
     
     const accountList = () => {
-        const accountsList = accounts.map((account) => (
-            <option key={account.firstname + account.lastname} value={account.firstname + " " + account.lastname}>{account.firstname + " " + account.lastname}</option>
+        const userEmailList = users.map((user) => (
+            <option key={user.email} value={user.email}>{user.email}</option>
         ));
 
         return (
@@ -34,7 +29,7 @@ function LoginComponent() {
                 className="block w-full px-4 py-2 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
                 <option value="" selected disabled>Selecteer een gebruiker</option>
-                {accountsList}
+                {userEmailList}
             </select>
         );
     };
