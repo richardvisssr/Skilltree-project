@@ -18,11 +18,12 @@ export default function StudentView() {
                 <UpdateNodeComponent />
             )
         }
-        if (currentSkilltree !== null) {
+        else if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponentStudent />
             );
         }
+        return null;
     }
 
     const skilltreeSelected = () => {
@@ -34,14 +35,15 @@ export default function StudentView() {
                 </div>
             );
         } else if (currentSkilltree == null && newSkilltree){
-        return (
-            <div className="w-full h-full flex flex-col">
-                <TopbarComponentStudent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
-                <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
-                {showScreen()}
-            </div>
-        );
+            return (
+                <div className="w-full h-full flex flex-col">
+                    <TopbarComponentStudent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                    <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
+                    {showScreen()}
+                </div>
+            );
         }
+        return null;
     };
 
     return (

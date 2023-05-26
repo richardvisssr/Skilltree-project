@@ -57,9 +57,9 @@ function skillTreeReducer(state = initialState, action) {
               ...state,
               nodes: updatedNodes,
             };
-            
     default:
         return state;
     }
 }
+
 export default skillTreeReducer;

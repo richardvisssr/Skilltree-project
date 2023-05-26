@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllStudentsActionAsync, setSelectedStudentsAction, fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 
+import { fetchAllStudentsActionAsync, setSelectedStudentsAction } from "../../../actions/StudentAction";
 import "../../../styles/styles.css";
 
 export default function LinkStudentComponent() {
-
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.students);
     const selectedStudentsFromStore = useSelector((state) => state.student.selectedStudents);
-    const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
 
     const [firstRenderDone, setFirstRenderDone] = useState(false);
     const [selectedStudents, setSelectedStudents] = useState([]);
@@ -34,26 +32,29 @@ export default function LinkStudentComponent() {
     const handleChange = (event) => {
         if (event.target.checked) {
             var student = students.filter(student => {
-                return student.id == event.target.value
+                //REFACTOR ==
+                return student.id === event.target.value
             });
             const tempArr = selectedStudents;
             tempArr.push(student[0]);
             setSelectedStudentsAction(tempArr);
         } else {
-            const filteredArray = selectedStudents.filter(student => student.id != event.target.value);
+            //REFACTOR !=
+            const filteredArray = selectedStudents.filter(student => student.id !== event.target.value);
             setSelectedStudents(filteredArray);
         }
     }
 
     const isChecked  = (studentId) => {
         for (let i = 0; i < selectedStudentsFromStore.length; i++) {
-            if (selectedStudentsFromStore[i].id == studentId) {
+            //REFACTOR ==
+            if (selectedStudentsFromStore[i].id === studentId) {
                 return true;
             }
         }
         return false;
     }
-    
+
     const studentList = () => {
         const studentsList = students.map((student) => (
             <div
@@ -61,19 +62,31 @@ export default function LinkStudentComponent() {
                 className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg dark:text-white group"
             >
                 <div className="flex items-center mb-4">
-                    <input 
-                        id="default-checkbox" 
+                    <input
+                        id="default-checkbox"
                         type="checkbox"
-                        value={student.id} 
-                        onChange={handleChange} 
+                        value={student.id}
+                        onChange={handleChange}
                         defaultChecked={isChecked(student.id)}
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        className="
+                            w-4
+                            h-4
+                            text-blue-600
+                            bg-gray-100
+                            border-gray-300
+                            rounded
+                            focus:ring-blue-500
+                            dark:focus:ring-blue-600
+                            dark:ring-offset-gray-800
+                            focus:ring-2
+                            dark:bg-gray-700
+                            dark:border-gray-600"
                     />
                     <label 
                         htmlFor="default-checkbox" 
                         className="ml-2 text-ml font-medium text-white dark:text-white"
                     >
-                        { student.firstname + " " + student.lastname }
+                        { `${student.firstname} + " " + ${student.lastname}` }
                     </label>
                 </div>
             </div>
@@ -93,5 +106,5 @@ export default function LinkStudentComponent() {
                 </ul>
             </div>
         </aside>
-    );  
+    );
 }
