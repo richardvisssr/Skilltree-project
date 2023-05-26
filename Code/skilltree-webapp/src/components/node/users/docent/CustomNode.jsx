@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DeleteNodeComponent } from "./DeleteNodeComponent";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
 import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
 import "../nodeStyle.css";
+import { useState } from "react";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
@@ -24,9 +24,6 @@ export default function CustomNode({ isConnectable, data }) {
     const hideNode = () => {
         setIsNodeVisible(false);
     }
-    //test
-    const assessmentCriteria = useSelector((state) => state.node.assessmentCriteria)
-
 
     const dispatch = useDispatch();
     const connectionNodeId = useStore(connectionNodeIdSelector);
@@ -40,10 +37,8 @@ export default function CustomNode({ isConnectable, data }) {
 
     return (
         <div>
-
             {isNodeVisible ?
-            
-            <div className="customNode">
+            <div className="customNode-docent">
                 <div className="customNodeBody bg-slate-200">
                     <div className="flex">
                         <div className="node-button-container">
@@ -88,7 +83,6 @@ export default function CustomNode({ isConnectable, data }) {
             : null }
 
             {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
-        
         </div>
     );
 }

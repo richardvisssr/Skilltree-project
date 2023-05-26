@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from "react";
 
 function formFieldComponent({
@@ -30,6 +29,7 @@ function formFieldComponent({
                 />
             )
         }
+        return;
     }
 
     if (type === "text") {
