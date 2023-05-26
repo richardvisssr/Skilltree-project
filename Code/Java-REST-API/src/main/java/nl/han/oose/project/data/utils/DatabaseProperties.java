@@ -6,14 +6,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseProperties {
-    private Logger logger = Logger.getLogger(getClass().getName());
+    private static final Logger LOGGER  = Logger.getLogger(DatabaseProperties.class.getName());
     private Properties properties;
-    public DatabaseProperties() throws Exception {
+    public DatabaseProperties() {
         properties = new Properties();
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Can't access property file database.properties", e);
+            LOGGER.log(Level.SEVERE, "Can not access property file database.properties", e);
         }
     }
 
