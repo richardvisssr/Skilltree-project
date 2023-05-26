@@ -13,10 +13,10 @@ export function fetchAllUsersActionAsync() {
             method: "GET",
             mode: "cors",
         };
-        const response = await fetch(`${API_PATH}/users`, options);
+        const response = await fetch(`${API_PATH}/accounts`, options);
         const allUsers = await response.json();
+        console.log(allUsers);
         dispatch(setAllUsersAction(allUsers))
-        
         return allUsers.users;
     }
 }

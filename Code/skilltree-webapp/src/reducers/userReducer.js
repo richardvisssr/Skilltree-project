@@ -8,9 +8,10 @@ const initialState = {
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case "users/getAllUsers":
+      console.log(action.payload)
       return {
         ...state,
-        users: action.payload,
+        users: action.payload.accounts,
       };
   default:
       return state;

@@ -7,11 +7,11 @@ function LoginComponent() {
 
     const dispatch = useDispatch();
 
+    const users = useSelector((state) => state.user.users);
+
     useEffect(() => {
         dispatch(fetchAllUsersActionAsync());
     }, []);
-
-    const users = useSelector((state) => state.user.users)
 
     // const handleSave = () => {
     //     dispatch(fetchLoginActionAsync(userEmail));
