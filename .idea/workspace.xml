@@ -10,10 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/AccountDatamapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/AccountResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/AccountDTOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/AccountsDTOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/datamapper/AccountDatamapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/datamapper/AccountDatamapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/AccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/AccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/AccountsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/AccountsDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final">
+  <component name="RunManager" selected="JUnit.All in Java-REST-API">
     <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
