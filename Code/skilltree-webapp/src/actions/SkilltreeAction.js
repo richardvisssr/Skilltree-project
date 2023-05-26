@@ -76,21 +76,33 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
     };
 }
 
-    export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
-        return async (dispatch) => {
-            const body = {
-                id,
-                title,
-                description,
-            };
-            const options = {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body),
-                mode: "cors",
-            };
-            const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
-            dispatch(fetchAllSkilltreesActionAsync(userId));
-            return result;
-        }
+export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
+    return async (dispatch) => {
+        const body = {
+            id,
+            title,
+            description,
+        };
+        const options = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+            mode: "cors",
+        };
+        const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
+        dispatch(fetchAllSkilltreesActionAsync(userId));
+        return result;
     }
+}
+
+export function showDeleteCard() {
+    return {
+        type: "skilltree/showDeleteSkilltreeCard",
+    };
+}
+
+export function hideDeleteCard() {
+    return {
+        type: "skilltree/hideDeleteSkilltreeCard",
+    };
+}

@@ -1,0 +1,7 @@
+.skilltree-button > .skilltree-delete {
+    visibility: hidden
+}
+
+.skilltree-button:hover > .skilltree-delete {
+    visibility: visible
+}
