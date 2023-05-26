@@ -165,7 +165,6 @@ public class NodeDAO {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             deleteNodeQuery(nodeId);
-            connection.close();
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {
