@@ -7,6 +7,7 @@ import {
     fetchAllSkilltreesActionAsync,
     addSkiltreeTopbar,
     setCurrentSkilltreeAction,
+    showDeleteCard,
 } from "../../../actions/SkilltreeAction";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -27,6 +28,11 @@ export default function SidebarComponent() {
         dispatch(setCurrentSkilltreeAction(currentSkilltree));
     }
 
+    function deleteSkilltree(id) {
+        dispatch(setCurrentSkilltreeAction(id));
+        dispatch(showDeleteCard(id));
+    }
+
     function handleNewButtonClick() {
         dispatch(addSkiltreeTopbar());
     }
@@ -34,10 +40,6 @@ export default function SidebarComponent() {
     useEffect(() => {
         dispatch(fetchAllSkilltreesActionAsync(userId));
     }, []);
-
-    function deleteSkilltree(id) {
-        console.log("delete skilltree")
-    }
 
     const skilltreeList = () => {
         try {
