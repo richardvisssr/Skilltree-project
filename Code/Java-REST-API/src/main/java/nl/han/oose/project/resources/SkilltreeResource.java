@@ -27,7 +27,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info(ERROR_MESSAGE + e);
+            LOGGER.info("getAllSkilltrees" + ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -43,7 +43,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.createSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info(ERROR_MESSAGE + e);
+            LOGGER.info("createSkilltree" + ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -59,7 +59,7 @@ public class SkilltreeResource {
         try {
             return Response.status(Response.Status.OK).entity(skilltreeService.updateSkilltree(skilltreeDTO, gebruikerId)).build();
         } catch (SQLException e) {
-            LOGGER.info(ERROR_MESSAGE + e);
+            LOGGER.info("updateSkilltree" + ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }

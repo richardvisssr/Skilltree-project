@@ -23,6 +23,7 @@ public class StudentDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -34,6 +35,7 @@ public class StudentDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -47,6 +49,7 @@ public class StudentDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -60,6 +63,7 @@ public class StudentDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -73,8 +77,6 @@ public class StudentDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -86,8 +88,6 @@ public class StudentDAO {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -103,8 +103,6 @@ public class StudentDAO {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -118,8 +116,6 @@ public class StudentDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 

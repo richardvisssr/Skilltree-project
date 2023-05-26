@@ -6,22 +6,24 @@ import FormFieldComponent from "../docent/FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 
-function UpdateNodeComponent() {
+function ViewNodeComponent() {
     const nodes = useSelector((state) => state.skilltree.nodes)
     const currentNodeId = useSelector((state) => state.node.currentNode)
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
+    const [feedback, setFeedback] = useState("");
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
+            //REFACTOR ==
             if (node.id == currentNodeId) {
                 currentNode = node;
-                return;
+                return null;
             }
         })
         
@@ -50,6 +52,11 @@ function UpdateNodeComponent() {
         }
         return returnString;
     }
+
+    const handleFeedbackChange = (event) => {
+        setFeedback(event.target.value);
+    };
+    
 
     const hideCard = () => {
         dispatch(showCreateCard())
@@ -82,10 +89,34 @@ function UpdateNodeComponent() {
                             value={mapAssessmentCriteria()}
                             disabled={true}
                         />
-                        <div className="mt-6 flex items-center justify-center gap-x-6">
+                        <FormFieldComponent
+                        fieldType="dropdown"
+                        title="Feedback geven aan"
+                        options={[
+                            { value: "Kees", label: "Kees" },
+                            { value: "Klaas", label: "Student" }
+                        ]}
+                        />
+                        <FormFieldComponent
+                            fieldType="textarea"
+                            title="Feedback"
+                            value={feedback}
+                            disabled={false}
+                            onChange={handleFeedbackChange}
+                        />
+
+                        <div className="mt-6 flex items-center justify-center">
+                            <button
+                                type="submit"
+                                className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            >
+                                Feedback opslaan
+                            </button>
+                        </div>
+                        <div className="mt-6 flex items-center justify-center space-x-4">
                             <button
                                 type="button"
-                                className="text-m font-semibold leading-6 text-gray-900"
+                                className="back-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 onClick={hideCard}
                             >
                                 Terug
@@ -98,4 +129,4 @@ function UpdateNodeComponent() {
     );
 }
 
-export default UpdateNodeComponent;
+export default ViewNodeComponent;

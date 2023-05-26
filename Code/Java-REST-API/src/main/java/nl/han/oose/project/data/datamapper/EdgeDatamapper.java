@@ -12,20 +12,26 @@ public class EdgeDatamapper implements Datamapper<EdgesDTO> {
 
     @Override
     public EdgesDTO map(ResultSet edgeResultSet) throws SQLException {
-        var edgesDTO = new EdgesDTO();
-        List<EdgeDTO> edges = new ArrayList<>();
+        try {
+            var edgesDTO = new EdgesDTO();
+            List<EdgeDTO> edges = new ArrayList<>();
 
-        while (edgeResultSet.next()) {
-            edges.add(new EdgeDTO(
-                    edgeResultSet.getString("EdgeId"),
-                    edgeResultSet.getString("TargetID"),
-                    edgeResultSet.getString("SourceID"),
-                    edgeResultSet.getInt("SkillTreeID")
-            ));
+            while (edgeResultSet.next()) {
+                edges.add(new EdgeDTO(
+                        edgeResultSet.getString("EdgeId"),
+                        edgeResultSet.getString("TargetID"),
+                        edgeResultSet.getString("SourceID"),
+                        edgeResultSet.getInt("SkillTreeID")
+                ));
+            }
+            edgesDTO.setEdges(edges);
+            return edgesDTO;
+        } catch (SQLException e) {
+            throw new SQLException(e);
         }
-        edgesDTO.setEdges(edges);
-
-        return edgesDTO;
+        finally {
+            edgeResultSet.close();
+        }
     }
 
     @Override

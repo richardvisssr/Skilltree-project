@@ -5,7 +5,7 @@ import SidebarComponentStudent from "../../components/users/student/SidebarCompo
 import TopbarComponentStudent from "../../components/users/student/TopbarComponent";
 import ReactFlowComponentStudent from "../../components/users/student/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../../components/node/users/student/ViewNodeComponent";
+import ViewNodeComponent from "../../components/node/users/student/ViewNodeComponent";
 
 export default function StudentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
@@ -15,14 +15,15 @@ export default function StudentView() {
     const showScreen = () => {
         if (showNodeCard) {
             return (
-                <UpdateNodeComponent />
+                <ViewNodeComponent />
             )
         }
-        if (currentSkilltree !== null) {
+        else if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponentStudent />
             );
         }
+        return null;
     }
 
     const skilltreeSelected = () => {
@@ -34,14 +35,15 @@ export default function StudentView() {
                 </div>
             );
         } else if (currentSkilltree == null && newSkilltree){
-        return (
-            <div className="w-full h-full flex flex-col">
-                <TopbarComponentStudent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
-                <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
-                {showScreen()}
-            </div>
-        );
+            return (
+                <div className="w-full h-full flex flex-col">
+                    <TopbarComponentStudent currentSkilltree={currentSkilltree} newSkilltree={newSkilltree} />
+                    <div className="text-center align-middle m-auto"><NoSkilltreeComponent /></div>
+                    {showScreen()}
+                </div>
+            );
         }
+        return null;
     };
 
     return (

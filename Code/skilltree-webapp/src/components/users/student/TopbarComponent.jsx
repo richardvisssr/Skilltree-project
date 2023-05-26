@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Disclosure} from '@headlessui/react' // Menu, Transition
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline' // BellIcon
-import { useDispatch } from 'react-redux';
 import { clearStudentCardAction } from '../../../actions/StudentAction';
 
 
@@ -34,7 +33,19 @@ export default function TopbarComponent() {
                             <div className="relative flex h-16 items-center justify-between">
                                 <div className="inset-y-0 left-0 flex items-center lg:hidden">
                                     {/* Mobile menu button */}
-                                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <Disclosure.Button
+                                        className="
+                                            inline-flex
+                                            items-center
+                                            justify-center
+                                            rounded-md
+                                            p-2
+                                            text-gray-400
+                                            focus:outline-none
+                                            focus:ring-2
+                                            focus:ring-inset
+                                            focus:ring-white"
+                                    >
                                         <span className="sr-only">Open menu</span>
                                         {open ? (
                                             <XMarkIcon className="block h-6" aria-hidden="true" />
@@ -111,9 +122,7 @@ export default function TopbarComponent() {
                                         disabled
                                     />
                                 </div>
-                                
                             </div>
-
                         </Disclosure.Panel>
                     </>
                 )}

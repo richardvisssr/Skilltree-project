@@ -23,6 +23,7 @@ public class SkilltreeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -36,6 +37,7 @@ public class SkilltreeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -49,6 +51,7 @@ public class SkilltreeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -60,8 +63,6 @@ public class SkilltreeDAO {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -75,8 +76,6 @@ public class SkilltreeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -93,8 +92,6 @@ public class SkilltreeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 

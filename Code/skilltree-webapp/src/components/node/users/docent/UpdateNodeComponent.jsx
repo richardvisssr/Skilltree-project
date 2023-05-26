@@ -16,16 +16,18 @@ function UpdateNodeComponent() {
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
+    const [cardShowState, setCardShowState] = useState(true);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
-            if (node.id == currentNodeId) {
+            if (node.id === currentNodeId) {
                 currentNode = node;
-                return;
+                return null;
             }
+            return null;
         })
         
         const tempArr = [];
@@ -73,8 +75,6 @@ function UpdateNodeComponent() {
         setLearningOutcome(event.target.value);
     };
 
-    const [cardShowState, setCardShowState] = useState(true);
-
     const hideCard = () => {
         dispatch(showCreateCard())
     };
@@ -113,17 +113,17 @@ function UpdateNodeComponent() {
                                 onChange={handleAssessmentCriteriaChange}
                             />
                             <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
-                            <div className="mt-6 flex items-center justify-center gap-x-6">
+                            <div className="mt-6 flex items-center justify-center space-x-4">
                                 <button
                                     type="button"
-                                    className="text-m font-semibold leading-6 text-gray-900"
+                                    className="back-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                     onClick={hideCard}
                                 >
                                     Terug
                                 </button>
                                 <button
                                     type="submit"
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                     onClick={handleSave}
                                 >
                                     Opslaan
@@ -131,7 +131,8 @@ function UpdateNodeComponent() {
                             </div>
                         </div>
                     </div>
-                </div> : null }
+                </div>
+                : null}
         </div>
     );
 }

@@ -8,7 +8,7 @@ export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
 
     const [deleteCardShowState] = useState(true);
-    
+
     const deleteCard = () => {
         dispatch(fetchDeleteNodeActionAsync(props.nodeId));
         hideCard();
@@ -33,7 +33,10 @@ export function DeleteNodeComponent(props) {
                                 <button
                                     type="submit"
                                     onClick={deleteCard}
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m
+                                     font-semibold text-white shadow-sm hover:bg-indigo-500
+                                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                                       focus-visible:outline-indigo-600"
                                 >
                                     Verwijderen
                                 </button>
@@ -42,7 +45,6 @@ export function DeleteNodeComponent(props) {
                     </div>
                 </div>
             </div>
-            
             : null}
         </div>
     );

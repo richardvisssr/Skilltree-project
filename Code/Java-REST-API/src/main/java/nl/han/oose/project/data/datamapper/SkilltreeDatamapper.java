@@ -11,19 +11,25 @@ import java.util.List;
 public class SkilltreeDatamapper implements Datamapper<SkilltreesDTO> {
     @Override
     public SkilltreesDTO map(ResultSet resultSet) throws SQLException {
-        List<SkilltreeDTO> skilltrees = new ArrayList<>();
+        try {
+            List<SkilltreeDTO> skilltrees = new ArrayList<>();
 
-        while(resultSet.next()) {
-            skilltrees.add(
-                new SkilltreeDTO(
-                    resultSet.getInt("id"),
-                    resultSet.getString("title"),
-                    resultSet.getString("description")
-                )
-            );
+            while (resultSet.next()) {
+                skilltrees.add(
+                        new SkilltreeDTO(
+                                resultSet.getInt("id"),
+                                resultSet.getString("title"),
+                                resultSet.getString("description")
+                        )
+                );
+            }
+
+            return new SkilltreesDTO(skilltrees);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            resultSet.close();
         }
-
-        return new SkilltreesDTO(skilltrees);
     }
 
     @Override

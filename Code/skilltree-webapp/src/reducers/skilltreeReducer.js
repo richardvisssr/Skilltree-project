@@ -4,6 +4,7 @@ const initialState = {
     newSkilltree: false,
     nodes: [],
     edges: [],
+    feedback: "",
 };
 
 function skillTreeReducer(state = initialState, action) {
@@ -49,6 +50,7 @@ function skillTreeReducer(state = initialState, action) {
                   description: action.payload.description,
                   learningOutcome: action.payload.learningOutcome,
                   assessmentCriteria: action.payload.assessmentCriteria,
+                  feedback: action.payload,
                 };
               }
               return node;
@@ -57,9 +59,9 @@ function skillTreeReducer(state = initialState, action) {
               ...state,
               nodes: updatedNodes,
             };
-            
     default:
         return state;
     }
 }
+
 export default skillTreeReducer;

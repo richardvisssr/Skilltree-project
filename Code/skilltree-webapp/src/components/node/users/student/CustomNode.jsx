@@ -9,10 +9,6 @@ const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
     const label = data.label;
     const nodeId = data.nodeId;
-
-    //test
-
-
     const dispatch = useDispatch();
     const connectionNodeId = useStore(connectionNodeIdSelector);
     const isTarget = connectionNodeId && connectionNodeId !== data.id;
@@ -25,7 +21,6 @@ export default function CustomNode({ isConnectable, data }) {
 
     return (
         <div>
-            
             <div className="customNode-student">
                 <div className="customNodeBody bg-slate-200">
                     <Handle
@@ -52,9 +47,6 @@ export default function CustomNode({ isConnectable, data }) {
                     </button>
                 </div>
             </div>
-
         </div>
     );
-    
 }
-
