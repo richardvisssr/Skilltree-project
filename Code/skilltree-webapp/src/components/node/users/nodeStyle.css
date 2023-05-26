@@ -67,3 +67,19 @@ div.targetHandle {
   position: absolute;
   right: 0px;
 }
+
+.save-button{
+  background-color: #E50056;
+}
+
+.save-button:hover{
+  background-color: #660027;
+}
+
+.back-button{
+  background-color: #666666;
+}
+
+.back-button:hover{
+  background-color: #2b2b2b;
+}

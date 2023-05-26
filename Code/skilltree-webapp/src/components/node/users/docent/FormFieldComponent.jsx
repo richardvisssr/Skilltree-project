@@ -22,7 +22,7 @@ function FormFieldComponent({
                     disabled={disabled}
                 />
             );
-        } else if (fieldType === "textarea" && value !== "Feedback") {
+        } else if (fieldType === "textarea") {
             return (
                 <textarea
                     name={title}
@@ -33,24 +33,12 @@ function FormFieldComponent({
                     disabled={disabled}
                 />
             );
-        } else if (fieldType === "textarea" && value === "Feedback") {
-            return (
-                <textarea
-                    name={title}
-                    id={title}
-                    value={value}
-                    onChange={onChange}
-                    className="text-center block w-full rounded-md border-0 py-10 px-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
-                    disabled={disabled}
-                />
-            );
         } else if (fieldType === "dropdown") {
             return (
                 <select
                 name={title}
                 id={title}
                 value={value}
-                onChange={onChange}
                 className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
                 {options.map((option) => (
