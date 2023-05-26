@@ -17,12 +17,14 @@ public class SkilltreeDAO {
     public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
+            System.out.println("SkilltreeDAO: " + getAllSkilltreesQuery(gebruikerId));
             return datamapper.map(getAllSkilltreesQuery(gebruikerId));
         } catch (SQLException e) {
             throw new SQLException(e);
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -36,6 +38,7 @@ public class SkilltreeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -49,6 +52,7 @@ public class SkilltreeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -60,8 +64,6 @@ public class SkilltreeDAO {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -75,8 +77,6 @@ public class SkilltreeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 
@@ -93,8 +93,6 @@ public class SkilltreeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            stmt.close();
         }
     }
 

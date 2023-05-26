@@ -17,8 +17,16 @@ public class EdgeDAO {
     private PreparedStatement stmt;
 
     public EdgesDTO getAllEdgesFromSkilltree(int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        return edgeDatamapper.map(getAllEdgesFromSkilltreeQuery(skilltreeId));
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return edgeDatamapper.map(getAllEdgesFromSkilltreeQuery(skilltreeId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+            stmt.close();
+        }
     }
 
     private ResultSet getAllEdgesFromSkilltreeQuery(int skilltreeId) throws SQLException {
@@ -29,9 +37,6 @@ public class EdgeDAO {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 
@@ -45,6 +50,7 @@ public class EdgeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -60,9 +66,6 @@ public class EdgeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        finally {
-            stmt.close();
-        }
     }
 
     public void deleteEdge(String edgeId) throws SQLException {
@@ -74,6 +77,7 @@ public class EdgeDAO {
         }
         finally {
             connection.close();
+            stmt.close();
         }
     }
 
@@ -85,9 +89,6 @@ public class EdgeDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
-            stmt.close();
         }
     }
 

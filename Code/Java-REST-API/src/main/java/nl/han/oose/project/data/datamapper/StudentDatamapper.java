@@ -11,17 +11,23 @@ import java.util.List;
 public class StudentDatamapper implements Datamapper<StudentsDTO> {
     @Override
     public StudentsDTO map(ResultSet resultSet) throws SQLException {
-        List<StudentDTO> students = new ArrayList<>();
-        while (resultSet.next()) {
-            students.add(
-                    new StudentDTO(
-                            resultSet.getInt("ID"),
-                            resultSet.getString("Firstname"),
-                            resultSet.getString("Lastname")
-                    )
-            );
+        try {
+            List<StudentDTO> students = new ArrayList<>();
+            while (resultSet.next()) {
+                students.add(
+                        new StudentDTO(
+                                resultSet.getInt("ID"),
+                                resultSet.getString("Firstname"),
+                                resultSet.getString("Lastname")
+                        )
+                );
+            }
+            return new StudentsDTO(students);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            resultSet.close();
         }
-        return new StudentsDTO(students);
     }
 
     @Override

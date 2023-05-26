@@ -18,39 +18,50 @@ public class NodeDatamapper implements Datamapper<NodesDTO> {
 
     @Override
     public NodesDTO map(ResultSet nodeResultSet, ResultSet assessmentCriteriaResultSet) throws SQLException {
-        List<NodeDTO> nodes = new ArrayList<>();
+        try {
+            List<NodeDTO> nodes = new ArrayList<>();
 
-        while (nodeResultSet.next()) {
-            nodes.add(new NodeDTO(
-                    nodeResultSet.getInt("ID"),
-                    nodeResultSet.getString("Skill"),
-                    nodeResultSet.getString("NodeDescription"),
-                    nodeResultSet.getInt("PositionX"),
-                    nodeResultSet.getInt("PositionY"),
-                    nodeResultSet.getInt("SkilltreeID"),
-                    nodeResultSet.getString("LearningOutcomeDescription")
-            ));
+            while (nodeResultSet.next()) {
+                nodes.add(new NodeDTO(
+                        nodeResultSet.getInt("ID"),
+                        nodeResultSet.getString("Skill"),
+                        nodeResultSet.getString("NodeDescription"),
+                        nodeResultSet.getInt("PositionX"),
+                        nodeResultSet.getInt("PositionY"),
+                        nodeResultSet.getInt("SkilltreeID"),
+                        nodeResultSet.getString("LearningOutcomeDescription")
+                ));
+            }
+
+            return result(nodes, assessmentCriteriaResultSet);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            nodeResultSet.close();
+            assessmentCriteriaResultSet.close();
         }
-
-        return result(nodes, assessmentCriteriaResultSet);
     }
 
     private NodesDTO result(List<NodeDTO> nodes, ResultSet assessmentCriteriaResultSet) throws SQLException {
-        var nodesDTO = new NodesDTO();
+        try {
+            var nodesDTO = new NodesDTO();
 
-        while (assessmentCriteriaResultSet.next()) {
-            var nodeId = assessmentCriteriaResultSet.getInt("NodeID");
-            for (NodeDTO node : nodes) {
-                if(node != null && node.getID() == nodeId) {
-                    node.getAssessmentCriteria().add(new AssessmentCriteriaDTO(
-                            assessmentCriteriaResultSet.getString("AcceptationCriteriaDescription"),
-                            assessmentCriteriaResultSet.getString("character")
-                    ));
+            while (assessmentCriteriaResultSet.next()) {
+                var nodeId = assessmentCriteriaResultSet.getInt("NodeID");
+                for (NodeDTO node : nodes) {
+                    if (node != null && node.getID() == nodeId) {
+                        node.getAssessmentCriteria().add(new AssessmentCriteriaDTO(
+                                assessmentCriteriaResultSet.getString("AcceptationCriteriaDescription"),
+                                assessmentCriteriaResultSet.getString("character")
+                        ));
+                    }
                 }
             }
-        }
 
-        nodesDTO.setNodes(nodes);
-        return nodesDTO;
+            nodesDTO.setNodes(nodes);
+            return nodesDTO;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 }
