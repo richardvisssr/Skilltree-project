@@ -72,7 +72,7 @@ export default function TopbarComponent() {
                 </div>
             )
         }
-        return;
+        return null;
     }
 
     return (
@@ -83,7 +83,7 @@ export default function TopbarComponent() {
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="inset-y-0 left-0 flex items-center lg:hidden">
                                 {/* Mobile menu button */}
-                                <Disclosure.Button 
+                                <Disclosure.Button
                                     className="
                                         inline-flex
                                         items-center
@@ -96,8 +96,7 @@ export default function TopbarComponent() {
                                         focus:outline-none
                                         focus:ring-2
                                         focus:ring-inset
-                                        focus:ring-white
-                                    "
+                                        focus:ring-white"
                                 >
                                     <span className="sr-only">Open menu</span>
                                     {open ? (
@@ -197,7 +196,7 @@ export default function TopbarComponent() {
                                 </div>
                                 <div>
                                     <div className="hidden lg:ml-6 lg:block">
-                                        <div 
+                                        <div
                                             style={{cursor: "grab"}}
                                             className="
                                                 dndnode
@@ -219,7 +218,9 @@ export default function TopbarComponent() {
                                                 border-dotted
                                                 border-black
                                                 border-2"
-                                        onDragStart={(event) => onDragStart(event, 'custom')} draggable> Node Aanmaken
+                                            onDragStart={(event) => onDragStart(event, 'custom')} draggable
+                                        > 
+                                            Node Aanmaken
                                         </div>
                                     </div>
                                 </div>
@@ -304,7 +305,7 @@ export default function TopbarComponent() {
                                 </button>
                             </div>
                             <div>
-                            <div 
+                            <div
                                 className="
                                     dndnode
                                     input
@@ -326,11 +327,11 @@ export default function TopbarComponent() {
                                     border-dotted
                                     border-black
                                     border-2
-                                    dark:border-white" 
-                                style={{cursor: "grab"}} 
+                                    dark:border-white"
+                                style={{cursor: "grab"}}
                                 onDragStart={(event) => onDragStart(event, 'custom')}
                                 draggable
-                            > 
+                            >
                                 Node Aanmaken
                             </div>
                                 <div className="flex items-center justify-center pb-1 pt-1 ">
