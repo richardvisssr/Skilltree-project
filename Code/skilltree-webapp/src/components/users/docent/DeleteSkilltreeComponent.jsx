@@ -4,7 +4,6 @@ import { hideDeleteCard } from "../../../actions/SkilltreeAction";
 import "../../../styles/styles.css";
 
 function DeleteSkilltreeComponent() {
-    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
     const skilltreeTitle = useSelector((state) => state.skilltree.currentSkilltree.title);
 
     const dispatch = useDispatch();
@@ -14,13 +13,12 @@ function DeleteSkilltreeComponent() {
     };
 
     const handleDelete = () => {
-        console.log("DELETING SKILLTREE \""+skilltreeTitle+"\" ("+skilltreeId+")")//dispatch delete skilltree
         hideCard();
     };
 
     return (
-        <div>
-
+        <div className="flex h-full items-center justify-center">
+            <div className="w-2/3">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
                         <div className="bg-white px-4 pb-4 pt-5">
@@ -44,6 +42,7 @@ function DeleteSkilltreeComponent() {
                         </div>
                     </div>
                 </div>
+            </div>
 
         </div>
     );

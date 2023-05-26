@@ -47,16 +47,17 @@ export default function SidebarComponent() {
                     <button
                         type="button"
                         key={skilltree.id}s
-                        className="skilltree-button flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                        className="skilltree-button flex justify-between items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                         onClick={() => handleButtonClick(skilltree.id)}
                     >
-                        <button
+
+                        <div className="ml-12">
+                            { skilltree.title }
+                        </div>
+                        <div
                             className="skilltree-delete"
                             onClick={() => deleteSkilltree(skilltree.id)}>
                             <AiFillDelete/>
-                        </button>
-                        <div className="ml-8">
-                            { skilltree.title }
                         </div>
                     </button>
             ));
