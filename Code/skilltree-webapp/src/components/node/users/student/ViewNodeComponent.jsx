@@ -17,14 +17,7 @@ function ViewNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let currentNode = {};
-        nodes.map(node => {
-            //REFACTOR ==
-            if (node.id == currentNodeId) {
-                currentNode = node;
-                return null;
-            }
-        })
+        const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
         
         const tempArr = [];
         if(currentNode.assessmentCriteria !== undefined){
