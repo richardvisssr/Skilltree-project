@@ -6,7 +6,6 @@ import {Handle, Position, useStore} from "reactflow";
 
 import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
 import "../nodeStyle.css";
-import { useState } from "react";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
