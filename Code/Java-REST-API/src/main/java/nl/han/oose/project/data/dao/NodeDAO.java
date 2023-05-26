@@ -129,7 +129,6 @@ public class NodeDAO {
         }
         finally {
             stmt.close();
-            resultSet.close();
         }
     }
 
@@ -159,7 +158,6 @@ public class NodeDAO {
         }
         finally {
             stmt.close();
-            resultSet.close();
         }
     }
 
