@@ -9,7 +9,6 @@ public class UserRegistrationDTO {
     private String password;
 
     // Default constructor
-
     public UserRegistrationDTO() {
     }
 

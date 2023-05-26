@@ -22,25 +22,30 @@ function isUserUnique(newEmail, allUsers) {
     return isUserUnique;
 }
 
+function userRegisteredAction(value) {
+    return {
+        type: "user/userRegistered",
+        payload: value,
+    }
+}
+
 export function fetchRegisterNewUserAsyncAction(user) {
     return async (dispatch) => {
         const allUsers = await dispatch(fetchAllUsersActionAsync());
         if (isUserUnique(user.email, allUsers)) {
-            // const options = {
-            //     method: "PUT",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     mode: "cors",
-            //     body: JSON.stringify({
-            //         "students": studentIds
-            //     }),
-            // };
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: "cors",
+                body: JSON.stringify(user),
+            };
 
-            // fetch(`${API_PATH}/users`)
-            
+            fetch(`${API_PATH}/users`, options)
+                .then(dispatch(userRegisteredAction(true)))
         } else {
-            console.log("geen kaasje");
+            dispatch(userRegisteredAction(false))
         }
     }
 }

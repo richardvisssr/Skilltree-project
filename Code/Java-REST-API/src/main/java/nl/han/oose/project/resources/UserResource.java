@@ -21,7 +21,6 @@ public class UserResource {
         return Response.status(Response.Status.CREATED).build();
     }
 
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
@@ -31,7 +30,6 @@ public class UserResource {
             throw new RuntimeException(e);
         }
     }
-
 
     @Inject
     public void setUserService(UserService userService) {
