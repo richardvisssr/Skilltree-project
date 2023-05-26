@@ -28,8 +28,6 @@ const nodeTypes = {
 
 
 function ReactFlowComponent() {
-
-
     const dispatch = useDispatch();
 
     const reactFlowWrapper = useRef(null);
@@ -41,20 +39,19 @@ function ReactFlowComponent() {
     const highestNodeId = useSelector((state) => state.node.highestNodeId);
     const showCard = useSelector((state) => state.node.showCard);
 
-  const defaultEdgeOptions = {
-    style: { strokeWidth: 3, stroke: 'black' },
-    type: 'floating',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      color: 'black',
-    },
-  };
-  const connectionLineStyle = {
-    strokeWidth: 3,
-    stroke: 'black',
-  };
+    const defaultEdgeOptions = {
+        style: { strokeWidth: 3, stroke: 'black' },
+        type: 'floating',
+        markerEnd: {
+        type: MarkerType.ArrowClosed,
+        color: 'black',
+        },
+    };
 
-
+    const connectionLineStyle = {
+        strokeWidth: 3,
+        stroke: 'black',
+    };
 
     let skilltreeId;
     if (skilltree !== null) {
@@ -68,26 +65,26 @@ function ReactFlowComponent() {
       dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
     }, [skilltreeId,showCard]);
 
-  const convertFetchToEdges = () => {
-    let tempArray = [];
-    allFetchedEdges.map((edge) => {
-      const tempObj = {
-        id: `${edge.edgeId}`,
-        source: `${edge.sourceId}`,
-        target: `${edge.targetId}`,
-        type: 'floating',
-        style: { strokeWidth: 3, stroke: 'black' },
-        markerEnd: {
-            type: MarkerType.ArrowClosed,
-            color: 'black',
-        },
-      }
-      tempArray.push(tempObj);
-    })
-    setEdges(tempArray);
-  }
+    const convertFetchToEdges = () => {
+        const tempArray = [];
+        allFetchedEdges.map((edge) => {
+        const tempObj = {
+            id: `${edge.edgeId}`,
+            source: `${edge.sourceId}`,
+            target: `${edge.targetId}`,
+            type: 'floating',
+            style: { strokeWidth: 3, stroke: 'black' },
+            markerEnd: {
+                type: MarkerType.ArrowClosed,
+                color: 'black',
+            },
+        }
+        tempArray.push(tempObj);
+        })
+        setEdges(tempArray);
+    }
 
-  useEffect(() => {
+    useEffect(() => {
       convertFetchToNodes();
       convertFetchToEdges();
     }, [allFetchedNodes, allFetchedEdges])
@@ -96,7 +93,7 @@ function ReactFlowComponent() {
     }, [highestNodeId])
 
     const convertFetchToNodes = () => {
-      let tempArray = [];
+      const tempArray = [];
       allFetchedNodes.map((node) => {
         const tempObj = {
           id: `${node.id}`,
@@ -108,7 +105,7 @@ function ReactFlowComponent() {
       })
       setNodes(tempArray);
     }
-  
+
     return (
       <ReactFlowProvider>
         <div className="w-full flex-auto" ref={reactFlowWrapper}>
