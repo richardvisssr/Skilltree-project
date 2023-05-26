@@ -130,18 +130,16 @@ export default function TopbarComponent() {
                                                     id="title"
                                                     className="
                                                         rounded-md
-                                                        mx-3 py-2
+                                                        mx-3
+                                                        py-2
                                                         text-sm
                                                         font-medium
                                                         bg-gray-100
                                                         text-black
-                                                        hover:bg-gray-200
-                                                        hover:text-black
-                                                        dark:bg-gray-
-                                                        dark:text-gray-300
+                                                        dark:bg-gray-900
+                                                        dark:text-gray-300 px-3
                                                         dark:hover:bg-gray-700
-                                                        dark:hover:text-white
-                                                        px-3 w-2/5"
+                                                        dark:hover:text-white"
                                                     placeholder="Titel"
                                                     onChange={(e) => setTitle(e.target.value)}
                                                 />
