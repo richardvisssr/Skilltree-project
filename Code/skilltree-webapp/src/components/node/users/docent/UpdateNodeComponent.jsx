@@ -22,11 +22,11 @@ function UpdateNodeComponent() {
     useEffect(() => {
         let currentNode = {};
         nodes.map(node => {
-            //REFACTOR ==
             if (node.id === currentNodeId) {
                 currentNode = node;
                 return null;
             }
+            return null;
         })
         
         const tempArr = [];
