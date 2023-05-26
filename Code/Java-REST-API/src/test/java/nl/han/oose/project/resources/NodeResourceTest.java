@@ -2,7 +2,6 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.NodeService;
-import nl.han.oose.project.data.dao.NodeDAO;
 import nl.han.oose.project.resources.dto.NodeDTO;
 import nl.han.oose.project.resources.dto.NodesDTO;
 import nl.han.oose.project.resources.dto.NodeRequestDTO;
@@ -113,6 +112,25 @@ public class NodeResourceTest {
 
             // Act
             var result = sut.getHighestNodeId();
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+
+    @Test
+    void testDeleteNode() {
+        int nodeId = 1;
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            doNothing().when(nodeService).deleteNode(nodeId);
+
+            // Act
+            var result = sut.deleteNode(nodeId);
 
             // Assert
             Assertions.assertEquals(expected, result.getStatus());

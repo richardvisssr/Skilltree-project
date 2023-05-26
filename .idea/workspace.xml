@@ -10,44 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/UserResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/UserRegistrationDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Java_REST_API_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Java_REST_API_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_microsoft_sqlserver_mssql_jdbc_12_2_0_jre11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_inject_jakarta_inject_api_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_platform_jakarta_jakartaee_api_9_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_ws_rs_jakarta_ws_rs_api_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_api_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_3_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_3_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_0_M1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/SkilltreeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/SkilltreeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/EdgeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/EdgeServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/UserDatamapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/UserDatamapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/NodeResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/NodeResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/UserRegistrationDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/dto/UserRegistrationDTOTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +95,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EdgeServiceTest.testDeleteEdge">
+  <component name="RunManager" selected="JUnit.java in Java-REST-API">
     <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -218,7 +183,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NodeResourceTest.testDeleteNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java-REST-API" />
       <extension name="coverage">
         <pattern>
@@ -228,7 +193,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.NodeResourceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testDeleteNode" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -249,17 +215,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeResourceTest.updateNodesPositions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRegistrationDTOTest.testConstructorAndGetters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java-REST-API" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
+          <option name="PATTERN" value="nl.han.oose.project.resources.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.NodeResourceTest" />
-      <option name="METHOD_NAME" value="updateNodesPositions" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources.dto" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.dto.UserRegistrationDTOTest" />
+      <option name="METHOD_NAME" value="testConstructorAndGetters" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -275,11 +241,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EdgeServiceTest.testDeleteEdge" />
         <item itemvalue="JUnit.java in Java-REST-API" />
+        <item itemvalue="JUnit.UserRegistrationDTOTest.testConstructorAndGetters" />
+        <item itemvalue="JUnit.NodeResourceTest.testDeleteNode" />
+        <item itemvalue="JUnit.EdgeServiceTest.testDeleteEdge" />
         <item itemvalue="JUnit.NodeResourceTest.testGetHighestNodeId" />
-        <item itemvalue="JUnit.NodeResourceTest.updateNodesPositions" />
-        <item itemvalue="JUnit.NodeResourceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +288,7 @@
       <workItem from="1684755990227" duration="349000" />
       <workItem from="1684919566196" duration="2000" />
       <workItem from="1684999159752" duration="880000" />
-      <workItem from="1685085394387" duration="3432000" />
+      <workItem from="1685085394387" duration="6051000" />
     </task>
     <servers />
   </component>
@@ -359,26 +325,35 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1683534495973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest.ic" NAME="NodeResourceTest Coverage Results" MODIFIED="1685088777209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    <SUITE FILE_PATH="coverage/erlang_project$EdgeServiceTest_testDeleteEdge.ic" NAME="EdgeServiceTest.testDeleteEdge Coverage Results" MODIFIED="1685089489084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testGetHighestNodeId.ic" NAME="NodeResourceTest.testGetHighestNodeId Coverage Results" MODIFIED="1685088931239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__2_.ic" NAME="All in Java-REST-API (2) Coverage Results" MODIFIED="1683534149553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$JBoss_WildFly_25_0_0_Final.ic" NAME="JBoss/WildFly 25.0.0.Final Coverage Results" MODIFIED="1684144404086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__1_.ic" NAME="All in Java-REST-API (1) Coverage Results" MODIFIED="1683535930069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_updateNodesPositions.ic" NAME="NodeResourceTest.updateNodesPositions Coverage Results" MODIFIED="1685088811160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_getAllNodesWithException.ic" NAME="NodeResourceTest.getAllNodesWithException Coverage Results" MODIFIED="1685088673526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testDeleteNode.ic" NAME="NodeResourceTest.testDeleteNode Coverage Results" MODIFIED="1685092608759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest.ic" NAME="UserRegistrationDTOTest Coverage Results" MODIFIED="1685087384355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$java_in_Java_REST_API.ic" NAME="java in Java-REST-API Coverage Results" MODIFIED="1685088992576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1683534495973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest.ic" NAME="NodeResourceTest Coverage Results" MODIFIED="1685088777209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__2_.ic" NAME="All in Java-REST-API (2) Coverage Results" MODIFIED="1683534149553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_getAllNodesWithException.ic" NAME="NodeResourceTest.getAllNodesWithException Coverage Results" MODIFIED="1685088673526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest_testConstructorAndGetters.ic" NAME="UserRegistrationDTOTest.testConstructorAndGetters Coverage Results" MODIFIED="1685093575210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$java_in_Java_REST_API.ic" NAME="java in Java-REST-API Coverage Results" MODIFIED="1685093822856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_getAllSkilltreesWithException.ic" NAME="SkilltreeResourceTest.getAllSkilltreesWithException Coverage Results" MODIFIED="1685088415480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>

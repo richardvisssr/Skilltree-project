@@ -8,51 +8,46 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserRegistrationDTOTest {
     UserRegistrationDTO sut;
 
+    private final int ID = 1;
+    private final String FIRSTNAME = "John";
+    private final String LASTNAME = "Doe";
+    private final String EMAIL = "john.doe@example.com";
+    private final String PASSWORD = "password";
+    private final int ROLE_ID = 2;
+
     @BeforeEach
     void setup() {
-        sut = new UserRegistrationDTO();
+        sut = new UserRegistrationDTO(ID, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE_ID);
     }
 
     @Test
     void testConstructorAndGetters() {
-        int id = 1;
-        String firstname = "John";
-        String lastname = "Doe";
-        String email = "john.doe@example.com";
-        String password = "password";
-        int roleId = 2;
 
-        sut = new UserRegistrationDTO(id, firstname, lastname, email, password, roleId);
-
-        assertEquals(id, sut.getId());
-        assertEquals(firstname, sut.getFirstname());
-        assertEquals(lastname, sut.getLastname());
-        assertEquals(email, sut.getEmail());
-        assertEquals(password, sut.getPassword());
-        assertEquals(roleId, sut.getRoleId());
+        assertAll("Constructor and getters",
+                () -> assertEquals(ID, sut.getId()),
+                () -> assertEquals(FIRSTNAME, sut.getFirstname()),
+                () -> assertEquals(LASTNAME, sut.getLastname()),
+                () -> assertEquals(EMAIL, sut.getEmail()),
+                () -> assertEquals(PASSWORD, sut.getPassword()),
+                () -> assertEquals(ROLE_ID, sut.getRoleId())
+        );
     }
 
     @Test
     void testSetters() {
-        int id = 1;
-        String firstname = "John";
-        String lastname = "Doe";
-        String email = "john.doe@example.com";
-        String password = "password";
-        int roleId = 2;
 
-        sut.setId(id);
-        sut.setFirstname(firstname);
-        sut.setLastname(lastname);
-        sut.setEmail(email);
-        sut.setPassword(password);
-        sut.setRoleId(roleId);
+        sut.setId(ID);
+        sut.setFirstname(FIRSTNAME);
+        sut.setLastname(LASTNAME);
+        sut.setEmail(EMAIL);
+        sut.setPassword(PASSWORD);
+        sut.setRoleId(ROLE_ID);
 
-        assertEquals(id, sut.getId());
-        assertEquals(firstname, sut.getFirstname());
-        assertEquals(lastname, sut.getLastname());
-        assertEquals(email, sut.getEmail());
-        assertEquals(password, sut.getPassword());
-        assertEquals(roleId, sut.getRoleId());
+        assertEquals(ID, sut.getId());
+        assertEquals(FIRSTNAME, sut.getFirstname());
+        assertEquals(LASTNAME, sut.getLastname());
+        assertEquals(EMAIL, sut.getEmail());
+        assertEquals(PASSWORD, sut.getPassword());
+        assertEquals(ROLE_ID, sut.getRoleId());
     }
 }
