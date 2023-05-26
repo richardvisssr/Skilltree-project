@@ -15,7 +15,7 @@ public class StudentDAO {
     private Connection connection;
     private PreparedStatement stmt;
 
-    public StudentsDTO getAllStudents() throws SQLException {
+    public UsersDTO getAllStudents() throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             return datamapper.map(getAllStudentsQuery());
@@ -27,7 +27,7 @@ public class StudentDAO {
         }
     }
 
-    public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
+    public UsersDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             return datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
