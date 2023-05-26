@@ -11,7 +11,6 @@ function MessageComponent({
     const [style, setStyle] = useState("");
 
     useEffect(() => {
-        console.log(type)
         if (type === "error") {
             setStyle(errorStyle);
         } else if (type === "success") {
