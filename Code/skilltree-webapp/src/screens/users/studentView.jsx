@@ -23,7 +23,7 @@ export default function StudentView() {
                 <ReactFlowComponentStudent />
             );
         }
-        return;
+        return null;
     }
 
     const skilltreeSelected = () => {
@@ -43,7 +43,7 @@ export default function StudentView() {
                 </div>
             );
         }
-        return;
+        return null;
     };
 
     return (
