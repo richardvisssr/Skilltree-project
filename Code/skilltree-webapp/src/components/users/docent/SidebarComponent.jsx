@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/styles.css";
+import "../../../styles/styles.css";
 import {
     fetchAllSkilltreesActionAsync,
     addSkiltreeTopbar,
     setCurrentSkilltreeAction,
-} from "../actions/SkilltreeAction";
+} from "../../../actions/SkilltreeAction";
 
 export default function SidebarComponent() {
     const navigate = useNavigate();

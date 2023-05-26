@@ -4,7 +4,9 @@ public class AssessmentCriteriaDTO {
     private String description;
     private String character;
 
-    public AssessmentCriteriaDTO() {}
+    public AssessmentCriteriaDTO() {
+        // Default constructor
+    }
 
     public AssessmentCriteriaDTO(String description, String character) {
         this.description = description;
