@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkilltreeDatamapper implements Datamapper{
+public class SkilltreeDatamapper implements Datamapper<SkilltreesDTO> {
     @Override
     public SkilltreesDTO map(ResultSet resultSet) throws SQLException {
         List<SkilltreeDTO> skilltrees = new ArrayList<>();
@@ -24,5 +24,10 @@ public class SkilltreeDatamapper implements Datamapper{
         }
 
         return new SkilltreesDTO(skilltrees);
+    }
+
+    @Override
+    public SkilltreesDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+        return null;
     }
 }

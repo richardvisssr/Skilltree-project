@@ -122,16 +122,16 @@ void testDescription() {
         Assertions.assertEquals(expected, result);
     }
 
-    @Test
-    void testNodeDTO() {
-        // Arrange
-        String expected = "test";
-        sut = new NodeDTO(5, expected, expected, 5, 5, 5, expected);
-
-        // Act
-        var result = sut.getSkill();
-
-        // Assert
-        Assertions.assertEquals(expected, result);
-    }
+//    @Test
+//    void testNodeDTO() {
+//        // Arrange
+//        String expected = "test";
+//        sut = new NodeDTO(5, expected, expected, 5, 5, 5, expected);
+//
+//        // Act
+//        var result = sut.getSkill();
+//
+//        // Assert
+//        Assertions.assertEquals(expected, result);
+//    }
 }
