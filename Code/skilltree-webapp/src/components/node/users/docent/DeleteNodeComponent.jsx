@@ -13,13 +13,12 @@ export function DeleteNodeComponent(props) {
 
     const deleteCard = () => {
         const nodeId = props.nodeId;
+
         edges.map(edge => {
             if (edge.sourceId === nodeId) {
                 dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
             } else if (edge.targetId === nodeId) {
                 dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
-            } else {
-                dispatch(fetchDeleteNodeActionAsync(nodeId));
             }
         });
 

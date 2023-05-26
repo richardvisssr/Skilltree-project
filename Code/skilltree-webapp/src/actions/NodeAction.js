@@ -41,7 +41,7 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
 
 export function setDeleteNodeAction(nodeId) {
     return {
-        type: "node/deleteNode",
+        type: "skilltree/deleteNode",
         payload: {
             nodeId,
         }
