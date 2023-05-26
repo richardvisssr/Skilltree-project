@@ -28,7 +28,6 @@ public class NodeDAO {
         } finally {
             connection.close();
             stmt.close();
-            resultSet.close();
         }
     }
 
@@ -44,7 +43,6 @@ public class NodeDAO {
         } finally {
             connection.close();
             stmt.close();
-            resultSet.close();
         }
     }
 
@@ -61,7 +59,6 @@ public class NodeDAO {
         } finally {
             connection.close();
             stmt.close();
-            resultSet.close();
         }
     }
 
@@ -74,7 +71,6 @@ public class NodeDAO {
         } finally {
             connection.close();
             stmt.close();
-            resultSet.close();
         }
     }
 
@@ -129,6 +125,9 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
+        finally {
+            resultSet.close();
+        }
     }
 
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
@@ -155,6 +154,9 @@ public class NodeDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
+        finally {
+            resultSet.close();
+        }
     }
 
     public void deleteNode(int nodeId) throws SQLException {
@@ -166,7 +168,6 @@ public class NodeDAO {
         } finally {
             connection.close();
             stmt.close();
-            resultSet.close();
         }
     }
 
