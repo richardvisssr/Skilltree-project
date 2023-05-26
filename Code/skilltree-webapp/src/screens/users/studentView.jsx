@@ -5,7 +5,7 @@ import SidebarComponentStudent from "../../components/users/student/SidebarCompo
 import TopbarComponentStudent from "../../components/users/student/TopbarComponent";
 import ReactFlowComponentStudent from "../../components/users/student/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
-import UpdateNodeComponent from "../../components/node/users/student/ViewNodeComponent";
+import ViewNodeComponent from "../../components/node/users/student/ViewNodeComponent";
 
 export default function StudentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
@@ -15,7 +15,7 @@ export default function StudentView() {
     const showScreen = () => {
         if (showNodeCard) {
             return (
-                <UpdateNodeComponent />
+                <ViewNodeComponent />
             )
         }
         else if (currentSkilltree !== null) {

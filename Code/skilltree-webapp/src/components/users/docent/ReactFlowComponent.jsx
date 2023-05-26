@@ -161,7 +161,7 @@ function ReactFlowComponent() {
             event.preventDefault();
             const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
             const type = event.dataTransfer.getData('application/reactflow');
-        
+
             // check if the dropped element is valid
             if (typeof type === 'undefined' || !type) {
                 return;
@@ -228,7 +228,20 @@ function ReactFlowComponent() {
                     >
                     <Controls />
                 </ReactFlow>
-                <button className="absolute bottom-0 right-0 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onPositionClick}>Update Posities</button>
+                <button 
+                    className="
+                        absolute
+                        bottom-0
+                        right-0 m-4
+                        bg-blue-500
+                        hover:bg-blue-700
+                        text-white
+                        font-bold py-2
+                        px-4 rounded"
+                        onClick={onPositionClick}
+                    >
+                        Update Posities
+                    </button>
             </div>
             {showStudentCardComponent()}
         </ReactFlowProvider>

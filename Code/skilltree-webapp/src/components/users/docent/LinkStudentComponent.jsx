@@ -82,8 +82,8 @@ export default function LinkStudentComponent() {
                             dark:bg-gray-700
                             dark:border-gray-600"
                     />
-                    <label 
-                        htmlFor="default-checkbox" 
+                    <label
+                        htmlFor="default-checkbox"
                         className="ml-2 text-ml font-medium text-white dark:text-white"
                     >
                         { `${student.firstname} + " " + ${student.lastname}` }

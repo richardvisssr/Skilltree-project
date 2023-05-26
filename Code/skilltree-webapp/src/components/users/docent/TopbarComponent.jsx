@@ -219,7 +219,7 @@ export default function TopbarComponent() {
                                                 border-black
                                                 border-2"
                                             onDragStart={(event) => onDragStart(event, 'custom')} draggable
-                                        > 
+                                        >
                                             Node Aanmaken
                                         </div>
                                     </div>
