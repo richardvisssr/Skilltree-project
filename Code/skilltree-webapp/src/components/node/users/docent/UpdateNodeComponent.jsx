@@ -16,6 +16,7 @@ function UpdateNodeComponent() {
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
+    const [cardShowState, setCardShowState] = useState(true);
 
     const dispatch = useDispatch();
 
