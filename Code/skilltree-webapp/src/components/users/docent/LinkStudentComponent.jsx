@@ -31,24 +31,19 @@ export default function LinkStudentComponent() {
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
         if (event.target.checked) {
-            var student = students.filter(student => {
-                //REFACTOR ==
-                return student.id === event.target.value
-            });
+            var student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
             const tempArr = selectedStudents;
             tempArr.push(student[0]);
             setSelectedStudentsAction(tempArr);
         } else {
-            //REFACTOR !=
-            const filteredArray = selectedStudents.filter(student => student.id !== event.target.value);
+            const filteredArray = selectedStudents.filter(student => parseInt(student.id) !== parseInt(event.target.value));
             setSelectedStudents(filteredArray);
         }
     }
 
     const isChecked  = (studentId) => {
         for (let i = 0; i < selectedStudentsFromStore.length; i++) {
-            //REFACTOR ==
-            if (selectedStudentsFromStore[i].id === studentId) {
+            if (parseInt(selectedStudentsFromStore[i].id) === parseInt(studentId)) {
                 return true;
             }
         }
@@ -86,7 +81,7 @@ export default function LinkStudentComponent() {
                         htmlFor="default-checkbox"
                         className="ml-2 text-ml font-medium text-white dark:text-white"
                     >
-                        { `${student.firstname} + " " + ${student.lastname}` }
+                        { `${student.firstname} ${student.lastname}` }
                     </label>
                 </div>
             </div>
