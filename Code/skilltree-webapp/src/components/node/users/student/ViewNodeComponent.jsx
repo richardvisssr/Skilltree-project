@@ -20,7 +20,7 @@ function ViewNodeComponent() {
         let currentNode = {};
         nodes.map(node => {
             //REFACTOR ==
-            if (node.id == currentNodeId) {
+            if (node.id === currentNodeId) {
                 currentNode = node;
                 return null;
             }
