@@ -1,18 +1,30 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { fetchDeleteNodeActionAsync } from "../../../../actions/NodeAction";
 
 import "../../../../styles/styles.css";
+import {fetchDeleteEdgeActionAsync} from "../../../../actions/EdgeAction";
 
 export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
+    const edges = useSelector((state) => state.skilltree.edges);
 
     const [deleteCardShowState] = useState(true);
 
     const deleteCard = () => {
-        dispatch(fetchDeleteNodeActionAsync(props.nodeId));
+        const nodeId = props.nodeId;
+        edges.map(edge => {
+            if (edge.sourceId === nodeId) {
+                dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
+            } else if (edge.targetId === nodeId) {
+                dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
+            } else {
+                dispatch(fetchDeleteNodeActionAsync(nodeId));
+            }
+        });
+
+        dispatch(fetchDeleteNodeActionAsync(nodeId));
         hideCard();
-        props.hideNode();
     };
 
     const hideCard = () => {
