@@ -7,8 +7,9 @@ public class UserDTO {
     private String email;
     private int roleId;
 
+    // Default constructor
+
     public UserDTO() {
-        // Default constructor
     }
 
     // Constructor with all fields
@@ -60,12 +61,4 @@ public class UserDTO {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 }
