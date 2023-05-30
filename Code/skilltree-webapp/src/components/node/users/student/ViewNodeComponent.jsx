@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 
-import FormFieldComponent from "../docent/FormFieldComponent";
+import FormFieldComponent from "../../FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 
@@ -13,19 +14,11 @@ function ViewNodeComponent() {
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
-    const [feedback, setFeedback] = useState("");
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let currentNode = {};
-        nodes.map(node => {
-            //REFACTOR ==
-            if (node.id == currentNodeId) {
-                currentNode = node;
-                return null;
-            }
-        })
+        const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
         
         const tempArr = [];
         if(currentNode.assessmentCriteria !== undefined){
@@ -52,11 +45,6 @@ function ViewNodeComponent() {
         }
         return returnString;
     }
-
-    const handleFeedbackChange = (event) => {
-        setFeedback(event.target.value);
-    };
-    
 
     const hideCard = () => {
         dispatch(showCreateCard())
@@ -89,30 +77,7 @@ function ViewNodeComponent() {
                             value={mapAssessmentCriteria()}
                             disabled={true}
                         />
-                        <FormFieldComponent
-                        fieldType="dropdown"
-                        title="Feedback geven aan"
-                        options={[
-                            { value: "Kees", label: "Kees" },
-                            { value: "Klaas", label: "Student" }
-                        ]}
-                        />
-                        <FormFieldComponent
-                            fieldType="textarea"
-                            title="Feedback"
-                            value={feedback}
-                            disabled={false}
-                            onChange={handleFeedbackChange}
-                        />
-
-                        <div className="mt-6 flex items-center justify-center">
-                            <button
-                                type="submit"
-                                className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            >
-                                Feedback opslaan
-                            </button>
-                        </div>
+                        <FeedbackNodeComponent/>
                         <div className="mt-6 flex items-center justify-center space-x-4">
                             <button
                                 type="button"

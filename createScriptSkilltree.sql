@@ -86,8 +86,6 @@ BEGIN TRY
         CONSTRAINT PK_Edges PRIMARY KEY (ID),
         CONSTRAINT CHK_SourceID_TargetID CHECK (SourceID != TargetID),
         CONSTRAINT FK_Edges_SkillTreeID_ID FOREIGN KEY (SkillTreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE,
-        CONSTRAINT FK_Edges_ParentID_ID FOREIGN KEY (SourceID) REFERENCES Nodes (ID),
-        CONSTRAINT FK_Edges_ChildID_ID FOREIGN KEY (TargetID) REFERENCES Nodes (ID),
         CONSTRAINT UQ_SourceID_TargetID UNIQUE (SourceID, TargetID)
     );
 
