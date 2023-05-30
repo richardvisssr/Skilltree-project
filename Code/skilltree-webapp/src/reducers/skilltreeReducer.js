@@ -36,6 +36,12 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             edges: action.payload.edges,
         }
+    case "skilltree/deleteEdge":
+        const newEdges = state.edges.filter((edge) => parseInt(edge.id) !== parseInt(action.payload.edgeId));
+        return {
+            ...state,
+            edges: newEdges,
+        }
     case "skilltree/createNode":
         return {
             ...state,
@@ -69,6 +75,13 @@ function skillTreeReducer(state = initialState, action) {
             showDeleteSkilltreeCard: false,
         }
             
+    case "skilltree/deleteNode":
+        const newNodes = state.nodes.filter((node) => parseInt(node.id) !== parseInt(action.payload.nodeId));
+        return {
+            ...state,
+            nodes: newNodes,
+        }
+        
     default:
         return state;
     }
