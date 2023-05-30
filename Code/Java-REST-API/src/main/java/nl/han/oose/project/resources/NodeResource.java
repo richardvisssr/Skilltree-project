@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 @Path("/nodes")
 public class NodeResource {
-    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(NodeResource.class.getName());
     private static final String ERROR_MESSAGE = "Error ";
     private NodeService nodeService;
 
@@ -96,8 +96,8 @@ public class NodeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/skilltrees/{skilltreeId}")
     public Response updateNodesPositions(
-        NodesDTO nodesDTO,
-        @PathParam("skilltreeId") int skilltreeId
+            NodesDTO nodesDTO,
+            @PathParam("skilltreeId") int skilltreeId
     ) {
         try {
             return Response.status(Response.Status.OK).entity(nodeService.updateNodesPositions(nodesDTO, skilltreeId)).build();
