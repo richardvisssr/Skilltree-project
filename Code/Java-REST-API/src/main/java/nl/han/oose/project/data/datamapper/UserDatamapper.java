@@ -1,5 +1,6 @@
 package nl.han.oose.project.data.datamapper;
 
+import nl.han.oose.project.resources.dto.EdgesDTO;
 import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.UsersDTO;
 
@@ -24,6 +25,11 @@ public class UserDatamapper implements Datamapper {
             );
         }
         return new UsersDTO(users);
+    }
+
+    @Override
+    public EdgesDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+        return null;
     }
 
 }

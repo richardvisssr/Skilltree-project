@@ -7,7 +7,7 @@ public class UserDTO {
     private String email;
     private int roleId;
 
-    public StudentDTO() {
+    public UserDTO() {
         // Default constructor
     }
 

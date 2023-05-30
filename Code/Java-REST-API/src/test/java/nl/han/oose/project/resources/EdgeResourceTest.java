@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
 public class EdgeResourceTest {
@@ -64,7 +65,7 @@ public class EdgeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail();
         }
     }
 
@@ -98,7 +99,7 @@ public class EdgeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail();
         }
     }
 
@@ -130,7 +131,7 @@ public class EdgeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail();
         }
     }
 }
