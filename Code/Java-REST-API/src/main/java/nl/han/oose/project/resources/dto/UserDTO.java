@@ -6,7 +6,6 @@ public class UserDTO {
     private String lastname;
     private String email;
     private int roleId;
-//    private String password;
 
     // Default constructor
 
@@ -20,7 +19,6 @@ public class UserDTO {
         this.lastname = lastname;
         this.email = email;
         this.roleId = roleId;
-//        this.password = password;
     }
 
     // Getters and setters for each field

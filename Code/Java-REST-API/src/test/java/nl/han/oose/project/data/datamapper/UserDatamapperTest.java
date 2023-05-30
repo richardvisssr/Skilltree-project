@@ -38,7 +38,7 @@ import java.util.List;
             when(resultSet.getString("Firstname")).thenReturn("John", "Jane");
             when(resultSet.getString("Lastname")).thenReturn("Doe", "Smith");
             when(resultSet.getString("Email")).thenReturn("John@Doe.com", "Jane@Smith.com");
-            when(resultSet.getInt("RoleId")).thenReturn(1, 2);
+            when(resultSet.getInt("RoleID")).thenReturn(1, 2);
 
             // Act
             UsersDTO actualStudents = sut.map(resultSet);
