@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 
-import FormFieldComponent from "./FormFieldComponent";
+import FormFieldComponent from "../../FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 
@@ -106,6 +107,7 @@ function UpdateNodeComponent() {
                                 onChange={handleAssessmentCriteriaChange}
                             />
                             <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
+                            <FeedbackNodeComponent/>
                             <div className="mt-6 flex items-center justify-center space-x-4">
                                 <button
                                     type="button"
