@@ -73,7 +73,7 @@ public class SkilltreeDatamapperTest {
     }
 
     @Test
-    void mapResultSet2ToSkilltreesDTO() throws SQLException{
+    void mapMultipleResultSetsToSkilltreesDTO() throws SQLException{
         // Arrange
         List<SkilltreeDTO> expectedSkilltrees = null;
 

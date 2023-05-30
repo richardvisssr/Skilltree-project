@@ -47,7 +47,7 @@ public class EdgeDatamapperTest {
     }
 
     @Test
-    void mapResultSet2ToEdgesDTO() throws SQLException{
+    void mapMultipleResultSetsToEdgesDTO() throws SQLException{
         // Arrange
         List<EdgeDTO> expectedEdges = null;
 

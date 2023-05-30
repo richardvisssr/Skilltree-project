@@ -62,7 +62,7 @@ public class AccountDatamapperTest {
     }
 
     @Test
-    void mapResultSet2ToAccountsDTO() throws SQLException{
+    void mapMultipleResultSetsToAccountsDTO() throws SQLException{
         // Arrange
         List<AccountDTO> expectedAccounts = null;
 

@@ -81,7 +81,7 @@ public class NodeDatamapperTest {
     }
 
     @Test
-    void mapResultSet1ToNodesDTO() throws SQLException{
+    void mapOneResultSetToNodesDTO() throws SQLException{
         // Arrange
         List<NodeDTO> expectedNodes = null;
 

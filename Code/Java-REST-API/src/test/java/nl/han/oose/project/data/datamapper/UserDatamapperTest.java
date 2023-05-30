@@ -78,7 +78,7 @@ import java.util.List;
         }
 
         @Test
-        void mapResultSet2ToUsersDTO() throws SQLException{
+        void mapMultipleResultSetsToUsersDTO() throws SQLException{
             // Arrange
             List<UserDTO> expectedUsers = null;
 
