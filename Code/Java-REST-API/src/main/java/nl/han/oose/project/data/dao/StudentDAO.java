@@ -79,12 +79,10 @@ public class StudentDAO {
         return result;
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            connection.close();
         }
     }
 
-    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
+    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException{
         try {
             var query = "SELECT u.ID, u.Firstname, u.Lastname, u.Email, u.RoleID \n" +
                     "FROM Users u \n" +
@@ -97,8 +95,6 @@ public class StudentDAO {
             return result;
         } catch (SQLException e) {
             throw new SQLException(e);
-        } finally {
-            connection.close();
         }
     }
 
