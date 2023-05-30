@@ -22,6 +22,10 @@ public class SkilltreeService {
         return skilltreeDAO.updateSkilltree(skilltreeDTO, gebruikerId);
     }
 
+    public void deleteSkilltree(int skilltreeId) throws SQLException {
+        skilltreeDAO.deleteSkilltree(skilltreeId);
+    }
+
     @Inject
     public void setSkilltreeDAO(SkilltreeDAO skilltreeDAO) {
         this.skilltreeDAO = skilltreeDAO;

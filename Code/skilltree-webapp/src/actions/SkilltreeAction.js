@@ -106,3 +106,30 @@ export function hideDeleteCard() {
         type: "skilltree/hideDeleteSkilltreeCard",
     };
 }
+
+export function setDeleteSkilltreeAction(skilltreeId) {
+    return {
+        type: "skilltree/deleteSkilltree",
+        payload: {
+            skilltreeId,
+        }
+    }
+}
+
+export const fetchDeleteSkilltreeActionAsync = (skilltreeId) => async (dispatch) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+            skilltreeId,
+        }),
+    };
+
+    fetch(`${API_PATH}/skilltrees/delete/${skilltreeId}`, options)
+        .then(() => {
+            dispatch(setDeleteSkilltreeAction(skilltreeId));
+        });
+}

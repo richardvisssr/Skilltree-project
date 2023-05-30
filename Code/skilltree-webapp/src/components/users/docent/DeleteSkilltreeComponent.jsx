@@ -1,10 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { hideDeleteCard } from "../../../actions/SkilltreeAction";
+import {
+    hideDeleteCard,
+    fetchDeleteSkilltreeActionAsync,
+    setCurrentSkilltreeAction,
+    fetchAllSkilltreesActionAsync,
+} from "../../../actions/SkilltreeAction";
+
 import "../../../styles/styles.css";
 
 function DeleteSkilltreeComponent() {
-    const skilltreeTitle = useSelector((state) => state.skilltree.currentSkilltree.title);
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    const skilltreeTitle = skilltree.title;
+    const skilltreeId = skilltree.id;
 
     const dispatch = useDispatch();
 
@@ -14,6 +22,8 @@ function DeleteSkilltreeComponent() {
 
     const handleDelete = () => {
         hideCard();
+        dispatch(fetchDeleteSkilltreeActionAsync(skilltreeId))
+        dispatch(setCurrentSkilltreeAction(null));
     };
 
     return (

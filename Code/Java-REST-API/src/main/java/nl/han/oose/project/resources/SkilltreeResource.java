@@ -64,6 +64,22 @@ public class SkilltreeResource {
         }
     }
 
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/delete/{skilltreeId}")
+    public Response deleteSkilltree(
+            @PathParam("skilltreeId") int skilltreeId
+    ) {
+        try {
+            skilltreeService.deleteSkilltree(skilltreeId);
+            return Response.status(Response.Status.OK).build();
+        } catch (SQLException e) {
+            LOGGER.info("deleteSkilltree" + ERROR_MESSAGE + e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @Inject
     public void setSkilltreeService(SkilltreeService skilltreeService) {
         this.skilltreeService = skilltreeService;
