@@ -73,7 +73,7 @@ public class EdgeServiceTest {
                 sut.deleteEdge("test");
 
                 // Assert
-                org.junit.jupiter.api.Assertions.assertEquals(expected.getEdges(), sut.getAllEdges(1).getEdges());
+                verify(edgeDAO, times(1)).deleteEdge(anyString());
         } catch (Exception e) {
             e.printStackTrace();
         }
