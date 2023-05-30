@@ -41,7 +41,7 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
 
 export function setDeleteNodeAction(nodeId) {
     return {
-        type: "node/deleteNode",
+        type: "skilltree/deleteNode",
         payload: {
             nodeId,
         }
@@ -112,7 +112,7 @@ export function currentNodeSelectedAction(nodeId) {
     }
 }
 
-export function showCreateCard(currentNodeId) {
+export function showCreateCard() {
     return {
         type: "node/showNodeCard",
     };
@@ -120,7 +120,7 @@ export function showCreateCard(currentNodeId) {
 }
 
 export function fetchAllNodesPositionsActionAsync(skilltreeId, nodes) {
-    return async (dispatch) => {
+    return async () => {
         const options = {
             headers: {
                 "Content-Type": "application/json",

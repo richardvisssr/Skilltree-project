@@ -21,15 +21,8 @@ function UpdateNodeComponent() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let currentNode = {};
-        nodes.map(node => {
-            if (node.id === currentNodeId) {
-                currentNode = node;
-                return null;
-            }
-            return null;
-        })
-        
+        const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
+
         const tempArr = [];
         if(currentNode.assessmentCriteria !== undefined){
             currentNode.assessmentCriteria.map(assessmentCriterium => {

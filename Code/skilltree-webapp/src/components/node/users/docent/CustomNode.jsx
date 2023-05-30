@@ -18,11 +18,6 @@ export default function CustomNode({ isConnectable, data }) {
         setIsDeleteNodeComponentVisible(!isDeleteNodeComponentVisible);
     };
 
-    const [isNodeVisible, setIsNodeVisible] = useState(true);
-
-    const hideNode = () => {
-        setIsNodeVisible(false);
-    }
 
     const dispatch = useDispatch();
     const connectionNodeId = useStore(connectionNodeIdSelector);
@@ -36,7 +31,6 @@ export default function CustomNode({ isConnectable, data }) {
 
     return (
         <div>
-            {isNodeVisible ?
             <div className="customNode-docent">
                 <div className="customNodeBody bg-slate-200">
                     <div className="flex">
@@ -78,10 +72,7 @@ export default function CustomNode({ isConnectable, data }) {
                     </div>
                 </div>
             </div>
-
-            : null }
-
-            {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
+            {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} />}
         </div>
     );
 }
