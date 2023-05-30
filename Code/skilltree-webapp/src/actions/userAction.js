@@ -2,7 +2,7 @@ const API_PATH = process.env.REACT_APP_API_URL;
 
 export function setAllUsersAction(users) {
     return {
-        type: "users/getAllUsers",
+        type: "users/setAllUsers",
         payload: users,
     };
 }
@@ -22,7 +22,7 @@ export function fetchAllUsersActionAsync() {
 
 export function currentUserSelectedAction(currentUser) {
     return {
-        type: "users/setAllUsers",
+        type: "users/setUsers",
         payload: currentUser,
     };
 }

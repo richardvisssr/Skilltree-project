@@ -1,6 +1,6 @@
 const initialState = {
   users: [],
-  currentUser:[]
+  currentUser: null,
   // TODO: veranderen naar nulls wanneer inloggen werkend is
 }
 
@@ -14,7 +14,7 @@ function userReducer(state = initialState, action) {
     case "users/setUsers":
       return {
         ...state,
-        currentUser: action.payload.accounts,
+        currentUser: action.payload,
       };
   default:
       return state;

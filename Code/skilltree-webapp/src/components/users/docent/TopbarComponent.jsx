@@ -10,7 +10,7 @@ export default function TopbarComponent() {
     const [description, setDescription] = useState("");
     const [firstRenderDone, setFirstRenderDone] = useState(false);
 
-    const userId = useSelector((state) => state.user.userId);
+    const userId = useSelector((state) => state.user.currentUser.id);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const selectedStudents = useSelector((state) => state.student.selectedStudents);
