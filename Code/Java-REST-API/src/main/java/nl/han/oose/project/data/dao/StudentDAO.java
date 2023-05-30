@@ -79,6 +79,8 @@ public class StudentDAO {
         return result;
         } catch (SQLException e) {
             throw new SQLException(e);
+        } finally {
+            stmt.close();
         }
     }
 
@@ -95,6 +97,8 @@ public class StudentDAO {
             return result;
         } catch (SQLException e) {
             throw new SQLException(e);
+        } finally {
+            stmt.close();
         }
     }
 

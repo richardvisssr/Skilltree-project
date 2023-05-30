@@ -36,7 +36,10 @@ public class UserDAO {
         stmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
+        } finally {
+            connection.close();
         }
+
     }
 
 
@@ -55,6 +58,8 @@ public class UserDAO {
         return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
+        } finally {
+            connection.close();
         }
     }
 
