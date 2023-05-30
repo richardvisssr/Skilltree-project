@@ -80,7 +80,7 @@ public class StudentDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {
-            stmt.close();
+            connection.close();
         }
     }
 
@@ -98,7 +98,7 @@ public class StudentDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {
-            stmt.close();
+            connection.close();
         }
     }
 

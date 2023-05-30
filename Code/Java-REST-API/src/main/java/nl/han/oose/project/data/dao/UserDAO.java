@@ -36,7 +36,6 @@ public class UserDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
-            stmt.close();
         }
 
     }
@@ -60,7 +59,6 @@ public class UserDAO {
             throw new SQLException(e);
         } finally {
             connection.close();
-            stmt.close();
         }
     }
 
