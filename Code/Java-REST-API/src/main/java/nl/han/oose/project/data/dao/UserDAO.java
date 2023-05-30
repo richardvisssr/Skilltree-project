@@ -24,6 +24,7 @@ public class UserDAO {
     }
 
     private void createUserQuery(UserRegistrationDTO userRegistrationDTO) throws SQLException {
+        try {
         var query = "INSERT INTO Users(Firstname, Lastname, Email, Password, RoleID)" +
                 " VALUES (?, ?, ?, ?, ?)";
         var stmt = connection.prepareStatement(query);
@@ -33,6 +34,9 @@ public class UserDAO {
         stmt.setString(4, userRegistrationDTO.getPassword());
         stmt.setInt(5, userRegistrationDTO.getRoleId());
         stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
 
