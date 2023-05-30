@@ -11,19 +11,15 @@ function LoginComponent() {
     const [currentUser, setCurrentUser] = useState('');
 
     const users = useSelector((state) => state.user.users);
-    const user = useSelector((state) => state.user.currentUser);
 
     useEffect(() => {
         dispatch(fetchAllUsersActionAsync());
     }, []);
 
     const handleSave = () => {
-        const selectedCurrentUser = users.find((role) => role.email === currentUser);
+        const selectedCurrentUser = users.find((user) => user.email === currentUser);
         if (selectedCurrentUser) {
           dispatch(currentUserSelectedAction(selectedCurrentUser));
-          console.log(user)
-          console.log(selectedCurrentUser)
-          // showRoleView();
         }
       };
 

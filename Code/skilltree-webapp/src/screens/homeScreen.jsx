@@ -5,23 +5,25 @@ import { Navigate } from 'react-router-dom';
 
 export default function HomeScreen() {
   const user = useSelector((state) => state.user.currentUser);
-
+  const userRole = useSelector((state) => state.user.currentUser.roleId);
   let view;
-  if (!user === null) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const userRole = useSelector((state) => state.user.currentUser.roleId);
+
+  if (user !== null) {
+    console.log('user');
+    // console.log(user);
+    // console.log(userRole);
     switch (userRole) {
       case 1:
-        view = <DocentView />
+        view = <DocentView />;
         break;
       case 2:
-        view = <StudentView />
+        view = <StudentView />;
         break;
       default:
-        view = 'Onbekende userID'
-        // console.log(userRole)
-      break;
+        view = 'Onbekende userID';
+        break;
     }
+
     return (
       <div>
         {view}
@@ -29,9 +31,7 @@ export default function HomeScreen() {
     );
   } else {
     return (
-       <Navigate to="/login" />
+      <Navigate to="/login" />
     );
   }
-
-
 }
