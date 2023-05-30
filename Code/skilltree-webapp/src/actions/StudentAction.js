@@ -73,3 +73,22 @@ export function clearStudentCardAction() {
         type: "students/clearStudentCard"
     };
 }
+
+export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
+    return async (dispatch) => {
+        const options = {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "currentNodeId": currentNodeId,
+                "studentId": studentId,
+                "feedback": feedback
+            })
+        };
+        fetch(`${API_PATH}/students/feedback`, options)
+            .then((response) => response.json())
+    }
+}

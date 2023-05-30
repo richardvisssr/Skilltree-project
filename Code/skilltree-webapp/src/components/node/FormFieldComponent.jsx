@@ -44,11 +44,12 @@ function FormFieldComponent({
                 name={title}
                 id={title}
                 value={value}
+                onChange={onChange}
                 className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
                 {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
+                    <option key={option.id} value={option.id}>
+                        {option.firstname} {option.lastname}
                     </option>
                 ))}
             </select>
