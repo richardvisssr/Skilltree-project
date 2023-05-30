@@ -42,7 +42,7 @@ export function fetchCreateSkillTreeActionAsync(title, description, userId) {
         dispatch(fetchAllSkilltreesActionAsync(userId));
         return result;
     }
-};
+}
 
 export function addSkiltreeTopbar() {
     return {

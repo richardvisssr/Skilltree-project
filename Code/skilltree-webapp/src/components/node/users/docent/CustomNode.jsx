@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { DeleteNodeComponent } from "./deleteNode/DeleteNodeComponent";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { DeleteNodeComponent } from "./DeleteNodeComponent";
+import { useDispatch } from "react-redux";
 import {Handle, Position, useStore} from "reactflow";
 
-import { showCreateCard, currentNodeSelectedAction } from "../../actions/NodeAction";
-import "./nodeStyle.css";
+import { showCreateCard, currentNodeSelectedAction } from "../../../../actions/NodeAction";
+import "../nodeStyle.css";
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 export default function CustomNode({ isConnectable, data }) {
@@ -18,14 +17,6 @@ export default function CustomNode({ isConnectable, data }) {
     const showDeleteNodeComponent = () => {
         setIsDeleteNodeComponentVisible(!isDeleteNodeComponentVisible);
     };
-
-    const [isNodeVisible, setIsNodeVisible] = useState(true);
-
-    const hideNode = () => {
-        setIsNodeVisible(false);
-    }
-    //test
-    const assessmentCriteria = useSelector((state) => state.node.assessmentCriteria)
 
 
     const dispatch = useDispatch();
@@ -40,16 +31,13 @@ export default function CustomNode({ isConnectable, data }) {
 
     return (
         <div>
-
-            {isNodeVisible ?
-            
-            <div className="customNode">
+            <div className="customNode-docent">
                 <div className="customNodeBody bg-slate-200">
                     <div className="flex">
                         <div className="node-button-container">
                             <button
                                 className="node-button edit-button"
-                                type="button" 
+                                type="button"
                                 onClick={handleButton}
                             >
                                 <AiFillEdit />
@@ -61,7 +49,7 @@ export default function CustomNode({ isConnectable, data }) {
                                 type="button"
                                 onClick={showDeleteNodeComponent}
                             >
-                            <AiFillDelete/>
+                            <AiFillDelete />
                             </button>
                         </div>
                     </div>
@@ -84,11 +72,7 @@ export default function CustomNode({ isConnectable, data }) {
                     </div>
                 </div>
             </div>
-
-            : null }
-
-            {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} hideNode={hideNode} />}
-        
+            {isDeleteNodeComponentVisible && <DeleteNodeComponent nodeId={nodeId} showDeleteNodeComponent={showDeleteNodeComponent} />}
         </div>
     );
 }

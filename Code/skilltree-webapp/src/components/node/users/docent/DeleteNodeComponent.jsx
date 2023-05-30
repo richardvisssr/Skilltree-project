@@ -1,18 +1,29 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { fetchDeleteNodeActionAsync } from "../../../actions/NodeAction";
+import {useDispatch, useSelector} from "react-redux";
+import { fetchDeleteNodeActionAsync } from "../../../../actions/NodeAction";
 
-import "../../../styles/styles.css";
+import "../../../../styles/styles.css";
+import {fetchDeleteEdgeActionAsync} from "../../../../actions/EdgeAction";
 
 export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
+    const edges = useSelector((state) => state.skilltree.edges);
 
     const [deleteCardShowState] = useState(true);
-    
+
     const deleteCard = () => {
-        dispatch(fetchDeleteNodeActionAsync(props.nodeId));
+        const nodeId = props.nodeId;
+
+        edges.map(edge => {
+            if (edge.sourceId === nodeId) {
+                dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
+            } else if (edge.targetId === nodeId) {
+                dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
+            }
+        });
+
+        dispatch(fetchDeleteNodeActionAsync(nodeId));
         hideCard();
-        props.hideNode();
     };
 
     const hideCard = () => {
@@ -33,7 +44,10 @@ export function DeleteNodeComponent(props) {
                                 <button
                                     type="submit"
                                     onClick={deleteCard}
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m
+                                     font-semibold text-white shadow-sm hover:bg-indigo-500
+                                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                                       focus-visible:outline-indigo-600"
                                 >
                                     Verwijderen
                                 </button>
@@ -42,7 +56,6 @@ export function DeleteNodeComponent(props) {
                     </div>
                 </div>
             </div>
-            
             : null}
         </div>
     );

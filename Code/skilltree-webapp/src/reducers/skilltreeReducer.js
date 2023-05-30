@@ -6,7 +6,7 @@ const initialState = {
     edges: [],
 };
 
-function skilltreeReducer(state = initialState, action) {
+function skillTreeReducer(state = initialState, action) {
     switch (action.type) {
     case "skilltree/setSkilltrees":
         return {
@@ -35,6 +35,12 @@ function skilltreeReducer(state = initialState, action) {
             ...state,
             edges: action.payload.edges,
         }
+    case "skilltree/deleteEdge":
+        const newEdges = state.edges.filter((edge) => parseInt(edge.id) !== parseInt(action.payload.edgeId));
+        return {
+            ...state,
+            edges: newEdges,
+        }
     case "skilltree/createNode":
         return {
             ...state,
@@ -57,9 +63,15 @@ function skilltreeReducer(state = initialState, action) {
               ...state,
               nodes: updatedNodes,
             };
-            
+        case "skilltree/deleteNode":
+            const newNodes = state.nodes.filter((node) => parseInt(node.id) !== parseInt(action.payload.nodeId));
+            return {
+                ...state,
+                nodes: newNodes,
+            }
     default:
         return state;
     }
 }
-export default skilltreeReducer;
+
+export default skillTreeReducer;

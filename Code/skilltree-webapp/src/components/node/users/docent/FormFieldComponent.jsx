@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
 import React from "react";
 
 function formFieldComponent({
-    fieldType = "input", title, type = "text", value, onChange,
+    fieldType = "input", title, type = "text", value, onChange, disabled = false,
 }) {
 
     const showField = () => {
@@ -14,20 +13,28 @@ function formFieldComponent({
                     id={title}
                     value={value}
                     onChange={onChange}
-                    className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900
+                     shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                      focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    disabled={disabled}
                 />
             )
-        } else if (fieldType === "textarea") {
+        }
+        if (fieldType === "textarea") {
             return (
                 <textarea
                     name={title}
                     id={title}
                     value={value}
                     onChange={onChange}
-                    className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900
+                     shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                      focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    disabled={disabled}
                 />
             )
         }
+        return null;
     }
 
     if (type === "text") {

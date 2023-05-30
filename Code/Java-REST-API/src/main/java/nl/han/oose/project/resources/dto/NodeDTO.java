@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NodeDTO {
-    private int ID;
+    private int id;
     private String skill;
     private String description;
     private double positionX;
@@ -13,10 +13,12 @@ public class NodeDTO {
     private String learningOutcome;
     private List<AssessmentCriteriaDTO> assessmentCriteria = new ArrayList<>();
 
-    public NodeDTO() {}
+    public NodeDTO() {
+        // Default constructor
+    }
 
-    public NodeDTO(int ID, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
-        this.ID = ID;
+    public NodeDTO(int id, String skill, String description, double positionX, double positionY, int skilltreeId, String learningOutcome) {
+        this.id = id;
         this.skill = skill;
         this.description = description;
         this.positionX = positionX;
@@ -26,11 +28,11 @@ public class NodeDTO {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getSkill() {
