@@ -5,10 +5,7 @@ import nl.han.oose.project.data.datamapper.UserDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.UsersDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class StudentDAO {
@@ -16,6 +13,7 @@ public class StudentDAO {
     private final int studentRolId = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    private PreparedStatement stmt;
 
     public UsersDTO getAllStudents() throws SQLException {
         connection = DriverManager.getConnection(databaseProperties.connectionString());
@@ -32,28 +30,44 @@ public class StudentDAO {
     }
 
     public void addStudentsToSkilltree(List<Integer> newStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : newStudents) {
-            addStudentToSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : newStudents) {
+                addStudentToSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
         }
-        connection.close();
     }
 
     public void removeStudentsFromSkilltree(List<Integer> deletedStudents, int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        for (Integer studentId : deletedStudents) {
-            removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            for (Integer studentId : deletedStudents) {
+                removeStudentFromSkilltreeQuery(studentId, skilltreeId);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
         }
-        connection.close();
     }
 
     private void removeStudentFromSkilltreeQuery(Integer studentId, int skilltreeId) throws SQLException {
-        var query = "DELETE FROM userskilltree\n" +
-                "WHERE userID = ? AND skilltreeID = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "DELETE FROM userskilltree\n" +
+                    "WHERE userID = ? AND skilltreeID = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
@@ -78,11 +92,15 @@ public class StudentDAO {
 
 
     private void addStudentToSkilltreeQuery(int studentId, int skilltreeId) throws SQLException {
-        var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentId);
-        stmt.setInt(2, skilltreeId);
-        stmt.executeUpdate();
+        try {
+            var query = "INSERT INTO userskilltree (userId, skilltreeId) VALUES (?, ?)";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, skilltreeId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Inject

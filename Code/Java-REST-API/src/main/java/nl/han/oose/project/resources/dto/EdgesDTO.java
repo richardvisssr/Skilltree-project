@@ -5,9 +5,6 @@ import java.util.List;
 public class EdgesDTO {
     private List<EdgeDTO> edges;
 
-    public EdgesDTO() {
-    }
-
     public List<EdgeDTO> getEdges() {
         return edges;
     }
