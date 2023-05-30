@@ -150,4 +150,21 @@ public class SkilltreeResourceTest {
             fail();
         }
     }
+    @Test
+    void deleteSkilltreeWithException() {
+        int skilltreeId = 1;
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            doThrow(new SQLException()).when(skilltreeService).deleteSkilltree(skilltreeId);
+
+            // Act
+            var result = sut.deleteSkilltree(skilltreeId);
+
+            // Arrange
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
 }
