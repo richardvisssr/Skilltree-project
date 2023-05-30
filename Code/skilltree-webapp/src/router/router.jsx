@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import HomeScreen from "../screens/homeScreen";
 import LoginScreen from "../screens/loginScreen";
+import RegisterScreen from "../screens/registerScreen";
 
 const routes = [
     {
@@ -16,7 +17,11 @@ const routes = [
     {
         path: "/login",
         element: <LoginScreen />,
-    }
+    },
+    {
+        path: "/registreer",
+        element: <RegisterScreen />,
+    },
 ];
 
 const router = createBrowserRouter(routes);

@@ -7,6 +7,10 @@ public class AccountDTO {
 
     private int roleId;
 
+    // Empty constructor
+    public AccountDTO() {
+    }
+
     // Constructor with all fields
     public AccountDTO(int id, String email, int roleId) {
         this.id = id;

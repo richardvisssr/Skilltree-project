@@ -23,4 +23,9 @@ public class AccountDatamapper implements Datamapper {
         }
         return new AccountsDTO(accounts);
     }
+
+    @Override
+    public AccountsDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+        return null;
+    }
 }
