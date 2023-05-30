@@ -57,4 +57,18 @@ public class UserResourceTest {
         }
     }
 
+    @Test
+    void getAllUsersThrowsSQLException() throws SQLException {
+        // Arrange
+        var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+        when(userService.getAllUsers()).thenThrow(new SQLException());
+
+        // Act
+        var result = sut.getAllUsers();
+
+        // Assert
+        Assertions.assertEquals(expected, result.getStatus());
+        verify(userService, times(1)).getAllUsers();
+    }
+
 }

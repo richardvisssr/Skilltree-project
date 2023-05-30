@@ -71,4 +71,16 @@ public class SkilltreeDatamapperTest {
         // Act & Assert
         assertThrows(SQLException.class, () -> sut.map(resultSet));
     }
+
+    @Test
+    void mapResultSet2ToSkilltreesDTO() throws SQLException{
+        // Arrange
+        List<SkilltreeDTO> expectedSkilltrees = null;
+
+        // Act
+        SkilltreesDTO actualSkilltrees = sut.map(resultSet, resultSet);
+
+        // Assert
+        Assertions.assertEquals(expectedSkilltrees, actualSkilltrees);
+    }
 }

@@ -53,24 +53,24 @@ public class AccountDatamapperTest {
     }
 
     @Test
-    void mapResultSetToAccountsDTOWithEmptyResultSet() throws SQLException {
-        // Arrange
-        when(resultSet.next()).thenReturn(false);
-
-        // Act
-        AccountsDTO actualAccounts = sut.map(resultSet);
-
-        // Assert
-        assertEquals(0, actualAccounts.getAccounts().size());
-    }
-
-    @Test
     void mapResultSetToAccountsDTOWithSQLException() throws SQLException {
         // Arrange
         when(resultSet.next()).thenThrow(new SQLException());
 
         // Act & Assert
         assertThrows(SQLException.class, () -> sut.map(resultSet));
+    }
+
+    @Test
+    void mapResultSet2ToAccountsDTO() throws SQLException{
+        // Arrange
+        List<AccountDTO> expectedAccounts = null;
+
+        // Act
+        AccountsDTO actualAccounts = sut.map(resultSet, resultSet);
+
+        // Assert
+        Assertions.assertEquals(expectedAccounts, actualAccounts);
     }
 
 }

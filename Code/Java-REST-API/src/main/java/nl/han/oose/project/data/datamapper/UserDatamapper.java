@@ -28,7 +28,7 @@ public class UserDatamapper implements Datamapper {
     }
 
     @Override
-    public EdgesDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+    public UsersDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
         return null;
     }
 
