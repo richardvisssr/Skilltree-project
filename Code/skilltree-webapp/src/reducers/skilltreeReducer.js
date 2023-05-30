@@ -81,6 +81,13 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             nodes: newNodes,
         }
+
+    case "skilltree/deleteSkilltree":
+        const newTrees = state.skilltrees.filter((skilltree) => parseInt(skilltree.id) !== parseInt(action.payload.skilltreeId));
+        return {
+            ...state,
+            skilltrees: newTrees,
+        }
         
     default:
         return state;

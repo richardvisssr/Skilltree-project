@@ -41,6 +41,29 @@ public class SkilltreeDAO {
         }
     }
 
+    public void deleteSkilltree(int skilltreeId) throws SQLException {
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            deleteSkilltreeQuery(skilltreeId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
+        }
+    }
+
+    private void deleteSkilltreeQuery(int skilltreeId) throws SQLException {
+        try {
+            var deleteNodeQuery = "DELETE FROM SkillTrees WHERE ID = ?";
+            stmt = connection.prepareStatement(deleteNodeQuery);
+            stmt.setInt(1, skilltreeId);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
     public SkilltreesDTO updateSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());

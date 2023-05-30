@@ -6,7 +6,8 @@ function formFieldComponent({
     type = "text",
     value,
     onChange,
-    options
+    options,
+    disabled = false
 }) {
     const showField = () => {
         if (fieldType === "input") {
