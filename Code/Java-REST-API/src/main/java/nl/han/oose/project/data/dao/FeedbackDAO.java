@@ -5,6 +5,7 @@ import nl.han.oose.project.data.datamapper.FeedbackDatamapper;
 import nl.han.oose.project.data.datamapper.SkilltreeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.FeedbackDTO;
+import nl.han.oose.project.resources.dto.FeedbacksDTO;
 
 import java.sql.*;
 
@@ -15,7 +16,7 @@ public class FeedbackDAO {
     private Connection connection;
     private PreparedStatement stmt;
 
-    public FeedbackDTO getFeedback(int studentId, int nodeId) throws SQLException {
+    public FeedbacksDTO getFeedback(int studentId, int nodeId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             return datamapper.map(getFeedbackQuery(studentId, nodeId));
