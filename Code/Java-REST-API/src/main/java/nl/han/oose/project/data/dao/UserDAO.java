@@ -48,10 +48,14 @@ public class UserDAO {
     }
 
     private ResultSet getAllUsersQuery() throws SQLException {
+        try {
         var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
                 "FROM Users";
         var stmt = connection.prepareStatement(query);
         return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Inject
