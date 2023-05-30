@@ -2,10 +2,8 @@ package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.dao.FeedbackDAO;
-import nl.han.oose.project.resources.dto.FeedbackDTO;
 import nl.han.oose.project.resources.dto.FeedbacksDTO;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FeedbackService {

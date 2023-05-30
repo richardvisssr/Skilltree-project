@@ -2,9 +2,7 @@ package nl.han.oose.project.data.dao;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.datamapper.FeedbackDatamapper;
-import nl.han.oose.project.data.datamapper.SkilltreeDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
-import nl.han.oose.project.resources.dto.FeedbackDTO;
 import nl.han.oose.project.resources.dto.FeedbacksDTO;
 
 import java.sql.*;
@@ -44,6 +42,7 @@ public class FeedbackDAO {
     public void setDatabaseProperties(DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;
     }
+
     @Inject
     public void setDatamapper(FeedbackDatamapper datamapper) {
         this.datamapper = datamapper;

@@ -1,13 +1,17 @@
 package nl.han.oose.project.resources;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.*;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.FeedbackService;
 
 import java.sql.SQLException;
 import java.util.logging.Logger;
+
 @Path("/feedback")
 public class FeedbackResource {
 
@@ -20,9 +24,9 @@ public class FeedbackResource {
     @Path("/nodes/{nodeId}/students/{studentId}")
     public Response getFeedback(
             @PathParam("nodeId") int nodeId, @PathParam("studentId") int studentId
-            ) {
+    ) {
         try {
-            return Response.status(Response.Status.OK).entity(feedbackService.getFeedback( studentId, nodeId)).build();
+            return Response.status(Response.Status.OK).entity(feedbackService.getFeedback(studentId, nodeId)).build();
         } catch (SQLException e) {
             LOGGER.info(ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

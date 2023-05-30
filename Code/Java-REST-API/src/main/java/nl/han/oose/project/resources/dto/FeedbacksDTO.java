@@ -7,7 +7,7 @@ import java.util.List;
 public class FeedbacksDTO {
     private List<FeedbackDTO> feedbacks = new ArrayList<>();
 
-    public FeedbacksDTO(){
+    public FeedbacksDTO() {
         // Default constructor
     }
 
