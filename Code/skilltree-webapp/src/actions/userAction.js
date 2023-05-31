@@ -19,10 +19,3 @@ export function fetchAllUsersActionAsync() {
         return allUsers.users;
     }
 }
-
-export function currentUserSelectedAction(currentUser) {
-    return {
-        type: "users/setUsers",
-        payload: currentUser,
-    };
-}
