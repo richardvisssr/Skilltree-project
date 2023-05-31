@@ -1,9 +1,18 @@
 package nl.han.oose.project.resources.dto;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class FeedbackDTOTest {
+
+    FeedbackDTO sut;
+
+    @BeforeEach
+    void setup() {
+        // Arrange
+        sut = new FeedbackDTO();
+    }
 
     @Test
     void testConstructorAndGetters() {
