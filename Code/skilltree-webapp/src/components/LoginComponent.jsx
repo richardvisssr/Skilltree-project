@@ -19,7 +19,7 @@ function LoginComponent() {
     const handleSave = () => {
         const selectedCurrentUser = users.find((user) => user.email === currentUser);
         if (selectedCurrentUser) {
-          dispatch(currentUserSelectedAction(selectedCurrentUser));
+          sessionStorage.setItem('currentUser', JSON.stringify(selectedCurrentUser));
         }
       };
 
