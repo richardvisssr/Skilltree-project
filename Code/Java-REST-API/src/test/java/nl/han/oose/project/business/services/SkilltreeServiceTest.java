@@ -1,11 +1,11 @@
 package nl.han.oose.project.business.services;
-import static org.mockito.Answers.RETURNS_DEEP_STUBS;
 
 import java.util.Arrays;
 import java.util.List;
 
 import nl.han.oose.project.data.dao.SkilltreeDAO;
 import nl.han.oose.project.resources.dto.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
@@ -35,7 +35,7 @@ public class SkilltreeServiceTest {
             var result = sut.getAllSkilltrees(1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
+            Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class SkilltreeServiceTest {
             var result = sut.createSkilltree(skilltreeDTO, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
+            Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class SkilltreeServiceTest {
             var result = sut.updateSkilltree(skilltreeDTO, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
+            Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
         } catch (Exception e) {
             e.printStackTrace();
         }

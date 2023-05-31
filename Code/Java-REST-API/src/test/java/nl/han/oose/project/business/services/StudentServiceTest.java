@@ -1,5 +1,4 @@
 package nl.han.oose.project.business.services;
-import static org.mockito.Answers.RETURNS_DEEP_STUBS;
 
 import java.util.Arrays;
 
@@ -7,6 +6,9 @@ import nl.han.oose.project.data.dao.StudentDAO;
 import nl.han.oose.project.resources.dto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class StudentServiceTest {
@@ -75,20 +77,22 @@ public class StudentServiceTest {
         sut.deleteStudents(usersDTO, studentsRequestDTO);
 
         // Assert
+        assertFalse(usersDTO.getUsers().contains(new UserDTO(1, "test", "test", "test", 1)));
     }
 
     @Test
     void addNewStudentsTest() throws Exception {
         // Arrange
         UsersDTO usersDTO = new UsersDTO();
-        usersDTO.setUsers(Arrays.asList(new UserDTO(1, "test", "test", "test", 1)));
+        usersDTO.setUsers(Arrays.asList(new UserDTO(5, "test", "test", "test", 2)));
         StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
-        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(1)));
+        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(5)));
 
         // Act
         sut.addNewStudents(usersDTO, studentsRequestDTO);
 
         // Assert
+        assertTrue(usersDTO.getUsers().contains(new UserDTO(5, "test", "test", "test", 2)));
     }
 
     @Test
@@ -103,6 +107,8 @@ public class StudentServiceTest {
         sut.addNewStudents(usersDTO, studentsRequestDTO);
 
         // Assert
+        assertTrue(usersDTO.getUsers().contains(new UserDTO(2, "test", "test", "test", 1)));
+
     }
 
     @Test
@@ -117,5 +123,6 @@ public class StudentServiceTest {
         sut.deleteStudents(usersDTO, studentsRequestDTO);
 
         // Assert
+        assertFalse(usersDTO.getUsers().contains(new UserDTO(1, "test", "test", "test", 1)));
     }
 }

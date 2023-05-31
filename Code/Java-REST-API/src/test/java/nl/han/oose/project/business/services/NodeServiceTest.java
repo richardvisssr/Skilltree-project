@@ -1,15 +1,14 @@
 package nl.han.oose.project.business.services;
-import static org.mockito.Answers.RETURNS_DEEP_STUBS;
 
 import java.util.Arrays;
 import java.util.List;
 
 import nl.han.oose.project.data.dao.NodeDAO;
 import nl.han.oose.project.resources.dto.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 class NodeServiceTest {
 
@@ -38,7 +37,7 @@ class NodeServiceTest {
             var result = sut.updateNode(nodeRequestDTO, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
+            Assertions.assertEquals(expected.getNodes(), result.getNodes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +56,7 @@ class NodeServiceTest {
             var result = sut.getAllNodes(1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
+            Assertions.assertEquals(expected.getNodes(), result.getNodes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +73,7 @@ class NodeServiceTest {
             var result = sut.getHighestNodeId();
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected, result);
+            Assertions.assertEquals(expected, result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,7 +92,7 @@ class NodeServiceTest {
             var result = sut.updateNodesPositions(expected, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
+            Assertions.assertEquals(expected.getNodes(), result.getNodes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,7 +128,7 @@ class NodeServiceTest {
             var result = sut.createNode(nodeRequestDTO, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getNodes(), result.getNodes());
+            Assertions.assertEquals(expected.getNodes(), result.getNodes());
         } catch (Exception e) {
             e.printStackTrace();
         }
