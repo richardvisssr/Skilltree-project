@@ -6,6 +6,9 @@ import java.util.List;
 public class AccountsDTO {
     private List<AccountDTO> accounts = new ArrayList<>();
 
+    public AccountsDTO() {
+    }
+
     public AccountsDTO(List<AccountDTO> accounts) {
         this.accounts = accounts;
     }

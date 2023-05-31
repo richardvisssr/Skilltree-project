@@ -7,9 +7,13 @@ import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.AccountService;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Path("/accounts")
 public class AccountResource {
+
+    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
+    private static final String ERROR_MESSAGE = "Error ";
     private AccountService accountService;
 
     @GET
@@ -18,6 +22,7 @@ public class AccountResource {
         try {
             return Response.status(Response.Status.OK).entity(accountService.getAllAccounts()).build();
         } catch (SQLException e) {
+            LOGGER.info(ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }

@@ -25,7 +25,7 @@ public class AccountDatamapper implements Datamapper {
     }
 
     @Override
-    public Object map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
+    public AccountsDTO map(ResultSet resultSet, ResultSet resultSet2) throws SQLException {
         return null;
     }
 }

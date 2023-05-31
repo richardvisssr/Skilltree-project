@@ -2,8 +2,8 @@ package nl.han.oose.project.resources;
 
 import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.StudentService;
-import nl.han.oose.project.resources.dto.StudentDTO;
-import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.UserDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,15 +16,15 @@ import static org.mockito.Mockito.*;
 
 public class StudentResourceTest {
     private StudentResource sut;
-    private StudentsDTO studentsDTO;
-    private StudentDTO studentDTO;
+    private UsersDTO usersDTO;
+    private UserDTO userDTO;
     private StudentService studentService;
     int skilltreeId = 1;
     @BeforeEach
     void setup() {
         sut = new StudentResource();
-        studentsDTO = mock(StudentsDTO.class);
-        studentDTO = mock(StudentDTO.class);
+        usersDTO = mock(UsersDTO.class);
+        userDTO = mock(UserDTO.class);
         studentService = mock(StudentService.class);
 
         sut.setStudentService(studentService);
@@ -35,7 +35,7 @@ public class StudentResourceTest {
         try {
             //Arrange
             var expected = Response.Status.OK.getStatusCode();
-            when(studentService.getAllStudents()).thenReturn(studentsDTO);
+            when(studentService.getAllStudents()).thenReturn(usersDTO);
 
             //Act
             var result = sut.getAllStudents();
@@ -70,7 +70,7 @@ public class StudentResourceTest {
             //Arrange
 
             var expected = Response.Status.OK.getStatusCode();
-            when(studentService.getStudentsBySkilltree(skilltreeId)).thenReturn(studentsDTO);
+            when(studentService.getStudentsBySkilltree(skilltreeId)).thenReturn(usersDTO);
 
             //Act
             var result = sut.getStudentsBySkilltree(skilltreeId);

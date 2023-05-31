@@ -2,9 +2,9 @@ package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.dao.StudentDAO;
-import nl.han.oose.project.resources.dto.StudentDTO;
+import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.StudentRequestDTO;
-import nl.han.oose.project.resources.dto.StudentsDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
 
 import java.sql.SQLException;
@@ -15,15 +15,15 @@ public class StudentService {
 
     private StudentDAO studentDAO;
 
-    public StudentsDTO getAllStudents() throws SQLException {
+    public UsersDTO getAllStudents() throws SQLException {
         return studentDAO.getAllStudents();
     }
 
-    public StudentsDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
+    public UsersDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
         return studentDAO.getStudentsBySkilltree(skilltreeId);
     }
 
-    public StudentsDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
+    public UsersDTO updateStudentsToSkilltree(StudentsRequestDTO studentsRequestDTO, int skilltreeId) throws SQLException {
         var currentStudents = getStudentsBySkilltree(skilltreeId);
 
         //add to skilltree
@@ -35,31 +35,31 @@ public class StudentService {
         return getStudentsBySkilltree(skilltreeId);
     }
 
-    private List<Integer> deleteStudents(StudentsDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
+    private List<Integer> deleteStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
         List<Integer> deletedStudents = new ArrayList<>();
-        for (StudentDTO studentDTO : currentStudents.getStudents()) {
+        for (UserDTO userDTO : currentStudents.getUsers()) {
             boolean found = false;
             for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
-                if (studentDTO.getId() == student.getId()) {
+                if (userDTO.getId() == student.getId()) {
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                deletedStudents.add(studentDTO.getId());
+                deletedStudents.add(userDTO.getId());
             }
         }
 
         return deletedStudents;
     }
 
-    private List<Integer> addNewStudents(StudentsDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
+    private List<Integer> addNewStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
         List<Integer> newStudents = new ArrayList<>();
 
         for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
             boolean found = false;
-            for (StudentDTO studentDTO : currentStudents.getStudents()) {
-                if (studentDTO.getId() == student.getId()) {
+            for (UserDTO userDTO : currentStudents.getUsers()) {
+                if (userDTO.getId() == student.getId()) {
                     found = true;
                     break;
                 }
