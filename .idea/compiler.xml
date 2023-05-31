@@ -9,8 +9,5 @@
         <module name="Java-REST-API" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Java-REST-API" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

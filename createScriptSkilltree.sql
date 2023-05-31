@@ -97,7 +97,14 @@ CREATE TABLE userskilltree (
     CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
 );
 
-
+CREATE TABLE Feedback (
+                          StudentID INT NOT NULL,
+                          NodeID INT NOT NULL,
+                          Feedback VARCHAR(MAX) NULL,
+    PRIMARY KEY (StudentID, NodeID),
+    CONSTRAINT FK_StudentID FOREIGN KEY (StudentID) REFERENCES Users(ID),
+    CONSTRAINT FK_NodeID FOREIGN KEY (NodeID) REFERENCES Nodes(ID)
+);
 
 
     COMMIT TRAN
