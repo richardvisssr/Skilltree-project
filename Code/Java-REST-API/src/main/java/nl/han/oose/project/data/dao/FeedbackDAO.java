@@ -38,6 +38,45 @@ public class FeedbackDAO {
         }
     }
 
+    public FeedbacksDTO updateFeedback(int nodeId, int userId, String feedback) throws SQLException {
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            deleteFeedbackQuery(nodeId, userId);
+            addFeedbackQuery(nodeId, userId, feedback);
+            return getFeedback(userId, nodeId);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+            stmt.close();
+        }
+    }
+
+    private void deleteFeedbackQuery(int nodeId, int userId) throws SQLException {
+        try {
+            var query = "DELETE FROM Feedback WHERE NodeID = ? AND StudentID = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, nodeId);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
+    private void addFeedbackQuery(int nodeId, int userId, String feedback) throws SQLException {
+        try {
+            var query = "INSERT INTO Feedback (NodeID, StudentID, Feedback) VALUES (?, ?, ?)";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, nodeId);
+            stmt.setInt(2, userId);
+            stmt.setString(3, feedback);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
     @Inject
     public void setDatabaseProperties(DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;
@@ -47,5 +86,6 @@ public class FeedbackDAO {
     public void setDatamapper(FeedbackDatamapper datamapper) {
         this.datamapper = datamapper;
     }
+
 
 }
