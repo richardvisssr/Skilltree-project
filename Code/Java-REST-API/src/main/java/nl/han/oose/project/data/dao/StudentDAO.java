@@ -71,23 +71,31 @@ public class StudentDAO {
     }
 
     private ResultSet getAllStudentsQuery() throws SQLException {
+        try {
         var query = "SELECT ID, Firstname, Lastname, Email, RoleID FROM Users WHERE RoleID = ?";
         var stmt = connection.prepareStatement(query);
         stmt.setInt(1, studentRolId);
         var result = stmt.executeQuery();
         return result;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
-    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
-        var query = "SELECT u.ID, u.Firstname, u.Lastname, u.Email, u.RoleID \n" +
-                "FROM Users u \n" +
-                "JOIN userskilltree us \n" +
-                "ON u.ID = us.userId\n" +
-                "WHERE us.skilltreeId = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, skilltreeId);
-        var result = stmt.executeQuery();
-        return result;
+    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException{
+        try {
+            var query = "SELECT u.ID, u.Firstname, u.Lastname, u.Email, u.RoleID \n" +
+                    "FROM Users u \n" +
+                    "JOIN userskilltree us \n" +
+                    "ON u.ID = us.userId\n" +
+                    "WHERE us.skilltreeId = ?";
+            var stmt = connection.prepareStatement(query);
+            stmt.setInt(1, skilltreeId);
+            var result = stmt.executeQuery();
+            return result;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
 
