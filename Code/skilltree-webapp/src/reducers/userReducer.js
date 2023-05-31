@@ -1,6 +1,5 @@
 const initialState = {
   users: [],
-  currentUser: sessionStorage.getItem('currentUser'),
   // TODO: veranderen naar nulls wanneer inloggen werkend is
 }
 
