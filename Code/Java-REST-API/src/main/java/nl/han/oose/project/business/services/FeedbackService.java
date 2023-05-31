@@ -12,10 +12,14 @@ public class FeedbackService {
     public FeedbacksDTO getFeedback(int studentId, int nodeId) throws SQLException {
         return feedbackDAO.getFeedback(studentId, nodeId);
     }
+    public FeedbacksDTO updateFeedback(int nodeId, int userId, String feedback) throws SQLException {
+        return feedbackDAO.updateFeedback(nodeId, userId, feedback);
+    }
 
     @Inject
     public void setFeedbackDAO(FeedbackDAO feedbackDAO) {
         this.feedbackDAO = feedbackDAO;
     }
+
 
 }

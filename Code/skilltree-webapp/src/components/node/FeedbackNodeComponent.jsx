@@ -1,24 +1,47 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import FormFieldComponent from "./FormFieldComponent";
+import {useSelector, useDispatch} from "react-redux";
+import {addFeedbackActionAsync} from "../../actions/StudentAction";
 
 
 function FeedbackNodeComponent() {
+    const dispatch = useDispatch();
+    const students = useSelector((state) => state.student.selectedStudents);
+    const currentNodeId = useSelector((state) => state.node.currentNode);
 
-    const [feedback, setFeedback] = useState("");    
+    const [feedback, setFeedback] = useState("");
+    const [studentId, setStudentId] = useState("");
+    const [customAlert, setCustomAlert] = useState("");
 
     const handleFeedbackChange = (event) => {
         setFeedback(event.target.value);
     };
+
+    const handleStudentChange = (event) => {
+        setStudentId(event.target.value);
+    }
+
+    const addFeedback = () => {
+      if (feedback === "") {
+        setCustomAlert("Feedback mag niet leeg zijn");
+        return;
+      }
+      if (studentId === "") {
+        setCustomAlert("Selecteer een student");
+        return;
+      }
+      setCustomAlert("");
+      dispatch(addFeedbackActionAsync(currentNodeId, studentId, feedback));
+    }
     
 return (
     <>
+
       <FormFieldComponent
         fieldType="dropdown"
         title="Feedback geven aan"
-        options={[
-          { value: "Kees", label: "Kees" },
-          { value: "Klaas", label: "Student" }
-        ]}
+        options={students}
+        onChange={handleStudentChange}
       />
       <FormFieldComponent
         fieldType="textarea"
@@ -26,10 +49,17 @@ return (
         value={feedback}
         onChange={handleFeedbackChange}
       />
+      {customAlert !== "" ?
+        <div className="mt-10 rounded relative justify-center flex" role="alert">
+          <div className="w-3/5 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 ">
+            <span className="block sm:inline">{customAlert}</span>
+          </div>
+        </div> : null}
     <div className="mt-6 flex items-center justify-center">
         <button
             type="submit"
             className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onClick={addFeedback}
         >
             Feedback opslaan
         </button>

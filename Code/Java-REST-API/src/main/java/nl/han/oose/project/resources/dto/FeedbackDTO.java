@@ -5,6 +5,10 @@ public class FeedbackDTO {
     private int nodeId;
     private String feedback;
 
+    public FeedbackDTO() {
+        // Default constructor
+    }
+
     public FeedbackDTO(int userId, int nodeId, String feedback) {
         this.userId = userId;
         this.nodeId = nodeId;
