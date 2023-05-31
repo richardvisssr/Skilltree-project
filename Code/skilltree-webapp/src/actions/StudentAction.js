@@ -32,6 +32,7 @@ export function setSelectedStudentsAction(students) {
     }
 }
 
+
 export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
     return async (dispatch) => {
         const studentIds = [];
@@ -91,5 +92,24 @@ export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
         };
         fetch(`${API_PATH}/feedback`, options)
             .then((response) => response.json())
+    }
+}
+
+export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+        fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
+            .then((response) => response.json())
+            .then((result) => dispatch(setSelectedFeedbackStudentsAction(result)));
+    };
+}
+
+export function setSelectedFeedbackStudentsAction(feedback) {
+    return {
+        type: "students/setSelectedFeedbackStudent",
+        payload: feedback
     }
 }

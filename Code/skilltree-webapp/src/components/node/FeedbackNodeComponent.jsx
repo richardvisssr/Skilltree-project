@@ -1,7 +1,7 @@
 import React, {useState , useEffect} from 'react';
 import FormFieldComponent from "./FormFieldComponent";
 import {useSelector, useDispatch} from "react-redux";
-import {addFeedbackActionAsync} from "../../actions/StudentAction";
+import {addFeedbackActionAsync, fetchFeedbackSelectedStudentActionAsync} from "../../actions/StudentAction";
 
 // Dummy gebruikersobject
 const user = {
@@ -16,6 +16,7 @@ sessionStorage.setItem('currentUser', JSON.stringify(user));
 function FeedbackNodeComponent() {
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.selectedStudents);
+    const getFeedback = useSelector((state) => state.student.feedback);
     const currentNodeId = useSelector((state) => state.node.currentNode);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // const userId = currentUser.id;
@@ -35,8 +36,15 @@ function FeedbackNodeComponent() {
     };
 
     const handleStudentChange = (event) => {
-        setStudentId(event.target.value);
+      const selectedStudentId = event.target.value;
+      setStudentId(selectedStudentId);
+      dispatchFeedback(currentNodeId, selectedStudentId);
     }
+
+    const dispatchFeedback = (currentNodeId, selectedStudentId) => {
+      dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+    }
+  
 
     const addFeedback = () => {
       if (feedback === "") {
@@ -63,7 +71,7 @@ return (
       <FormFieldComponent
         fieldType="textarea"
         title="Feedback"
-        value={feedback}
+        value={getFeedback}
         onChange={handleFeedbackChange}
       />
       {customAlert !== "" ?
