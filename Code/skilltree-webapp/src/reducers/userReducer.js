@@ -1,6 +1,6 @@
 const initialState = {
   userId: 1,
-  roleId: 2,
+  roleId: 1,
   // TODO: veranderen naar nulls wanneer inloggen werkend is
 }
 

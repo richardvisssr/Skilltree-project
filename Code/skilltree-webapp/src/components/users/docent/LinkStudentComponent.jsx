@@ -31,7 +31,7 @@ export default function LinkStudentComponent() {
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
         if (event.target.checked) {
-            var student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
+            const student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
             const tempArr = selectedStudents;
             tempArr.push(student[0]);
             setSelectedStudentsAction(tempArr);
