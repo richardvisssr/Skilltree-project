@@ -52,7 +52,7 @@ export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
 
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then(response => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
     };
 }
 
@@ -64,7 +64,8 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
         };
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
+
     };
 }
 
@@ -77,18 +78,18 @@ export function clearStudentCardAction() {
 export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
     return async (dispatch) => {
         const options = {
-            method: "POST",
-            mode: "cors",
+            body: JSON.stringify({
+                "userId": parseInt(studentId),
+                "nodeId": parseInt(currentNodeId),
+                feedback
+            }),
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                "userId": studentId,
-                "nodeId": currentNodeId,
-                "feedback": feedback
-            })
+            method: "POST",
+            mode: "cors"
         };
-        fetch(`${API_PATH}/students/feedback`, options)
+        fetch(`${API_PATH}/feedback`, options)
             .then((response) => response.json())
     }
 }
