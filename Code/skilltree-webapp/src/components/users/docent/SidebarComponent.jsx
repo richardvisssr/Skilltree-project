@@ -16,7 +16,7 @@ export default function SidebarComponent() {
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     // Voor te testen, later moet er een reducer komen voor de users
-    const userId = useSelector((state) => state.user.userId);
+    const userId = useSelector((state) => state.user.currentUser.id);
 
     function handleSkilltreeButtonClick(id) {
         let currentSkilltree;
