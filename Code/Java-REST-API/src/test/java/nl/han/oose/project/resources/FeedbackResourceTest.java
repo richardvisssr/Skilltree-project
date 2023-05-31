@@ -16,13 +16,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class FeedbackResourceTest {
+    private static final int NODE_ID = 1;
+    private static final int STUDENT_ID = 2;
     private FeedbackResource sut;
     private FeedbackService feedbackService;
     private FeedbacksDTO feedbacksDTO;
     private FeedbackDTO feedbackDTO;
-
-    private static final int NODE_ID = 1;
-    private static final int STUDENT_ID = 2;
 
     @BeforeEach
     void setup() {
