@@ -11,6 +11,7 @@ function FeedbackNodeComponent() {
 
     const [feedback, setFeedback] = useState("");
     const [studentId, setStudentId] = useState("");
+    const [customAlert, setCustomAlert] = useState("");
 
     const handleFeedbackChange = (event) => {
         setFeedback(event.target.value);
@@ -21,11 +22,21 @@ function FeedbackNodeComponent() {
     }
 
     const addFeedback = () => {
+      if (feedback === "") {
+        setCustomAlert("Feedback mag niet leeg zijn");
+        return;
+      }
+      if (studentId === "") {
+        setCustomAlert("Selecteer een student");
+        return;
+      }
+      setCustomAlert("");
       dispatch(addFeedbackActionAsync(currentNodeId, studentId, feedback));
     }
     
 return (
     <>
+
       <FormFieldComponent
         fieldType="dropdown"
         title="Feedback geven aan"
@@ -38,6 +49,12 @@ return (
         value={feedback}
         onChange={handleFeedbackChange}
       />
+      {customAlert !== "" ?
+        <div className="mt-10 rounded relative justify-center flex" role="alert">
+          <div className="w-3/5 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 ">
+            <span className="block sm:inline">{customAlert}</span>
+          </div>
+        </div> : null}
     <div className="mt-6 flex items-center justify-center">
         <button
             type="submit"
