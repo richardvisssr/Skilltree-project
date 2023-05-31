@@ -1,17 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState , useEffect} from 'react';
 import FormFieldComponent from "./FormFieldComponent";
 import {useSelector, useDispatch} from "react-redux";
 import {addFeedbackActionAsync} from "../../actions/StudentAction";
 
+// Dummy gebruikersobject
+const user = {
+  id: 1,
+  name: 'John Doe',
+  feedback: 'Dit is mijn feedback',
+};
+
+// Dummy sessionStorage instellen
+sessionStorage.setItem('currentUser', JSON.stringify(user));
 
 function FeedbackNodeComponent() {
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.selectedStudents);
     const currentNodeId = useSelector((state) => state.node.currentNode);
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // const userId = currentUser.id;
 
     const [feedback, setFeedback] = useState("");
     const [studentId, setStudentId] = useState("");
     const [customAlert, setCustomAlert] = useState("");
+
+    useEffect(() => {
+      if (currentUser) {
+        setFeedback(currentUser.feedback);
+      }
+    }, [currentUser]);
 
     const handleFeedbackChange = (event) => {
         setFeedback(event.target.value);
