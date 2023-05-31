@@ -83,8 +83,8 @@ export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                "currentNodeId": currentNodeId,
-                "studentId": studentId,
+                "userId": studentId,
+                "nodeId": currentNodeId,
                 "feedback": feedback
             })
         };
