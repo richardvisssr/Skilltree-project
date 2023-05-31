@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import "../styles/styles.css";
-import {fetchAllUsersActionAsync, currentUserSelectedAction} from "../actions/userAction";
+import {fetchAllUsersActionAsync, currentUserSelectedAction} from "../actions/UserAction";
 import { Link } from 'react-router-dom';
 
 function LoginComponent() {

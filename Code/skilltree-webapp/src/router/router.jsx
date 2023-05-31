@@ -8,7 +8,7 @@ import RegisterScreen from "../screens/registerScreen";
 const routes = [
     {
         path: "/",
-        element: <Navigate to="/home" replace />,
+        element: <Navigate to="/login" replace />,
     },
     {
         path: "/home",
