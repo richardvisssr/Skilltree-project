@@ -22,4 +22,101 @@ public class StudentServiceTest {
 
         sut.setStudentDAO(studentDAO);
     }
+
+    @Test
+    void getAllStudentsTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        when(studentDAO.getAllStudents()).thenReturn(usersDTO);
+
+        // Act
+        sut.getAllStudents();
+
+        // Assert
+        verify(studentDAO).getAllStudents();
+    }
+
+    @Test
+    void getStudentsBySkilltreeTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        when(studentDAO.getStudentsBySkilltree(anyInt())).thenReturn(usersDTO);
+
+        // Act
+        sut.getStudentsBySkilltree(anyInt());
+
+        // Assert
+        verify(studentDAO).getStudentsBySkilltree(anyInt());
+    }
+
+    @Test
+    void updateStudentsToSkilltreeTest() throws Exception {
+        // Arrange
+        StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
+        UsersDTO usersDTO = new UsersDTO();
+        when(studentDAO.getStudentsBySkilltree(anyInt())).thenReturn(usersDTO);
+
+        // Act
+        sut.updateStudentsToSkilltree(studentsRequestDTO, anyInt());
+
+        // Assert
+        verify(studentDAO).addStudentsToSkilltree(anyList(), anyInt());
+        verify(studentDAO).removeStudentsFromSkilltree(anyList(), anyInt());
+    }
+
+    @Test
+    void deleteStudentsTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        usersDTO.setUsers(Arrays.asList(new UserDTO(1, "test", "test", "test", 1)));
+        StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
+        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(1)));
+
+        // Act
+        sut.deleteStudents(usersDTO, studentsRequestDTO);
+
+        // Assert
+    }
+
+    @Test
+    void addNewStudentsTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        usersDTO.setUsers(Arrays.asList(new UserDTO(1, "test", "test", "test", 1)));
+        StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
+        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(1)));
+
+        // Act
+        sut.addNewStudents(usersDTO, studentsRequestDTO);
+
+        // Assert
+    }
+
+    @Test
+    void addNewStudentsIdNotFoundTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        usersDTO.setUsers(Arrays.asList(new UserDTO(1, "test", "test", "test", 1)));
+        StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
+        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(2)));
+
+        // Act
+        sut.addNewStudents(usersDTO, studentsRequestDTO);
+
+        // Assert
+    }
+
+    @Test
+    void deleteStudentsIdNotFoundTest() throws Exception {
+        // Arrange
+        UsersDTO usersDTO = new UsersDTO();
+        usersDTO.setUsers(Arrays.asList(new UserDTO(1, "test", "test", "test", 1)));
+        StudentsRequestDTO studentsRequestDTO = new StudentsRequestDTO();
+        studentsRequestDTO.setStudents(Arrays.asList(new StudentRequestDTO(2)));
+
+        // Act
+        sut.deleteStudents(usersDTO, studentsRequestDTO);
+
+        // Assert
+    }
 }
