@@ -60,12 +60,4 @@ public class UserDTO {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 }

@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/resources/dto/UserDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/StudentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/StudentServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
