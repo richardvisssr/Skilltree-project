@@ -52,7 +52,7 @@ export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
 
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then(response => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
     };
 }
 
@@ -64,7 +64,8 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
         };
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
+
     };
 }
 
@@ -72,4 +73,23 @@ export function clearStudentCardAction() {
     return {
         type: "students/clearStudentCard"
     };
+}
+
+export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
+    return async (dispatch) => {
+        const options = {
+            body: JSON.stringify({
+                "userId": parseInt(studentId),
+                "nodeId": parseInt(currentNodeId),
+                feedback
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            mode: "cors"
+        };
+        fetch(`${API_PATH}/feedback`, options)
+            .then((response) => response.json())
+    }
 }

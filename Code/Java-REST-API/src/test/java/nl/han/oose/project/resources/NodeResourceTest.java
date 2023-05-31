@@ -65,7 +65,7 @@ public class NodeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail();
         }
     }
     @Test
@@ -158,7 +158,7 @@ public class NodeResourceTest {
 
     @Test
     void updateNodesPositionsWithException() {
-        try {
+        try{
             // Arrange
             var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
             when(nodeService.updateNodesPositions(nodesDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
@@ -169,7 +169,7 @@ public class NodeResourceTest {
             // Assert
             Assertions.assertEquals(expected, result.getStatus());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail();
         }
     }
 }
