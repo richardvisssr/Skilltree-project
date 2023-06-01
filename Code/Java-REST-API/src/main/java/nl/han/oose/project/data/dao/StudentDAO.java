@@ -16,17 +16,27 @@ public class StudentDAO {
     private PreparedStatement stmt;
 
     public UsersDTO getAllStudents() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllStudentsQuery());
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getAllStudentsQuery());
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
+        }
     }
 
     public UsersDTO getStudentsBySkilltree(int skilltreeId) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getStudentsBySkilltreeQuery(skilltreeId));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
+            stmt.close();
+        }
     }
 
     public void addStudentsToSkilltree(List<Integer> newStudents, int skilltreeId) throws SQLException {
@@ -72,11 +82,10 @@ public class StudentDAO {
 
     private ResultSet getAllStudentsQuery() throws SQLException {
         try {
-        var query = "SELECT ID, Firstname, Lastname, Email, RoleID FROM Users WHERE RoleID = ?";
-        var stmt = connection.prepareStatement(query);
-        stmt.setInt(1, studentRolId);
-        var result = stmt.executeQuery();
-        return result;
+            var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, studentRolId);
+            return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
         }

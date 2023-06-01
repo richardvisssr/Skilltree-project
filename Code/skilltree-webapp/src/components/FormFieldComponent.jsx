@@ -3,6 +3,7 @@ import React from "react";
 function formFieldComponent({
     fieldType = "input",
     title,
+    label,
     type = "text",
     value,
     onChange,
@@ -56,7 +57,8 @@ function formFieldComponent({
                 </select>
             );
         }
-    };
+        return null;
+    }
 
     if (type === "text") {
         return (
@@ -66,7 +68,7 @@ function formFieldComponent({
                         htmlFor={title}
                         className="text-sm font-medium leading-6 text-gray-900"
                     >
-                        {title}
+                        {label}
                     </label>
                     <div className="mt-2">{showField()}</div>
                 </div>
