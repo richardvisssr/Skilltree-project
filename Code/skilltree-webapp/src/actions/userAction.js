@@ -8,13 +8,14 @@ export function setAllUsersAction(users) {
 }
 
 export function fetchAllUsersActionAsync() {
-    return async () => {
+    return async (dispatch) => {
         const options = {
             method: "GET",
             mode: "cors",
         };
         const response = await fetch(`${API_PATH}/users`, options);
         const allUsers = await response.json();
+        dispatch(setAllUsersAction(allUsers))
         return allUsers.users;
     }
 }

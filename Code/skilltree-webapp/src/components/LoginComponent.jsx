@@ -28,7 +28,6 @@ function LoginComponent() {
       };
       
       const accountList = () => {
-        console.log(users);
         if (!users || users.length === 0) {
           return null;
         }
