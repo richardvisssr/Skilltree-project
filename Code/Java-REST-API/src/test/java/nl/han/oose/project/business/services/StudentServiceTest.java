@@ -1,14 +1,10 @@
 package nl.han.oose.project.business.services;
 
-import java.util.Arrays;
-
 import nl.han.oose.project.data.dao.StudentDAO;
 import nl.han.oose.project.resources.dto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class StudentServiceTest {
