@@ -7,25 +7,24 @@ import jakarta.ws.rs.core.Response;
 import nl.han.oose.project.business.services.SkilltreeService;
 import nl.han.oose.project.resources.dto.SkilltreeDTO;
 
-
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
 @Path("/skilltrees")
 public class SkilltreeResource {
-    private static final Logger LOGGER  = Logger.getLogger(SkilltreeResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SkilltreeResource.class.getName());
     private static final String ERROR_MESSAGE = "Error ";
 
     private SkilltreeService skilltreeService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/gebruikers/{gebruikerId}")
+    @Path("/gebruikers/{gebruikerId}/roles/{roleId}")
     public Response getAllSkilltrees(
-            @PathParam("gebruikerId") int gebruikerId
+            @PathParam("gebruikerId") int gebruikerId, @PathParam("roleId") int roleId
     ) {
         try {
-            return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId)).build();
+            return Response.status(Response.Status.OK).entity(skilltreeService.getAllSkilltrees(gebruikerId, roleId)).build();
         } catch (SQLException e) {
             LOGGER.info("getAllSkilltrees" + ERROR_MESSAGE + e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

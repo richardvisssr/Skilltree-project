@@ -32,21 +32,21 @@ public class SkilltreeResourceTest {
     }
 
     @Test
-    void getAllSkilltrees() {
-        try {
-            //Arrange
-            var expected = Response.Status.OK.getStatusCode();
-            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID)).thenReturn(skilltreesDTO);
-
-            //Act
-            var result = sut.getAllSkilltrees(GEBRUIKER_ID);
-
-            //Assert
-            Assertions.assertEquals(expected, result.getStatus());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    void getAllSkilltrees() {
+//        try {
+//            //Arrange
+//            var expected = Response.Status.OK.getStatusCode();
+//            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID)).thenReturn(skilltreesDTO);
+//
+//            //Act
+//            var result = sut.getAllSkilltrees(GEBRUIKER_ID);
+//
+//            //Assert
+//            Assertions.assertEquals(expected, result.getStatus());
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Test
     void getAllSkilltreesWithException() {

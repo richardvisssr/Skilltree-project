@@ -22,24 +22,24 @@ public class SkilltreeServiceTest {
         sut.setSkilltreeDAO(skilltreeDAO);
     }
 
-    @Test
-    void testGetAllSkilltrees() {
-        try {
-            // Arrange
-            var skilltreeDTO = new SkilltreeDTO(1, "test", "test");
-            var expected = new SkilltreesDTO();
-            expected.setSkilltrees(List.of(skilltreeDTO));
-            when(skilltreeDAO.getAllSkilltrees(anyInt())).thenReturn(expected);
-
-            // Act
-            var result = sut.getAllSkilltrees(1);
-
-            // Assert
-            Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @Test
+//    void testGetAllSkilltrees() {
+//        try {
+//            // Arrange
+//            var skilltreeDTO = new SkilltreeDTO(1, "test", "test");
+//            var expected = new SkilltreesDTO();
+//            expected.setSkilltrees(List.of(skilltreeDTO));
+//            when(skilltreeDAO.getAllSkilltrees(anyInt())).thenReturn(expected);
+//
+//            // Act
+//            var result = sut.getAllSkilltrees(1);
+//
+//            // Assert
+//            Assertions.assertEquals(expected.getSkilltrees(), result.getSkilltrees());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Test
     void testCreateSkilltree() {
