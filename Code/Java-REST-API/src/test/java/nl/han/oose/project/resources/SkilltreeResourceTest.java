@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class SkilltreeResourceTest {
     private SkilltreeResource sut;
@@ -126,6 +125,41 @@ public class SkilltreeResourceTest {
 
             // Act
             var result = sut.updateSkilltree(skilltreeDTO, GEBRUIKER_ID);
+
+            // Arrange
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void testDeleteSkilltree() {
+        int skilltreeId = 1;
+        try {
+            // Arrange
+            var expected = Response.Status.OK.getStatusCode();
+            doNothing().when(skilltreeService).deleteSkilltree(skilltreeId);
+
+            // Act
+            var result = sut.deleteSkilltree(skilltreeId);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+    @Test
+    void deleteSkilltreeWithException() {
+        int skilltreeId = 1;
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            doThrow(new SQLException()).when(skilltreeService).deleteSkilltree(skilltreeId);
+
+            // Act
+            var result = sut.deleteSkilltree(skilltreeId);
 
             // Arrange
             Assertions.assertEquals(expected, result.getStatus());

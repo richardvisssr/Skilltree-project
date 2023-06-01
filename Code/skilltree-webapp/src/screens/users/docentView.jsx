@@ -6,11 +6,13 @@ import TopbarComponentDocent from "../../components/users/docent/TopbarComponent
 import ReactFlowComponentDocent from "../../components/users/docent/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
 import UpdateNodeComponent from "../../components/node/users/docent/UpdateNodeComponent";
+import DeleteSkilltreeComponent from "../../components/users/docent/DeleteSkilltreeComponent";
 
 export default function DocentView() {
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const showNodeCard = useSelector((state) => state.node.showCard);
+    const showDeleteSkilltreeCard = useSelector((state) => state.skilltree.showDeleteSkilltreeCard)
 
     const showScreen = () => {
         if (showNodeCard) {
@@ -18,6 +20,12 @@ export default function DocentView() {
                 <UpdateNodeComponent />
             )
         }
+        else if (showDeleteSkilltreeCard) {
+            return (
+                <DeleteSkilltreeComponent />
+            )
+        }
+
         else if (currentSkilltree !== null) {
             return (
                 <ReactFlowComponentDocent />

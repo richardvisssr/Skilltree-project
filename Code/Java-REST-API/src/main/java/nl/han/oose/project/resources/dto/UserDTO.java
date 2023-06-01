@@ -7,8 +7,8 @@ public class UserDTO {
     private String email;
     private int roleId;
 
+    // Default constructor
     public UserDTO() {
-        // Default constructor
     }
 
     // Constructor with all fields

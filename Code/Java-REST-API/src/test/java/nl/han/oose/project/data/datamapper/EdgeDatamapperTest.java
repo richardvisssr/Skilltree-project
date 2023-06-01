@@ -2,6 +2,7 @@ package nl.han.oose.project.data.datamapper;
 
 import nl.han.oose.project.resources.dto.EdgeDTO;
 import nl.han.oose.project.resources.dto.EdgesDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,5 +44,17 @@ public class EdgeDatamapperTest {
 
         // Assert
         assertEquals(expectedEdges.get(0).getEdgeId(), actualEdges.getEdges().get(0).getEdgeId());
+    }
+
+    @Test
+    void mapMultipleResultSetsToEdgesDTO() throws SQLException{
+        // Arrange
+        List<EdgeDTO> expectedEdges = null;
+
+        // Act
+        EdgesDTO actualEdges = sut.map(resultSet, resultSet);
+
+        // Assert
+        Assertions.assertEquals(expectedEdges, actualEdges);
     }
 }
