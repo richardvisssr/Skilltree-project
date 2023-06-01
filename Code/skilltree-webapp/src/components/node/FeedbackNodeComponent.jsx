@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react';
-import FormFieldComponent from "./FormFieldComponent";
+import FormFieldComponent from "../FormFieldComponent";
 import {useSelector, useDispatch} from "react-redux";
 import {addFeedbackActionAsync, fetchFeedbackSelectedStudentActionAsync} from "../../actions/StudentAction";
 
@@ -9,7 +9,6 @@ function FeedbackNodeComponent() {
     const currentNodeId = useSelector((state) => state.node.currentNode);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
-
     const [feedback, setFeedback] = useState("");
     const [studentId, setStudentId] = useState("");
     const [customAlert, setCustomAlert] = useState("");
