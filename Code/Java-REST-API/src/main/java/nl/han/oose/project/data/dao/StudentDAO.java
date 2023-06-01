@@ -91,16 +91,17 @@ public class StudentDAO {
         }
     }
 
-    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException {
+    private ResultSet getStudentsBySkilltreeQuery(int skilltreeId) throws SQLException{
         try {
-            var query = "SELECT u.ID, u.Firstname, u.Lastname \n" +
+            var query = "SELECT u.ID, u.Firstname, u.Lastname, u.Email, u.RoleID \n" +
                     "FROM Users u \n" +
                     "JOIN userskilltree us \n" +
                     "ON u.ID = us.userId\n" +
                     "WHERE us.skilltreeId = ?";
-            stmt = connection.prepareStatement(query);
+            var stmt = connection.prepareStatement(query);
             stmt.setInt(1, skilltreeId);
-            return stmt.executeQuery();
+            var result = stmt.executeQuery();
+            return result;
         } catch (SQLException e) {
             throw new SQLException(e);
         }

@@ -1,6 +1,6 @@
 package nl.han.oose.project.resources.dto;
 
-import   java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDTO {

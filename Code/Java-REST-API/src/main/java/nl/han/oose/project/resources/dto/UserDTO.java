@@ -7,6 +7,7 @@ public class UserDTO {
     private String email;
     private int roleId;
 
+    // Default constructor
     public UserDTO() {
     }
 
