@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Java-REST-API:war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -35,22 +40,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
-</component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="nl.han.oose.project.resources.dto" />
@@ -158,72 +160,13 @@
       </method>
     </configuration>
     <configuration name="NodeResourceTest.testDeleteNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SkilltreeResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java-REST-API" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.SkilltreeResourceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SkilltreeResourceTest.deleteSkilltreeWithException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java-REST-API" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.SkilltreeResourceTest" />
-      <option name="METHOD_NAME" value="deleteSkilltreeWithException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SkilltreeResourceTest.testDeleteSkilltree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java-REST-API" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.SkilltreeResourceTest" />
-      <option name="METHOD_NAME" value="testDeleteSkilltree" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRegistrationDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java-REST-API" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.project.resources.dto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources.dto" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.dto.UserRegistrationDTOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="java in Java-REST-API" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java-REST-API" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/Code/Java-REST-API/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,25 +174,9 @@
     <list>
       <item itemvalue="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final" />
       <item itemvalue="JUnit.All in Java-REST-API" />
-      <item itemvalue="JUnit.java in Java-REST-API" />
       <item itemvalue="JUnit.NodeResourceTest.testDeleteNode" />
-      <item itemvalue="JUnit.UserRegistrationDTOTest" />
-      <item itemvalue="JUnit.UserRegistrationDTOTest.testConstructorAndGetters" />
+      <item itemvalue="JUnit.SkilltreeResourceTest" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in Java-REST-API" />
-        <item itemvalue="JUnit.java in Java-REST-API" />
-        <item itemvalue="JUnit.UserRegistrationDTOTest" />
-        <item itemvalue="JUnit.UserRegistrationDTOTest.testConstructorAndGetters" />
-        <item itemvalue="JUnit.NodeResourceTest.testDeleteNode" />
-        <item itemvalue="JUnit.SkilltreeResourceTest.deleteSkilltreeWithException" />
-        <item itemvalue="JUnit.SkilltreeResourceTest" />
-        <item itemvalue="JUnit.SkilltreeResourceTest.testDeleteSkilltree" />
-        <item itemvalue="JUnit.java in Java-REST-API" />
-        <item itemvalue="JUnit.UserRegistrationDTOTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
