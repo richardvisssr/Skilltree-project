@@ -6,8 +6,10 @@ import {
     fetchAllSkilltreesActionAsync,
     setCurrentSkilltreeAction,
 } from "../../../actions/SkilltreeAction";
+import {useNavigate} from "react-router-dom";
 
 export default function SidebarComponent() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     // Voor te testen, later moet er een reducer komen voor de users
@@ -52,6 +54,11 @@ export default function SidebarComponent() {
         }
     };
 
+    function logout() {
+        sessionStorage.clear();
+        navigate("/login");
+    }
+
     return (
         <aside
             id="separator-sidebar"
@@ -70,6 +77,17 @@ export default function SidebarComponent() {
                 <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
                 </ul>
+                <div className="absolute bottom-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
+                    <ul className="mt-auto space-y-2 font-medium ">
+                        <button
+                            className="flex font-medium justify-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                            type="button"
+                            onClick={() => logout()}
+                        >
+                            <span className="text-center">log uit</span>
+                        </button>
+                    </ul>
+                </div>
             </div>
         </aside>
     );

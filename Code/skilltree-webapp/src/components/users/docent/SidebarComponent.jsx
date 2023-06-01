@@ -124,13 +124,6 @@ export default function SidebarComponent() {
         aria-label="Sidebar"
         >
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex flex-col">
-                <button
-                    className="flex font-medium justify-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                    type="button"
-                    onClick={() => logout()}
-                >
-                    <span className="text-center">log uit</span>
-                </button>
                 <ul className="space-y-2 font-medium">
                     <li>
                         <button
@@ -143,12 +136,21 @@ export default function SidebarComponent() {
                         </button>
                     </li>
                 </ul>
-                <ul className="pt-4 mt-4 mb-10 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+                <ul className="pt-4 mt-4 mb-20 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
                 </ul>
                 <div className="absolute bottom-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
                     <ul className="mt-auto space-y-2 font-medium ">
                         {registerButton()}
+                    </ul>
+                    <ul className="mt-auto space-y-2 font-medium ">
+                        <button
+                            className="flex font-medium justify-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                            type="button"
+                            onClick={() => logout()}
+                        >
+                            <span className="text-center">log uit</span>
+                        </button>
                     </ul>
                 </div>
             </div>
