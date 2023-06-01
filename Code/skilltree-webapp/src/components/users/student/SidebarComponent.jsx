@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {AiOutlineLogout} from "react-icons/ai";
 
 import "../../../styles/styles.css";
 import {
     fetchAllSkilltreesActionAsync,
     setCurrentSkilltreeAction,
 } from "../../../actions/SkilltreeAction";
-import {useNavigate} from "react-router-dom";
-import {AiOutlineLogout} from "react-icons/ai";
+import { showCreateCard } from "../../../actions/NodeAction";
 
 export default function SidebarComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
-    // Voor te testen, later moet er een reducer komen voor de users
+    const showNodeCard = useSelector((state) => state.node.showCard);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
 
@@ -24,6 +25,10 @@ export default function SidebarComponent() {
                 currentSkilltree = skilltree;
             }
         });
+
+        if (showNodeCard) {
+            dispatch(showCreateCard());
+        }
         dispatch(setCurrentSkilltreeAction(currentSkilltree));
     }
 
