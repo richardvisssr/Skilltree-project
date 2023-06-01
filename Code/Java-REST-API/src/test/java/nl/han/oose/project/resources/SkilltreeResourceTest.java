@@ -20,7 +20,7 @@ public class SkilltreeResourceTest {
     private SkilltreeService skilltreeService;
 
     private static final int GEBRUIKER_ID = 1;
-
+    private static final int ROL_ID = 1;
     @BeforeEach
     void setup() {
         sut = new SkilltreeResource();
@@ -36,10 +36,10 @@ public class SkilltreeResourceTest {
         try {
             //Arrange
             var expected = Response.Status.OK.getStatusCode();
-            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID)).thenReturn(skilltreesDTO);
+            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID, ROL_ID)).thenReturn(skilltreesDTO);
 
             //Act
-            var result = sut.getAllSkilltrees(GEBRUIKER_ID);
+            var result = sut.getAllSkilltrees(GEBRUIKER_ID, ROL_ID);
 
             //Assert
             Assertions.assertEquals(expected, result.getStatus());
@@ -53,10 +53,10 @@ public class SkilltreeResourceTest {
         try {
             // Arrange
             var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID)).thenThrow(new SQLException());
+            when(skilltreeService.getAllSkilltrees(GEBRUIKER_ID, ROL_ID)).thenThrow(new SQLException());
 
             // Act
-            var result = sut.getAllSkilltrees(GEBRUIKER_ID);
+            var result = sut.getAllSkilltrees(GEBRUIKER_ID, ROL_ID);
 
             // Arrange
             Assertions.assertEquals(expected, result.getStatus());

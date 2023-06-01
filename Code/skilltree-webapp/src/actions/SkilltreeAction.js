@@ -7,13 +7,13 @@ export function setSkilltreesAction(skilltrees) {
     };
 }
 
-export function fetchAllSkilltreesActionAsync(userId) {
+export function fetchAllSkilltreesActionAsync(userId, roleId) {
     return async (dispatch) => {
         const options = {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options)
+        fetch(`${API_PATH}/skilltrees/gebruikers/${userId}/roles/${roleId}`, options)
             .then((response) => response.json())
             .then((result) => dispatch(setSkilltreesAction(result.skilltrees)));
     };
@@ -26,7 +26,7 @@ export function setCreateSkillTreeAction(title, description) {
     };
 }
 
-export function fetchCreateSkillTreeActionAsync(title, description, userId) {
+export function fetchCreateSkillTreeActionAsync(title, description, userId, roleId) {
     return async (dispatch) => {
         const body = {
             title,
@@ -39,7 +39,7 @@ export function fetchCreateSkillTreeActionAsync(title, description, userId) {
             mode: "cors",
         };
         const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
-        dispatch(fetchAllSkilltreesActionAsync(userId));
+        dispatch(fetchAllSkilltreesActionAsync(userId, roleId));
         return result;
     }
 }
@@ -76,7 +76,7 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
     };
 }
 
-export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
+export function fetchUpdateSkillTreeActionAsync(id, title, description, userId, roleId) {
     return async (dispatch) => {
         const body = {
             id,
@@ -90,7 +90,7 @@ export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) 
             mode: "cors",
         };
         const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
-        dispatch(fetchAllSkilltreesActionAsync(userId));
+        dispatch(fetchAllSkilltreesActionAsync(userId, roleId));
         return result;
     }
 }
