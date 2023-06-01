@@ -42,7 +42,7 @@ function FeedbackNodeComponent() {
     }
 
     const dispatchFeedback = (currentNodeId, selectedStudentId) => {
-      dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+      setFeedback(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
     }
   
 
@@ -58,10 +58,8 @@ function FeedbackNodeComponent() {
       setCustomAlert("");
       dispatch(addFeedbackActionAsync(currentNodeId, studentId, feedback));
     }
-    
 return (
     <>
-
       <FormFieldComponent
         fieldType="dropdown"
         title="Feedback geven aan"
