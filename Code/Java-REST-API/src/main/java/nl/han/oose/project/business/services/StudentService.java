@@ -35,7 +35,7 @@ public class StudentService {
         return getStudentsBySkilltree(skilltreeId);
     }
 
-    public List<Integer> deleteStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
+    private List<Integer> deleteStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
         List<Integer> deletedStudents = new ArrayList<>();
         for (UserDTO userDTO : currentStudents.getUsers()) {
             boolean found = false;
@@ -53,7 +53,7 @@ public class StudentService {
         return deletedStudents;
     }
 
-    public List<Integer> addNewStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
+    private List<Integer> addNewStudents(UsersDTO currentStudents, StudentsRequestDTO studentsRequestDTO) {
         List<Integer> newStudents = new ArrayList<>();
 
         for (StudentRequestDTO student : studentsRequestDTO.getStudents()) {
