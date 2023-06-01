@@ -11,7 +11,7 @@ import {
     setCurrentSkilltreeAction,
     showDeleteCard,
 } from "../../../actions/SkilltreeAction";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiOutlineLogout } from "react-icons/ai";
 
 export default function SidebarComponent() {
     const navigate = useNavigate();
@@ -145,11 +145,14 @@ export default function SidebarComponent() {
                     </ul>
                     <ul className="mt-auto space-y-2 font-medium ">
                         <button
-                            className="flex font-medium justify-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             type="button"
+                            className="flex z-50 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                             onClick={() => logout()}
                         >
-                            <span className="text-center">log uit</span>
+                            <div className="flex" >
+                                <AiOutlineLogout size={20} />
+                                <span className="ml-6">Log uit</span>
+                            </div>
                         </button>
                     </ul>
                 </div>
