@@ -22,7 +22,6 @@ export default function SidebarComponent() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
     const roleId = currentUser.roleId;
-    console.log("AAAAAA", currentUser)
 
     function handleButtonClick(id) {
         let currentSkilltree;
