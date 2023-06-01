@@ -2,16 +2,21 @@ import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import HomeScreen from "../screens/homeScreen";
+import LoginScreen from "../screens/loginScreen";
 import RegisterScreen from "../screens/registerScreen";
 
 const routes = [
     {
         path: "/",
-        element: <Navigate to="/home" replace />,
+        element: <Navigate to="/login" replace />,
     },
     {
         path: "/home",
         element: <HomeScreen />,
+    },
+    {
+        path: "/login",
+        element: <LoginScreen />,
     },
     {
         path: "/registreer",

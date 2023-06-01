@@ -74,5 +74,17 @@ import java.util.List;
             // Act & Assert
             assertThrows(SQLException.class, () -> sut.map(resultSet));
         }
+
+        @Test
+        void mapMultipleResultSetsToUsersDTO() throws SQLException{
+            // Arrange
+            List<UserDTO> expectedUsers = null;
+
+            // Act
+            UsersDTO actualUsers = sut.map(resultSet, resultSet);
+
+            // Assert
+            assertEquals(expectedUsers, actualUsers);
+        }
     }
 

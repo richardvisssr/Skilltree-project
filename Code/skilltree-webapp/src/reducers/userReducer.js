@@ -1,6 +1,5 @@
 const initialState = {
-  userId: 1,
-  roleId: 1,
+  users: [],
   // TODO: veranderen naar nulls wanneer inloggen werkend is
   registeredCorrectly: null
 }
@@ -11,9 +10,14 @@ function userReducer(state = initialState, action) {
             return {
                 ...state,
                 registeredCorrectly: action.payload
-            }
-    default:
-        return state;
-    }
+            };
+    case "users/setAllUsers":
+      return {
+        ...state,
+        users: action.payload.accounts,
+      };
+  default:
+      return state;
+  }
 }
 export default userReducer;
