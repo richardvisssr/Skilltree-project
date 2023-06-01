@@ -30,8 +30,7 @@ public class UserDAO {
     public UsersDTO getAllUsers() throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
-            var result = datamapper.map(getAllUsersQuery());
-            return result;
+            return datamapper.map(getAllUsersQuery());
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {

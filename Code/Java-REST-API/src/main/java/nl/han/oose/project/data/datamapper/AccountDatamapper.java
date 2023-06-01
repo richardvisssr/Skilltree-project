@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountDatamapper implements Datamapper {
+public class AccountDatamapper implements Datamapper<AccountsDTO> {
     @Override
     public AccountsDTO map(ResultSet resultSet) throws SQLException {
         List<AccountDTO> accounts = new ArrayList<>();

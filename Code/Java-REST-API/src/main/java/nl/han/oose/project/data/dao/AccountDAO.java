@@ -16,8 +16,7 @@ public class AccountDAO {
     public AccountsDTO getAllAccounts() throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
-            var result = datamapper.map(getAllAccountsQuery());
-            return result;
+            return datamapper.map(getAllAccountsQuery());
         } catch (SQLException e) {
             throw new SQLException(e);
         } finally {

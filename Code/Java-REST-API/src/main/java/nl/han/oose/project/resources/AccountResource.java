@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Path("/accounts")
 public class AccountResource {
 
-    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
+    private static final Logger LOGGER  = Logger.getLogger(AccountResource.class.getName());
     private static final String ERROR_MESSAGE = "Error ";
     private AccountService accountService;
 
