@@ -4,6 +4,7 @@ const initialState = {
     newSkilltree: false,
     nodes: [],
     edges: [],
+    showDeleteSkilltreeCard: false,
 };
 
 function skillTreeReducer(state = initialState, action) {
@@ -46,29 +47,48 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             nodes: [...state.nodes, action.payload],
         }
-        case "skilltree/updateNode":
-            const updatedNodes = state.nodes.map((node) => {
-              if (node.id === action.payload.id) {
-                return {
-                  ...node,
-                  skill: action.payload.skill,
-                  description: action.payload.description,
-                  learningOutcome: action.payload.learningOutcome,
-                  assessmentCriteria: action.payload.assessmentCriteria,
-                };
-              }
-              return node;
-            });
+    case "skilltree/updateNode":
+        const updatedNodes = state.nodes.map((node) => {
+            if (node.id === action.payload.id) {
             return {
-              ...state,
-              nodes: updatedNodes,
+                ...node,
+                skill: action.payload.skill,
+                description: action.payload.description,
+                learningOutcome: action.payload.learningOutcome,
+                assessmentCriteria: action.payload.assessmentCriteria,
             };
-        case "skilltree/deleteNode":
-            const newNodes = state.nodes.filter((node) => parseInt(node.id) !== parseInt(action.payload.nodeId));
-            return {
-                ...state,
-                nodes: newNodes,
             }
+            return node;
+        });
+        return {
+            ...state,
+            nodes: updatedNodes,
+        };
+    case "skilltree/showDeleteSkilltreeCard":
+        return {
+            ...state,
+            showDeleteSkilltreeCard: true,
+        }
+    case "skilltree/hideDeleteSkilltreeCard":
+        return {
+            ...state,
+            showDeleteSkilltreeCard: false,
+        }
+            
+    case "skilltree/deleteNode":
+        const newNodes = state.nodes.filter((node) => parseInt(node.id) !== parseInt(action.payload.nodeId));
+        return {
+            ...state,
+            nodes: newNodes,
+        }
+
+    case "skilltree/deleteSkilltree":
+        const newTrees = state.skilltrees.filter((skilltree) => parseInt(skilltree.id) !== parseInt(action.payload.skilltreeId));
+        return {
+            ...state,
+            skilltrees: newTrees,
+        }
+        
     default:
         return state;
     }

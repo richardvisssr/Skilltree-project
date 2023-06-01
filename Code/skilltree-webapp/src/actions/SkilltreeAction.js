@@ -76,21 +76,60 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
     };
 }
 
-    export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
-        return async (dispatch) => {
-            const body = {
-                id,
-                title,
-                description,
-            };
-            const options = {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body),
-                mode: "cors",
-            };
-            const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
-            dispatch(fetchAllSkilltreesActionAsync(userId));
-            return result;
+export function fetchUpdateSkillTreeActionAsync(id, title, description, userId) {
+    return async (dispatch) => {
+        const body = {
+            id,
+            title,
+            description,
+        };
+        const options = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+            mode: "cors",
+        };
+        const result = await fetch(`${API_PATH}/skilltrees/gebruikers/${userId}`, options);
+        dispatch(fetchAllSkilltreesActionAsync(userId));
+        return result;
+    }
+}
+
+export function showDeleteCard() {
+    return {
+        type: "skilltree/showDeleteSkilltreeCard",
+    };
+}
+
+export function hideDeleteCard() {
+    return {
+        type: "skilltree/hideDeleteSkilltreeCard",
+    };
+}
+
+export function setDeleteSkilltreeAction(skilltreeId) {
+    return {
+        type: "skilltree/deleteSkilltree",
+        payload: {
+            skilltreeId,
         }
     }
+}
+
+export const fetchDeleteSkilltreeActionAsync = (skilltreeId) => async (dispatch) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+            skilltreeId,
+        }),
+    };
+
+    fetch(`${API_PATH}/skilltrees/delete/${skilltreeId}`, options)
+        .then(() => {
+            dispatch(setDeleteSkilltreeAction(skilltreeId));
+        });
+}

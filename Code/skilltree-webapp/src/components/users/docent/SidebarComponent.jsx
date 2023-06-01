@@ -4,11 +4,14 @@ import { MdPersonAddAlt1 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 import "../../../styles/styles.css";
+import "./deleteButton.css";
 import {
     fetchAllSkilltreesActionAsync,
     addSkiltreeTopbar,
     setCurrentSkilltreeAction,
+    showDeleteCard,
 } from "../../../actions/SkilltreeAction";
+import { AiFillDelete } from "react-icons/ai";
 
 export default function SidebarComponent() {
     const navigate = useNavigate();
@@ -19,7 +22,7 @@ export default function SidebarComponent() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
 
-    function handleSkilltreeButtonClick(id) {
+    function handleButtonClick(id) {
         let currentSkilltree;
         skilltrees.map((skilltree) => {
             if (skilltree.id === id) {
@@ -27,6 +30,11 @@ export default function SidebarComponent() {
             }
         });
         dispatch(setCurrentSkilltreeAction(currentSkilltree));
+    }
+
+    function deleteSkilltree(id) {
+        dispatch(setCurrentSkilltreeAction(id));
+        dispatch(showDeleteCard(id));
     }
 
     function handleNewButtonClick() {
@@ -40,16 +48,22 @@ export default function SidebarComponent() {
     const skilltreeList = () => {
         try {
             const buttons = skilltrees.map((skilltree) => (
-                <button
-                    type="button"
-                    key={skilltree.id}
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                    onClick={() => handleSkilltreeButtonClick(skilltree.id)}
-                >
-                    <span className="ml-4">
-                        { skilltree.title }
-                    </span>
-                </button>
+                    <button
+                        type="button"
+                        key={skilltree.id}
+                        className="skilltree-button flex justify-between items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                        onClick={() => handleButtonClick(skilltree.id)}
+                    >
+
+                        <div className="ml-12">
+                            { skilltree.title }
+                        </div>
+                        <div
+                            className="skilltree-delete"
+                            onClick={() => deleteSkilltree(skilltree.id)}>
+                            <AiFillDelete/>
+                        </div>
+                    </button>
             ));
             return (
                 <li>
