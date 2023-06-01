@@ -51,7 +51,17 @@ export default function SidebarComponent() {
                     <button
                         type="button"
                         key={skilltree.id}
-                        className="skilltree-button flex justify-between items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                        className="
+                            skilltree-button
+                            flex justify-between
+                            items-center
+                            w-full p-2
+                            text-gray-900
+                            transition duration-75
+                            rounded-lg
+                            hover:bg-gray-100
+                            dark:hover:bg-gray-700
+                            dark:text-white group"
                         onClick={() => handleButtonClick(skilltree.id)}
                     >
 

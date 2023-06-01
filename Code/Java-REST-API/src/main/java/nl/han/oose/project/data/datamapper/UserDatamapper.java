@@ -1,6 +1,5 @@
 package nl.han.oose.project.data.datamapper;
 
-import nl.han.oose.project.resources.dto.EdgesDTO;
 import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.UsersDTO;
 

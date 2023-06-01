@@ -10,7 +10,7 @@ import java.util.List;
 
 public class StudentDAO {
     private UserDatamapper datamapper;
-    private final int studentRolId = 2;
+    private static final int STUDENT_ROL_ID = 2;
     private DatabaseProperties databaseProperties;
     private Connection connection;
     private PreparedStatement stmt;
@@ -84,7 +84,7 @@ public class StudentDAO {
         try {
             var query = "SELECT ID, Firstname, Lastname FROM Users WHERE RoleId = ?";
             stmt = connection.prepareStatement(query);
-            stmt.setInt(1, studentRolId);
+            stmt.setInt(1, STUDENT_ROL_ID);
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -98,10 +98,9 @@ public class StudentDAO {
                     "JOIN userskilltree us \n" +
                     "ON u.ID = us.userId\n" +
                     "WHERE us.skilltreeId = ?";
-            var stmt = connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setInt(1, skilltreeId);
-            var result = stmt.executeQuery();
-            return result;
+            return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
         }

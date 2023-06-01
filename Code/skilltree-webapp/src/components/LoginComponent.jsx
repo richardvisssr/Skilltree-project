@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import "../styles/styles.css";
-import {fetchAllUsersActionAsync, currentUserSelectedAction} from "../actions/UserAction";
+import { fetchAllUsersActionAsync } from "../actions/UserAction";
 import { Link } from 'react-router-dom';
 
 function LoginComponent() {
@@ -26,18 +26,18 @@ function LoginComponent() {
       const handleAccountChange = (event) => {
         setCurrentUser(event.target.value);
       };
-      
+
       const accountList = () => {
         if (!users || users.length === 0) {
           return null;
         }
-      
+
         const userEmailList = users.map((user) => (
           <option key={user.email} value={user.email}>
             {user.email}
           </option>
         ));
-      
+
         return (
           <select
             name="Kies een account"
@@ -61,7 +61,7 @@ function LoginComponent() {
                     {accountList()}
                     <div className="mt-6 flex items-center justify-center">
                     <Link to="/home">
-                        <button 
+                        <button
                             type="submit"
                             className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             onClick={handleSave}

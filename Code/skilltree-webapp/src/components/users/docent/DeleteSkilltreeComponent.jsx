@@ -4,7 +4,6 @@ import {
     hideDeleteCard,
     fetchDeleteSkilltreeActionAsync,
     setCurrentSkilltreeAction,
-    fetchAllSkilltreesActionAsync,
 } from "../../../actions/SkilltreeAction";
 
 import "../../../styles/styles.css";
@@ -16,7 +15,7 @@ function DeleteSkilltreeComponent() {
 
     const dispatch = useDispatch();
 
-    function hideCard() {
+    const hideCard = () => {
         dispatch(hideDeleteCard())
     };
 
@@ -43,7 +42,20 @@ function DeleteSkilltreeComponent() {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-m font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="
+                                        rounded-md
+                                        bg-indigo-600
+                                        px-3
+                                        py-2
+                                        text-m
+                                        font-semibold
+                                        text-white
+                                        shadow-sm
+                                        hover:bg-indigo-500
+                                        focus-visible:outline
+                                        focus-visible:outline-2
+                                        focus-visible:outline-offset-2
+                                        focus-visible:outline-indigo-600"
                                     onClick={handleDelete}
                                 >
                                     Verwijderen
