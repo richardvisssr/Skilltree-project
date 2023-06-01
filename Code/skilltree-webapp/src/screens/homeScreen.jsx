@@ -6,11 +6,10 @@ import { Navigate } from 'react-router-dom';
 export default function HomeScreen() {
   const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
-  const currentUserRoleId = currentUser.roleId;
   let view;
 
-  if (currentUserRoleId !== null) {
-
+  if (currentUser !== null) {
+    const currentUserRoleId = currentUser.roleId;
     switch (currentUserRoleId) {
       case 1:
         view = <DocentView />;

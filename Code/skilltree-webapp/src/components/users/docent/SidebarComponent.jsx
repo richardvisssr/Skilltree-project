@@ -102,6 +102,11 @@ export default function SidebarComponent() {
         return "+";
     };
 
+    function logout() {
+        sessionStorage.clear();
+        navigate("/login");
+    }
+
     return (
         <aside
         id="separator-sidebar"
@@ -109,6 +114,13 @@ export default function SidebarComponent() {
         aria-label="Sidebar"
         >
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex flex-col">
+                <button
+                    className="flex font-medium justify-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    type="button"
+                    onClick={() => logout()}
+                >
+                    <span className="text-center">log uit</span>
+                </button>
                 <ul className="space-y-2 font-medium">
                     <li>
                         <button
@@ -125,7 +137,7 @@ export default function SidebarComponent() {
                     {skilltreeList()}
                 </ul>
                 <div className="absolute bottom-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
-                    <ul className="pt-4 mt-auto space-y-2 font-medium ">
+                    <ul className="mt-auto space-y-2 font-medium ">
                         {registerButton()}
                     </ul>
                 </div>
