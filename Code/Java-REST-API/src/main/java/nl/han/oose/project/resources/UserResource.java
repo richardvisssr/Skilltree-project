@@ -8,9 +8,13 @@ import nl.han.oose.project.business.services.UserService;
 import nl.han.oose.project.resources.dto.UserRegistrationDTO;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Path("/users")
 public class UserResource {
+
+    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
+    private static final String ERROR_MESSAGE = "Error ";
     private UserService userService;
 
     @POST
@@ -28,7 +32,8 @@ public class UserResource {
         try {
             return Response.status(Response.Status.OK).entity(userService.getAllUsers()).build();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            LOGGER.info(ERROR_MESSAGE + e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
