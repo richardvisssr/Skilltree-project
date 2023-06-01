@@ -1,7 +1,7 @@
 const initialState = {
     students: [],
     showCard: false,
-    selectedStudents: []
+    selectedStudents: [],
 };
 
 function studentsReducer(state = initialState, action) {
