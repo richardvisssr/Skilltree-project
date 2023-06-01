@@ -52,7 +52,7 @@ export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
 
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then(response => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
     };
 }
 
@@ -64,7 +64,7 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
         };
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.students)));
+            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
     };
 }
 
