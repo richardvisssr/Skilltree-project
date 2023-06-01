@@ -3,16 +3,6 @@ import FormFieldComponent from "./FormFieldComponent";
 import {useSelector, useDispatch} from "react-redux";
 import {addFeedbackActionAsync, fetchFeedbackSelectedStudentActionAsync} from "../../actions/StudentAction";
 
-// Dummy gebruikersobject
-const user = {
-  id: 1,
-  name: 'John Doe',
-  feedback: 'Dit is mijn feedback',
-};
-
-// Dummy sessionStorage instellen
-sessionStorage.setItem('currentUser', JSON.stringify(user));
-
 function FeedbackNodeComponent() {
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.selectedStudents);
@@ -25,20 +15,20 @@ function FeedbackNodeComponent() {
     const [customAlert, setCustomAlert] = useState("");
 
     useEffect(() => {
-        dispatchFeedback(currentNodeId, userId);
+      fetchFeedback(currentNodeId, userId);
     }, []);
 
     const handleFeedbackChange = (event) => {
-        setFeedback(event.target.value);
+      setFeedback(event.target.value);
     };
 
     const handleStudentChange = (event) => {
       const selectedStudentId = event.target.value;
       setStudentId(selectedStudentId);
-      dispatchFeedback(currentNodeId, selectedStudentId);
+      fetchFeedback(currentNodeId, selectedStudentId);
     }
 
-     const dispatchFeedback = async (currentNodeId, selectedStudentId) => {
+     const fetchFeedback = async (currentNodeId, selectedStudentId) => {
       const feedback = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
       setFeedback(feedback.feedbacks[0].feedback);
      }
@@ -58,12 +48,22 @@ function FeedbackNodeComponent() {
     }
 return (
     <>
-      <FormFieldComponent
-        fieldType="dropdown"
-        title="Feedback geven aan"
-        options={students}
+    <div className="mt-10 gap-x-6 gap-y-8 justify-center flex">
+      <select
+        name={"Feedback geven aan"}
         onChange={handleStudentChange}
-      />
+        className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      >
+      {currentUser && ( // Controleer of currentUser bestaat
+          <option value={currentUser.id}>{currentUser.name}</option>
+      )}
+      {students.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firstname} {option.lastname}
+          </option>
+      ))}
+      </select>
+      </div>
       <FormFieldComponent
         fieldType="textarea"
         title="Feedback"

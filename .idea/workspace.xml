@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/studentsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/reducers/studentsReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +300,7 @@
       <workItem from="1685086663402" duration="979000" />
       <workItem from="1685130023744" duration="5465000" />
       <workItem from="1685535035192" duration="3158000" />
-      <workItem from="1685605257178" duration="669000" />
+      <workItem from="1685605257178" duration="676000" />
     </task>
     <servers />
   </component>
