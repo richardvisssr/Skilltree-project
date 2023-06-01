@@ -5,27 +5,34 @@ import nl.han.oose.project.data.datamapper.AccountDatamapper;
 import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.AccountsDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AccountDAO {
     private AccountDatamapper datamapper;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    private PreparedStatement stmt;
 
     public AccountsDTO getAllAccounts() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllAccountsQuery());
-        connection.close();
-        return result;
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            return datamapper.map(getAllAccountsQuery());
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+            connection.close();
+        }
     }
 
     private ResultSet getAllAccountsQuery() throws SQLException {
-        var query = "SELECT ID, Email, RoleID FROM Users";
-        var stmt = connection.prepareStatement(query);
-        return stmt.executeQuery();
+        try {
+            var query = "SELECT ID, Email, RoleID FROM Users";
+            stmt = connection.prepareStatement(query);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Inject

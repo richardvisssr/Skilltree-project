@@ -21,7 +21,7 @@ function RegisterAccountComponent() {
 
     const onChangeFields = (e) => {
         const { name, value } = e.target;
-        
+
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value

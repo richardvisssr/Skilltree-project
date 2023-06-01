@@ -74,7 +74,6 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             showDeleteSkilltreeCard: false,
         }
-            
     case "skilltree/deleteNode":
         const newNodes = state.nodes.filter((node) => parseInt(node.id) !== parseInt(action.payload.nodeId));
         return {
@@ -88,7 +87,6 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             skilltrees: newTrees,
         }
-        
     default:
         return state;
     }
