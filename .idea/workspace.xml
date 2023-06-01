@@ -11,8 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/SkilltreeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/SkilltreeServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/SkilltreeResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/resources/SkilltreeResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/SkilltreeAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/SidebarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/SidebarComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/student/SidebarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/student/SidebarComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SkilltreeServiceTest">
+  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final">
     <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -353,6 +354,9 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$FeedbackResourceTest.ic" NAME="FeedbackResourceTest Coverage Results" MODIFIED="1685533649804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeServiceTest.ic" NAME="SkilltreeServiceTest Coverage Results" MODIFIED="1685625900893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_testDeleteSkilltree.ic" NAME="SkilltreeResourceTest.testDeleteSkilltree Coverage Results" MODIFIED="1685486932955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>

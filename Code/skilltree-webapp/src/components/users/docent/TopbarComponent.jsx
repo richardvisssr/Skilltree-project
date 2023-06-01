@@ -12,6 +12,7 @@ export default function TopbarComponent() {
 
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
+    const roleId = currentUser.roleId;
     const newSkilltree = useSelector((state) => state.skilltree.newSkilltree);
     const currentSkilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const selectedStudents = useSelector((state) => state.student.selectedStudents);
@@ -40,9 +41,9 @@ export default function TopbarComponent() {
         }
 
         if (newSkilltree) {
-            dispatch(fetchCreateSkillTreeActionAsync(title, description, userId));
+            dispatch(fetchCreateSkillTreeActionAsync(title, description, userId, roleId));
         } else if (currentSkilltree !== null) {
-            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId));
+            dispatch(fetchUpdateSkillTreeActionAsync(currentSkilltree.id, title, description, userId, roleId));
         }
     };
 
