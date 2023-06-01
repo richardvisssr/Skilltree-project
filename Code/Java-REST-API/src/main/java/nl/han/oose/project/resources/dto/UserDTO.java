@@ -8,7 +8,6 @@ public class UserDTO {
     private int roleId;
 
     // Default constructor
-
     public UserDTO() {
     }
 

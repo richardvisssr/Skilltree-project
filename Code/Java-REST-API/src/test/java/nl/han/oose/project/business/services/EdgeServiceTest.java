@@ -3,6 +3,7 @@ package nl.han.oose.project.business.services;
 import nl.han.oose.project.data.dao.EdgeDAO;
 import nl.han.oose.project.resources.dto.EdgeDTO;
 import nl.han.oose.project.resources.dto.EdgesDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +37,7 @@ public class EdgeServiceTest {
             var result = sut.createEdge(edgeDTO, 1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getEdges(), result.getEdges());
+            Assertions.assertEquals(expected.getEdges(), result.getEdges());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,7 +56,7 @@ public class EdgeServiceTest {
             var result = sut.getAllEdges(1);
 
             // Assert
-            org.junit.jupiter.api.Assertions.assertEquals(expected.getEdges(), result.getEdges());
+            Assertions.assertEquals(expected.getEdges(), result.getEdges());
         } catch (Exception e) {
             e.printStackTrace();
         }

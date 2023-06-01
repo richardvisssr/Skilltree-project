@@ -66,7 +66,6 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
         fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
             .then((result) => dispatch(setSelectedStudentsAction(result.users)));
-
     };
 }
 

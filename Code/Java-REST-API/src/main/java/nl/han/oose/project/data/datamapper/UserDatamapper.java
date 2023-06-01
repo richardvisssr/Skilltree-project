@@ -1,6 +1,5 @@
 package nl.han.oose.project.data.datamapper;
 
-import nl.han.oose.project.resources.dto.EdgesDTO;
 import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.UsersDTO;
 
@@ -9,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDatamapper implements Datamapper {
+public class UserDatamapper implements Datamapper<UsersDTO> {
     @Override
     public UsersDTO map(ResultSet resultSet) throws SQLException {
         List<UserDTO> users = new ArrayList<>();

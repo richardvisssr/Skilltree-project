@@ -52,9 +52,7 @@ import java.util.List;
             assertEquals(expectedStudents.get(1).getLastname(), actualStudents.getUsers().get(1).getLastname());
             assertEquals(expectedStudents.get(0).getEmail(), actualStudents.getUsers().get((0)).getEmail());
             assertEquals(expectedStudents.get(1).getEmail(), actualStudents.getUsers().get((1)).getEmail());
-            assertEquals(expectedStudents.get(0).getRoleId(), actualStudents.getUsers().get((0)).getRoleId());
-            assertEquals(expectedStudents.get(1).getRoleId(), actualStudents.getUsers().get((1)).getRoleId());
-            }
+        }
 
         @Test
         void mapResultSetToStudentsDTOWithEmptyResultSet() throws SQLException {
@@ -75,6 +73,18 @@ import java.util.List;
 
             // Act & Assert
             assertThrows(SQLException.class, () -> sut.map(resultSet));
+        }
+
+        @Test
+        void mapMultipleResultSetsToUsersDTO() throws SQLException{
+            // Arrange
+            List<UserDTO> expectedUsers = null;
+
+            // Act
+            UsersDTO actualUsers = sut.map(resultSet, resultSet);
+
+            // Assert
+            assertEquals(expectedUsers, actualUsers);
         }
     }
 

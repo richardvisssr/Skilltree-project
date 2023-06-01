@@ -133,9 +133,7 @@ public class NodeDAO {
     private int createNodeQuery(NodeRequestDTO nodeDTO, int skilltreeId) throws SQLException {
         try {
             var insertNodeQuery = "INSERT INTO Nodes (Skill, Description, PositionX, PositionY, SkillTreeID)\n" +
-                    "VALUES \n" +
-                    "\t(?, ?, ?, ?, ?)\n" +
-                    "\n" +
+                    "VALUES (?, ?, ?, ?, ?)\n" +
                     "SELECT SCOPE_IDENTITY() as id";
             stmt = connection.prepareStatement(insertNodeQuery);
             stmt.setString(1, nodeDTO.getSkill());
