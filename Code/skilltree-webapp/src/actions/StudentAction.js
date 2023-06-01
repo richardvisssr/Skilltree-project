@@ -101,7 +101,7 @@ export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
+        return fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
             .then((response) => response.json())
     };
 }

@@ -18,18 +18,14 @@ function FeedbackNodeComponent() {
     const students = useSelector((state) => state.student.selectedStudents);
     const currentNodeId = useSelector((state) => state.node.currentNode);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    // const userId = currentUser.id;
+    const userId = currentUser.id;
 
     const [feedback, setFeedback] = useState("");
     const [studentId, setStudentId] = useState("");
     const [customAlert, setCustomAlert] = useState("");
 
-    console.log(feedback)
-
     useEffect(() => {
-      if (currentUser) {
-        setFeedback(currentUser.feedback);
-      }
+        dispatchFeedback(currentNodeId, userId);
     }, []);
 
     const handleFeedbackChange = (event) => {
@@ -39,8 +35,14 @@ function FeedbackNodeComponent() {
     const handleStudentChange = (event) => {
       const selectedStudentId = event.target.value;
       setStudentId(selectedStudentId);
-      setFeedback(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+      dispatchFeedback(currentNodeId, selectedStudentId);
     }
+
+     const dispatchFeedback = async (currentNodeId, selectedStudentId) => {
+      const feedback = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+      setFeedback(feedback.feedbacks[0].feedback);
+     }
+  
 
     const addFeedback = () => {
       if (feedback === "") {
