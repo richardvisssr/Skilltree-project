@@ -13,15 +13,34 @@ public class UserDAO {
     private UserDatamapper datamapper;
     private DatabaseProperties databaseProperties;
     private Connection connection;
+    private PreparedStatement stmt;
 
     public void createUser(UserRegistrationDTO userRegistrationDTO) throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        createUserQuery(userRegistrationDTO);
-        connection.close();
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            createUserQuery(userRegistrationDTO);
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+            connection.close();
+        }
+    }
+
+    public UsersDTO getAllUsers() throws SQLException {
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+            var result = datamapper.map(getAllUsersQuery());
+            return result;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            stmt.close();
+            connection.close();
+        }
     }
 
     private void createUserQuery(UserRegistrationDTO userRegistrationDTO) throws SQLException {
-        PreparedStatement stmt = null;
         try {
             var query = "INSERT INTO Users(Firstname, Lastname, Email, Password, RoleID)" +
                     " VALUES (?, ?, ?, ?, ?)";
@@ -37,16 +56,7 @@ public class UserDAO {
         }
     }
 
-
-    public UsersDTO getAllUsers() throws SQLException {
-        connection = DriverManager.getConnection(databaseProperties.connectionString());
-        var result = datamapper.map(getAllUsersQuery());
-        connection.close();
-        return result;
-    }
-
     private ResultSet getAllUsersQuery() throws SQLException {
-        PreparedStatement stmt = null;
         try {
             var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
                     "FROM Users";

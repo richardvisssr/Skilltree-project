@@ -98,10 +98,9 @@ public class StudentDAO {
                     "JOIN userskilltree us \n" +
                     "ON u.ID = us.userId\n" +
                     "WHERE us.skilltreeId = ?";
-            var stmt = connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setInt(1, skilltreeId);
-            var result = stmt.executeQuery();
-            return result;
+            return stmt.executeQuery();
         } catch (SQLException e) {
             throw new SQLException(e);
         }
