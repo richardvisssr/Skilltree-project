@@ -42,6 +42,9 @@ export default function LinkStudentComponent() {
     }
 
     const isChecked  = (studentId) => {
+        if (!selectedStudentsFromStore || selectedStudentsFromStore.length === 0) {
+            return false;
+        }
         for (let i = 0; i < selectedStudentsFromStore.length; i++) {
             if (parseInt(selectedStudentsFromStore[i].id) === parseInt(studentId)) {
                 return true;
