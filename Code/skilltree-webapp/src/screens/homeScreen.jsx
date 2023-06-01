@@ -6,7 +6,6 @@ import StudentView from "./users/studentView";
 
 export default function HomeScreen() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    const currentUserRoleId = currentUser.roleId;
     let view;
 
     if (currentUser !== null) {
@@ -22,5 +21,13 @@ export default function HomeScreen() {
                 view = 'Onbekende userID';
                 break;
         }
+        return (
+            <div>
+                {view}
+            </div>
+        );
+    }
+    else {
+        return <Navigate to="/login" />;
     }
 }
