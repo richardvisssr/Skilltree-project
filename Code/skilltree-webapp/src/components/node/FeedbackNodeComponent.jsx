@@ -16,7 +16,6 @@ sessionStorage.setItem('currentUser', JSON.stringify(user));
 function FeedbackNodeComponent() {
     const dispatch = useDispatch();
     const students = useSelector((state) => state.student.selectedStudents);
-    const getFeedback = useSelector((state) => state.student.feedback);
     const currentNodeId = useSelector((state) => state.node.currentNode);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // const userId = currentUser.id;
@@ -25,11 +24,13 @@ function FeedbackNodeComponent() {
     const [studentId, setStudentId] = useState("");
     const [customAlert, setCustomAlert] = useState("");
 
+    console.log(feedback)
+
     useEffect(() => {
       if (currentUser) {
         setFeedback(currentUser.feedback);
       }
-    }, [currentUser]);
+    }, []);
 
     const handleFeedbackChange = (event) => {
         setFeedback(event.target.value);
@@ -38,13 +39,8 @@ function FeedbackNodeComponent() {
     const handleStudentChange = (event) => {
       const selectedStudentId = event.target.value;
       setStudentId(selectedStudentId);
-      dispatchFeedback(currentNodeId, selectedStudentId);
-    }
-
-    const dispatchFeedback = (currentNodeId, selectedStudentId) => {
       setFeedback(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
     }
-  
 
     const addFeedback = () => {
       if (feedback === "") {
@@ -69,7 +65,7 @@ return (
       <FormFieldComponent
         fieldType="textarea"
         title="Feedback"
-        value={getFeedback}
+        value={feedback}
         onChange={handleFeedbackChange}
       />
       {customAlert !== "" ?

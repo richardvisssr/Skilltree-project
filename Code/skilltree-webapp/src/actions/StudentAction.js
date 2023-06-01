@@ -103,13 +103,6 @@ export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
         };
         fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setSelectedFeedbackStudentsAction(result)));
     };
 }
 
-export function setSelectedFeedbackStudentsAction(feedback) {
-    return {
-        type: "students/setSelectedFeedbackStudent",
-        payload: feedback
-    }
-}

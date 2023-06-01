@@ -2,7 +2,6 @@ const initialState = {
     students: [],
     showCard: false,
     selectedStudents: [],
-    feedback: ""
 };
 
 function studentsReducer(state = initialState, action) {
@@ -21,11 +20,6 @@ function studentsReducer(state = initialState, action) {
             return {
                 ...state,
                 selectedStudents: action.payload,
-            }
-        case "students/setSelectedFeedbackStudent":
-            return {
-                ...state,
-                feedback: action.payload,
             }
         case "students/clearStudentCard":
             return {
