@@ -7,10 +7,7 @@ import nl.han.oose.project.data.utils.DatabaseProperties;
 import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.UserRegistrationDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDAO {
     private UserDatamapper datamapper;
@@ -24,15 +21,20 @@ public class UserDAO {
     }
 
     private void createUserQuery(UserRegistrationDTO userRegistrationDTO) throws SQLException {
-        var query = "INSERT INTO Users(Firstname, Lastname, Email, Password, RoleID)" +
-                " VALUES (?, ?, ?, ?, ?)";
-        var stmt = connection.prepareStatement(query);
-        stmt.setString(1, userRegistrationDTO.getFirstname());
-        stmt.setString(2, userRegistrationDTO.getLastname());
-        stmt.setString(3, userRegistrationDTO.getEmail());
-        stmt.setString(4, userRegistrationDTO.getPassword());
-        stmt.setInt(5, userRegistrationDTO.getRoleId());
-        stmt.executeUpdate();
+        PreparedStatement stmt = null;
+        try {
+            var query = "INSERT INTO Users(Firstname, Lastname, Email, Password, RoleID)" +
+                    " VALUES (?, ?, ?, ?, ?)";
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, userRegistrationDTO.getFirstname());
+            stmt.setString(2, userRegistrationDTO.getLastname());
+            stmt.setString(3, userRegistrationDTO.getEmail());
+            stmt.setString(4, userRegistrationDTO.getPassword());
+            stmt.setInt(5, userRegistrationDTO.getRoleId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
 
@@ -44,10 +46,15 @@ public class UserDAO {
     }
 
     private ResultSet getAllUsersQuery() throws SQLException {
-        var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
-                "FROM Users";
-        var stmt = connection.prepareStatement(query);
-        return stmt.executeQuery();
+        PreparedStatement stmt = null;
+        try {
+            var query = "SELECT ID, Firstname, Lastname, Email, RoleID\n" +
+                    "FROM Users";
+            stmt = connection.prepareStatement(query);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Inject
