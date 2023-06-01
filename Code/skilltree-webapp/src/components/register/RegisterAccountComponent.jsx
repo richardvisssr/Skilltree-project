@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BsArrowReturnLeft } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 import FormFieldComponent from "../FormFieldComponent";
 import MessageComponent from "../MessageComponent";
@@ -7,6 +9,7 @@ import "../../styles/styles.css";
 import { fetchRegisterNewUserAsyncAction } from "../../actions/UserAction";
 
 function RegisterAccountComponent() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const registeredCorrectly = useSelector((state) => state.user.registeredCorrectly);
@@ -40,11 +43,19 @@ function RegisterAccountComponent() {
         }
         return null;
     }
+    
+    const handleGoBackButton = () => {
+        navigate("/home");
+    }
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100">
             <div className="w-5/6 max-w-md">
                 <div className="bg-white rounded-lg shadow-xl p-6">
+                    <BsArrowReturnLeft
+                        className="cursor-pointer"
+                        onClick={handleGoBackButton}
+                    />
                     <h2 className="text-2xl font-semibold mb-4 text-center">Registreer</h2>
                     {showMessage()}
                     <FormFieldComponent
