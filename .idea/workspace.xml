@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/data/dao/StudentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/actions/StudentAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/LinkStudentComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/LinkStudentComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,7 @@
         <option name="SERVER" />
         <option name="BINDING_SET_NAME" value="" />
         <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="main-server-group" />
+        <option name="SERVER_GROUP" />
         <option name="USERNAME" value="" />
         <option name="CREDENTIAL_ALIAS" />
       </server-settings>
@@ -152,37 +150,106 @@
         </option>
       </method>
     </configuration>
-    <configuration name="All in Java-REST-API" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SkilltreeResourceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java-REST-API" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NodeResourceTest.testDeleteNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.project.resources.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.resources" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.resources.SkilltreeResourceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SkilltreeResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SkilltreeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java-REST-API" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.project.business.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.business.services" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.business.services.SkilltreeServiceTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkilltreeServiceTest.testGetAllDocentSkilltrees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java-REST-API" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.project.business.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.business.services" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.business.services.SkilltreeServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllDocentSkilltrees" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkilltreeServiceTest.testGetAllSkilltrees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java-REST-API" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.project.business.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.business.services" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.business.services.SkilltreeServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllSkilltrees" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkilltreeServiceTest.testGetAllStudentSkilltrees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java-REST-API" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.project.business.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.project.business.services" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.project.business.services.SkilltreeServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllStudentSkilltrees" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final" />
-      <item itemvalue="JUnit.All in Java-REST-API" />
-      <item itemvalue="JUnit.NodeResourceTest.testDeleteNode" />
-      <item itemvalue="JUnit.SkilltreeResourceTest" />
+      <item itemvalue="JUnit.SkilltreeResourceTest (1)" />
+      <item itemvalue="JUnit.SkilltreeServiceTest" />
+      <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllDocentSkilltrees" />
+      <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllSkilltrees" />
+      <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllStudentSkilltrees" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SkilltreeServiceTest" />
+        <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllDocentSkilltrees" />
+        <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllStudentSkilltrees" />
+        <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllSkilltrees" />
+        <item itemvalue="JUnit.SkilltreeResourceTest (1)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="69a24743-6579-4692-9b85-5d09e67ca007" name="Changes" comment="" />
+      <changelist id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="" />
       <created>1685519528485</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -222,6 +289,8 @@
       <workItem from="1685605381623" duration="531000" />
       <workItem from="1685486686253" duration="1073000" />
       <workItem from="1685607390068" duration="668000" />
+      <workItem from="1685690936426" duration="1107000" />
+      <workItem from="1685692250296" duration="600000" />
     </task>
     <servers />
   </component>
@@ -242,59 +311,86 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Code/Java-REST-API/src/main/java/nl/han/oose/project/business/services/SkilltreeService.java</url>
-          <line>12</line>
-          <properties class="nl.han.oose.project.business.services.SkilltreeService">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_getAllSkilltreesWithException.ic" NAME="SkilltreeResourceTest.getAllSkilltreesWithException Coverage Results" MODIFIED="1685088415480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackDatamapperTest.ic" NAME="FeedbackDatamapperTest Coverage Results" MODIFIED="1685531028982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.data.datamapper.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__1_.ic" NAME="All in Java-REST-API (1) Coverage Results" MODIFIED="1683535930069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1685605915569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest.ic" NAME="UserRegistrationDTOTest Coverage Results" MODIFIED="1685087384355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testDeleteNode.ic" NAME="NodeResourceTest.testDeleteNode Coverage Results" MODIFIED="1685092608759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testGetHighestNodeId.ic" NAME="NodeResourceTest.testGetHighestNodeId Coverage Results" MODIFIED="1685088931239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackResourceTest_updateFeedback.ic" NAME="FeedbackResourceTest.updateFeedback Coverage Results" MODIFIED="1685532705576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackServiceTest.ic" NAME="FeedbackServiceTest Coverage Results" MODIFIED="1685534591649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeServiceTest.ic" NAME="SkilltreeServiceTest Coverage Results" MODIFIED="1685625900893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest.ic" NAME="NodeResourceTest Coverage Results" MODIFIED="1685088777209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_testDeleteSkilltree.ic" NAME="SkilltreeResourceTest.testDeleteSkilltree Coverage Results" MODIFIED="1685486932955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeServiceTest_testGetAllSkilltrees.ic" NAME="SkilltreeServiceTest.testGetAllSkilltrees Coverage Results" MODIFIED="1685625563606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest.ic" NAME="SkilltreeResourceTest Coverage Results" MODIFIED="1685487031271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__2_.ic" NAME="All in Java-REST-API (2) Coverage Results" MODIFIED="1683534149553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_getAllNodesWithException.ic" NAME="NodeResourceTest.getAllNodesWithException Coverage Results" MODIFIED="1685088673526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackResourceTest_getFeedback.ic" NAME="FeedbackResourceTest.getFeedback Coverage Results" MODIFIED="1685522766028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$EdgeServiceTest_testDeleteEdge.ic" NAME="EdgeServiceTest.testDeleteEdge Coverage Results" MODIFIED="1685089489084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest_testConstructorAndGetters.ic" NAME="UserRegistrationDTOTest.testConstructorAndGetters Coverage Results" MODIFIED="1685093575210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    <SUITE FILE_PATH="coverage/erlang_project$StudentServiceTest_testAddNewStudents.ic" NAME="StudentServiceTest.testAddNewStudents Coverage Results" MODIFIED="1685548696700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.business.services.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_updateNodesPositions.ic" NAME="NodeResourceTest.updateNodesPositions Coverage Results" MODIFIED="1685088811160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/erlang_project$DatabasePropertiesTest_testLoadingPropertiesFile.ic" NAME="DatabasePropertiesTest.testLoadingPropertiesFile Coverage Results" MODIFIED="1685536570931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.data.utils.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1685691022722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackResourceTest_testUpdateFeedbackWithException.ic" NAME="FeedbackResourceTest.testUpdateFeedbackWithException Coverage Results" MODIFIED="1685532799638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testDeleteNode.ic" NAME="NodeResourceTest.testDeleteNode Coverage Results" MODIFIED="1685092608759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$java_in_Java_REST_API.ic" NAME="java in Java-REST-API Coverage Results" MODIFIED="1685447828766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackDTOTest.ic" NAME="FeedbackDTOTest Coverage Results" MODIFIED="1685533799430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/erlang_project$JBoss_WildFly_25_0_0_Final.ic" NAME="JBoss/WildFly 25.0.0.Final Coverage Results" MODIFIED="1684144404086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_testGetHighestNodeId.ic" NAME="NodeResourceTest.testGetHighestNodeId Coverage Results" MODIFIED="1685088931239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/erlang_project$NodeResourceTest_updateNodesPositions.ic" NAME="NodeResourceTest.updateNodesPositions Coverage Results" MODIFIED="1685088811160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API__2_.ic" NAME="All in Java-REST-API (2) Coverage Results" MODIFIED="1683534149553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest_testConstructorAndGetters.ic" NAME="UserRegistrationDTOTest.testConstructorAndGetters Coverage Results" MODIFIED="1685093575210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbacksDTOTest.ic" NAME="FeedbacksDTOTest Coverage Results" MODIFIED="1685525745865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest.ic" NAME="UserRegistrationDTOTest Coverage Results" MODIFIED="1685087384355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest.ic" NAME="SkilltreeResourceTest Coverage Results" MODIFIED="1685487031271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest__1_.ic" NAME="SkilltreeResourceTest (1) Coverage Results" MODIFIED="1685625317666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$FeedbackResourceTest.ic" NAME="FeedbackResourceTest Coverage Results" MODIFIED="1685533649804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_getAllSkilltreesWithException.ic" NAME="SkilltreeResourceTest.getAllSkilltreesWithException Coverage Results" MODIFIED="1685088415480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$SkilltreeResourceTest_testDeleteSkilltree.ic" NAME="SkilltreeResourceTest.testDeleteSkilltree Coverage Results" MODIFIED="1685486932955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.resources.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/erlang_project$CorsTest.ic" NAME="CorsTest Coverage Results" MODIFIED="1685535713807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.project.data.utils.*</FILTER>
     </SUITE>
   </component>
 </project>

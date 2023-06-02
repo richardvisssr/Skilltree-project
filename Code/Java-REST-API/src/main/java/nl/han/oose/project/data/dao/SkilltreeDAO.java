@@ -14,10 +14,27 @@ public class SkilltreeDAO {
     private Connection connection;
     private PreparedStatement stmt;
 
-    public SkilltreesDTO getAllSkilltrees(int gebruikerId) throws SQLException {
+    public SkilltreesDTO getAllStudentSkilltrees(int gebruikerId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
-            return datamapper.map(getAllSkilltreesQuery(gebruikerId));
+            return datamapper.map(getAllStudentSkilltreesQuery(gebruikerId));
+
+        }
+        catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        finally {
+            connection.close();
+            stmt.close();
+        }
+    }
+
+    public SkilltreesDTO getAllDocentSkilltrees(int gebruikerId) throws SQLException {
+
+        try {
+            connection = DriverManager.getConnection(databaseProperties.connectionString());
+                return datamapper.map(getAllDocentSkilltreesQuery(gebruikerId));
+
         } catch (SQLException e) {
             throw new SQLException(e);
         }
@@ -27,11 +44,14 @@ public class SkilltreeDAO {
         }
     }
 
+
+//    SELECT * FROM SkillTrees where ID in (Select skilltreeID FROM userskilltree WHERE userID = 2)
+
     public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             createSkilltreeQuery(skilltreeDTO, gebruikerId);
-            return getAllSkilltrees(gebruikerId);
+            return getAllDocentSkilltrees(gebruikerId);
         } catch (SQLException e) {
             throw new SQLException(e);
         }
@@ -68,7 +88,7 @@ public class SkilltreeDAO {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             updateSkilltreeQuery(skilltreeDTO, gebruikerId);
-            return getAllSkilltrees(gebruikerId);
+            return getAllDocentSkilltrees(gebruikerId);
         } catch (SQLException e) {
             throw new SQLException(e);
         }
@@ -78,9 +98,20 @@ public class SkilltreeDAO {
         }
     }
 
-    private ResultSet getAllSkilltreesQuery(int gebruikerId) throws SQLException {
+    private ResultSet getAllDocentSkilltreesQuery(int gebruikerId) throws SQLException {
         try {
             var query = "SELECT * FROM Skilltrees WHERE UserID = ?";
+            stmt = connection.prepareStatement(query);
+            stmt.setInt(1, gebruikerId);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
+    private ResultSet getAllStudentSkilltreesQuery(int gebruikerId) throws SQLException {
+        try {
+            var query = "SELECT * FROM SkillTrees where ID in (Select skilltreeID FROM userskilltree WHERE userID = ?)";
             stmt = connection.prepareStatement(query);
             stmt.setInt(1, gebruikerId);
             return stmt.executeQuery();

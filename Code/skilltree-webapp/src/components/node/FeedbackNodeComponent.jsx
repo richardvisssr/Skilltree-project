@@ -54,7 +54,7 @@ return (
         className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
       {currentUser && ( // Controleer of currentUser bestaat
-          <option value={currentUser.id}>{currentUser.name}</option>
+          <option value={currentUser.id}>{currentUser.firstname} {currentUser.lastname}</option>
       )}
       {students.map((option) => (
           <option key={option.id} value={option.id}>
