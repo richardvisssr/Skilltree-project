@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormFieldComponent({
+function formFieldComponent({
     fieldType = "input",
     title,
     label,
@@ -42,20 +42,19 @@ function FormFieldComponent({
         } else if (fieldType === "dropdown") {
             return (
                 <select
-                name={title}
-                id={title}
-                value={value}
-                onChange={onChange}
-                className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            >
-                <option value="">Selecteer een student</option>
-                {options.map((option) => (
-                    <option key={option.id} value={option.id}>
-                        {option.firstname} {option.lastname}
-                    </option>
-                ))}
-            </select>
-            
+                    name={title}
+                    id={title}
+                    value={value}
+                    onChange={onChange}
+                    className="block w-full px-4 py-2 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+
+                    {options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
             );
         }
         return null;
@@ -79,4 +78,4 @@ function FormFieldComponent({
     return null;
 }
 
-export default FormFieldComponent;
+export default formFieldComponent;

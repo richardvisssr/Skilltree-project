@@ -27,10 +27,14 @@ function FeedbackNodeComponent() {
       fetchFeedback(currentNodeId, selectedStudentId);
     }
 
-     const fetchFeedback = async (currentNodeId, selectedStudentId) => {
-      const feedback = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
-      setFeedback(feedback.feedbacks[0].feedback);
-     }
+    const fetchFeedback = async (currentNodeId, selectedStudentId) => {
+      const feedbackData = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+      if (feedbackData.feedbacks.length > 0) {
+        setFeedback(feedbackData.feedbacks[0].feedback);
+      } else {
+        setFeedback("Nog geen feedback"); 
+      }
+    }
   
 
     const addFeedback = () => {
@@ -47,21 +51,28 @@ function FeedbackNodeComponent() {
     }
 return (
     <>
-    <div className="mt-10 gap-x-6 gap-y-8 justify-center flex">
-      <select
-        name={"Feedback geven aan"}
-        onChange={handleStudentChange}
-        className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      >
-      {currentUser && ( // Controleer of currentUser bestaat
-          <option value={currentUser.id}>{currentUser.firstname} {currentUser.lastname}</option>
-      )}
-      {students.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.firstname} {option.lastname}
-          </option>
-      ))}
-      </select>
+      <div className="mt-10 gap-x-6 gap-y-8 justify-center flex">
+        <select
+          name={"Feedback geven aan"}
+          onChange={handleStudentChange}
+          className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          {currentUser && (
+            <option value={currentUser.id}>
+              {currentUser.firstname} {currentUser.lastname}
+            </option>
+          )}
+          {students.map((option) => {
+            if (currentUser && option.id === currentUser.id) {
+              return null; 
+            }
+            return (
+              <option key={option.id} value={option.id}>
+                {option.firstname} {option.lastname}
+              </option>
+            );
+          })}
+        </select>
       </div>
       <FormFieldComponent
         fieldType="textarea"
