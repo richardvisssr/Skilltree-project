@@ -86,23 +86,27 @@ function UpdateNodeComponent() {
                         <div className="bg-white px-4 pb-4 pt-5">
                             <FormFieldComponent
                                 title="Vaardigheid" 
+                                label="Vaardigheid" 
                                 value={skill}
                                 onChange={handleSkillChange}
                             />
                             <FormFieldComponent
                                 title="Beschrijving"
+                                label="Beschrijving"
                                 value={description}
                                 onChange={handleDescriptionChange}
                             />
                             <FormFieldComponent
                                 fieldType="textarea"
                                 title="Leeruitkomst"
+                                label="Leeruitkomst"
                                 value={learningOutcome}
                                 onChange={handleLearningOutcomeChange}
                             />
                             <FormFieldComponent
                                 fieldType="textarea"
                                 title="BeoordelingsCriteria"
+                                label="Beoordelingscriteria"
                                 value={mapAssessmentCriteria()}
                                 onChange={handleAssessmentCriteriaChange}
                             />
