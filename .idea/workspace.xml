@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/utils/CorsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/Java-REST-API.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/SkilltreeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/business/services/SkilltreeServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/EdgeDatamapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/EdgeDatamapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/NodeDatamapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/datamapper/NodeDatamapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/utils/DatabasePropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Java-REST-API/src/test/java/nl/han/oose/project/data/utils/DatabasePropertiesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +290,7 @@
       <workItem from="1685605381623" duration="531000" />
       <workItem from="1685486686253" duration="1073000" />
       <workItem from="1685607390068" duration="668000" />
-      <workItem from="1685692179554" duration="3070000" />
+      <workItem from="1685692179554" duration="5470000" />
     </task>
     <servers />
   </component>
@@ -375,7 +372,7 @@
     <SUITE FILE_PATH="coverage/erlang_project$DatabasePropertiesTest_testLoadingPropertiesFile.ic" NAME="DatabasePropertiesTest.testLoadingPropertiesFile Coverage Results" MODIFIED="1685536570931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.data.utils.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1685695068014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/erlang_project$All_in_Java_REST_API.ic" NAME="All in Java-REST-API Coverage Results" MODIFIED="1685697519900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/erlang_project$UserRegistrationDTOTest.ic" NAME="UserRegistrationDTOTest Coverage Results" MODIFIED="1685094366847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.project.resources.dto.*</FILTER>
     </SUITE>
