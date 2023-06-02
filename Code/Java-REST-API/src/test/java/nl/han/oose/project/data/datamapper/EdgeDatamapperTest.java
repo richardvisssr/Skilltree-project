@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -56,5 +57,14 @@ public class EdgeDatamapperTest {
 
         // Assert
         Assertions.assertEquals(expectedEdges, actualEdges);
+    }
+
+    @Test
+    void testMapThrowsSQLException() throws SQLException {
+        // Arrange
+        when(resultSet.next()).thenThrow(new SQLException());
+
+        // Act & Assert
+        assertThrows(SQLException.class, () -> sut.map(resultSet));
     }
 }

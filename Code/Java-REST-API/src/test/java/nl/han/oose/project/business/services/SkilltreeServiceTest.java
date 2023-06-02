@@ -96,4 +96,20 @@ public class SkilltreeServiceTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void testDeleteSkilltree() {
+        try {
+            // Arrange
+            sut.createSkilltree(new SkilltreeDTO(1, "test", "test"), 1);
+
+            // Act
+            sut.deleteSkilltree(1);
+
+            // Assert
+            verify(skilltreeDAO, times(1)).deleteSkilltree(anyInt());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
