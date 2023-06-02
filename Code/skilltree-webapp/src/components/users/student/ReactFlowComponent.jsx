@@ -1,4 +1,4 @@
-import React, { useRef, useEffect }  from "react";
+import React, {useRef, useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactFlow, {
   ReactFlowProvider,
@@ -11,10 +11,7 @@ import CustomNode from "../../node/users/student/CustomNode";
 import FloatingEdge from "../../edges/users/student/FloatingEdge";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
-import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
-import { fetchHighestNodeIdActionAsync } from "../../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../../actions/EdgeAction";
-import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
+import { fetchAllNodesFromSkilltree, fetchAllEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
 import "reactflow/dist/style.css";
 import "../../../styles/styles.css";
 
@@ -28,83 +25,88 @@ const nodeTypes = {
 
 
 function ReactFlowComponent() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const reactFlowWrapper = useRef(null);
-    const [nodes, setNodes] = useNodesState([]);
-    const [edges, setEdges] = useEdgesState([]);
-    const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
-    const allFetchedEdges = useSelector((state) => state.skilltree.edges);
-    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
-    const highestNodeId = useSelector((state) => state.node.highestNodeId);
-    const showCard = useSelector((state) => state.node.showCard);
+  const reactFlowWrapper = useRef(null);
+  const [nodes, setNodes] = useNodesState([]);
+  const [edges, setEdges] = useEdgesState([]);
 
-    const defaultEdgeOptions = {
-        style: { strokeWidth: 3, stroke: 'black' },
-        type: 'floating',
-        markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: 'black',
-        },
-    };
+  const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+  const deleteSwitchNode = useSelector((state) => state.skilltree.deleteSwitchNode);
+  const deleteSwitchEdge = useSelector((state) => state.skilltree.deleteSwitchEdge);
 
-    const connectionLineStyle = {
-        strokeWidth: 3,
-        stroke: 'black',
-    };
+  const defaultEdgeOptions = {
+    style: { strokeWidth: 3, stroke: 'black' },
+    type: 'floating',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      color: 'black',
+    },
+  };
 
-    let skilltreeId;
+  const connectionLineStyle = {
+    strokeWidth: 3,
+    stroke: 'black',
+  };
+
+  useEffect(() => {
     if (skilltree !== null) {
-      skilltreeId = skilltree.id;
+      fetchEdges();
     }
+  }, [skilltree, deleteSwitchEdge]);
 
-    useEffect(() => {
-      dispatch(fetchHighestNodeIdActionAsync());
-      dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
-      dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
-    }, [skilltreeId,showCard]);
-
-    const convertFetchToEdges = () => {
-        const tempArray = [];
-        allFetchedEdges.map((edge) => {
-        const tempObj = {
-            id: `${edge.edgeId}`,
-            source: `${edge.sourceId}`,
-            target: `${edge.targetId}`,
-            type: 'floating',
-            style: { strokeWidth: 3, stroke: 'black' },
-            markerEnd: {
-                type: MarkerType.ArrowClosed,
-                color: 'black',
-            },
-        }
-        tempArray.push(tempObj);
-        })
-        setEdges(tempArray);
+  useEffect(() => {
+    if (skilltree !== null) {
+      fetchNodes();
     }
+  }, [skilltree, deleteSwitchNode]);
 
-    useEffect(() => {
-      convertFetchToNodes();
-      convertFetchToEdges();
-    }, [allFetchedNodes, allFetchedEdges])
-
-    useEffect(() => {
-    }, [highestNodeId])
-
-    const convertFetchToNodes = () => {
-      const tempArray = [];
-      allFetchedNodes.map((node) => {
-        const tempObj = {
-          id: `${node.id}`,
-          type: 'custom',
-          data: { label: `${node.skill}`, nodeId: `${node.id}` },
-          position: { x: node.positionX, y: node.positionY },
-        }
-        tempArray.push(tempObj);
-      })
-      setNodes(tempArray);
+  const fetchNodes = async () => {
+    const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
+    if (result) {
+      setNodes(convertFetchToNodes(result));
     }
+  };
+
+  const convertFetchToNodes = (fetchedNodes) => {
+    const nodes = [];
+    fetchedNodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        type: 'custom',
+        data: { label: `${node.skill}`, nodeId: `${node.id}` },
+        position: { x: node.positionX, y: node.positionY },
+      }
+      nodes.push(tempObj);
+    })
+    return nodes;
+  }
+
+  const fetchEdges = async () => {
+    const result = await dispatch(fetchAllEdgesFromSkilltree(skilltree.id));
+    if (result) {
+      setEdges(convertFetchToEdges(result));
+    }
+  }
+
+  const convertFetchToEdges = (fetchedEdges) => {
+    const edges = [];
+    fetchedEdges.map((edge) => {
+      const tempObj = {
+        id: `${edge.edgeId}`,
+        source: `${edge.sourceId}`,
+        target: `${edge.targetId}`,
+        type: 'floating',
+        style: { strokeWidth: 3, stroke: 'black' },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: 'black',
+        },
+      }
+      edges.push(tempObj);
+    })
+    return edges;
+  }
 
     return (
       <ReactFlowProvider>

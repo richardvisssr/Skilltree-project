@@ -9,6 +9,7 @@ import {
     setCurrentSkilltreeAction,
 } from "../../../actions/SkilltreeAction";
 import { showCreateCard } from "../../../actions/NodeAction";
+import LogoutComponent from "../../LogoutComponent";
 
 export default function SidebarComponent() {
     const navigate = useNavigate();
@@ -84,18 +85,9 @@ export default function SidebarComponent() {
                 <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
                 </ul>
-                <div className="absolute bottom-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
+                <div className="absolute bottom-0 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
                     <ul className="mt-auto space-y-2 font-medium ">
-                        <button
-                            type="button"
-                            className="flex z-50 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                            onClick={() => logout()}
-                        >
-                            <div className="flex" >
-                                <AiOutlineLogout size={20} />
-                                <span className="ml-6">Log uit</span>
-                            </div>
-                        </button>
+                        <LogoutComponent />
                     </ul>
                 </div>
             </div>

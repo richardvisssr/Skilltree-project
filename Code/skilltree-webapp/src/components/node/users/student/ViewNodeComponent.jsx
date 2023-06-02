@@ -6,19 +6,35 @@ import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 import FormFieldComponent from "../../../FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
+import {fetchAllNodesFromSkilltree} from "../../../../actions/SkilltreeAction";
 import "../nodeInfoStyle.css";
 
 function ViewNodeComponent() {
-    const nodes = useSelector((state) => state.skilltree.nodes)
+    const dispatch = useDispatch();
+
     const currentNodeId = useSelector((state) => state.node.currentNode)
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
 
-    const dispatch = useDispatch();
+    const [nodes, setNodes] = useState([]);
+
+    useEffect( () => {
+        getNodes();
+    }, []);
+
+    const getNodes = async () => {
+        const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
+        setNodes(result);
+    }
 
     useEffect(() => {
+        if (nodes.length === 0) {
+            return;
+        }
         const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
         
         const tempArr = [];
@@ -32,7 +48,7 @@ function ViewNodeComponent() {
         setDescription(currentNode.description ?? "");
         setAssessmentCriteria(tempArr ?? []);
         setLearningOutcome(currentNode.learningOutcome ?? "");
-    }, []);
+    }, [nodes]);
 
     const mapAssessmentCriteria = () => {
         let returnString = "";

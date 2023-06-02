@@ -1,251 +1,217 @@
-import React, { useState, useRef, useCallback, useEffect }  from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ReactFlow, {
-  ReactFlowProvider,
-  addEdge,
-  useNodesState,
-  useEdgesState,
-  Controls, MarkerType,
-} from 'reactflow';
+import ReactFlow, {Controls, MarkerType, ReactFlowProvider, useEdgesState, useNodesState} from "reactflow";
+import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
+import React, {useCallback, useEffect, useRef, useState} from "react";
+import FloatingEdge from "../../edges/users/docent/FloatingEdge";
 import CustomNode from "../../node/users/docent/CustomNode";
+import {useDispatch, useSelector} from "react-redux";
+import { fetchAllNodesFromSkilltree, fetchAllEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchCreateEdgeActionAsync } from "../../../actions/EdgeAction";
+import {fetchAllNodesPositionsActionAsync, fetchCreateNodeActionAsync} from "../../../actions/NodeAction";
 import LinkStudentComponent from "./LinkStudentComponent";
 
-import FloatingEdge from "../../edges/users/docent/FloatingEdge";
-import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
-
-import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
-import { fetchCreateNodeActionAsync, fetchHighestNodeIdActionAsync, fetchAllNodesPositionsActionAsync } from "../../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree, fetchCreateEdgeActionAsync } from "../../../actions/EdgeAction";
-import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
-import "reactflow/dist/style.css";
-import "../../../styles/styles.css";
-
 const edgeTypes = {
-    floating: FloatingEdge,
+  floating: FloatingEdge,
 };
 
 const nodeTypes = {
-    custom: CustomNode,
+  custom: CustomNode,
 };
 
-
 function ReactFlowComponent() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const reactFlowWrapper = useRef(null);
-    const [reactFlowInstance, setReactFlowInstance] = useState(null);
-    const [nodes, setNodes, onNodesChange] = useNodesState([]);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-    const allFetchedNodes = useSelector((state) => state.skilltree.nodes);
-    const allFetchedEdges = useSelector((state) => state.skilltree.edges);
-    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
-    const highestNodeId = useSelector((state) => state.node.highestNodeId);
-    const showStudentCard = useSelector((state) => state.student.showCard);
-    const showCard = useSelector((state) => state.node.showCard);
-    const [currentNodeId, setCurrentNodeId] = useState(0);
-    const [deletedEdge, setDeletedEdge] = useState(false);
+  const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
-    const deleteEdge = (id) => {
-        setEdges((eds) => eds.filter((e) => e.id !== id));
-    }
+  const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+  const deleteSwitchNode = useSelector((state) => state.skilltree.deleteSwitchNode);
+  const deleteSwitchEdge = useSelector((state) => state.skilltree.deleteSwitchEdge);
+  const showStudentCard = useSelector((state) => state.student.showCard);
 
-    const defaultEdgeOptions = {
-        style: { strokeWidth: 3, stroke: 'black' },
-        type: 'floating',
-        markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: 'black',
-        },
-        data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
-    };
+  const defaultEdgeOptions = {
+    style: { strokeWidth: 3, stroke: 'black' },
+    type: 'floating',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      color: 'black',
+    },
+  };
 
-    const connectionLineStyle = {
-        strokeWidth: 3,
-        stroke: 'black',
-    };
+  const connectionLineStyle = {
+    strokeWidth: 3,
+    stroke: 'black',
+  };
 
-    let skilltreeId;
+  useEffect(() => {
     if (skilltree !== null) {
-        skilltreeId = skilltree.id;
+      fetchEdges();
     }
+  }, [skilltree, deleteSwitchEdge]);
 
-    useEffect(() => {
-        dispatch(fetchHighestNodeIdActionAsync());
-        dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-        dispatch(fetchallEdgesFromSkilltree(skilltreeId));
-        dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
-    }, [skilltreeId,showCard]);
-
-    const convertFetchToEdges = () => {
-        const tempArray = [];
-        allFetchedEdges.map((edge) => {
-            const tempObj = {
-                id: `${edge.edgeId}`,
-                source: `${edge.sourceId}`,
-                target: `${edge.targetId}`,
-                type: 'floating',
-                style: { strokeWidth: 3, stroke: 'black' },
-                markerEnd: {
-                    type: MarkerType.ArrowClosed,
-                    color: 'black',
-                },
-                data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
-            }
-            tempArray.push(tempObj);
-        })
-        setEdges(tempArray);
+  useEffect(() => {
+    if (skilltree !== null) {
+        fetchNodes();
     }
+  }, [skilltree, deleteSwitchNode]);
 
-    useEffect(() => {
-        convertFetchToNodes();
-        convertFetchToEdges();
-    }, [allFetchedNodes, allFetchedEdges])
-
-    useEffect(() => {
-        setCurrentNodeId(highestNodeId + 1)
-    }, [highestNodeId])
-
-    const showStudentCardComponent = () => {
-        if (showStudentCard) {
-            return (
-                <LinkStudentComponent />
-            )
-        }
-        return null;
+  const fetchNodes = async () => {
+    const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
+    if (result) {
+      setNodes(convertFetchToNodes(result));
     }
+  };
 
-    const convertFetchToNodes = () => {
-        const tempArray = [];
-        allFetchedNodes.map((node) => {
-            const tempObj = {
-            id: `${node.id}`,
-            type: 'custom',
-            data: { label: `${node.skill}`, nodeId: `${node.id}` },
-            position: { x: node.positionX, y: node.positionY },
-            }
-            tempArray.push(tempObj);
-        })
-        setNodes(tempArray);
+  const convertFetchToNodes = (fetchedNodes) => {
+    const nodes = [];
+    fetchedNodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        type: 'custom',
+        data: { label: `${node.skill}`, nodeId: `${node.id}` },
+        position: { x: node.positionX, y: node.positionY },
+      }
+      nodes.push(tempObj);
+    })
+    return nodes;
+  }
+
+  const fetchEdges = async () => {
+    const result = await dispatch(fetchAllEdgesFromSkilltree(skilltree.id));
+    if (result) {
+      setEdges(convertFetchToEdges(result));
     }
+  }
 
-    const onConnect = useCallback((params) => {
-        if(params.source === params.target) {
-            return;
-        }
-        setEdges((eds) => addEdge(params, eds))
-    }, []);
-
-    useEffect(() => {
-        if(!deletedEdge) {
-            const lastFetchedEdge = allFetchedEdges[allFetchedEdges.length - 1];
-            if (edges.length > 0) {
-                const lastEdge = edges[edges.length - 1];
-                if (lastFetchedEdge !== undefined && lastEdge.id === lastFetchedEdge.edgeId) {
-                    return;
-                }
-                dispatch(fetchCreateEdgeActionAsync(lastEdge.source, lastEdge.target, skilltreeId, lastEdge.id));
-            }
-        } else {
-            setDeletedEdge(false);
-        }
-    }, [edges])
-
-
-    const onDragOver = useCallback((event) => {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'move';
-    }, []);
-
-    const onDrop = useCallback(
-        (event) => {
-            event.preventDefault();
-            const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-            const type = event.dataTransfer.getData('application/reactflow');
-
-            // check if the dropped element is valid
-            if (typeof type === 'undefined' || !type) {
-                return;
-            }
-
-            const position = reactFlowInstance.project({
-                x: event.clientX - reactFlowBounds.left,
-                y: event.clientY - reactFlowBounds.top,
-            });
-
-            setCurrentNodeId(currentNodeId + 1);
-
-            //aanmaken
-            const label = `Nieuwe node`
-            const description = "";
-            const assessmentCriteria = [];
-            const learningOutcome = "";
-            dispatch(fetchCreateNodeActionAsync(currentNodeId, label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltreeId))
-
-            const newNode = {
-                id: `${currentNodeId}`,
-                type,
-                position,
-                data: { label: `${label}`, nodeId: `${currentNodeId}` }
-            };
-
-            setNodes((prevNodes) => [...prevNodes, newNode]);
+  const convertFetchToEdges = (fetchedEdges) => {
+    const edges = [];
+    fetchedEdges.map((edge) => {
+      const tempObj = {
+        id: `${edge.edgeId}`,
+        source: `${edge.sourceId}`,
+        target: `${edge.targetId}`,
+        type: 'floating',
+        style: { strokeWidth: 3, stroke: 'black' },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: 'black',
         },
-    );
+      }
+      edges.push(tempObj);
+    })
+    return edges;
+  }
 
-    const onPositionClick = () => {
-        const tempArray = [];
-        nodes.map((node) => {
-        const tempObj = {
-            id: `${node.id}`,
-            positionX: node.position.x,
-            positionY: node.position.y,
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }, [skilltree]);
+
+  const onDrop = useCallback(
+      async (event) => {
+        event.preventDefault();
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        const type = event.dataTransfer.getData('application/reactflow');
+
+        // check if the dropped element is valid
+        if (typeof type === 'undefined' || !type) {
+          return;
         }
-        tempArray.push(tempObj);
-        })
-        dispatch(fetchAllNodesPositionsActionAsync(skilltreeId, tempArray));
-    };
 
-    return (
-        <ReactFlowProvider>
-            <div className="w-full flex-auto" ref={reactFlowWrapper}>
-                <ReactFlow
-                    nodes={nodes}
-                    edges={edges}
-                    edgeTypes={edgeTypes}
-                    nodeTypes={nodeTypes}
-                    onNodesChange={onNodesChange}
-                    onEdgesChange={onEdgesChange}
-                    onConnect={onConnect}
-                    onInit={setReactFlowInstance}
-                    onDrop={onDrop}
-                    onDragOver={onDragOver}
-                    connectionLineComponent={ConnectionLineStyle}
-                    connectionLineStyle={connectionLineStyle}
-                    defaultEdgeOptions={defaultEdgeOptions}
-                    fitView
-                    minZoom={0.2}
-                    maxZoom={4}
-                    >
-                    <Controls />
-                </ReactFlow>
-                <button
-                    className="
-                        absolute
-                        bottom-0
-                        right-0 m-4
-                        bg-blue-500
-                        hover:bg-blue-700
-                        text-white
-                        font-bold py-2
-                        px-4 rounded"
-                        onClick={onPositionClick}
-                    >
-                        Update Posities
-                    </button>
-            </div>
-            {showStudentCardComponent()}
-        </ReactFlowProvider>
-    );
+        const position = reactFlowInstance.project({
+          x: event.clientX - reactFlowBounds.left,
+          y: event.clientY - reactFlowBounds.top,
+        });
+
+        //aanmaken
+        const label = `Nieuwe node`
+        const description = "";
+        const assessmentCriteria = [];
+        const learningOutcome = "";
+        await dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltree.id));
+        await fetchNodes();
+      }, [reactFlowInstance, skilltree]
+  );
+
+  const onConnect = useCallback(
+  async (params) => {
+      if(params.source === params.target) {
+        return;
+      }
+      const edgeId = `${params.source}-${params.target}`;
+
+      if(edges.find((edge) => edge.id === edgeId)) {
+        return;
+      }
+
+      await dispatch(fetchCreateEdgeActionAsync(params.source, params.target, skilltree.id, edgeId));
+      await fetchEdges();
+  }, [edges]);
+
+  const onPositionClick = () => {
+    const tempArray = [];
+    nodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        positionX: node.position.x,
+        positionY: node.position.y,
+      }
+      tempArray.push(tempObj);
+    })
+    dispatch(fetchAllNodesPositionsActionAsync(skilltree.id, tempArray));
+  };
+
+  const showStudentCardComponent = () => {
+    if (showStudentCard) {
+      return (
+          <LinkStudentComponent />
+      )
+    }
+    return null;
+  }
+
+  return (
+    <ReactFlowProvider>
+      <div className="w-full flex-auto" ref={reactFlowWrapper}>
+        <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            edgeTypes={edgeTypes}
+            nodeTypes={nodeTypes}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onInit={setReactFlowInstance}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            connectionLineComponent={ConnectionLineStyle}
+            connectionLineStyle={connectionLineStyle}
+            defaultEdgeOptions={defaultEdgeOptions}
+            fitView
+            minZoom={0.2}
+            maxZoom={4}
+        >
+          <Controls />
+        </ReactFlow>
+        <button
+            className="
+              absolute
+              bottom-0
+              right-0 m-4
+              bg-blue-500
+              hover:bg-blue-700
+              text-white
+              font-bold py-2
+              px-4 rounded"
+            onClick={onPositionClick}
+        >
+          Update Posities
+        </button>
+      </div>
+      {showStudentCardComponent()}
+    </ReactFlowProvider>
+  );
 }
 
 export default ReactFlowComponent;

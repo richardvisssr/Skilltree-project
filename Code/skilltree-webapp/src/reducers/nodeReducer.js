@@ -7,7 +7,14 @@ const initialState = {
 
 const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
-
+        case "node/reset":
+            return {
+                ...state,
+                nodeId: null,
+                showCard: false,
+                highestNodeId: null,
+                currentNode: null,
+            }
         case "node/showNodeCard":
             return {
                 ...state,

@@ -6,6 +6,13 @@ const initialState = {
 
 function studentsReducer(state = initialState, action) {
     switch (action.type) {
+        case "students/reset":
+            return {
+                ...state,
+                students: [],
+                showCard: false,
+                selectedStudents: []
+            }
         case "students/setStudents":
         return {
             ...state,

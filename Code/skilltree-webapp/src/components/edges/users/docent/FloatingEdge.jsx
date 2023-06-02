@@ -25,8 +25,6 @@ function FloatingEdge({ id, source, target, markerEnd, style, data}) {
 
   const deleteEdge = () => {
     dispatch(fetchDeleteEdgeActionAsync(id));
-    data.setDeletedEdge(true);
-    data.deleteEdge(id);
   }
 
   return (

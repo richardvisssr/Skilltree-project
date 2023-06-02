@@ -19,13 +19,6 @@ export function fetchAllSkilltreesActionAsync(userId, roleId) {
     };
 }
 
-export function setCreateSkillTreeAction(title, description) {
-    return {
-        type: "skilltree/createSkilltree",
-        payload: { title, description },
-    };
-}
-
 export function fetchCreateSkillTreeActionAsync(title, description, userId, roleId) {
     return async (dispatch) => {
         const body = {
@@ -57,22 +50,15 @@ export function setCurrentSkilltreeAction(skilltree) {
     };
 }
 
-export function setAllNodesFromSkilltree(nodes) {
-    return {
-        type: "skilltree/setAllNodes",
-        payload: nodes,
-    }
-}
-
 export function fetchAllNodesFromSkilltree(skilltreeId) {
     return async (dispatch) => {
         const options = {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+        return fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setAllNodesFromSkilltree(result.nodes)));
+            .then((result) => result.nodes);
     };
 }
 
@@ -132,4 +118,17 @@ export const fetchDeleteSkilltreeActionAsync = (skilltreeId) => async (dispatch)
         .then(() => {
             dispatch(setDeleteSkilltreeAction(skilltreeId));
         });
+}
+
+export function fetchAllEdgesFromSkilltree(skilltreeId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+
+        return fetch(`${API_PATH}/edges/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+            .then((result) => result.edges);
+    };
 }

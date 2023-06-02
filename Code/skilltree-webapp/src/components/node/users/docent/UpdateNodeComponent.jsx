@@ -6,23 +6,36 @@ import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 import FormFieldComponent from "../../../FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
+import { fetchAllNodesFromSkilltree } from "../../../../actions/SkilltreeAction";
 import "../nodeInfoStyle.css";
 
 function UpdateNodeComponent() {
-    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
-    const nodes = useSelector((state) => state.skilltree.nodes)
+    const dispatch = useDispatch();
+
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const currentNodeId = useSelector((state) => state.node.currentNode)
+
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
-    const [cardShowState, setCardShowState] = useState(true);
+    const [nodes, setNodes] = useState([]);
 
-    const dispatch = useDispatch();
+    useEffect( () => {
+        getNodes();
+    }, []);
+
+    const getNodes = async () => {
+        const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
+        setNodes(result);
+    }
 
     useEffect(() => {
+        if (nodes.length === 0) {
+            return;
+        }
         const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
 
         const tempArr = [];
@@ -38,7 +51,7 @@ function UpdateNodeComponent() {
         setLearningOutcome(currentNode.learningOutcome ?? "");
         setPositionX(currentNode.positionX ?? "");
         setPositionY(currentNode.positionY ?? "");
-    }, []);
+    }, [nodes]);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -75,64 +88,62 @@ function UpdateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, currentNodeId));
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltree.id, currentNodeId));
         hideCard();
       };
 
     return (
         <div className="nodeInfoComponent">
-            { cardShowState ?
-                <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
-                        <div className="bg-white px-4 pb-4 pt-5">
-                            <FormFieldComponent
-                                title="Vaardigheid" 
-                                label="Vaardigheid" 
-                                value={skill}
-                                onChange={handleSkillChange}
-                            />
-                            <FormFieldComponent
-                                title="Beschrijving"
-                                label="Beschrijving"
-                                value={description}
-                                onChange={handleDescriptionChange}
-                            />
-                            <FormFieldComponent
-                                fieldType="textarea"
-                                title="Leeruitkomst"
-                                label="Leeruitkomst"
-                                value={learningOutcome}
-                                onChange={handleLearningOutcomeChange}
-                            />
-                            <FormFieldComponent
-                                fieldType="textarea"
-                                title="BeoordelingsCriteria"
-                                label="Beoordelingscriteria"
-                                value={mapAssessmentCriteria()}
-                                onChange={handleAssessmentCriteriaChange}
-                            />
-                            <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
-                            <FeedbackNodeComponent/>
-                            <div className="mt-6 flex items-center justify-center space-x-4">
-                                <button
-                                    type="button"
-                                    className="back-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                    onClick={hideCard}
-                                >
-                                    Terug
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                    onClick={handleSave}
-                                >
-                                    Opslaan
-                                </button>
-                            </div>
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
+                    <div className="bg-white px-4 pb-4 pt-5">
+                        <FormFieldComponent
+                            title="Vaardigheid" 
+                            label="Vaardigheid" 
+                            value={skill}
+                            onChange={handleSkillChange}
+                        />
+                        <FormFieldComponent
+                            title="Beschrijving"
+                            label="Beschrijving"
+                            value={description}
+                            onChange={handleDescriptionChange}
+                        />
+                        <FormFieldComponent
+                            fieldType="textarea"
+                            title="Leeruitkomst"
+                            label="Leeruitkomst"
+                            value={learningOutcome}
+                            onChange={handleLearningOutcomeChange}
+                        />
+                        <FormFieldComponent
+                            fieldType="textarea"
+                            title="BeoordelingsCriteria"
+                            label="Beoordelingscriteria"
+                            value={mapAssessmentCriteria()}
+                            onChange={handleAssessmentCriteriaChange}
+                        />
+                        <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
+                        <FeedbackNodeComponent/>
+                        <div className="mt-6 flex items-center justify-center space-x-4">
+                            <button
+                                type="button"
+                                className="back-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                onClick={hideCard}
+                            >
+                                Terug
+                            </button>
+                            <button
+                                type="submit"
+                                className="save-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                onClick={handleSave}
+                            >
+                                Opslaan
+                            </button>
                         </div>
                     </div>
                 </div>
-                : null}
+            </div>
         </div>
     );
 }
