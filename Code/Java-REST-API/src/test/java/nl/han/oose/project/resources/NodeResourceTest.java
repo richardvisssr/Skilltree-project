@@ -84,6 +84,22 @@ public class NodeResourceTest {
         }
     }
 
+    @Test
+    void updateNodeWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(nodeService.updateNode(nodeRequestDTO, GEBRUIKER_ID)).thenThrow(new SQLException());
+
+            // Act
+            var result = sut.updateNode(nodeRequestDTO, GEBRUIKER_ID);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
 
     @Test
     void testGetAllNodes() {
@@ -91,6 +107,23 @@ public class NodeResourceTest {
             // Arrange
             var expected = Response.Status.OK.getStatusCode();
             when(nodeService.getAllNodes(SKILLTREE_ID)).thenReturn(nodesDTO);
+
+            // Act
+            var result = sut.getAllNodes(SKILLTREE_ID);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void testGetAllNodesWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(nodeService.getAllNodes(SKILLTREE_ID)).thenThrow(new SQLException());
 
             // Act
             var result = sut.getAllNodes(SKILLTREE_ID);
@@ -120,6 +153,22 @@ public class NodeResourceTest {
         }
     }
 
+    @Test
+    void testGetHighestNodeIdWithException() {
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            when(nodeService.getHighestNodeId()).thenThrow(new SQLException());
+
+            // Act
+            var result = sut.getHighestNodeId();
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
 
     @Test
     void testDeleteNode() {
@@ -128,6 +177,24 @@ public class NodeResourceTest {
             // Arrange
             var expected = Response.Status.OK.getStatusCode();
             doNothing().when(nodeService).deleteNode(nodeId);
+
+            // Act
+            var result = sut.deleteNode(nodeId);
+
+            // Assert
+            Assertions.assertEquals(expected, result.getStatus());
+        } catch (SQLException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void testDeleteNodeWithException() {
+        int nodeId = 1;
+        try {
+            // Arrange
+            var expected = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+            doThrow(new SQLException()).when(nodeService).deleteNode(nodeId);
 
             // Act
             var result = sut.deleteNode(nodeId);
