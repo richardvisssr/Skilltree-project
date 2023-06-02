@@ -43,7 +43,7 @@ function RegisterAccountComponent() {
         }
         return null;
     }
-    
+
     const handleGoBackButton = () => {
         navigate("/home");
     }

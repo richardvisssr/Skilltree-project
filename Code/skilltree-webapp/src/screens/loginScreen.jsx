@@ -5,7 +5,7 @@ import LoginComponent from "../components/LoginComponent";
 
 export default function LoginScreen() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    
+
     if (currentUser === null) {
         return (
             <LoginComponent />

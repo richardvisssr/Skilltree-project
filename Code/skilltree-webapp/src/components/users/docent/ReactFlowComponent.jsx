@@ -1,4 +1,4 @@
-import ReactFlow, {addEdge, Controls, MarkerType, ReactFlowProvider, useEdgesState, useNodesState} from "reactflow";
+import ReactFlow, {Controls, MarkerType, ReactFlowProvider, useEdgesState, useNodesState} from "reactflow";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import FloatingEdge from "../../edges/users/docent/FloatingEdge";
