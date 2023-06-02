@@ -6,6 +6,7 @@ import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 import FormFieldComponent from "../../../FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
+import "../nodeInfoStyle.css";
 
 function UpdateNodeComponent() {
     const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
@@ -79,7 +80,7 @@ function UpdateNodeComponent() {
       };
 
     return (
-        <div>
+        <div className="nodeInfoComponent">
             { cardShowState ?
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
