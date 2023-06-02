@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 
-import FormFieldComponent from "../../FormFieldComponent";
+import FormFieldComponent from "../../../FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 

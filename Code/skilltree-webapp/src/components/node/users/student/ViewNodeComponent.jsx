@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 
-import FormFieldComponent from "../../FormFieldComponent";
+import FormFieldComponent from "../../../FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 
@@ -56,24 +56,28 @@ function ViewNodeComponent() {
                 <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
                     <div className="bg-white px-4 pb-4 pt-5">
                         <FormFieldComponent
-                            title="Vaardigheid" 
+                            title="skill"
+                            label="Vaardigheid" 
                             value={skill}
                             disabled={true}
                         />
                         <FormFieldComponent
-                            title="Beschrijving"
+                            title="description"
+                            label="Beschrijving"
                             value={description}
                             disabled={true}
                         />
                         <FormFieldComponent
                             fieldType="textarea"
-                            title="Leeruitkomst"
+                            title="learningOutcome"
+                            label="Leeruitkomst"
                             value={learningOutcome}
                             disabled={true}
                         />
                         <FormFieldComponent
                             fieldType="textarea"
-                            title="BeoordelingsCriteria"
+                            title="assessmentCriteria"
+                            label="Beoordelingscriteria"
                             value={mapAssessmentCriteria()}
                             disabled={true}
                         />

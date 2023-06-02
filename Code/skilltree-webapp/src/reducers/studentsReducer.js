@@ -1,7 +1,7 @@
 const initialState = {
     students: [],
     showCard: false,
-    selectedStudents: []
+    selectedStudents: [],
 };
 
 function studentsReducer(state = initialState, action) {
@@ -31,4 +31,5 @@ function studentsReducer(state = initialState, action) {
         return state;
     }
 }
+
 export default studentsReducer;

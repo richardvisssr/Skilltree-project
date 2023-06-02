@@ -89,22 +89,22 @@ BEGIN TRY
         CONSTRAINT UQ_SourceID_TargetID UNIQUE (SourceID, TargetID)
     );
 
-CREATE TABLE userskilltree (
-    userID INT,
-    skilltreeID INT,
-    PRIMARY KEY (userID, skilltreeID),
-    CONSTRAINT FK_UserSkillTree_UserID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE NO ACTION,
-    CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
-);
+	CREATE TABLE userskilltree (
+		userID INT,
+		skilltreeID INT,
+		PRIMARY KEY (userID, skilltreeID),
+		CONSTRAINT FK_UserSkillTree_UserID FOREIGN KEY (userID) REFERENCES Users (ID) ON DELETE NO ACTION,
+		CONSTRAINT FK_UserSkillTree_SkilltreeID FOREIGN KEY (skilltreeID) REFERENCES SkillTrees (ID) ON DELETE CASCADE
+	);
 
-CREATE TABLE Feedback (
-                          StudentID INT NOT NULL,
-                          NodeID INT NOT NULL,
-                          Feedback VARCHAR(MAX) NULL,
-    PRIMARY KEY (StudentID, NodeID),
-    CONSTRAINT FK_StudentID FOREIGN KEY (StudentID) REFERENCES Users(ID),
-    CONSTRAINT FK_NodeID FOREIGN KEY (NodeID) REFERENCES Nodes(ID)
-);
+	CREATE TABLE Feedback (
+		StudentID INT NOT NULL,
+		NodeID INT NOT NULL,
+		Feedback VARCHAR(MAX) NULL,
+		PRIMARY KEY (StudentID, NodeID),
+		CONSTRAINT FK_StudentID FOREIGN KEY (StudentID) REFERENCES Users(ID),
+		CONSTRAINT FK_NodeID FOREIGN KEY (NodeID) REFERENCES Nodes(ID)
+	);
 
 
     COMMIT TRAN
