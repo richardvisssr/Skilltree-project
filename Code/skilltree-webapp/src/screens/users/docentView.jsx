@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import SidebarComponentDocent from "../../components/users/docent/SidebarComponent";
 import TopbarComponentDocent from "../../components/users/docent/TopbarComponent";
-import ReactFlowComponentDocent from "../../components/users/docent/RefactorReactFlowComponent";
+import ReactFlowComponentDocent from "../../components/users/docent/ReactFlowComponent";
 import NoSkilltreeComponent from "../../components/NoSkilltreeComponent";
 import UpdateNodeComponent from "../../components/node/users/docent/UpdateNodeComponent";
 import DeleteSkilltreeComponent from "../../components/users/docent/DeleteSkilltreeComponent";

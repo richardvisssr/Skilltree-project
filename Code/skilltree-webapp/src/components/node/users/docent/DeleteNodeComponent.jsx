@@ -22,7 +22,6 @@ export function DeleteNodeComponent(props) {
     }
 
     const deleteCard = () => {
-        console.log(edges);
         edges.map(edge => {
             if (edge.sourceId === nodeId) {
                 dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
