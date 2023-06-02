@@ -5,6 +5,12 @@ const initialState = {
 
 function userReducer(state = initialState, action) {
     switch (action.type) {
+        case "user/reset":
+            return {
+                ...state,
+                users: [],
+                registeredCorrectly: null
+            }
       case "user/userRegistered":
           return {
               ...state,

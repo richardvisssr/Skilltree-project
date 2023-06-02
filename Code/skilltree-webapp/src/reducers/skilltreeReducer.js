@@ -9,6 +9,16 @@ const initialState = {
 
 function skillTreeReducer(state = initialState, action) {
     switch (action.type) {
+    case "skilltree/reset":
+        return {
+            ...state,
+            skilltrees: [],
+            currentSkilltree: null,
+            newSkilltree: false,
+            deleteSwitchNode: false,
+            deleteSwitchEdge: false,
+            showDeleteSkilltreeCard: false,
+        }
     case "skilltree/setSkilltrees":
         return {
             ...state,
