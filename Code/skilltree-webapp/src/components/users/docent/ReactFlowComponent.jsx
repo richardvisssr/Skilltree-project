@@ -106,7 +106,7 @@ function ReactFlowComponent() {
   const onDragOver = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
-  }, []);
+  }, [skilltree]);
 
   const onDrop = useCallback(
       async (event) => {
@@ -131,7 +131,7 @@ function ReactFlowComponent() {
         const learningOutcome = "";
         await dispatch(fetchCreateNodeActionAsync(label, description, position.x, position.y ,assessmentCriteria, learningOutcome, skilltree.id));
         await fetchNodes();
-      }, [reactFlowInstance]
+      }, [reactFlowInstance, skilltree]
   );
 
   const onConnect = useCallback(
