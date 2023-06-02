@@ -11,7 +11,7 @@ import CustomNode from "../../node/users/student/CustomNode";
 import FloatingEdge from "../../edges/users/student/FloatingEdge";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
-import { fetchAllNodesFromSkilltree, fetchallEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchAllNodesFromSkilltree, fetchAllEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
 import { fetchHighestNodeIdActionAsync } from "../../../actions/NodeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 import "reactflow/dist/style.css";
@@ -60,7 +60,7 @@ function ReactFlowComponent() {
     useEffect(() => {
       dispatch(fetchHighestNodeIdActionAsync());
       dispatch(fetchAllNodesFromSkilltree(skilltreeId));
-      dispatch(fetchallEdgesFromSkilltree(skilltreeId));
+      dispatch(fetchAllEdgesFromSkilltree(skilltreeId));
       dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltreeId))
     }, [skilltreeId,showCard]);
 

@@ -4,7 +4,7 @@ import { fetchDeleteNodeActionAsync } from "../../../../actions/NodeAction";
 
 import "../../../../styles/styles.css";
 import {fetchDeleteEdgeActionAsync} from "../../../../actions/EdgeAction";
-import {fetchallEdgesFromSkilltree} from "../../../../actions/SkilltreeAction";
+import {fetchAllEdgesFromSkilltree} from "../../../../actions/SkilltreeAction";
 
 export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
@@ -15,9 +15,9 @@ export function DeleteNodeComponent(props) {
     useEffect( () => {
         getEdges();
     }, []);
-    
+
     const getEdges = async () => {
-        const result = await dispatch(fetchallEdgesFromSkilltree(skilltree.id));
+        const result = await dispatch(fetchAllEdgesFromSkilltree(skilltree.id));
         setEdges(result);
     }
 

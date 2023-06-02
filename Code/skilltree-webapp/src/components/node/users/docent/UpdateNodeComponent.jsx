@@ -5,21 +5,35 @@ import { useDispatch, useSelector } from "react-redux";
 import FormFieldComponent from "../../../FormFieldComponent";
 import { fetchUpdateNodeActionAsync, showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
+import { fetchAllNodesFromSkilltree } from "../../../../actions/SkilltreeAction";
 
 function UpdateNodeComponent() {
-    const skilltreeId = useSelector((state) => state.skilltree.currentSkilltree.id);
-    const nodes = useSelector((state) => state.skilltree.nodes)
+    const dispatch = useDispatch();
+
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
     const currentNodeId = useSelector((state) => state.node.currentNode)
+
     const [skill, setSkill] = useState("");
     const [description, setDescription] = useState("");
     const [assessmentCriteria, setAssessmentCriteria] = useState([]);
     const [learningOutcome, setLearningOutcome] = useState("");
     const [positionX, setPositionX] = useState("");
     const [positionY, setPositionY] = useState("");
+    const [nodes, setNodes] = useState([]);
 
-    const dispatch = useDispatch();
+    useEffect( () => {
+        getNodes();
+    }, []);
+
+    const getNodes = async () => {
+        const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
+        setNodes(result);
+    }
 
     useEffect(() => {
+        if (nodes.length === 0) {
+            return;
+        }
         const currentNode = nodes.find(node => parseInt(node.id) === parseInt(currentNodeId));
 
         const tempArr = [];
@@ -35,7 +49,7 @@ function UpdateNodeComponent() {
         setLearningOutcome(currentNode.learningOutcome ?? "");
         setPositionX(currentNode.positionX ?? "");
         setPositionY(currentNode.positionY ?? "");
-    }, []);
+    }, [nodes]);
 
     const handleSkillChange = (event) => {
         setSkill(event.target.value);
@@ -72,7 +86,7 @@ function UpdateNodeComponent() {
     };
 
     const handleSave = () => {
-        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId, currentNodeId));
+        dispatch(fetchUpdateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltree.id, currentNodeId));
         hideCard();
       };
 

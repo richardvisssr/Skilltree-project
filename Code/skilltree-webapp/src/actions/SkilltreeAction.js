@@ -120,7 +120,7 @@ export const fetchDeleteSkilltreeActionAsync = (skilltreeId) => async (dispatch)
         });
 }
 
-export function fetchallEdgesFromSkilltree(skilltreeId) {
+export function fetchAllEdgesFromSkilltree(skilltreeId) {
     return async (dispatch) => {
         const options = {
             method: "GET",

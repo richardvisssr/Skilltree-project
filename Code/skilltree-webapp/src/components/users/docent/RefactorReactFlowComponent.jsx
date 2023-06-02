@@ -4,9 +4,10 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import FloatingEdge from "../../edges/users/docent/FloatingEdge";
 import CustomNode from "../../node/users/docent/CustomNode";
 import {useDispatch, useSelector} from "react-redux";
-import { fetchAllNodesFromSkilltree, fetchallEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchAllNodesFromSkilltree, fetchAllEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
 import { fetchCreateEdgeActionAsync } from "../../../actions/EdgeAction";
-import { fetchCreateNodeActionAsync } from "../../../actions/NodeAction";
+import {fetchAllNodesPositionsActionAsync, fetchCreateNodeActionAsync} from "../../../actions/NodeAction";
+import LinkStudentComponent from "./LinkStudentComponent";
 
 const edgeTypes = {
   floating: FloatingEdge,
@@ -27,6 +28,7 @@ function ReactFlowComponent() {
   const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
   const deleteSwitchNode = useSelector((state) => state.skilltree.deleteSwitchNode);
   const deleteSwitchEdge = useSelector((state) => state.skilltree.deleteSwitchEdge);
+  const showStudentCard = useSelector((state) => state.student.showCard);
 
   const defaultEdgeOptions = {
     style: { strokeWidth: 3, stroke: 'black' },
@@ -76,7 +78,7 @@ function ReactFlowComponent() {
   }
 
   const fetchEdges = async () => {
-    const result = await dispatch(fetchallEdgesFromSkilltree(skilltree.id));
+    const result = await dispatch(fetchAllEdgesFromSkilltree(skilltree.id));
     if (result) {
       setEdges(convertFetchToEdges(result));
     }
@@ -147,6 +149,28 @@ function ReactFlowComponent() {
       await fetchEdges();
   }, [edges]);
 
+  const onPositionClick = () => {
+    const tempArray = [];
+    nodes.map((node) => {
+      const tempObj = {
+        id: `${node.id}`,
+        positionX: node.position.x,
+        positionY: node.position.y,
+      }
+      tempArray.push(tempObj);
+    })
+    dispatch(fetchAllNodesPositionsActionAsync(skilltree.id, tempArray));
+  };
+
+  const showStudentCardComponent = () => {
+    if (showStudentCard) {
+      return (
+          <LinkStudentComponent />
+      )
+    }
+    return null;
+  }
+
   return (
     <ReactFlowProvider>
       <div className="w-full flex-auto" ref={reactFlowWrapper}>
@@ -170,7 +194,22 @@ function ReactFlowComponent() {
         >
           <Controls />
         </ReactFlow>
+        <button
+            className="
+              absolute
+              bottom-0
+              right-0 m-4
+              bg-blue-500
+              hover:bg-blue-700
+              text-white
+              font-bold py-2
+              px-4 rounded"
+            onClick={onPositionClick}
+        >
+          Update Posities
+        </button>
       </div>
+      {showStudentCardComponent()}
     </ReactFlowProvider>
   );
 }
