@@ -28,9 +28,9 @@ function FeedbackNodeComponent() {
     }
 
     const fetchFeedback = async (currentNodeId, selectedStudentId) => {
-      const feedbackData = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
-      if (feedbackData.feedbacks.length > 0) {
-        setFeedback(feedbackData.feedbacks[0].feedback);
+      const feedbacks = await dispatch(fetchFeedbackSelectedStudentActionAsync(currentNodeId, selectedStudentId));
+      if (feedbacks.length > 0) {
+        setFeedback(feedbacks[0].feedback);
       } else {
         setFeedback("Nog geen feedback"); 
       }

@@ -101,6 +101,7 @@ export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
         };
         return fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
             .then((response) => response.json())
+            .then((result) => result.feedbacks)
     };
 }
 
