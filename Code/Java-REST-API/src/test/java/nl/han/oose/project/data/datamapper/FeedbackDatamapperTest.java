@@ -1,7 +1,10 @@
 package nl.han.oose.project.data.datamapper;
 
+import nl.han.oose.project.resources.dto.AccountDTO;
+import nl.han.oose.project.resources.dto.AccountsDTO;
 import nl.han.oose.project.resources.dto.FeedbackDTO;
 import nl.han.oose.project.resources.dto.FeedbacksDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,5 +71,17 @@ public class FeedbackDatamapperTest {
 
         // Act & Assert
         assertThrows(SQLException.class, () -> sut.map(resultSet));
+    }
+
+    @Test
+    void mapMultipleResultSetsToFeedbackDTO() throws SQLException{
+        // Arrange
+        List<FeedbackDTO> expectedFeedbacks = null;
+
+        // Act
+        FeedbacksDTO actualFeedbacks = sut.map(resultSet, resultSet);
+
+        // Assert
+        Assertions.assertEquals(expectedFeedbacks, actualFeedbacks);
     }
 }
