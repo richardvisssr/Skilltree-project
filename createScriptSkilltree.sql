@@ -17,7 +17,7 @@ BEGIN TRY
         ID        INT UNIQUE                        NOT NULL IDENTITY (1,1),
         Firstname VARCHAR(255)                      NOT NULL,
         Lastname  VARCHAR(255)                      NOT NULL,
-        Email     VARCHAR(255)                      NOT NULL,
+        Email     VARCHAR(255) UNIQUE               NOT NULL,
         Password  VARCHAR(255)                      NOT NULL,
         RoleID    INT                               NOT NULL,
 

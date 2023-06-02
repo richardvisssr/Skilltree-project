@@ -17,6 +17,7 @@ export default function SidebarComponent() {
     const showNodeCard = useSelector((state) => state.node.showCard);
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const userId = currentUser.id;
+    const roleId = currentUser.roleId;
 
     function handleButtonClick(id) {
         let currentSkilltree;
@@ -33,7 +34,7 @@ export default function SidebarComponent() {
     }
 
     useEffect(() => {
-        dispatch(fetchAllSkilltreesActionAsync(userId));
+        dispatch(fetchAllSkilltreesActionAsync(userId, roleId));
     }, []);
 
     const skilltreeList = () => {
