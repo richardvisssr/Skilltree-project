@@ -88,7 +88,19 @@ export default function SidebarComponent() {
                     <ul className="mt-auto space-y-2 font-medium ">
                         <button
                             type="button"
-                            className="flex z-50 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            className="
+                                flex
+                                z-50
+                                items-center
+                                w-full
+                                p-2
+                                text-gray-900
+                                transition
+                                duration-75
+                                rounded-lg
+                                hover:bg-gray-100
+                                dark:hover:bg-gray-700
+                                dark:text-white group"
                             onClick={() => logout()}
                         >
                             <div className="flex" >
