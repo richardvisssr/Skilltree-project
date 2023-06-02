@@ -18,7 +18,7 @@ export function setCreateNodeAction(nodeId, skill, description, positionX, posit
     };
 }
 
-export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId) {
+export function fetchCreateNodeActionAsync(skill, description, positionX, positionY, assessmentCriteria, learningOutcome, skilltreeId) {
     return async (dispatch) => {
         const options = {
             method: "POST",
@@ -31,11 +31,8 @@ export function fetchCreateNodeActionAsync(nodeId, skill, description, positionX
             }),
 
         };
-        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+        return fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then(() => {
-                dispatch(setCreateNodeAction(nodeId, skill, description, positionX, positionY, skilltreeId, learningOutcome, assessmentCriteria));
-            });
     };
 }
 

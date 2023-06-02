@@ -11,9 +11,8 @@ import CustomNode from "../../node/users/student/CustomNode";
 import FloatingEdge from "../../edges/users/student/FloatingEdge";
 import ConnectionLineStyle from "../../edges/ConnectionLineStyle";
 
-import { fetchAllNodesFromSkilltree } from "../../../actions/SkilltreeAction";
+import { fetchAllNodesFromSkilltree, fetchallEdgesFromSkilltree } from "../../../actions/SkilltreeAction";
 import { fetchHighestNodeIdActionAsync } from "../../../actions/NodeAction";
-import { fetchallEdgesFromSkilltree } from "../../../actions/EdgeAction";
 import { fetchAllStudentsFromSkilltreeActionAsync } from "../../../actions/StudentAction";
 import "reactflow/dist/style.css";
 import "../../../styles/styles.css";

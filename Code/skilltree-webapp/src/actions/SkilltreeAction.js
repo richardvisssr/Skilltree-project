@@ -70,9 +70,9 @@ export function fetchAllNodesFromSkilltree(skilltreeId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
+        return fetch(`${API_PATH}/nodes/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setAllNodesFromSkilltree(result.nodes)));
+            .then((result) => result.nodes);
     };
 }
 
@@ -132,4 +132,17 @@ export const fetchDeleteSkilltreeActionAsync = (skilltreeId) => async (dispatch)
         .then(() => {
             dispatch(setDeleteSkilltreeAction(skilltreeId));
         });
+}
+
+export function fetchallEdgesFromSkilltree(skilltreeId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+
+        return fetch(`${API_PATH}/edges/skilltrees/${skilltreeId}`, options)
+            .then((response) => response.json())
+            .then((result) => result.edges);
+    };
 }

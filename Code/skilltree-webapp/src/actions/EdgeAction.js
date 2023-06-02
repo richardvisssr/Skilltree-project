@@ -1,15 +1,5 @@
 
 const API_PATH = process.env.REACT_APP_API_URL;
-export function fetchallEdgesFromSkilltree(skilltreeId) {
-    return async (dispatch) => {
-        const response = await fetch(`${API_PATH}/edges/skilltrees/${skilltreeId}`);
-        const data = await response.json();
-        dispatch({
-        type: "skilltree/setAllEdges",
-        payload: data,
-        });
-    };
-}
 
 export function fetchCreateEdgeActionAsync(sourceId, targetId, skillTreeID, edgeId) {
   return async (dispatch) => {
@@ -22,7 +12,7 @@ export function fetchCreateEdgeActionAsync(sourceId, targetId, skillTreeID, edge
       body: JSON.stringify({edgeId, targetId, sourceId, skillTreeID} ),
 
     };
-    fetch(`${API_PATH}/edges/skilltrees/${skillTreeID}`, options)
+    return fetch(`${API_PATH}/edges/skilltrees/${skillTreeID}`, options)
         .then((response) => response.json())
   };
 }
