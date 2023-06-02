@@ -42,7 +42,7 @@ function FeedbackNodeComponent() {
         setCustomAlert("Feedback mag niet leeg zijn");
         return;
       }
-      if (studentId === "") {
+      if (studentId === "" || userId === "") {
         setCustomAlert("Selecteer een student");
         return;
       }
