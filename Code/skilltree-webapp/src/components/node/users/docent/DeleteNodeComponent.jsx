@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { fetchDeleteNodeActionAsync } from "../../../../actions/NodeAction";
 
 import "../../../../styles/styles.css";
 import {fetchDeleteEdgeActionAsync} from "../../../../actions/EdgeAction";
+import {fetchallEdgesFromSkilltree} from "../../../../actions/SkilltreeAction";
 
 export function DeleteNodeComponent(props) {
     const dispatch = useDispatch();
-    const edges = useSelector((state) => state.skilltree.edges);
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+    const nodeId = props.nodeId;
+    const [edges, setEdges] = useState([]);
 
-    const [deleteCardShowState] = useState(true);
+    useEffect( () => {
+        getEdges();
+    }, []);
+    
+    const getEdges = async () => {
+        const result = await dispatch(fetchallEdgesFromSkilltree(skilltree.id));
+        setEdges(result);
+    }
 
     const deleteCard = () => {
-        const nodeId = props.nodeId;
-
+        console.log(edges);
         edges.map(edge => {
             if (edge.sourceId === nodeId) {
                 dispatch(fetchDeleteEdgeActionAsync(edge.edgeId, nodeId));
@@ -32,8 +41,6 @@ export function DeleteNodeComponent(props) {
 
     return (
         <div>
-            {deleteCardShowState ?
-
             <div className="relative z-[10000]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div className="fixed inset-0  top-0 left-0 right-0 h-80 w-80 flex min-h-full justify-center p-4 text-center sm:items-center sm:p-0">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
@@ -56,7 +63,6 @@ export function DeleteNodeComponent(props) {
                     </div>
                 </div>
             </div>
-            : null}
         </div>
     );
 }

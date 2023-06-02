@@ -7,7 +7,6 @@ const initialState = {
 
 const NodeReducer = (state = initialState, action) => {
     switch (action.type) {
-
         case "node/showNodeCard":
             return {
                 ...state,

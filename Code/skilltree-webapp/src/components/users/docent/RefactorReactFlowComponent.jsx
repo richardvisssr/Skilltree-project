@@ -25,6 +25,8 @@ function ReactFlowComponent() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
+  const deleteSwitchNode = useSelector((state) => state.skilltree.deleteSwitchNode);
+  const deleteSwitchEdge = useSelector((state) => state.skilltree.deleteSwitchEdge);
 
   const defaultEdgeOptions = {
     style: { strokeWidth: 3, stroke: 'black' },
@@ -42,10 +44,15 @@ function ReactFlowComponent() {
 
   useEffect(() => {
     if (skilltree !== null) {
-      fetchNodes();
       fetchEdges();
     }
-  }, [skilltree]);
+  }, [skilltree, deleteSwitchEdge]);
+
+  useEffect(() => {
+    if (skilltree !== null) {
+        fetchNodes();
+    }
+  }, [skilltree, deleteSwitchNode]);
 
   const fetchNodes = async () => {
     const result = await dispatch(fetchAllNodesFromSkilltree(skilltree.id));
@@ -88,7 +95,6 @@ function ReactFlowComponent() {
           type: MarkerType.ArrowClosed,
           color: 'black',
         },
-        // data: { deleteEdge: deleteEdge, setDeletedEdge: setDeletedEdge}
       }
       edges.push(tempObj);
     })

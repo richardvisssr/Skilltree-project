@@ -19,13 +19,6 @@ export function fetchAllSkilltreesActionAsync(userId, roleId) {
     };
 }
 
-export function setCreateSkillTreeAction(title, description) {
-    return {
-        type: "skilltree/createSkilltree",
-        payload: { title, description },
-    };
-}
-
 export function fetchCreateSkillTreeActionAsync(title, description, userId, roleId) {
     return async (dispatch) => {
         const body = {
@@ -55,13 +48,6 @@ export function setCurrentSkilltreeAction(skilltree) {
         type: "skilltree/setCurrentSkilltree",
         payload: skilltree,
     };
-}
-
-export function setAllNodesFromSkilltree(nodes) {
-    return {
-        type: "skilltree/setAllNodes",
-        payload: nodes,
-    }
 }
 
 export function fetchAllNodesFromSkilltree(skilltreeId) {
