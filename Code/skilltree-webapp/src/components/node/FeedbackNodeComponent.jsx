@@ -52,7 +52,7 @@ function FeedbackNodeComponent() {
     
 return (
     <>
-      <div className="mt-10 gap-x-6 gap-y-8 justify-center flex">
+      <div className="mt-3 gap-x-6 gap-y-8 justify-center flex">
         <select
           name={"Feedback geven aan"}
           onChange={handleStudentChange}
@@ -82,7 +82,7 @@ return (
         onChange={handleFeedbackChange}
       />
       {customAlert !== "" ?
-        <div className="mt-10 rounded relative justify-center flex" role="alert">
+        <div className="mt-3 rounded relative justify-center flex" role="alert">
           <div className="w-3/5 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 ">
             <span className="block sm:inline">{customAlert}</span>
           </div>
