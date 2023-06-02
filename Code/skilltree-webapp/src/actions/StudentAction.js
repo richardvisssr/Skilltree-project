@@ -32,7 +32,6 @@ export function setSelectedStudentsAction(students) {
     }
 }
 
-
 export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
     return async (dispatch) => {
         const studentIds = [];

@@ -49,6 +49,7 @@ function FeedbackNodeComponent() {
       setCustomAlert("");
       dispatch(addFeedbackActionAsync(currentNodeId, studentId, feedback));
     }
+    
 return (
     <>
       <div className="mt-10 gap-x-6 gap-y-8 justify-center flex">
