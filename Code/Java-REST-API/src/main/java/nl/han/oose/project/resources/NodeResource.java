@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 @Path("/nodes")
 public class NodeResource {
-    private static final Logger LOGGER  = Logger.getLogger(NodeResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(NodeResource.class.getName());
     private static final String ERROR_MESSAGE = "Error ";
     private NodeService nodeService;
 

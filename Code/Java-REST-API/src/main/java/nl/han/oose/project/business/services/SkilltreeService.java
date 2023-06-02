@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class SkilltreeService {
     private SkilltreeDAO skilltreeDAO;
-    private final int DOCENT_ROLE = 1;
-    private final int STUDENT_ROLE = 2;
+    private static final int DOCENT_ROLE = 1;
+    private static final int STUDENT_ROLE = 2;
     public SkilltreesDTO getAllSkilltrees(int gebruikerId, int rolId) throws SQLException {
         SkilltreesDTO result = null;
 if (rolId == DOCENT_ROLE) {

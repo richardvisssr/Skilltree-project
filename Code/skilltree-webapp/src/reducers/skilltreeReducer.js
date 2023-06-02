@@ -47,19 +47,20 @@ function skillTreeReducer(state = initialState, action) {
             ...state,
             nodes: [...state.nodes, action.payload],
         }
-    case "skilltree/updateNode":
-        const updatedNodes = state.nodes.map((node) => {
-            if (node.id === action.payload.id) {
-            return {
-                ...node,
-                skill: action.payload.skill,
-                description: action.payload.description,
-                learningOutcome: action.payload.learningOutcome,
-                assessmentCriteria: action.payload.assessmentCriteria,
-            };
-            }
-            return node;
-        });
+        case "skilltree/updateNode":
+            const updatedNodes = state.nodes.map((node) => {
+              if (node.id === action.payload.id) {
+                return {
+                  ...node,
+                  skill: action.payload.skill,
+                  description: action.payload.description,
+                  learningOutcome: action.payload.learningOutcome,
+                  assessmentCriteria: action.payload.assessmentCriteria,
+                  feedback: action.payload,
+                };
+              }
+              return node;
+            });
         return {
             ...state,
             nodes: updatedNodes,
