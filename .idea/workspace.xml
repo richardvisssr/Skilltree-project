@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="" />
+    <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/node/FeedbackNodeComponent.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -286,7 +289,8 @@
       <workItem from="1685605381623" duration="531000" />
       <workItem from="1685486686253" duration="1073000" />
       <workItem from="1685607390068" duration="668000" />
-      <workItem from="1685690936426" duration="499000" />
+      <workItem from="1685690936426" duration="1107000" />
+      <workItem from="1685692250296" duration="600000" />
     </task>
     <servers />
   </component>
