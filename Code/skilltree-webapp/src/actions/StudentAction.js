@@ -73,3 +73,35 @@ export function clearStudentCardAction() {
         type: "students/clearStudentCard"
     };
 }
+
+export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
+    return async (dispatch) => {
+        const options = {
+            body: JSON.stringify({
+                "userId": parseInt(studentId),
+                "nodeId": parseInt(currentNodeId),
+                feedback
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            mode: "cors"
+        };
+        fetch(`${API_PATH}/feedback`, options)
+            .then((response) => response.json())
+    }
+}
+
+export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
+    return async (dispatch) => {
+        const options = {
+            method: "GET",
+            mode: "cors",
+        };
+        return fetch(`${API_PATH}/feedback/nodes/${nodeId}/students/${studentId}`, options)
+            .then((response) => response.json())
+            .then((result) => result.feedbacks)
+    };
+}
+

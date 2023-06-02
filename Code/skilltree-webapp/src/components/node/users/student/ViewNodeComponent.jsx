@@ -1,11 +1,13 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FeedbackNodeComponent from "../../FeedbackNodeComponent"
 
 import FormFieldComponent from "../../../FormFieldComponent";
 import { showCreateCard } from "../../../../actions/NodeAction";
 import "../../../../styles/styles.css";
 import {fetchAllNodesFromSkilltree} from "../../../../actions/SkilltreeAction";
+import "../nodeInfoStyle.css";
 
 function ViewNodeComponent() {
     const dispatch = useDispatch();
@@ -66,7 +68,7 @@ function ViewNodeComponent() {
     };
 
     return (
-        <div>
+        <div className="nodeInfoComponent">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                 <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-5/6">
                     <div className="bg-white px-4 pb-4 pt-5">
@@ -96,10 +98,11 @@ function ViewNodeComponent() {
                             value={mapAssessmentCriteria()}
                             disabled={true}
                         />
-                        <div className="mt-6 flex items-center justify-center gap-x-6">
+                        <FeedbackNodeComponent/>
+                        <div className="mt-6 flex items-center justify-center space-x-4">
                             <button
                                 type="button"
-                                className="text-m font-semibold leading-6 text-gray-900"
+                                className="back-button w-50  text-white font-semibold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 onClick={hideCard}
                             >
                                 Terug
