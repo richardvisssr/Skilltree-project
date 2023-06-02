@@ -17,6 +17,7 @@ public class NodeService {
     public void deleteNode(int nodeId) throws SQLException {
         nodeDAO.deleteNode(nodeId);
     }
+
     public NodesDTO updateNode(NodeRequestDTO nodeDTO, int nodeId) throws SQLException {
         return nodeDAO.updateNode(nodeDTO, nodeId);
     }

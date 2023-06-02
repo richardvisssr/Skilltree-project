@@ -1,16 +1,17 @@
 package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
+import nl.han.oose.project.data.dao.UserDAO;
 import nl.han.oose.project.resources.dto.UserRegistrationDTO;
 import nl.han.oose.project.resources.dto.UsersDTO;
-import nl.han.oose.project.data.dao.UserDAO;
 
 import java.sql.SQLException;
 
 public class UserService {
 
     private UserDAO userDAO;
-    public void createUser (UserRegistrationDTO userRegistrationDTO) throws SQLException {
+
+    public void createUser(UserRegistrationDTO userRegistrationDTO) throws SQLException {
         userDAO.createUser(userRegistrationDTO);
     }
 

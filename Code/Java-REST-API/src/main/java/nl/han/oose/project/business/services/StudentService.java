@@ -2,10 +2,10 @@ package nl.han.oose.project.business.services;
 
 import jakarta.inject.Inject;
 import nl.han.oose.project.data.dao.StudentDAO;
-import nl.han.oose.project.resources.dto.UserDTO;
 import nl.han.oose.project.resources.dto.StudentRequestDTO;
-import nl.han.oose.project.resources.dto.UsersDTO;
 import nl.han.oose.project.resources.dto.StudentsRequestDTO;
+import nl.han.oose.project.resources.dto.UserDTO;
+import nl.han.oose.project.resources.dto.UsersDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
