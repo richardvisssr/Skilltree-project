@@ -84,7 +84,7 @@ export default function SidebarComponent() {
                 <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                     {skilltreeList()}
                 </ul>
-                <div className="absolute bottom-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
+                <div className="absolute bottom-0 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 w-44">
                     <ul className="mt-auto space-y-2 font-medium ">
                         <button
                             type="button"
