@@ -55,19 +55,20 @@ export default function LinkStudentComponent() {
     }
 
     const studentList = () => {
-        const studentsList = students.map((student) => (
-            <div
-                key={student.id}
-                className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg dark:text-white group"
-            >
-                <div className="flex items-center mb-4">
-                    <input
-                        id="default-checkbox"
-                        type="checkbox"
-                        value={student.id}
-                        onChange={handleChange}
-                        defaultChecked={isChecked(student.id)}
-                        className="
+        if(students.length > 0) {
+            const studentsList = students.map((student) => (
+                <div
+                    key={student.id}
+                    className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg dark:text-white group"
+                >
+                    <div className="flex items-center mb-4">
+                        <input
+                            id="default-checkbox"
+                            type="checkbox"
+                            value={student.id}
+                            onChange={handleChange}
+                            defaultChecked={isChecked(student.id)}
+                            className="
                             w-4
                             h-4
                             text-blue-600
@@ -80,21 +81,23 @@ export default function LinkStudentComponent() {
                             focus:ring-2
                             dark:bg-gray-700
                             dark:border-gray-600"
-                    />
-                    <label
-                        htmlFor="default-checkbox"
-                        className="ml-2 text-ml font-medium text-white dark:text-white"
-                    >
-                        { `${student.firstname} ${student.lastname}` }
-                    </label>
+                        />
+                        <label
+                            htmlFor="default-checkbox"
+                            className="ml-2 text-ml font-medium text-white dark:text-white"
+                        >
+                            {`${student.firstname} ${student.lastname}`}
+                        </label>
+                    </div>
                 </div>
-            </div>
-        ));
-        return (
-            <li>
-                {studentsList}
-            </li>
-        );
+            ));
+            return (
+                <li>
+                    {studentsList}
+                </li>
+            );
+        }
+        return null;
     };
 
     return (
