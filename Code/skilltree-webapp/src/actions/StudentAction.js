@@ -13,9 +13,9 @@ export function fetchAllStudentsActionAsync() {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/students`, options)
+        return fetch(`${API_PATH}/students`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setStudentsAction(result)));
+            .then((result) => result.users);
     };
 }
 
@@ -50,9 +50,9 @@ export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
             }),
         };
 
-        fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+        return fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then(response => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
+            .then((result) => result.users);
     };
 }
 
@@ -62,9 +62,9 @@ export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
             method: "GET",
             mode: "cors",
         };
-        fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
+        return fetch(`${API_PATH}/students/skilltrees/${skilltreeId}`, options)
             .then((response) => response.json())
-            .then((result) => dispatch(setSelectedStudentsAction(result.users)));
+            .then((result) => result.users);
     };
 }
 

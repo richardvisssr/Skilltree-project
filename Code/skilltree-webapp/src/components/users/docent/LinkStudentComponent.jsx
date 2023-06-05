@@ -1,54 +1,64 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchAllStudentsActionAsync, setSelectedStudentsAction } from "../../../actions/StudentAction";
+import {
+    fetchAllStudentsActionAsync,
+    fetchAllStudentsFromSkilltreeActionAsync,
+    setSelectedStudentsAction
+} from "../../../actions/StudentAction";
 import "../../../styles/styles.css";
 
 export default function LinkStudentComponent() {
     const dispatch = useDispatch();
-    const students = useSelector((state) => state.student.students);
     const selectedStudentsFromStore = useSelector((state) => state.student.selectedStudents);
+    const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
 
     const [firstRenderDone, setFirstRenderDone] = useState(false);
     const [selectedStudents, setSelectedStudents] = useState([]);
+    const [students, setStudents] = useState([]);
 
     useEffect(() => {
-        dispatch(fetchAllStudentsActionAsync());
-    }, []);
+        const fetchStudents = async () => {
+            const kaas = await dispatch(fetchAllStudentsActionAsync());
+            setStudents(kaas)
+        };
 
-    useEffect(() => {
-
-    }, [])
-
-    useEffect(() => {
-        setSelectedStudents(selectedStudentsFromStore)
-    }, [selectedStudentsFromStore])
-
-    useEffect(() => {
-        if (firstRenderDone) {
-            dispatch(setSelectedStudentsAction(selectedStudents))
-        } else {
-            setFirstRenderDone(true);
+        const fetchSelectedStudents = async () => {
+            const result = await dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltree.id));
+            if (result) {
+                // setSelectedStudents(result);
+                dispatch(setSelectedStudentsAction(result))
+            }
         }
-    }, [selectedStudents]);
+
+        fetchStudents();
+        fetchSelectedStudents();
+    }, [skilltree]);
+
+    // useEffect(() => {
+    //     if (firstRenderDone) {
+    //         dispatch(setSelectedStudentsAction(selectedStudents))
+    //     } else {
+    //         setFirstRenderDone(true);
+    //     }
+    // }, [selectedStudents]);
 
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
         if (event.target.checked) {
-            var student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
-            const tempArr = selectedStudents;
+            const student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
+            const tempArr = selectedStudentsFromStore;
             tempArr.push(student[0]);
-            setSelectedStudentsAction(tempArr);
+            // setSelectedStudents(tempArr);
+            dispatch(setSelectedStudentsAction(tempArr))
         } else {
-            const filteredArray = selectedStudents.filter(student => parseInt(student.id) !== parseInt(event.target.value));
-            setSelectedStudents(filteredArray);
+            const filteredArray = selectedStudentsFromStore.filter(student => parseInt(student.id) !== parseInt(event.target.value));
+            // setSelectedStudents(filteredArray);
+            dispatch(setSelectedStudentsAction(filteredArray))
         }
     }
 
     const isChecked  = (studentId) => {
-        if (!selectedStudentsFromStore || selectedStudentsFromStore.length === 0) {
-            return false;
-        }
         for (let i = 0; i < selectedStudentsFromStore.length; i++) {
             if (parseInt(selectedStudentsFromStore[i].id) === parseInt(studentId)) {
                 return true;
@@ -58,6 +68,7 @@ export default function LinkStudentComponent() {
     }
 
     const studentList = () => {
+        console.log("selectedStudents", selectedStudentsFromStore);
         const studentsList = students.map((student) => (
             <div
                 key={student.id}
