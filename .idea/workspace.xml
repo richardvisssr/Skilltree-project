@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="" />
+    <list default="true" id="03ece05d-e703-4930-9531-80105c427d85" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/LinkStudentComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/LinkStudentComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/TopbarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Code/skilltree-webapp/src/components/users/docent/TopbarComponent.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,8 +86,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in Java-REST-API">
-    <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 25.0.0.Final">
+    <configuration name="JBoss/WildFly 25.0.0.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 25.0.0.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Java-REST-API:war">
@@ -154,7 +158,7 @@
         </option>
       </method>
     </configuration>
-    <configuration name="All in Java-REST-API" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Java-REST-API" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="Java-REST-API" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -235,7 +239,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in Java-REST-API" />
         <item itemvalue="JUnit.SkilltreeServiceTest" />
         <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllDocentSkilltrees" />
         <item itemvalue="JUnit.SkilltreeServiceTest.testGetAllStudentSkilltrees" />

@@ -21,6 +21,7 @@ export default function TopbarComponent() {
 
     const handleButton = () => {
         if (firstRenderDone) {
+            console.log("kaas")
             dispatch(fetchLinkStudentsToSkilltreeActionAsync(currentSkilltree.id, selectedStudents));
         }
         setFirstRenderDone(!firstRenderDone);
@@ -48,6 +49,7 @@ export default function TopbarComponent() {
     };
 
     useEffect(() => {
+        setFirstRenderDone(false);
         if (newSkilltree) {
             setTitle("");
             setDescription("");

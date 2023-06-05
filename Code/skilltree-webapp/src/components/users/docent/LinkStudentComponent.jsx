@@ -17,6 +17,10 @@ export default function LinkStudentComponent() {
     }, []);
 
     useEffect(() => {
+
+    }, [])
+
+    useEffect(() => {
         setSelectedStudents(selectedStudentsFromStore)
     }, [selectedStudentsFromStore])
 
