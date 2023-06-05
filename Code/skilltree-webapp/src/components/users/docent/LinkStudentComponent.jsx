@@ -13,8 +13,6 @@ export default function LinkStudentComponent() {
     const selectedStudentsFromStore = useSelector((state) => state.student.selectedStudents);
     const skilltree = useSelector((state) => state.skilltree.currentSkilltree);
 
-    const [firstRenderDone, setFirstRenderDone] = useState(false);
-    const [selectedStudents, setSelectedStudents] = useState([]);
     const [students, setStudents] = useState([]);
 
     useEffect(() => {
@@ -26,7 +24,6 @@ export default function LinkStudentComponent() {
         const fetchSelectedStudents = async () => {
             const result = await dispatch(fetchAllStudentsFromSkilltreeActionAsync(skilltree.id));
             if (result) {
-                // setSelectedStudents(result);
                 dispatch(setSelectedStudentsAction(result))
             }
         }
@@ -35,25 +32,15 @@ export default function LinkStudentComponent() {
         fetchSelectedStudents();
     }, [skilltree]);
 
-    // useEffect(() => {
-    //     if (firstRenderDone) {
-    //         dispatch(setSelectedStudentsAction(selectedStudents))
-    //     } else {
-    //         setFirstRenderDone(true);
-    //     }
-    // }, [selectedStudents]);
-
     // adds en removes students from selectedStudents list
     const handleChange = (event) => {
         if (event.target.checked) {
             const student = students.filter(student => parseInt(student.id) === parseInt(event.target.value));
             const tempArr = selectedStudentsFromStore;
             tempArr.push(student[0]);
-            // setSelectedStudents(tempArr);
             dispatch(setSelectedStudentsAction(tempArr))
         } else {
             const filteredArray = selectedStudentsFromStore.filter(student => parseInt(student.id) !== parseInt(event.target.value));
-            // setSelectedStudents(filteredArray);
             dispatch(setSelectedStudentsAction(filteredArray))
         }
     }
@@ -68,7 +55,6 @@ export default function LinkStudentComponent() {
     }
 
     const studentList = () => {
-        console.log("selectedStudents", selectedStudentsFromStore);
         const studentsList = students.map((student) => (
             <div
                 key={student.id}
