@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# **Installatiehandleiding voor Ontwikkelaars**
+Dit installatiehandleiding is specifiek opgesteld voor ontwikkelaars. Het installatiehandleiding voor de product owner, met instructies voor installatie met een server, is te vinden onder -> (https://confluenceoosevt.aimsites.nl/pages/viewpage.action?pageId=296340854)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **1. Frontend runnen**
+1\. Open een terminal binnen of buiten de IDE en ga hierbinnen naar de map 'skilltree-webapp'.
 
-## Available Scripts
+2\. Typ een van de volgende lines in om alle dependencies te installeren:
 
-In the project directory, you can run:
+npm i / npm install
 
-### `npm start`
+3\. Typ vervolgens dit in om de frontend te starten:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4\. De browser wordt automatisch geopend en <http://localhost:3000/> wordt laten zien. Dit is het lege skill network overzicht.
+### **2. Backend runnen**
+De frontend van Skilltree kan worden opgestart aan de hand van een lokale Wildfly server. Zorg ervoor dat er een skilltree database bestand bestaat. Een Maven project is worden alle benodigde plugins automatisch geïnstalleerd zodra je het project build, dus hier hoef je je geen zorgen over te maken. De onderstaande gids is voor de IDE IntelliJ IDEA. Als je een andere IDE gebruikt, zal dit proces misschien iets anders zijn.
 
-### `npm test`
+1\. Klik rechtsboven op 'Add Configuration' en vervolgens op 'Add new'.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2\. Selecteer 'JBos/Wildfly Server - Local'.
 
-### `npm run build`
+3\. Kies binnen het kopje 'Server' bij 'Application server' de eerder geïnstalleerde versie van JBoss/WildFly 25.0.0.Final.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4\. Kies binnen het kopje 'Server' bij 'JRE' de eerder geïnstalleerde versie van Java versie 17.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5\. Klik binnen het kopje 'Deployment' op het plustekentje, klik op 'Artifact' en kies vervolgens voor 'Java-REST-API:war'.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6\. Verander binnen het kopje 'Deployment' de tekst bij 'Application context' van '/skillnetwork\_api\_war' naar '/'.
 
-### `npm run eject`
+7\. Klik op 'Apply' en vervolgens op 'OK'.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+8\. In de terminal binnen Java-REST-API map schrijf de volgende zin 'mvn install'.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+9\. Klik vervolgens rechtsboven op het groene run-icoontje om de backend te starten.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+10\. Er zal een browserpagina geopend worden met de boodschap dat de database runt.
+### **3. Runnen van de testen**
+Er zijn bij skilltree alleen unittesten geschreven binnen de backend. Deze zijn via de terminal te runnen aan de hand van het volgende commando:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+mvn test
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
