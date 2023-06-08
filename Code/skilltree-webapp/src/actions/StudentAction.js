@@ -8,7 +8,7 @@ export function setStudentsAction(students) {
 }
 
 export function fetchAllStudentsActionAsync() {
-    return async (dispatch) => {
+    return async () => {
         const options = {
             method: "GET",
             mode: "cors",
@@ -33,7 +33,7 @@ export function setSelectedStudentsAction(students) {
 }
 
 export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
-    return async (dispatch) => {
+    return async () => {
         const studentIds = [];
         students.forEach(student => {
             studentIds.push({"id": student.id})
@@ -57,7 +57,7 @@ export function fetchLinkStudentsToSkilltreeActionAsync(skilltreeId, students) {
 }
 
 export function fetchAllStudentsFromSkilltreeActionAsync(skilltreeId) {
-    return async (dispatch) => {
+    return async () => {
         const options = {
             method: "GET",
             mode: "cors",
@@ -75,7 +75,7 @@ export function clearStudentCardAction() {
 }
 
 export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
-    return async (dispatch) => {
+    return async () => {
         const options = {
             body: JSON.stringify({
                 "userId": parseInt(studentId),
@@ -94,7 +94,7 @@ export function addFeedbackActionAsync(currentNodeId, studentId, feedback) {
 }
 
 export function fetchFeedbackSelectedStudentActionAsync(nodeId, studentId) {
-    return async (dispatch) => {
+    return async () => {
         const options = {
             method: "GET",
             mode: "cors",
