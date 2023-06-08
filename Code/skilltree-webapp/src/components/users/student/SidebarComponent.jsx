@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {AiOutlineLogout} from "react-icons/ai";
 
 import "../../../styles/styles.css";
 import {
@@ -12,7 +11,6 @@ import { showCreateCard } from "../../../actions/NodeAction";
 import LogoutComponent from "../../LogoutComponent";
 
 export default function SidebarComponent() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const skilltrees = useSelector((state) => state.skilltree.skilltrees);
     const showNodeCard = useSelector((state) => state.node.showCard);

@@ -8,6 +8,7 @@ function formFieldComponent({
     value,
     onChange,
     options,
+    placeholder,
     disabled = false
 }) {
     const showField = () => {
@@ -18,6 +19,7 @@ function formFieldComponent({
                     name={title}
                     id={title}
                     value={value}
+                    placeholder={placeholder}
                     onChange={onChange}
                     className="text-center block w-full rounded-md border-0 py-2 text-gray-900
                      shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
@@ -33,6 +35,7 @@ function formFieldComponent({
                     name={title}
                     id={title}
                     value={value}
+                    placeholder={placeholder}
                     onChange={onChange}
                     className="text-center block w-full rounded-md border-0 py-2 text-gray-900
                      shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400

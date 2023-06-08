@@ -22,8 +22,8 @@ function FeedbackNodeComponent() {
           setStudentId(students[0].id);
           if (currentUser.roleId === STUDENT_ROLE) {
             setStudentId(currentUser.id);
-          }    
-      } 
+          }
+      }
       fetchStudents();
     }, []);
 
@@ -47,7 +47,7 @@ function FeedbackNodeComponent() {
       if (feedbacks.length > 0) {
         setFeedback(feedbacks[0].feedback);
       } else {
-        setFeedback("Nog geen feedback");
+        setFeedback("");
       }
     }
 
@@ -63,14 +63,28 @@ function FeedbackNodeComponent() {
       setCustomAlert("");
       dispatch(addFeedbackActionAsync(currentNodeId, studentId, feedback));
     }
-    
+
     return (
         <>
           <div className="mt-3 gap-x-6 gap-y-8 justify-center flex">
             <select
               name={"Feedback geven aan"}
               onChange={handleStudentChange}
-              className="text-center inline-flex items-center block w-80 px-4 py-2 placeholder-gray-400 border border-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="
+                text-center
+                inline-flex
+                items-block
+                w-80
+                px-4
+                py-2
+                placeholder-gray-400
+                border
+                border-black
+                rounded-md
+                shadow-sm
+                focus:ring-indigo-500
+                focus:border-indigo-500
+                sm:text-sm"
             >
               {
                 currentUser && currentUser.roleId === STUDENT_ROLE ? (
@@ -83,7 +97,7 @@ function FeedbackNodeComponent() {
                 students !== null ? (
                   students.map(option => {
                     if (currentUser && option.id === currentUser.id) {
-                      return null; 
+                      return null;
                     }
                     return (
                       <option key={option.id} value={option.id}>
@@ -99,6 +113,7 @@ function FeedbackNodeComponent() {
             fieldType="textarea"
             title="Feedback"
             value={feedback}
+            placeholder={feedback === "" ? "Nog geen feedback" : ""}
             onChange={handleFeedbackChange}
           />
           {customAlert !== "" ?
