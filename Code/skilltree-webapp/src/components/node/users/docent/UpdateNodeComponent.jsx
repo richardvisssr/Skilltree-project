@@ -124,7 +124,7 @@ function UpdateNodeComponent() {
                             onChange={handleAssessmentCriteriaChange}
                         />
                         <p className="text-center">Gebruik een '#' om een nieuwe beoordelingscriteria toe te voegen</p>
-                        <FeedbackNodeComponent/>
+                        <FeedbackNodeComponent />
                         <div className="mt-6 flex items-center justify-center space-x-4">
                             <button
                                 type="button"

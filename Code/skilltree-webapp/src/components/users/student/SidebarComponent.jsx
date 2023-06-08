@@ -62,11 +62,6 @@ export default function SidebarComponent() {
         }
     };
 
-    function logout() {
-        sessionStorage.clear();
-        navigate("/login");
-    }
-
     return (
         <aside
             id="separator-sidebar"
