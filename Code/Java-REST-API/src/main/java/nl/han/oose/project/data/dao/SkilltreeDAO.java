@@ -18,7 +18,6 @@ public class SkilltreeDAO {
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
             return datamapper.map(getAllStudentSkilltreesQuery(gebruikerId));
-
         }
         catch (SQLException e) {
             throw new SQLException(e);
@@ -30,11 +29,9 @@ public class SkilltreeDAO {
     }
 
     public SkilltreesDTO getAllDocentSkilltrees(int gebruikerId) throws SQLException {
-
         try {
             connection = DriverManager.getConnection(databaseProperties.connectionString());
-                return datamapper.map(getAllDocentSkilltreesQuery(gebruikerId));
-
+            return datamapper.map(getAllDocentSkilltreesQuery(gebruikerId));
         } catch (SQLException e) {
             throw new SQLException(e);
         }
@@ -43,9 +40,6 @@ public class SkilltreeDAO {
             stmt.close();
         }
     }
-
-
-//    SELECT * FROM SkillTrees where ID in (Select skilltreeID FROM userskilltree WHERE userID = 2)
 
     public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
         try {

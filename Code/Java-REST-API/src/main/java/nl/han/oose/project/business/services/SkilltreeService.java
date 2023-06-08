@@ -11,14 +11,13 @@ public class SkilltreeService {
     private SkilltreeDAO skilltreeDAO;
     private static final int DOCENT_ROLE = 1;
     private static final int STUDENT_ROLE = 2;
-    public SkilltreesDTO getAllSkilltrees(int gebruikerId, int rolId) throws SQLException {
-        SkilltreesDTO result = null;
-if (rolId == DOCENT_ROLE) {
-    result = skilltreeDAO.getAllDocentSkilltrees(gebruikerId);
-} else if (rolId == STUDENT_ROLE) {
-    result = skilltreeDAO.getAllStudentSkilltrees(gebruikerId);
-}
-return result;
+    public SkilltreesDTO getAllSkilltrees(int gebruikerId, int roleId) throws SQLException {
+        if (roleId == DOCENT_ROLE) {
+            return skilltreeDAO.getAllDocentSkilltrees(gebruikerId);
+        } else if (roleId == STUDENT_ROLE) {
+            return skilltreeDAO.getAllStudentSkilltrees(gebruikerId);
+        }
+        return null;
     }
 
     public SkilltreesDTO createSkilltree(SkilltreeDTO skilltreeDTO, int gebruikerId) throws SQLException {
