@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Path("/feedback")
 public class FeedbackResource {
 
-    private static final Logger LOGGER = Logger.getLogger(NodeResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(FeedbackResource.class.getName());
     private static final String ERROR_MESSAGE = "Error ";
     private FeedbackService feedbackService;
 

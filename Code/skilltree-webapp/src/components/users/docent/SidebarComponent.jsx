@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { AiFillDelete, AiOutlineLogout } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 
 import "../../../styles/styles.css";
 import "./deleteButton.css";
